@@ -1,0 +1,15 @@
+.navbar-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 4px 16px;
+}
+
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+.logo {
+  height: 26px;
+  margin-right: 6px;
+}

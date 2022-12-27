@@ -1,0 +1,29 @@
+.banner {
+  background-image: url('../../../assets/images/banner_image.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 20rem;
+}
+
+.banner-text {
+  text-align: center;
+}
+
+.banner-text-title {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 4rem;
+  color: white;
+  /* border: 1px red solid; */
+  margin: 0;
+  padding-bottom: .5rem;
+}
+
+.banner-text-subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: white;
+  /* border: 1px red solid; */
+  margin: 0;
+}

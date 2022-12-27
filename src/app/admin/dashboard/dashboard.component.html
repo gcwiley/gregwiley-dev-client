@@ -1,0 +1,24 @@
+<main class="admin-dashboard">
+  <header>
+    <h2>Admin Dashboard</h2>
+    <mat-divider></mat-divider>
+  </header>
+
+  <section fxLayout="row" fxLayoutGap="20px">
+
+    <main fxFlex="70">
+      <app-project-table></app-project-table>
+    </main>
+
+    <aside fxFlex="30">
+
+      <a mat-raised-button color="primary" routerLink="/create">Create Project</a>
+
+      <app-project-count></app-project-count>
+
+      <app-recent-projects></app-recent-projects>
+
+    </aside>
+  </section>
+
+</main>

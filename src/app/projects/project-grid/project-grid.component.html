@@ -1,0 +1,26 @@
+<div class="project-grid">
+  <mat-grid-list cols="4" rowHeight="1:1">
+
+    <mat-grid-tile *ngFor="let project of projects">
+
+      <mat-card class="project-card flex-container"> <!-- ADD FLEX HERE -->
+
+        <mat-card-header>
+          <mat-card-title>{{ project.title }}</mat-card-title>
+          <mat-card-subtitle>{{ project.category }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <mat-card-subtitle>{{ project.description }}</mat-card-subtitle>
+        </mat-card-content>
+
+        <mat-card-actions> <!-- ADD FLEX HERE -->
+
+          <a mat-button color="primary" routerLink="/projects/{{ project._id }}">VIEW</a>
+
+        </mat-card-actions>
+
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

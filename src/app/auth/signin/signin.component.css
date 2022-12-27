@@ -1,0 +1,25 @@
+.signin-form {
+  max-width: 350px;
+  margin: 10rem auto;
+  border-radius: 8px;
+  box-shadow: none;
+  border: 0.5px solid rgb(193, 193, 193);
+  padding: 1.5rem;
+  background-color: #E3F2FD;
+}
+
+.full-width {
+  width: 100%;
+  margin: 0.4rem 0;
+}
+
+mat-card-title,
+mat-card-subtitle {
+  text-align: center;
+}
+
+mat-card-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

@@ -1,0 +1,31 @@
+<nav class="navbar-header" aria-label="Top Toolbar">
+  <!-- TITLE -->
+  <a mat-button class="button" routerLink="/" aria-label="gregwiley.dev">
+    <img
+      class="logo"
+      matButtonIcon
+      src="../../../assets/images/angular-logo-white-transparent.svg"
+      alt="angular"
+      aria-hidden="true"
+    />
+    <span>gregwiley.dev</span>
+  </a>
+
+  <div class="flex-spacer"></div>
+
+  <ng-container *ngIf="auth.user | async as user">
+    <button mat-flat-button (click)="onClickSignOut()">Sign Out</button>
+  </ng-container>
+
+  <!-- GITHUB LOGO -->
+  <a mat-icon-button class="button" href="www.apple.com">
+    <img
+      class="logo docs-navbar-github-icon"
+      matButtonIcon
+      src="../../../assets/images/github-circle-white-transparent.svg"
+      alt="github"
+      aria-hidden="true"
+    />
+    GitHub
+  </a>
+</nav>

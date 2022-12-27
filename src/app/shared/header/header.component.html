@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+
+  <a mat-icon-button routerLink="/" aria-label="menu icon">
+    <mat-icon>code</mat-icon>
+  </a>
+
+  <span class="header-text">gregwiley.dev</span>
+
+  <span class="spacer"></span>
+
+  <a mat-icon-button routerLink="/about" aria-label="github link">
+    <mat-icon>info</mat-icon>
+  </a>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="settings">
+    <mat-icon>settings</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+
+    <a mat-menu-item routerLink="/admin">
+      <mat-icon>dashboard</mat-icon>
+      <span>Admin Dashboard</span>
+    </a>
+
+  </mat-menu>
+
+  <ng-container *ngIf="auth.user | async as user">
+    <button mat-flat-button (click)="onClickSignOut()">Sign Out</button>
+  </ng-container>
+  
+</mat-toolbar>
