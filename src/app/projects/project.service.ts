@@ -10,6 +10,7 @@ import { MessageService } from '../messages/message.service';
 import { Project } from '../types/project';
 
 @Injectable({ providedIn: 'root' })
+
 export class ProjectService {
   private projectsUrl = 'api/projects';
 
