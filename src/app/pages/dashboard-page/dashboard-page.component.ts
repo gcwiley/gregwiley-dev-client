@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  templateUrl: './dashboard-page.component.html',
+  styleUrls: ['./dashboard-page.component.css'],
 })
 export class DashboardComponent {}

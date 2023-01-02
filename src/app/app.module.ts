@@ -20,7 +20,7 @@ import { MaterialModule } from './material-module';
 import { AppComponent } from './app.component';
 
 // Admin  Dashboard Component
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { DashboardComponent } from './pages/dashboard-page/dashboard-page.component';
 
 // Project Components
 import { ProjectGridComponent } from './projects/project-grid/project-grid.component';
@@ -45,7 +45,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { ThemePickerComponent } from './shared/theme-picker/theme-picker.component';
 
 // Auth Components
-import { SigninComponent } from './auth/signin/signin.component';
+import { SigninComponent } from './pages/signin-page/signin-page.component';
 
 // App Routing Module
 import { AppRoutingModule } from './app-routing.module';
