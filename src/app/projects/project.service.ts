@@ -3,10 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-// Import Message Service
+// import message service
 import { MessageService } from '../messages/message.service';
 
-// Import the Project Model
+// import the project model
 import { Project } from '../types/project';
 
 @Injectable({ providedIn: 'root' })

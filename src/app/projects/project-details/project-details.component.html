@@ -1,4 +1,5 @@
 <section *ngIf="project" class="project-details-content">
+
   <header>
     <h2 class="project-title">{{ project.title }}</h2>
     <h3>{{ project.category }}</h3>
@@ -7,7 +8,7 @@
 
   <section>
 
-    <main fxFlex="70">
+    <main>
       <!-- PROJECT DESCRIPTION -->
       <mat-card class="project-description">
         <mat-card-subtitle>Description</mat-card-subtitle>
@@ -19,7 +20,6 @@
 
     <aside>
       <!-- PROJECT DETAILS -->
-
       <mat-card class="project-details">
         <mat-list dense>
           <mat-list-item>
@@ -58,5 +58,5 @@
       </mat-card>
     </aside>
   </section>
-  
+
 </section>

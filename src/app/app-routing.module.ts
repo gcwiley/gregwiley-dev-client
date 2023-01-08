@@ -8,7 +8,7 @@ import { RouteGuard } from './route.guard';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 
 // Admin Page - Admin Dashboard
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { DashboardComponent } from './pages/dashboard-page/dashboard-page.component';
 
 // Project Components
 import { ProjectFormComponent } from './projects/project-form/project-form.component';
@@ -17,8 +17,8 @@ import { ProjectDetailsComponent } from './projects/project-details/project-deta
 // Feedback Component
 import { FeedbackFormComponent } from './feedback/feedback-form/feedback-form.component';
 
-// Auth Components
-import { SigninComponent } from './auth/signin/signin.component';
+// Sign In Page
+import { SigninComponent } from './pages/signin-page/signin-page.component';
 
 // About Page
 import { AboutPageComponent } from './pages/about-page/about-page.component';

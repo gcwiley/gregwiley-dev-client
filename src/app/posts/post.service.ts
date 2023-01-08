@@ -3,12 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-// import the post model
+// import message service
+import { MessageService } from '../messages/message.service';
+
+// import the project model
 import { Post } from '../types/post';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
+
 export class PostService {
   private postsUrl = 'api/posts';
 
@@ -18,14 +20,86 @@ export class PostService {
     }),
   };
 
-  // inject 'httpClient' into the project service
-  constructor(private http: HttpClient) {}
+  // inject "HttpClient" into the Post service
+  constructor(private http: HttpClient, private messageService: MessageService) {}
 
   // GET: posts from the server
   getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.postsUrl);
+    return this.http.get<Post[]>(this.postsUrl).pipe(
+      tap((_) => this.log('fetched posts')),
+      catchError(this.handleError<Post[]>('getPosts', []))
+    );
   }
 
+  // GET: post by ID. Will 404 if id not found
+  getPost(id: string | null): Observable<Post> {
+    const url = `${this.postsUrl}/${id}`;
+    return this.http.get<Post>(url).pipe(
+      tap((_) => this.log(`fetched post id=${id}`)),
+      catchError(this.handleError<Post>(`getPost id=${id}`))
+    );
+  }
 
-  
+  // GET: project count from database
+  getPostCount(): Observable<number> {
+    return this.http.get<number>('/api/post-count');
+  }
+
+  // GET: recent posts added
+  getRecentPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>('/api/recent-posts');
+  }
+
+  // SAVE METHODS //
+
+  // POST: add a new  blog post to the server
+  addPost(newPost: Post | any): Observable<Post> {
+    return this.http.post<Post>(this.postsUrl, newPost, this.httpOptions).pipe(
+      tap((newPost: Post) => this.log(`added post with id=${newPost._id}`)),
+      catchError(this.handleError<Post>('addHero'))
+    );
+  }
+
+  // DELETE post by ID from the server
+  deletePost(id: string): Observable<Post> {
+    const url = `${this.postsUrl}/${id}`;
+
+    return this.http.delete<Post>(url, this.httpOptions).pipe(
+      tap((_) => this.log(`deleted post id=${id}`)),
+      catchError(this.handleError<Post>('deletePost'))
+    );
+  }
+
+  updatePost(id: any, post: any): Observable<any> {
+    const url = `${this.postsUrl}/${id}`;
+
+    return this.http.patch(url, post, this.httpOptions).pipe(
+      tap((_) => this.log(`updated post id=${post._id}`)),
+      catchError(this.handleError<any>('updatePost'))
+    );
+  }
+
+  // Handle Http operation that failed
+  // let the app continue
+  // @param operation - name of the operation that failed
+  // @param result - optional value to return as the observable result
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
+
+      // let the app keep running by return an empty result
+      return of(result as T);
+    };
+  }
+
+  // Log a Post Service message with PostService
+  private log(message: string) {
+    this.messageService.add(`PostService: ${message}`);
+  }
 }
+

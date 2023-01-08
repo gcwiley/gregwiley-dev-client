@@ -2,13 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 
-// Import Project Service
+// import project service
 import { ProjectService } from "../project.service";
 
-// Import Project Type
+// import project type
 import { Project } from "../../types/project";
 
-// Import Project Type
+// import project type
 import { ProjectCategory } from '../../types/project'
 
 // Import Project Status
@@ -25,10 +25,10 @@ export class ProjectFormComponent implements OnInit {
     private id!: string | null;
     private project!: Project;
 
-    // Import Project Types - Follow Up
+    // import Project Types - Follow Up
     projectCategory: ProjectCategory[] = PROJECT_CATAGORIES
 
-    // create project form
+    // create the project form
     projectForm = this.formBuilder.group({
         title: ['', Validators.required],
         status: ['', Validators.required],
@@ -78,12 +78,12 @@ export class ProjectFormComponent implements OnInit {
     onSaveProject() {
         if (this.mode === 'create') {
             this.projectService.addProject(this.projectForm.value).subscribe(() => {
-                // navigates back to homepage
+                // navigates user back to homepage
                 this.router.navigateByUrl('/')
             })
         } else {
             this.projectService.updateProject(this.id, this.projectForm.value).subscribe(() => {
-                // navigates back to homepage
+                // navigates user back to homepage
                 this.router.navigateByUrl('/')
             })
         }

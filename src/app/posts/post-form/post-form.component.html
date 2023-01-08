@@ -6,12 +6,63 @@
 
     <mat-card-content>
       <div class="row">
-        <mat-form-field>
+        <!-- TITLE (title) -->
+        <mat-form-field class="full-width" appearance="outline">
           <mat-label>Post Title</mat-label>
-          <input type="text" formControlName="title" />
+          <input matInput type="text" formControlName="title" />
           <mat-error>Please enter a post title</mat-error>
         </mat-form-field>
       </div>
+
+      <div class="row">
+
+        <div class="col">
+          <!-- AUTHOR (author) -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Post Title</mat-label>
+            <input matInput type="text" formControlName="title" />
+            <mat-error>Please enter a post title</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <!-- AUTHOR (author) -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Post Title</mat-label>
+            <input matInput type="text" formControlName="title" />
+            <mat-error>Please enter a post title</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <!-- DATE (date) -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>Please enter a date.</mat-error>
+          </mat-form-field>
+        </div><!-- col -->
+
+      </div> <!-- row -->
+
+      <div class="row">
+        <!-- BODY (body) -->
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Post Details</mat-label>
+          <textarea matInput rows="10" formControlName="body"></textarea>
+          <mat-error>Please add content to your post.</mat-error>
+        </mat-form-field>
+      </div> <!-- row -->
+
     </mat-card-content>
+
+    <mat-card-actions>
+
+      <button mat-flat-button color="primary" type="submit" [disabled]="!postForm.valid">Post</button>
+
+    </mat-card-actions>
+
   </mat-card>
 </form>
