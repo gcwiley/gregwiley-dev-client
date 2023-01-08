@@ -1,11 +1,23 @@
-.footer {
-  padding: 12px;
-  font-size: 12px;
+.footer-section {
+
+  margin: 0;
+  text-align: center;
+  height: 150px;
+
+  background-color: rgba(0, 0, 0, .1);
+  border: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+
+  // flex properties
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.footer-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
+.footer-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: .8rem;
+  margin: 0;
+  padding: .3rem;
+  color: black;
 }

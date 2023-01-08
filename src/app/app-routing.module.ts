@@ -7,6 +7,11 @@ import { RouteGuard } from './route.guard';
 // Main HomePage
 import { MainPageComponent } from './pages/main-page/main-page.component';
 
+// About Page
+import { AboutPageComponent } from './pages/about-page/about-page.component';
+
+// Blog Page
+
 // Admin Page - Admin Dashboard
 import { DashboardComponent } from './pages/dashboard-page/dashboard-page.component';
 
@@ -20,8 +25,6 @@ import { FeedbackFormComponent } from './feedback/feedback-form/feedback-form.co
 // Sign In Page
 import { SigninComponent } from './pages/signin-page/signin-page.component';
 
-// About Page
-import { AboutPageComponent } from './pages/about-page/about-page.component';
 
 // Not Found Page
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';

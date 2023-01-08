@@ -8,10 +8,6 @@
 
   <span class="spacer"></span>
 
-  <a mat-icon-button routerLink="/about" aria-label="github link">
-    <mat-icon>info</mat-icon>
-  </a>
-
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="settings">
     <mat-icon>settings</mat-icon>
   </button>
@@ -28,5 +24,5 @@
   <ng-container *ngIf="auth.user | async as user">
     <button mat-flat-button (click)="onClickSignOut()">Sign Out</button>
   </ng-container>
-  
+
 </mat-toolbar>

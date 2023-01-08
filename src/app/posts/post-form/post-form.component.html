@@ -1,5 +1,6 @@
 <form [formGroup]="postForm" novalidate (ngSubmit)="onSavePost()">
   <mat-card class="post-form">
+    
     <mat-card-header>
       <mat-card-title>Add Post</mat-card-title>
     </mat-card-header>
@@ -15,15 +16,6 @@
       </div>
 
       <div class="row">
-
-        <div class="col">
-          <!-- AUTHOR (author) -->
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Post Title</mat-label>
-            <input matInput type="text" formControlName="title" />
-            <mat-error>Please enter a post title</mat-error>
-          </mat-form-field>
-        </div>
 
         <div class="col">
           <!-- AUTHOR (author) -->
