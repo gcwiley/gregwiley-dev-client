@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // Import the Project Service
-import { ProjectService } from '../project.service';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'app-project-count',

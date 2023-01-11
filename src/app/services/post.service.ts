@@ -4,9 +4,9 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 // import message service
-import { MessageService } from '../messages/message.service';
+import { MessageService } from './message.service';
 
-// import the project model
+// import the post model
 import { Post } from '../types/post';
 
 @Injectable({ providedIn: 'root' })
@@ -40,7 +40,7 @@ export class PostService {
     );
   }
 
-  // GET: project count from database
+  // GET: post count from database
   getPostCount(): Observable<number> {
     return this.http.get<number>('/api/post-count');
   }

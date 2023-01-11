@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Project } from '../../types/project';
 
 // Import Project Service
-import { ProjectService } from '../project.service';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'app-project-details',

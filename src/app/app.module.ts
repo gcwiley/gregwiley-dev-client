@@ -33,7 +33,7 @@ import { ProjectCountComponent } from './projects/project-count/project-count.co
 // Shared Components
 import { NavMenuComponent } from './shared/nav-menu/nav-menu.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { BannerComponent } from './shared/banner/banner.component';
+import { BannerComponent } from './shared/hero/hero.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 // PAGES

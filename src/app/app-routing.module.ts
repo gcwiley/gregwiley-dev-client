@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // Import Route Guard
-import { RouteGuard } from './route.guard';
+import { RouteGuard } from './routes/route.guard';
 
 // Main HomePage
 import { MainPageComponent } from './pages/main-page/main-page.component';
@@ -24,7 +24,6 @@ import { FeedbackFormComponent } from './feedback/feedback-form/feedback-form.co
 
 // Sign In Page
 import { SigninComponent } from './pages/signin-page/signin-page.component';
-
 
 // Not Found Page
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';

@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 // import message service
-import { MessageService } from '../messages/message.service';
+import { MessageService } from './message.service';
 
 // import the project model
 import { Project } from '../types/project';

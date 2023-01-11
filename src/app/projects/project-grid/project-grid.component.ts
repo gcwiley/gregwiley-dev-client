@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // Imports Project Service
-import { ProjectService } from '../project.service'
+import { ProjectService } from '../../services/project.service'
 
 // Import Project Type
 import { Project } from '../../types/project'
@@ -12,7 +12,7 @@ import { Project } from '../../types/project'
   styleUrls: ['./project-grid.component.scss'],
 })
 export class ProjectGridComponent implements OnInit {
-  
+
   isLoadingProjects = true;
   projects: Project[] = []
 

@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 // import post service
-import { PostService } from '../post.service';
+import { PostService } from '../../services/post.service';
 
 // import post type
 import { Post } from '../../types/post';

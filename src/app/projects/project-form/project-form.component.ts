@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 
 // import project service
-import { ProjectService } from "../project.service";
+import { ProjectService } from "../../services/project.service";
 
 // import project type
 import { Project } from "../../types/project";
