@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // Import Route Guard
-import { RouteGuard } from './routes/route.guard';
+import { RouteGuard } from './guards/route.guard';
 
 // Main HomePage
 import { MainPageComponent } from './pages/main-page/main-page.component';
@@ -18,9 +18,6 @@ import { DashboardComponent } from './pages/dashboard-page/dashboard-page.compon
 // Project Components
 import { ProjectFormComponent } from './projects/project-form/project-form.component';
 import { ProjectDetailsComponent } from './projects/project-details/project-details.component';
-
-// Feedback Component
-import { FeedbackFormComponent } from './feedback/feedback-form/feedback-form.component';
 
 // Sign In Page
 import { SigninComponent } from './pages/signin-page/signin-page.component';
@@ -42,7 +39,6 @@ const routes: Routes = [
     component: ProjectFormComponent,
     canActivate: [RouteGuard],
   },
-  { path: 'feedback', component: FeedbackFormComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'about', component: AboutPageComponent },
   { path: 'admin', component: DashboardComponent, canActivate: [RouteGuard] },

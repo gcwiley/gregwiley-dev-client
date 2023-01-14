@@ -19,8 +19,15 @@ import { MaterialModule } from './material-module';
 // Main App Component
 import { AppComponent } from './app.component';
 
-// Admin  Dashboard Component
+// App Routing Module
+import { AppRoutingModule } from './app-routing.module';
+
+// PAGES
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { DashboardComponent } from './pages/dashboard-page/dashboard-page.component';
+import { SigninComponent } from './pages/signin-page/signin-page.component';
 
 // Project Components
 import { ProjectGridComponent } from './projects/project-grid/project-grid.component';
@@ -36,23 +43,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { BannerComponent } from './shared/hero/hero.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
-// PAGES
-import { MainPageComponent } from './pages/main-page/main-page.component';
-import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
-import { AboutPageComponent } from './pages/about-page/about-page.component';
-
 // Theme Picker Component
 import { ThemePickerComponent } from './shared/theme-picker/theme-picker.component';
-
-// Auth Components
-import { SigninComponent } from './pages/signin-page/signin-page.component';
-
-// App Routing Module
-import { AppRoutingModule } from './app-routing.module';
-
-// Feedback Page
-import { FeedbackFormComponent } from './feedback/feedback-form/feedback-form.component';
-import { FeedbackListComponent } from './feedback/feedback-list/feedback-list.component';
 
 // POST COMPONENTS
 import { PostFormComponent } from './posts/post-form/post-form.component';
@@ -75,8 +67,6 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     HeaderComponent,
     MainPageComponent,
     SigninComponent,
-    FeedbackFormComponent,
-    FeedbackListComponent,
     NotFoundPageComponent,
     AboutPageComponent,
     DashboardComponent,

@@ -1,15 +1,28 @@
-.project-grid {
-  margin-top: 2rem;
+.project-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  // border: 1px red solid;
+
+  margin-top: 1rem;
+
 }
 
 .project-card {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+
+  width: 300px;
+  height: 200px;
+}
+
+mat-card-content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
 }
 
 p {
-  color: #424242;
+  padding: .5rem;
 }

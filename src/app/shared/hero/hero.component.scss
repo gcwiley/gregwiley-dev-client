@@ -1,29 +1,47 @@
-.banner {
-  background-image: url('../../../assets/images/banner_image.jpg');
+.hero-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  text-align: center;
+
+  background-image: url(../../../assets/images/banner_image.jpg);
   background-size: cover;
   background-position: center;
-  height: 20rem;
+  opacity: .9;
 }
 
-.banner-text {
-  text-align: center;
-}
-
-.banner-text-title {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
-  font-size: 4rem;
+.hero-content {
+  // border: 1px solid red;
   color: white;
-  /* border: 1px red solid; */
-  margin: 0;
-  padding-bottom: .5rem;
 }
 
-.banner-text-subtitle {
-  font-family: 'Open Sans', sans-serif;
+.hero-image {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 1.2rem;
+}
+
+.hero-title {
+  font-size: 3rem;
   font-weight: 300;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.hero-text {
   font-size: 1.5rem;
-  color: white;
-  /* border: 1px red solid; */
-  margin: 0;
+  font-weight: 300;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
