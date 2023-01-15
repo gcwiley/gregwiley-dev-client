@@ -1,6 +1,29 @@
+.about-page-container {
+  max-width: 1200px;
+  margin: auto;
+
+  // border: 1px red solid;
+}
+
+
+
 .container {
   display: flex;
   flex-direction: row;
+  gap: 1rem;
+}
+
+.about-me-text {
+  padding: 1rem;
+  border: 1px gainsboro solid;
+  border-radius: 10px;
+  color: rgb(79, 78, 78);
+}
+
+.technical-skills {
+  box-shadow: none;
+  // border: 0.5px gainsboro solid;
+  background-color: #E3F2FD;
 }
 
 // Add Media Queries

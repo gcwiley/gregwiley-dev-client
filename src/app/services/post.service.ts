@@ -53,7 +53,7 @@ export class PostService {
   // SAVE METHODS //
 
   // POST: add a new  blog post to the server
-  addPost(newPost: Post | any): Observable<Post> {
+  addPost(newPost: Post | null): Observable<Post> {
     return this.http.post<Post>(this.postsUrl, newPost, this.httpOptions).pipe(
       tap((newPost: Post) => this.log(`added post with id=${newPost._id}`)),
       catchError(this.handleError<Post>('addHero'))
