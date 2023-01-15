@@ -1,17 +1,8 @@
-2. Fix nav-menu
-
 3. add blog
 
+Add google font to styles css page
 
-.banner-background {
-  background-image: url(../../../assets/images/banner_image.jpg);
-  background-size: cover;
-  background-position: center;
-  height: 300px;
-  background-color: rgb(121, 129, 129);
+fix about me page
 
-  // flex properties
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
+
