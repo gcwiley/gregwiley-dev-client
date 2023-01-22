@@ -5,8 +5,13 @@
 }
 
 .main-page-content {
-  // background-color: rgb(158, 101, 101);
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: auto;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.main-page-title {
+  font-weight: 300;
 }
