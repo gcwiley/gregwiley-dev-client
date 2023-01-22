@@ -1,28 +1,36 @@
 .about-page-container {
   max-width: 1200px;
   margin: auto;
-
-  // border: 1px red solid;
 }
 
-
+.about-page-title {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+}
 
 .container {
   display: flex;
+  // flex-wrap: wrap;
   flex-direction: row;
   gap: 1rem;
 }
 
-.about-me-text {
-  padding: 1rem;
-  border: 1px gainsboro solid;
-  border-radius: 10px;
-  color: rgb(79, 78, 78);
+.about-text {
+  margin-top: 1rem;
+  box-shadow: none;
+  border: .5px gainsboro solid;
+}
+
+.about-text p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+  font-size: 1.2rem;
 }
 
 .technical-skills {
+  margin-top: 1rem;
   box-shadow: none;
-  // border: 0.5px gainsboro solid;
+  border: 0.5px rgb(149, 193, 231) solid;
   background-color: #E3F2FD;
 }
 

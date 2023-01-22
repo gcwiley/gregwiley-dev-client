@@ -32,7 +32,7 @@ export class PostService {
   }
 
   // GET: post by ID. Will 404 if id not found
-  getPost(id: string | null): Observable<Post> {
+  getPost(id: string | any): Observable<Post> {
     const url = `${this.postsUrl}/${id}`;
     return this.http.get<Post>(url).pipe(
       tap((_) => this.log(`fetched post id=${id}`)),
@@ -53,7 +53,7 @@ export class PostService {
   // SAVE METHODS //
 
   // POST: add a new  blog post to the server
-  addPost(newPost: Post | null): Observable<Post> {
+  addPost(newPost: Post | any): Observable<Post> {
     return this.http.post<Post>(this.postsUrl, newPost, this.httpOptions).pipe(
       tap((newPost: Post) => this.log(`added post with id=${newPost._id}`)),
       catchError(this.handleError<Post>('addHero'))
