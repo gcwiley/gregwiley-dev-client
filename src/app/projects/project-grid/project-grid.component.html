@@ -14,16 +14,15 @@
       </mat-card-content>
 
       <mat-card-actions class="project-actions-container">
-        <!-- ADD FLEX HERE -->
 
         <a mat-button color="primary" routerLink="/projects/{{ project._id }}">VIEW</a>
 
-        <a mat-icon-button color="primary" href="{{ project.gitUrl }}">
+        <a mat-icon-button color="primary" href="{{ project.gitUrl }}" disabled>
           <mat-icon>code</mat-icon>
         </a>
 
-        <!-- GIT HUB LINK ICON HERE -->
       </mat-card-actions>
+
     </mat-card>
 
   </div>

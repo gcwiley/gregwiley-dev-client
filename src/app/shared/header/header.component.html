@@ -14,10 +14,17 @@
 
   <mat-menu #menu="matMenu">
 
-    <a mat-menu-item routerLink="/admin">
+    <a mat-menu-item routerLink="/signin">
       <mat-icon>login</mat-icon>
       <span>Sign In</span>
     </a>
+
+    <ng-container *ngIf="auth.user | async as user">
+      <a mat-menu-item routerLink="/admin">
+        <mat-icon>login</mat-icon>
+        <span>Admin Dashboard</span>
+      </a>
+    </ng-container>
 
   </mat-menu>
 
