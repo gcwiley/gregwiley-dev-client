@@ -1,8 +1,10 @@
-3. add blog
+1. fix about me page
 
-Add google font to styles css page
+2. refactor app.module using index for components
 
-fix about me page
+3. add visability filter for sign in page
+
+4. Fix Copyright text
 
 
 
