@@ -27,6 +27,13 @@ export class ProjectFormComponent implements OnInit {
   // import Project Types - Follow Up
   projectCategory: ProjectCategory[] = PROJECT_CATAGORIES;
 
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    public route: ActivatedRoute,
+    private projectService: ProjectService
+  ) {}
+
   // create the project form
   projectForm = this.formBuilder.group({
     title: ['', Validators.required],
@@ -38,13 +45,6 @@ export class ProjectFormComponent implements OnInit {
     gitUrl: [''],
     description: ['', Validators.required],
   });
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    public route: ActivatedRoute,
-    private projectService: ProjectService
-  ) {}
 
   ngOnInit(): void {
     // find out if we have a "id" or not

@@ -34,6 +34,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { HeroComponent } from './shared/hero/hero.component';
 import { NavMenuComponent } from './shared/nav-menu/nav-menu.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 // Project Components
 import { ProjectCountComponent } from './projects/project-count/project-count.component';
@@ -70,6 +71,7 @@ import { Pipes } from './pipes/index';
     HeaderComponent,
     HeroComponent,
     NavMenuComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,10 +9,12 @@ import { MessageService } from './message.service';
 // import the post model
 import { Post } from '../types/post';
 
+// injectable decorator
 @Injectable({ providedIn: 'root' })
 
 export class PostService {
-  private postsUrl = 'api/posts';
+
+  private postsUrl = 'api/posts'; // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+
+// import the auth service
+import { AuthService } from '../../services/auth.service';
 
 // Signin Component
 @Component({
@@ -10,38 +12,37 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   styleUrls: ['./signin-page.component.scss'],
 })
 export class SigninComponent {
+  // hide the password by default
   hide = true;
 
+  // inject the router and form builder and auth service
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {}
+
+  // create the sign in form with email and password fields
   signinForm = this.formBuilder.group({
     email: ['', Validators.required],
     password: ['', Validators.required],
   });
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    public auth: AngularFireAuth
-  ) {}
-
-  // Sign in with email and password - FIX THIS!
+  // Sign in with email and password
+  // if successful, navigate to the home page
   onSubmitSignIn() {
-    console.log('Email', this.signinForm.value.email);
-    console.log('Password', this.signinForm.value.password);
-    // sign in with email and password using firebase auth
-    this.auth
-      .signInWithEmailAndPassword(
-        // FIX THIS!
-        this.signinForm.value.email,
-        this.signinForm.value.password
+    this.authService
+      .SigninUserwithEmailAndPassword(
+        this.signinForm.value.email!,
+        this.signinForm.value.password!
       )
-      .then((user) => {
-        // sign in successful
-        console.log('Sign in successful', user);
-        this.router.navigate(['/']);
+      .then(() => {
+        // navigates user to the main page
+        this.router.navigateByUrl('/');
       })
-      // sign in error
+      // if error, log the error message
       .catch((error) => {
-        console.log('Sign in error', error);
+        window.alert(error.message);
       });
   }
 }

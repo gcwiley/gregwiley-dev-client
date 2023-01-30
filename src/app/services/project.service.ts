@@ -23,7 +23,7 @@ export class ProjectService {
   // inject "HttpClient" into the Project service
   constructor(private http: HttpClient, private messageService: MessageService) {}
 
-  // GET: projects from the server
+  // GET: all projects from the server
   getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(this.projectsUrl).pipe(
       tap((_) => this.log('fetched projects')),
@@ -31,7 +31,7 @@ export class ProjectService {
     );
   }
 
-  // GET: project by ID. Will 404 if id not found
+  // GET: a project by ID. Will 404 if id not found
   getProject(id: string | null): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
     return this.http.get<Project>(url).pipe(
@@ -60,7 +60,7 @@ export class ProjectService {
     );
   }
 
-  // DELETE project by ID from the server
+  // DELETE a project by ID from the server
   deleteProject(id: string): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
 
@@ -98,7 +98,7 @@ export class ProjectService {
   }
 
   // Log a ProjectService message with ProjectService
-  private log(message: string) {
-    this.messageService.add(`ProjectService: ${message}`);
+  private log(message: string): void {
+    return this.messageService.add(`ProjectService: ${message}`);
   }
 }
