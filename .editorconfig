@@ -1,14 +1,14 @@
 # Editor configuration, see https://editorconfig.org
-
-# top-most Editor Config file
 root = true
 
-[*]
-charset = utf-8
-indent_style = space
-indent_size = 2
-insert_final_newline = true
-trim_trailing_whitespace = true
+[*] # top-most EditorConfig file (https://editorconfig.org/#file-location)
+charset = utf-8 # utf-8, utf-8-bom, utf-16be, utf-16le
+indent_style = tab # space, tab
+indent_size = 3 # tab width (only used if indent_style is tab)
+insert_final_newline = true # insert a newline at the end of the file if one does not exist
+trim_trailing_whitespace = false # remove any whitespace characters preceding newline characters
+
+[*.md]
 
 [*.ts]
 quote_type = single
@@ -16,3 +16,6 @@ quote_type = single
 [*.md]
 max_line_length = off
 trim_trailing_whitespace = false
+
+
+

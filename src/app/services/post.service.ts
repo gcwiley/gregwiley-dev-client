@@ -28,7 +28,7 @@ export class PostService {
   // GET: posts from the server
   getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(this.postsUrl).pipe(
-      tap((_) => this.log('fetched posts')),
+      tap(() => this.log('fetched posts')),
       catchError(this.handleError<Post[]>('getPosts', []))
     );
   }
@@ -37,7 +37,7 @@ export class PostService {
   getPost(id: string | any): Observable<Post> {
     const url = `${this.postsUrl}/${id}`;
     return this.http.get<Post>(url).pipe(
-      tap((_) => this.log(`fetched post id=${id}`)),
+      tap(() => this.log(`fetched post id=${id}`)),
       catchError(this.handleError<Post>(`getPost id=${id}`))
     );
   }
@@ -67,7 +67,7 @@ export class PostService {
     const url = `${this.postsUrl}/${id}`;
 
     return this.http.delete<Post>(url, this.httpOptions).pipe(
-      tap((_) => this.log(`deleted post id=${id}`)),
+      tap(() => this.log(`deleted post id=${id}`)),
       catchError(this.handleError<Post>('deletePost'))
     );
   }

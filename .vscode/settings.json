@@ -1,0 +1,8 @@
+{
+    "html.format.wrapLineLength": 0,
+    "css.lint.emptyRules": "warning",
+    "scss.lint.emptyRules": "warning",
+    "prettier.proseWrap": "never",
+    "editor.wordWrapColumn": 150,
+    "diffEditor.wordWrap": "off"
+}

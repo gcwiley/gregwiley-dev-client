@@ -1,36 +1,35 @@
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
 
-  background-image: url(../../../assets/images/banner_image.jpg);
-  background-size: cover;
-  background-position: center;
-  // opacity: 0.9;
+	background-image: url(../../../assets/images/banner_image.jpg);
+	background-size: cover;
+	background-position: center;
+	// opacity: 0.9;
 }
 
-
 .signin-form {
-  max-width: 350px;
-  border-radius: 10px;
-  // box-shadow: none;
-  // border: 0.5px solid rgb(193, 193, 193);
-  padding: 2rem;
+	max-width: 350px;
+	border-radius: 10px;
+	// box-shadow: none;
+	// border: 0.5px solid rgb(193, 193, 193);
+	padding: 2rem;
 }
 
 .full-width {
-  width: 100%;
-  margin: 0.4rem 0;
+	width: 100%;
+	margin: 0.4rem 0;
 }
 
 mat-card-title,
 mat-card-subtitle {
-  text-align: center;
+	text-align: center;
 }
 
 mat-card-actions {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }

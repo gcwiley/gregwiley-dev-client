@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 
@@ -7,10 +6,9 @@ import firebase from 'firebase/compat/app';
   providedIn: 'root',
 })
 export class AuthService {
-  // inject the router and auth service from firebase auth module in the constructor method
-  // to use the router to navigate to different pages
-  // and to use the auth service to sign in and sign out users
-  constructor(private router: Router, private auth: AngularFireAuth) {}
+  // inject the auth service from firebase auth module in the constructor method
+  // use the auth service to sign in and sign out users
+  constructor(private auth: AngularFireAuth) {}
 
   // Creates a new user account associated with the specified email address and password.
   // On successful creation of the user account, this user will also be signed in to your application.
@@ -70,6 +68,8 @@ export class AuthService {
     return this.auth.sendPasswordResetEmail(email);
   }
 
+  // sends a verification email to the current user
+  // returns a promise that resolves when the email is sent
   SendEmailVerification(): Promise<void> {
     return this.auth.currentUser.then((user) => {
       if (user) {

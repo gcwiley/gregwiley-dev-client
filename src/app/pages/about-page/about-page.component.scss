@@ -1,42 +1,39 @@
 .about-page-container {
-  max-width: 1200px;
-  margin: auto;
-  // background-color: aquamarine;
-  height: 100vh;
-
+	max-width: 1200px;
+	margin: auto;
+	// background-color: aquamarine;
+	height: 100vh;
 }
 
 .about-page-title {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 100;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 100;
 }
 
 .container {
-  display: flex;
-  // flex-wrap: wrap;
-  flex-direction: row;
-  gap: 1rem;
+	display: flex;
+	// flex-wrap: wrap;
+	flex-direction: row;
+	gap: 1rem;
 }
 
 .about-text {
-  margin-top: 1rem;
-  box-shadow: none;
-  border: .5px gainsboro solid;
+	margin-top: 1rem;
+	box-shadow: none;
+	border: 0.5px gainsboro solid;
 }
 
 .about-text p {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 100;
-  font-size: 1.2rem;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 100;
+	font-size: 1.2rem;
 }
 
 .technical-skills {
-  margin-top: 1rem;
-  box-shadow: none;
-  border: 0.5px rgb(149, 193, 231) solid;
-  background-color: #E3F2FD;
+	margin-top: 1rem;
+	box-shadow: none;
+	border: 0.5px rgb(149, 193, 231) solid;
+	background-color: #e3f2fd;
 }
 
 // Add Media Queries
-
-

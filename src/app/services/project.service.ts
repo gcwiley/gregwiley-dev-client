@@ -26,7 +26,7 @@ export class ProjectService {
   // GET: all projects from the server
   getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(this.projectsUrl).pipe(
-      tap((_) => this.log('fetched projects')),
+      tap(() => this.log('fetched projects')),
       catchError(this.handleError<Project[]>('getProjects', []))
     );
   }
@@ -35,7 +35,7 @@ export class ProjectService {
   getProject(id: string | null): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
     return this.http.get<Project>(url).pipe(
-      tap((_) => this.log(`fetched project id=${id}`)),
+      tap(() => this.log(`fetched project id=${id}`)),
       catchError(this.handleError<Project>(`getProject id=${id}`))
     );
   }
@@ -65,7 +65,7 @@ export class ProjectService {
     const url = `${this.projectsUrl}/${id}`;
 
     return this.http.delete<Project>(url, this.httpOptions).pipe(
-      tap((_) => this.log(`deleted project id=${id}`)),
+      tap(() => this.log(`deleted project id=${id}`)),
       catchError(this.handleError<Project>('deleteProject'))
     );
   }
@@ -74,7 +74,7 @@ export class ProjectService {
     const url = `${this.projectsUrl}/${id}`;
 
     return this.http.patch(url, project, this.httpOptions).pipe(
-      tap((_) => this.log(`updated project id=${project._id}`)),
+      tap(() => this.log(`updated project id=${project._id}`)),
       catchError(this.handleError<any>('updateProject'))
     );
   }

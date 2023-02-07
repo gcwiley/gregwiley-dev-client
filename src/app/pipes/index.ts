@@ -3,13 +3,10 @@ import { NgModule } from '@angular/core';
 // Pipes
 import { SimpleTruncatePipe } from './simple-truncate.pipe';
 import { TruncatePipe } from './truncate.pipe';
-
-export { SimpleTruncatePipe, TruncatePipe };
-
-const PIPES = [SimpleTruncatePipe, TruncatePipe];
+// Note: Add new pipes here
 
 @NgModule({
-  exports: [PIPES],
-  declarations: PIPES,
+	declarations: [SimpleTruncatePipe, TruncatePipe],
+	exports: [SimpleTruncatePipe, TruncatePipe],
 })
 export class Pipes {}
