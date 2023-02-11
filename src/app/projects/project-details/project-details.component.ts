@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // Import Project Type
-import { Project } from '../../types/project';
+import { Project } from '../../types/project.interface';
 
 // Import Project Service
 import { ProjectService } from '../../services/project.service';

@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../services/project.service'
 
 // Import Project Type
-import { Project } from '../../types/project'
+import { Project } from '../../types/project.interface'
 
 @Component({
   selector: 'app-project-grid',

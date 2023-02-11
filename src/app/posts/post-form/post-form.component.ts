@@ -6,7 +6,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { PostService } from '../../services/post.service';
 
 // import post type
-import { Post } from '../../types/post';
+import { Post } from '../../types/post.interface';
 
 @Component({
   selector: 'app-post-form',

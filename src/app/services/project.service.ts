@@ -7,7 +7,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 
 // import the project model
-import { Project } from '../types/project';
+import { Project } from '../types/project.interface';
 
 @Injectable({ providedIn: 'root' })
 

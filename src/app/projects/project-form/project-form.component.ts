@@ -6,13 +6,13 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
 
 // import project type
-import { Project } from '../../types/project';
+import { Project } from '../../types/project.interface';
 
 // import project type
-import { ProjectCategory } from '../../types/project';
+import { ProjectCategory } from '../../types/project.interface';
 
 // Import Project Status
-import { PROJECT_CATAGORIES } from '../../types/project';
+import { PROJECT_CATAGORIES } from '../../types/project.interface';
 
 @Component({
   selector: 'app-project-form',

@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../services/project.service';
 
 // Import project type
-import { Project } from 'src/app/types/project';
+import { Project } from 'src/app/types/project.interface';
 
 @Component({
   selector: 'app-recent-projects',

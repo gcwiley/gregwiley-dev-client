@@ -7,7 +7,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 
 // import the post model
-import { Post } from '../types/post';
+import { Post } from '../types/post.interface';
 
 // injectable decorator
 @Injectable({ providedIn: 'root' })

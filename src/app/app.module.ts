@@ -16,29 +16,64 @@ import { environment } from '../environments/environment';
 // Angular Material Modules
 import { MaterialModule } from './material-module';
 
-// Main App Component
-import { AppComponent } from './app.component';
-
 // App Routing Module
 import { AppRoutingModule } from './app-routing.module';
 
+// import pipes
+import { SimpleTruncatePipe } from './pipes/simple-truncate.pipe';
+import { TruncatePipe } from './pipes/truncate.pipe';
+
+// Main App Component
+import { AppComponent } from './app.component';
+
 // Page Components
-import { Pages } from './pages/index';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { DashboardComponent } from './pages/dashboard-page/dashboard-page.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { SigninComponent } from './pages/signin-page/signin-page.component';
 
 // Shared Components
-import { SharedComponents } from './shared/index';
+import { FooterComponent } from './shared/footer/footer.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { HeroComponent } from './shared/hero/hero.component';
+import { NavMenuComponent } from './shared/nav-menu/nav-menu.component';
 
 // Project Components
-import { ProjectComponents } from './projects/index';
+import { ProjectCountComponent } from './projects/project-count/project-count.component';
+import { ProjectDetailsComponent } from './projects/project-details/project-details.component';
+import { ProjectFormComponent } from './projects/project-form/project-form.component';
+import { ProjectGridComponent } from './projects/project-grid/project-grid.component';
+import { ProjectTableComponent } from './projects/project-table/project-table.component';
+import { RecentProjectsComponent } from './projects/recent-projects/recent-projects.component';
 
 // POST COMPONENTS
-import { PostComponents } from './posts/index';
-
-// PIPES
-import { Pipes } from './pipes/index';
+import { PostFormComponent } from './posts/post-form/post-form.component';
+import { PostListComponent } from './posts/post-list/post-list.component';
 
 @NgModule({
-	declarations: [AppComponent],
+	declarations: [
+		AppComponent,
+		SimpleTruncatePipe,
+		TruncatePipe,
+		AboutPageComponent,
+		DashboardComponent,
+		MainPageComponent,
+		NotFoundPageComponent,
+		SigninComponent,
+		FooterComponent,
+		HeaderComponent,
+		HeroComponent,
+		NavMenuComponent,
+		ProjectCountComponent,
+		ProjectDetailsComponent,
+		ProjectFormComponent,
+		ProjectGridComponent,
+		ProjectTableComponent,
+		RecentProjectsComponent,
+		PostFormComponent,
+		PostListComponent,
+	],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
@@ -49,11 +84,6 @@ import { Pipes } from './pipes/index';
 		HttpClientModule,
 		MatNativeDateModule,
 		AngularFireModule.initializeApp(environment.firebase),
-		Pipes,
-		Pages,
-		SharedComponents,
-		ProjectComponents,
-		PostComponents,
 	],
 	providers: [],
 	bootstrap: [AppComponent],
