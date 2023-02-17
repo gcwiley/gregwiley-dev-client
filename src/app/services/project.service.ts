@@ -70,6 +70,7 @@ export class ProjectService {
     );
   }
 
+  // PUT: update the project in the database
   updateProject(id: any, project: any): Observable<any> {
     const url = `${this.projectsUrl}/${id}`;
 
