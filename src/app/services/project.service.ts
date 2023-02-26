@@ -12,7 +12,7 @@ import { Project } from '../types/project.interface';
 @Injectable({ providedIn: 'root' })
 
 export class ProjectService {
-  private projectsUrl = 'api/projects';
+  private projectsUrl = 'api/projects'; // URL to api
 
   httpOptions = {
     headers: new HttpHeaders({

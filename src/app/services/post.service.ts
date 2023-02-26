@@ -76,7 +76,7 @@ export class PostService {
     const url = `${this.postsUrl}/${id}`;
 
     return this.http.patch(url, post, this.httpOptions).pipe(
-      tap((_) => this.log(`updated post id=${post._id}`)),
+      tap(() => this.log(`updated post id=${post._id}`)),
       catchError(this.handleError<any>('updatePost'))
     );
   }

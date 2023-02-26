@@ -74,7 +74,7 @@ export class ProjectFormComponent implements OnInit {
     });
   }
 
-  onSaveProject() {
+  onSaveProject(): void {
     if (this.mode === 'create') {
       this.projectService.addProject(this.projectForm.value).subscribe(() => {
         // navigates user back to homepage
