@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
-// import material module
+// import the material module
 import { MaterialModule } from '../material.module';
 
 // import shared components
@@ -12,7 +13,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 // add new shared components here
 
 @NgModule({
-	imports: [CommonModule, MaterialModule],
+	imports: [CommonModule, RouterModule, MaterialModule],
 	declarations: [
 		FooterComponent,
 		HeaderComponent,

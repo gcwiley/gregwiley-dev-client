@@ -4,5 +4,7 @@
     "scss.lint.emptyRules": "warning",
     "prettier.proseWrap": "never",
     "editor.wordWrapColumn": 150,
-    "diffEditor.wordWrap": "off"
+	"diffEditor.wordWrap": "off",
+	"editor.fontVariations": false,
+	"html.format.preserveNewLines": false
 }

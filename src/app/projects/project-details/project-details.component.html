@@ -22,7 +22,7 @@
     <aside>
       <!-- PROJECT DETAILS -->
       <mat-card class="project-details">
-        <mat-list dense>
+        <mat-list>
           <mat-list-item>
             <h3 mat-line><strong>Status</strong></h3>
             <p>{{ project.status }}</p>
@@ -38,22 +38,22 @@
           <mat-divider></mat-divider>
 
           <mat-list-item>
-            <h3 mat-line><strong>Language</strong></h3>
+            <h3><strong>Language</strong></h3>
             <p>{{ project.language }}</p>
           </mat-list-item>
 
           <mat-divider></mat-divider>
 
           <mat-list-item>
-            <h3 mat-line><strong>Start Date</strong></h3>
-            <p>{{ project.startDate | date }}</p>
+            <h3><strong>Start Date</strong></h3>
+            <p>{{ project.startDate}}</p>
           </mat-list-item>
 
           <mat-divider></mat-divider>
 
           <mat-list-item>
-            <h3 mat-line><strong>Lasted Updated</strong></h3>
-            <p>{{ project.updatedAt | date }}</p>
+            <h3><strong>Lasted Updated</strong></h3>
+            <p>{{ project.updatedAt}}</p>
           </mat-list-item>
         </mat-list>
       </mat-card>

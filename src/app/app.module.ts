@@ -2,10 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // used for Templete Forms
-import { ReactiveFormsModule } from '@angular/forms'; // used for Reactive Forms
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // used for both type of Forms
 import { HttpClientModule } from '@angular/common/http';
-import { MatNativeDateModule } from '@angular/material/core';
 
 // Set Up Firebase
 import { AngularFireModule } from '@angular/fire/compat';
@@ -47,7 +45,6 @@ import { PostComponentsModule } from './posts/post.module';
 		MaterialModule,
 		AppRoutingModule,
 		HttpClientModule,
-		MatNativeDateModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		PageComponentsModule,
 		ProjectComponentsModule,

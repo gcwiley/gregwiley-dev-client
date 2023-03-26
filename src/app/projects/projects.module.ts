@@ -6,6 +6,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // forms
 // import material module
 import { MaterialModule } from '../material.module';
 
+// import pipes modules
+import { PipesModule } from '../pipes/pipes.module';
+
 // import project components
 import { ProjectCountComponent } from './project-count/project-count.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
@@ -13,11 +16,13 @@ import { ProjectFormComponent } from './project-form/project-form.component';
 import { ProjectGridComponent } from './project-grid/project-grid.component';
 import { ProjectTableComponent } from './project-table/project-table.component';
 import { RecentProjectsComponent } from './recent-projects/recent-projects.component';
+import { ProjectCardComponent } from './project-card/project-card.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		MaterialModule,
+		PipesModule,
 		RouterModule,
 		ReactiveFormsModule,
 		FormsModule,
@@ -29,6 +34,7 @@ import { RecentProjectsComponent } from './recent-projects/recent-projects.compo
 		ProjectGridComponent,
 		ProjectTableComponent,
 		RecentProjectsComponent,
+  ProjectCardComponent,
 	],
 	exports: [
 		ProjectCountComponent,

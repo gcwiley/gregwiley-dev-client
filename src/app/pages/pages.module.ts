@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // forms
 
 // import material module
@@ -21,6 +22,7 @@ import { SigninComponent } from './signin-page/signin-page.component';
 @NgModule({
 	imports: [
 		CommonModule,
+		RouterModule,
 		MaterialModule,
 		ReactiveFormsModule,
 		FormsModule,
