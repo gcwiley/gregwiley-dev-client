@@ -1,8 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+// import the product type
+import { Project } from 'src/app/types/project.interface';
 
 @Component({
 	selector: 'app-project-card',
 	templateUrl: './project-card.component.html',
-	styleUrls: ['./project-card.component.css'],
+	styleUrls: ['./project-card.component.scss'],
 })
-export class ProjectCardComponent {}
+export class ProjectCardComponent {
+	@Input() project!: Project
+}

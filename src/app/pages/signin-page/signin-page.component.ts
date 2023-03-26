@@ -12,10 +12,8 @@ import { AuthService } from '../../services/auth.service';
 	styleUrls: ['./signin-page.component.scss'],
 })
 export class SigninComponent {
-	// hide the password by default
-	hide = true;
-
-	// inject the router and form builder and auth service
+	
+	// inject the router, form builder, and auth service
 	constructor(
 		private router: Router,
 		private formBuilder: FormBuilder,
@@ -40,7 +38,7 @@ export class SigninComponent {
 				// navigates user to the main page
 				this.router.navigateByUrl('/');
 			})
-			// if error, log the error message
+			// if error, display the error message
 			.catch((error) => {
 				window.alert(error.message);
 			});

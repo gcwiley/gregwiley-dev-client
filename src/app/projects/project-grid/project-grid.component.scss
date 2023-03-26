@@ -1,32 +1,8 @@
-.project-grid-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 1rem;
-  // border: 1px red solid;
-  margin-top: 1.5rem;
-}
-
-.project-card {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  height: 200px;
-}
-
-mat-card-content {
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: auto;
-}
-
-p {
-  padding: .5rem;
-}
-
-.project-actions-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+.project-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 33%); // research more
+	gap: 5px;
+	grid-auto-rows: auto;
+	place-content: left;
+	overflow-x: none;
 }
