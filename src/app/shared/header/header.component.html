@@ -1,4 +1,5 @@
 <mat-toolbar color="primary">
+
 	<a mat-icon-button routerLink="/" aria-label="menu icon">
 		<mat-icon>code</mat-icon>
 	</a>
@@ -7,13 +8,37 @@
 
 	<span class="spacer"></span>
 
-	<!-- AUTH -->
-	<ng-container *ngIf="auth.user | async as user; else showSignIn">
-		<button mat-button color="accent">{{ user.displayName }}</button>
-		<button mat-flat-button color="warn" (click)="onClickSignOut()">Sign Out</button>
-	</ng-container>
-	<ng-template #showSignIn>
-		<a mat-button routerLink="/signin">Sign In</a>
-	</ng-template>
+	<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+		<mat-icon>account_circle</mat-icon>
+	 </button>
+
+	 <mat-menu #menu="matMenu">
+
+		<!-- If user is signed in -->
+		<ng-container *ngIf="auth.user | async as user; else showSignInTest">
+
+			<!-- admin dashbord -->
+			<a mat-menu-item routerLink="/admin">
+				<mat-icon>dashboard</mat-icon>
+				<span>Admin Dashboard</span>
+			</a>
+
+			<!-- sign out button -->
+			<button mat-menu-item (click)="onClickSignOut()">
+				<mat-icon>logout</mat-icon>
+				<span>Sign Out</span>
+			</button>
+
+		</ng-container>
+
+		<!-- if user is NOT signed in -->
+		<ng-template #showSignInTest>
+			<a mat-menu-item routerLink="/signin">
+				<mat-icon>login</mat-icon>
+				<span>Sign In</span>
+			</a>
+		</ng-template>
+
+	 </mat-menu>
 
 </mat-toolbar>
