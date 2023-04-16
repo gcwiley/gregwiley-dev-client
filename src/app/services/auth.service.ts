@@ -10,32 +10,6 @@ export class AuthService {
 	// use the auth service to sign in and sign out users
 	constructor(private auth: AngularFireAuth) {}
 
-	// Creates a new user account associated with the specified email address and password.
-	// On successful creation of the user account, this user will also be signed in to your application.
-	// If sign in fails, the promise is rejected.
-	SignUpUser(
-		email: string,
-		password: string
-	): Promise<firebase.auth.UserCredential> {
-		return this.auth.createUserWithEmailAndPassword(email, password);
-	}
-
-	// sign in with Google Auth using firebase auth service and popup window for login
-	SigninUserwithGoogleAuth(): Promise<firebase.auth.UserCredential> {
-		// Authenticates a Firebase client using a popup-based OAuth authentication flow.
-		// If succeeds, returns the signed in user along with the provider's credential.
-		return this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-	}
-
-	// sign in with Facebook Auth using firebase auth service and popup window for login
-	SigninUserwithFacebookAuth(): Promise<firebase.auth.UserCredential> {
-		// Authenticates a Firebase client using a popup-based OAuth authentication flow.
-		// If succeeds, returns the signed in user along with the provider's credential.
-		return this.auth.signInWithPopup(
-			new firebase.auth.FacebookAuthProvider()
-		);
-	}
-
 	// sign in with Twitter Auth using firebase auth service and popup window for login
 	SigninUserwithTwitterAuth(): Promise<firebase.auth.UserCredential> {
 		// Authenticates a Firebase client using a popup-based OAuth authentication flow.

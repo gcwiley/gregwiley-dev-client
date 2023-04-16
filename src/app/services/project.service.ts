@@ -10,96 +10,116 @@ import { MessageService } from './message.service';
 import { Project } from '../types/project.interface';
 
 @Injectable({ providedIn: 'root' })
-
 export class ProjectService {
-  private projectsUrl = 'api/projects'; // URL to api
+	private projectsUrl = 'api/projects'; // URL to web api
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-    }),
-  };
+	httpOptions = {
+		headers: new HttpHeaders({
+			'Content-Type': 'application/json',
+		}),
+	};
 
-  // inject "HttpClient" into the Project service
-  constructor(private http: HttpClient, private messageService: MessageService) {}
+	// inject "HttpClient" into the Project service
+	constructor(
+		private http: HttpClient,
+		private messageService: MessageService
+	) {}
 
-  // GET: all projects from the server
-  getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.projectsUrl).pipe(
-      tap(() => this.log('fetched projects')),
-      catchError(this.handleError<Project[]>('getProjects', []))
-    );
-  }
+	// GET: all projects from the server
+	getProjects(): Observable<Project[]> {
+		return this.http.get<Project[]>(this.projectsUrl).pipe(
+			tap(() => this.log('fetched projects')),
+			catchError(this.handleError<Project[]>('getProjects', []))
+		);
+	}
 
-  // GET: a project by ID. Will 404 if id not found
-  getProject(id: string | null): Observable<Project> {
-    const url = `${this.projectsUrl}/${id}`;
-    return this.http.get<Project>(url).pipe(
-      tap(() => this.log(`fetched project id=${id}`)),
-      catchError(this.handleError<Project>(`getProject id=${id}`))
-    );
-  }
+	// GET: a project by ID. Will 404 if id not found
+	getProject(id: string | null): Observable<Project> {
+		const url = `${this.projectsUrl}/${id}`;
+		return this.http.get<Project>(url).pipe(
+			tap(() => this.log(`fetched project id=${id}`)),
+			catchError(this.handleError<Project>(`getProject id=${id}`))
+		);
+	}
 
-  // GET: project count from database
-  getProjectCount(): Observable<number> {
-    return this.http.get<number>('/api/project-count');
-  }
+	// GET projects whose name contains search term - SEARCH
+	searchProjects(term: string): Observable<Project[]> {
+		if (!term.trim()) {
+			// if no search term, return an empty project arrary
+			return of([]);
+		}
+		return this.http.get<Project[]>(`${this.projectsUrl}/?name=${term}`).pipe(
+			tap((x) =>
+				x.length
+					? this.log(`found projects matching "${term}"`)
+					: this.log(`no projects matching "${term}"`)
+			),
+			catchError(this.handleError<Project[]>('searchProjects', []))
+		);
+	}
 
-  // GET: recent projects added
-  getRecentProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>('/api/recent-projects');
-  }
+	// GET: project count from database
+	getProjectCount(): Observable<number> {
+		return this.http.get<number>('/api/project-count');
+	}
 
-  // SAVE METHODS //
+	// GET: recent projects added
+	getRecentProjects(): Observable<Project[]> {
+		return this.http.get<Project[]>('/api/recent-projects');
+	}
 
-  // POST: add a new Project to the server
-  addProject(newProject: Project | any): Observable<Project> {
-    return this.http.post<Project>(this.projectsUrl, newProject, this.httpOptions).pipe(
-      tap((newProject: Project) => this.log(`added project with id=${newProject._id}`)),
-      catchError(this.handleError<Project>('addHero'))
-    );
-  }
+	// SAVE METHODS //
 
-  // DELETE a project by ID from the server
-  deleteProject(id: string): Observable<Project> {
-    const url = `${this.projectsUrl}/${id}`;
+	// POST: add a new Project to the server
+	addProject(newProject: Project | any): Observable<Project> {
+		return this.http
+			.post<Project>(this.projectsUrl, newProject, this.httpOptions)
+			.pipe(
+				tap((newProject: Project) =>
+					this.log(`added project with id=${newProject._id}`)
+				),
+				catchError(this.handleError<Project>('addHero'))
+			);
+	}
 
-    return this.http.delete<Project>(url, this.httpOptions).pipe(
-      tap(() => this.log(`deleted project id=${id}`)),
-      catchError(this.handleError<Project>('deleteProject'))
-    );
-  }
+	// DELETE a project by ID from the server
+	deleteProject(id: string): Observable<Project> {
+		const url = `${this.projectsUrl}/${id}`;
 
-  // PUT: update the project in the database
-  updateProject(id: any, project: any): Observable<any> {
-    const url = `${this.projectsUrl}/${id}`;
+		return this.http.delete<Project>(url, this.httpOptions).pipe(
+			tap(() => this.log(`deleted project id=${id}`)),
+			catchError(this.handleError<Project>('deleteProject'))
+		);
+	}
 
-    return this.http.patch(url, project, this.httpOptions).pipe(
-      tap(() => this.log(`updated project id=${project._id}`)),
-      catchError(this.handleError<any>('updateProject'))
-    );
-  }
+	// PUT: update the project in the database
+	updateProject(project: Project | any): Observable<any> {
+		return this.http.put(this.projectsUrl, project, this.httpOptions).pipe(
+			tap(() => this.log(`updated project id=${project._id}`)),
+			catchError(this.handleError<any>('updateProject'))
+		);
+	}
 
-  // Handle Http operation that failed
-  // let the app continue
-  // @param operation - name of the operation that failed
-  // @param result - optional value to return as the observable result
+	// Handle Http operation that failed
+	// let the app continue
+	// @param operation - name of the operation that failed
+	// @param result - optional value to return as the observable result
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+	private handleError<T>(operation = 'operation', result?: T) {
+		return (error: any): Observable<T> => {
+			// TODO: send the error to remote logging infrastructure
+			console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+			// TODO: better job of transforming error for user consumption
+			this.log(`${operation} failed: ${error.message}`);
 
-      // let the app keep running by return an empty result
-      return of(result as T);
-    };
-  }
+			// let the app keep running by return an empty result
+			return of(result as T);
+		};
+	}
 
-  // Log a ProjectService message with ProjectService
-  private log(message: string): void {
-    return this.messageService.add(`ProjectService: ${message}`);
-  }
+	// Log a ProjectService message with ProjectService
+	private log(message: string): void {
+		return this.messageService.add(`ProjectService: ${message}`);
+	}
 }

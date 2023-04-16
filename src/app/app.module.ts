@@ -35,6 +35,9 @@ import { ProjectComponentsModule } from './projects/projects.module';
 // POST COMPONENTS
 import { PostComponentsModule } from './posts/post.module';
 
+// MISC COMPONENTS
+import { MiscComponentsModule } from './components/components.module';
+
 @NgModule({
 	declarations: [AppComponent],
 	imports: [
@@ -51,6 +54,7 @@ import { PostComponentsModule } from './posts/post.module';
 		SharedComponentsModule,
 		PipesModule,
 		PostComponentsModule,
+		MiscComponentsModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

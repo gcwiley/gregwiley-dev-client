@@ -1,8 +1,9 @@
 .project-grid {
 	display: grid;
 	grid-template-columns: repeat(3, 33%); // research more
-	gap: 5px;
+	gap: 3px;
 	grid-auto-rows: auto;
 	place-content: left;
 	overflow-x: none;
+	margin-top: 5px;
 }

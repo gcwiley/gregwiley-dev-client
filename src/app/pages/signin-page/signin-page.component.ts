@@ -27,7 +27,7 @@ export class SigninComponent {
 	});
 
 	// Sign in with email and password
-	// if successful, navigate to the home page
+	// if successful, navigate user to the home page
 	onSubmitSignIn() {
 		this.authService
 			.SigninUserwithEmailAndPassword(

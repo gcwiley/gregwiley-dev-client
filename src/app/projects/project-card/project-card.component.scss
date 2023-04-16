@@ -1,4 +1,9 @@
 .project-card {
 	margin: 6px;
-	white-space: nowrap;
+	white-space: wrap;
 }
+
+.spacer {
+	flex: 1 1 auto;
+}
+
