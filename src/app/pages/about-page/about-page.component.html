@@ -1,60 +1,11 @@
-<div class="about-page-container">
-	<header>
-		<h2 class="about-page-title">Welcome</h2>
-		<mat-divider></mat-divider>
-	</header>
+<app-header></app-header>
+<main>
+	<article>
+		<h1>My Web Page</h1>
+		<p>this is my webpage.</p>
+	</article>
 
-	<section class="container">
-		<main role="main">
-			<mat-card class="about-text">
-				<mat-card-subtitle>About Me</mat-card-subtitle>
-				<mat-card-content>
-					<p>
-						My name is Greg Wiley and a web developer. I created this
-						website to help showcase the different web applications that I
-						have created and to use as a "sandbox" to learn new web
-						technologies, including HTML, CSS, JavaScript. Please let me
-						know if you have any questions and I will try to help in any
-						way I can. Enjoy your visit!
-					</p>
-				</mat-card-content>
-			</mat-card>
-		</main>
-
-		<aside>
-			<mat-card class="technical-skills">
-				<mat-card-subtitle>My technical skills</mat-card-subtitle>
-
-				<mat-list dense>
-					<mat-list-item>
-						<h3 mat-line>Web Development and Design</h3>
-					</mat-list-item>
-
-					<mat-divider></mat-divider>
-
-					<mat-list-item>
-						<h3 mat-line>Frontend JavaScript UI Frameworks (Angular)</h3>
-					</mat-list-item>
-
-					<mat-divider></mat-divider>
-
-					<mat-list-item>
-						<h3 mat-line>
-							Building Node.js Web Applications (Express.js)
-						</h3>
-					</mat-list-item>
-
-					<mat-divider></mat-divider>
-
-					<mat-list-item>
-						<h3 mat-line>
-							No SQL and No SQL Databases (MongoDB & and PostSQL)
-						</h3>
-					</mat-list-item>
-				</mat-list>
-			</mat-card>
-		</aside>
-	</section>
-</div>
-
-<app-footer></app-footer>
+	<aside>
+		<app-topic-list></app-topic-list>
+	</aside>
+</main>

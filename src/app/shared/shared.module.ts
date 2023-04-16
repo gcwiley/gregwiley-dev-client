@@ -9,8 +9,9 @@ import { MaterialModule } from '../material.module';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HeroComponent } from './hero/hero.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { LogoComponent } from './logo/logo.component';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { TopicListComponent } from './topic-list/topic-list.component';
 // add new shared components here
 
 @NgModule({
@@ -19,15 +20,17 @@ import { LogoComponent } from './logo/logo.component';
 		FooterComponent,
 		HeaderComponent,
 		HeroComponent,
-		NavMenuComponent,
 		LogoComponent,
+		NavMenuComponent,
+		TopicListComponent,
 	],
 	exports: [
 		FooterComponent,
 		HeaderComponent,
 		HeroComponent,
-		NavMenuComponent,
 		LogoComponent,
+		NavMenuComponent,
+		TopicListComponent,
 	],
 })
 export class SharedComponentsModule {}
