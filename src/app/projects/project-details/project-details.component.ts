@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-// Import Project Type
+// import the project type
 import { Project } from '../../types/project.interface';
 
-// Import Project Service
+// import project service
 import { ProjectService } from '../../services/project.service';
 
 @Component({
@@ -14,7 +14,6 @@ import { ProjectService } from '../../services/project.service';
 })
 export class ProjectDetailsComponent implements OnInit {
 
-  isLoading = true;
   project!: Project;
 
   constructor(
@@ -32,6 +31,5 @@ export class ProjectDetailsComponent implements OnInit {
     this.projectService
       .getProject(id)
       .subscribe((project) => (this.project = project));
-    this.isLoading = false;
   }
 }

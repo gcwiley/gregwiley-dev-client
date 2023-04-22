@@ -1,22 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // forms
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // for the forms
 
-// import material module
+// import the material module
 import { MaterialModule } from '../material.module';
 
-// import project components module
+// import the project components module
 import { ProjectComponentsModule } from '../projects/projects.module';
 
-// import shared components module
+// import the shared components module
 import { SharedComponentsModule } from '../shared/shared.module';
 
-// import page components
+// import individual page components
 import { AboutPageComponent } from './about-page/about-page.component';
+import { CreatePageComponent } from './create-page/create-page.component';
 import { DashboardComponent } from './dashboard-page/dashboard-page.component';
-import { MainPageComponent } from './main-page/main-page.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
+import { MainPageComponent } from './main-page/main-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { SigninComponent } from './signin-page/signin-page.component';
 
@@ -32,17 +33,19 @@ import { SigninComponent } from './signin-page/signin-page.component';
 	],
 	declarations: [
 		AboutPageComponent,
+		CreatePageComponent,
 		DashboardComponent,
-		MainPageComponent,
 		DetailsPageComponent,
+		MainPageComponent,
 		NotFoundPageComponent,
 		SigninComponent,
 	],
 	exports: [
 		AboutPageComponent,
+		CreatePageComponent,
 		DashboardComponent,
-		MainPageComponent,
 		DetailsPageComponent,
+		MainPageComponent,
 		NotFoundPageComponent,
 		SigninComponent,
 	],
