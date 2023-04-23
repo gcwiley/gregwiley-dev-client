@@ -1,20 +1,90 @@
 @use "@angular/material" as mat;
 
-@include mat.core();
+// define the palettes for your theme
+// define light primary color
+$light-primary: mat.define-palette(
+	mat.$light-blue-palette,
+	$default: 900,
+	$lighter: 100,
+	$text: 900
+);
 
-$theme-primary: mat.define-palette(mat.$light-blue-palette, 900);
-$theme-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$theme-warn: mat.define-palette(mat.$red-palette);
+// define light accent color
+$light-accent: mat.define-palette(
+	mat.$grey-palette,
+	$default: A200,
+	$lighter: 100,
+	$text: 900
+);
 
-$theme: mat.define-light-theme(
+// define light warn color
+// The warn palette is optional
+$light-warn: mat.define-palette(
+	mat.$red-palette,
+	$default: A100,
+	$lighter: 100,
+	$text: 900
+);
+
+// define dark primary color
+$dark-primary: mat.define-palette(
+	mat.$light-green-palette,
+	$default: A100,
+	$lighter: 50,
+	$text: 900
+);
+// define light accent color
+$dark-accent: mat.define-palette(
+	mat.$indigo-palette,
+	$default: 600,
+	$lighter: 500
+);
+
+// CUSTOM TOPOGRAPGY
+$custom-typography: mat.define-typography-config(
+	$font-family:
+);
+
+// define the light theme
+$light-theme: mat.define-light-theme(
 	(
 		color: (
-			primary: $theme-primary,
-			accent: $theme-accent,
-			warn: $theme-warn,
+			primary: $light-primary,
+			accent: $light-accent,
+			warn: $light-warn,
 		),
-		typography: mat.define-typography-config(),
 	)
 );
 
-@include mat.all-component-themes($theme);
+// define the dark theme
+$dark-theme: mat.define-dark-theme(
+	(
+		color: (
+			primary: $dark-primary,
+			accent: $dark-accent,
+		),
+	)
+);
+
+@include mat.core();
+@include mat.core-theme($light-theme);
+@include mat.all-component-themes($light-theme);
+@include mat.all-component-typographies($light-theme);
+
+.dark-theme {
+	@include mat.core-color($dark-theme);
+	@include mat.all-component-themes($dark-theme);
+}
+
+body {
+	margin: 0;
+	--webkit-appearance: none;
+	background-color: mat.get-color-from-palette($light-accent, default);
+	color: mat.get-contrast-color-from-palette($light-accent, default);
+	font-family: "Open Sans", sans-serif;
+}
+
+.dark-theme body {
+	background-color: mat.get-color-from-palette($dark-accent, default);
+	color: mat.get-contrast-color-from-palette($dark-accent, default);
+}
