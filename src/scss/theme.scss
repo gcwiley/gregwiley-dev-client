@@ -1,51 +1,70 @@
 @use "@angular/material" as mat;
 
-// define the palettes for your theme
-// define light primary color
+// import google font 
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap");
+$roboto-font-family: "Roboto", sans-serif;
+
+// define the light primary color
 $light-primary: mat.define-palette(
 	mat.$light-blue-palette,
 	$default: 900,
 	$lighter: 100,
+	$darker: 100,
 	$text: 900
 );
 
-// define light accent color
+// define the light accent color
 $light-accent: mat.define-palette(
 	mat.$grey-palette,
 	$default: A200,
 	$lighter: 100,
+	$darker: 100,
 	$text: 900
 );
 
-// define light warn color
-// The warn palette is optional
+// define the light warn color - The warn palette is optional
 $light-warn: mat.define-palette(
 	mat.$red-palette,
 	$default: A100,
 	$lighter: 100,
+	$darker: 100,
 	$text: 900
 );
 
-// define dark primary color
+// define the dark primary color
 $dark-primary: mat.define-palette(
 	mat.$light-green-palette,
 	$default: A100,
 	$lighter: 50,
 	$text: 900
 );
-// define light accent color
+// define the light accent color
 $dark-accent: mat.define-palette(
 	mat.$indigo-palette,
 	$default: 600,
 	$lighter: 500
 );
 
+
 // CUSTOM TOPOGRAPGY
 $custom-typography: mat.define-typography-config(
-	$font-family:
+  $font-family: $roboto-font-family,
+  $display-4:     mat.define-typography-level(112px, 112px, 700, $letter-spacing: -0.05em, $font-family: roboto-font-family),
+  $display-3:     mat.define-typography-level(56px, 56px, 700, $letter-spacing: -0.02em, $font-family: roboto-font-family),
+  $display-2:     mat.define-typography-level(45px, 48px, 700, $letter-spacing: -0.005em, $font-family: $roboto-font-family),
+  $display-1:     mat.define-typography-level(34px, 40px, 700, $font-family: roboto-font-family),
+  $headline:      mat.define-typography-level(18px, 32px, 700, $font-family: roboto-font-family),
+  $title:         mat.define-typography-level(50px, 32px, 700, $font-family: roboto-font-family),
+  $subheading-2:  mat.define-typography-level(18px, 28px, 700, $letter-spacing: .2em, $font-family: roboto-font-family),
+  $subheading-1:  mat.define-typography-level(18px, 24px, 700, $font-family: roboto-font-family),
+  $body-2:        mat.define-typography-level(18px, 24px, 700, $font-family: roboto-font-family),
+  $body-1:        mat.define-typography-level(16px, 20px, 700, $font-family: roboto-font-family),
+  $caption:       mat.define-typography-level(16px, 20px, 700, $font-family: roboto-font-family),
+  $button:        mat.define-typography-level(18px, 28px, 700, $font-family: roboto-font-family),
+  $input:         mat.define-typography-level(inherit, 1.125, 700, $font-family: roboto-font-family)
 );
 
-// define the light theme
+// define the light theme - Fix this!!!!!!
 $light-theme: mat.define-light-theme(
 	(
 		color: (

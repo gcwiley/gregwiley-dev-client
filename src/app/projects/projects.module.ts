@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // forms
 
-// import material module
+// import the material module
 import { MaterialModule } from '../material.module';
 
-// import pipes modules
+// import the pipes module
 import { PipesModule } from '../pipes/pipes.module';
 
 // import project components
