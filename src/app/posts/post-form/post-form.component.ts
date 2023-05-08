@@ -65,7 +65,7 @@ export class PostFormComponent implements OnInit {
       });
     } else
       this.postService
-        .updatePost(this.id, this.postForm.value)
+        .updatePost(this.postForm.value)
         .subscribe(() => {
           // navigates user back to homepage
           this.router.navigateByUrl('/');

@@ -1,11 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
-@use "@angular/material" as mat;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap");
+
+html,
+body {
+	height: 100%;
+}
 
 body {
 	margin: 0;
-	--webkit-appearance: none;
-	background-color: mat.get-color-from-palette($light-accent, default);
-	color: mat.get-contrast-color-from-palette($light-accent, default);
-	font-family: "Open Sans", sans-serif;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+	max-width: 1000px;
+	margin: auto;
+	// border: red 1px solid;
 }

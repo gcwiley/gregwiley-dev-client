@@ -25,6 +25,9 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 // Sign In Page
 import { SigninComponent } from './pages/signin-page/signin-page.component';
 
+// support page
+import { SupportPageComponent } from './pages/support-page/support-page.component';
+
 const routes: Routes = [
 	{ path: '', redirectTo: '/projects', pathMatch: 'full' },
 	{ path: 'projects', component: MainPageComponent, pathMatch: 'full' },
@@ -42,6 +45,11 @@ const routes: Routes = [
 	{ path: 'signin', component: SigninComponent },
 	{ path: 'about', component: AboutPageComponent },
 	{ path: 'admin', component: DashboardComponent, canActivate: [RouteGuard] },
+	{
+		path: 'support',
+		component: SupportPageComponent,
+		canActivate: [RouteGuard],
+	},
 	{ path: '**', component: NotFoundPageComponent },
 ];
 

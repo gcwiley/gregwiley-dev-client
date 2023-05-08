@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
-// import project service
+// import the project service
 import { ProjectService } from '../../services/project.service';
 
-// import project type
+// import project interface
 import { Project } from '../../types/project.interface';
 
 // import project type

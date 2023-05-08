@@ -14,6 +14,7 @@
 		matTooltip="Toggle theme"
 		attr.aria-label="Switch to {{ isDark ? 'light' : 'dark' }} theme"
 		color="accent"
+		disabled
 	>
 		<mat-icon>brightness_medium</mat-icon>
 	</button>
@@ -37,10 +38,10 @@
 				<span>Admin Dashboard</span>
 			</a>
 
-			<!-- issues table -->
-			<a mat-menu-item routerLink="/issues">
-				<mat-icon>code</mat-icon>
-				<span>Issues</span>
+			<!-- support page -->
+			<a mat-menu-item routerLink="/support">
+				<mat-icon>bug_report</mat-icon>
+				<span>Support Page</span>
 			</a>
 
 			<!-- sign out button -->

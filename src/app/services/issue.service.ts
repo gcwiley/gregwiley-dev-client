@@ -33,6 +33,15 @@ export class IssueService {
 		);
 	}
 
+	// GET: a issue by ID. Will 404 if id not found
+	getIssue(id: string | null): Observable<Issue> {
+		const url = `${this.issuesUrl}/${id}`;
+		return this.http.get<Issue>(url).pipe(
+			tap(() => this.log(`fetched issue id=${id}`)),
+			catchError(this.handleError<Issue>(`getIssue id=${id}`))
+		);
+	}
+
 	// GET issue whose name contains search term - SEARCH
 	searchIssues(term: string): Observable<Issue[]> {
 		if (!term.trim()) {
@@ -62,7 +71,7 @@ export class IssueService {
 	// SAVE METHODS //
 
 	// POST: add a new issue to the server
-	addIssue(newIssue: Issue | null): Observable<Issue> {
+	addIssue(newIssue: Issue | any): Observable<Issue> {
 		return this.http
 			.post<Issue>(this.issuesUrl, newIssue, this.httpOptions)
 			.pipe(
@@ -84,7 +93,7 @@ export class IssueService {
 	}
 
 	// PUT: update the issue in the database
-	updateUpdate(issue: Issue | any): Observable<any> {
+	updateIssue(issue: Issue | any): Observable<any> {
 		return this.http.put(this.issuesUrl, issue, this.httpOptions).pipe(
 			tap(() => this.log(`updated issue id=${issue._id}`)),
 			catchError(this.handleError<any>('updateIssue'))

@@ -13,6 +13,6 @@ import { IssueListComponent } from './issue-list/issue-list.component';
 @NgModule({
 	imports: [CommonModule, MaterialModule, ReactiveFormsModule, FormsModule],
 	declarations: [IssueFormComponent, IssueListComponent],
-	exports: [IssueFormComponent, IssueFormComponent],
+	exports: [IssueFormComponent, IssueListComponent],
 })
 export class IssueComponentsModule {}

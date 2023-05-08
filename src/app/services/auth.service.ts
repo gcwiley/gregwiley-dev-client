@@ -10,20 +10,6 @@ export class AuthService {
 	// use the auth service to sign in and sign out users
 	constructor(private auth: AngularFireAuth) {}
 
-	// sign in with Twitter Auth using firebase auth service and popup window for login
-	SigninUserwithTwitterAuth(): Promise<firebase.auth.UserCredential> {
-		// Authenticates a Firebase client using a popup-based OAuth authentication flow.
-		// If succeeds, returns the signed in user along with the provider's credential.
-		return this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
-	}
-
-	// sign in with Github Auth using firebase auth service and popup window for login
-	SigninUserwithGithubAuth(): Promise<firebase.auth.UserCredential> {
-		// Authenticates a Firebase client using a popup-based OAuth authentication flow.
-		// If succeeds, returns the signed in user along with the provider's credential.
-		return this.auth.signInWithPopup(new firebase.auth.GithubAuthProvider());
-	}
-
 	// Sign in a user with an email address and password with firebase auth service and observable
 	// returns a promise that resolves when the user is signed in
 	SigninUserwithEmailAndPassword(
@@ -36,22 +22,5 @@ export class AuthService {
 	// signs out the current user with firebase auth service.
 	SignOutUser(): Promise<void> {
 		return this.auth.signOut();
-	}
-
-	// sends a password reset email to the specified email address
-	// returns a promise that resolves when the email is sent
-	SendPasswordResetEmail(email: string): Promise<void> {
-		return this.auth.sendPasswordResetEmail(email);
-	}
-
-	// sends a verification email to the current user
-	// returns a promise that resolves when the email is sent
-	SendEmailVerification(): Promise<void> {
-		return this.auth.currentUser.then((user) => {
-			if (user) {
-				// send email verification to the user if the user is logged in
-				user.sendEmailVerification();
-			}
-		});
 	}
 }

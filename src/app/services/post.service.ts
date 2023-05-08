@@ -34,7 +34,7 @@ export class PostService {
   }
 
   // GET: post by ID. Will 404 if id not found
-  getPost(id: string | any): Observable<Post> {
+  getPost(id: string | null): Observable<Post> {
     const url = `${this.postsUrl}/${id}`;
     return this.http.get<Post>(url).pipe(
       tap(() => this.log(`fetched post id=${id}`)),
@@ -68,16 +68,14 @@ export class PostService {
 
     return this.http.delete<Post>(url, this.httpOptions).pipe(
       tap(() => this.log(`deleted post id=${id}`)),
-      catchError(this.handleError<Post>('deletePost'))
+      catchError(this.handleError<Post>('delete Post'))
     );
   }
 
-  updatePost(id: any, post: any): Observable<any> {
-    const url = `${this.postsUrl}/${id}`;
-
-    return this.http.patch(url, post, this.httpOptions).pipe(
+  updatePost(post: Post | any): Observable<any> {
+    return this.http.patch(this.postsUrl, post, this.httpOptions).pipe(
       tap(() => this.log(`updated post id=${post._id}`)),
-      catchError(this.handleError<any>('updatePost'))
+      catchError(this.handleError<any>('update Post'))
     );
   }
 

@@ -1,10 +1,10 @@
-<h4>Recently added Projects</h4>
-
-<mat-card class="recent-projects-list">
-  <mat-list dense>
-    <mat-list-item *ngFor="let project of recentProjects">
-      <mat-icon mat-list-icon>folder</mat-icon>
-      <div mat-line>{{ project.title }}</div>
-    </mat-list-item>
-  </mat-list>
+<mat-card>
+	<mat-list>
+		<div mat-subheader>Recent Projects</div>
+		<mat-list-item *ngFor="let project of recentProjects">
+			<mat-icon matListItemIcon>folder</mat-icon>
+			<div matListItemTitle>{{ project.title }}</div>
+			<div matListItemLine>{{ project.createdAt | date }}</div>
+		</mat-list-item>
+	</mat-list>
 </mat-card>

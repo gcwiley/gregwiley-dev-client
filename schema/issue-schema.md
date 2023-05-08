@@ -7,11 +7,14 @@
 3. Category (category)
     - Data Type = String
 
-4. Submitted By (submittedBy)
+4. Status (status)
+	- Data Type = string
+
+5. Submitted By (submittedBy)
     - Data Type = String
 
-5. Created At (createdAt)
+6. Created At (createdAt)
     - Data Type = String
 
-6. Updated At (updatedAt)
+7. Updated At (updatedAt)
     - Data Type = String

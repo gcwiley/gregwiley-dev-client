@@ -12,6 +12,9 @@ import { ProjectComponentsModule } from '../projects/projects.module';
 // import the shared components module
 import { SharedComponentsModule } from '../shared/shared.module';
 
+// import the issue components module
+import { IssueComponentsModule } from '../issues/issue.module';
+
 // import individual page components
 import { AboutPageComponent } from './about-page/about-page.component';
 import { CreatePageComponent } from './create-page/create-page.component';
@@ -20,6 +23,7 @@ import { DetailsPageComponent } from './details-page/details-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { SigninComponent } from './signin-page/signin-page.component';
+import { SupportPageComponent } from './support-page/support-page.component';
 
 @NgModule({
 	imports: [
@@ -30,6 +34,7 @@ import { SigninComponent } from './signin-page/signin-page.component';
 		FormsModule,
 		ProjectComponentsModule,
 		SharedComponentsModule,
+		IssueComponentsModule,
 	],
 	declarations: [
 		AboutPageComponent,
@@ -39,6 +44,7 @@ import { SigninComponent } from './signin-page/signin-page.component';
 		MainPageComponent,
 		NotFoundPageComponent,
 		SigninComponent,
+		SupportPageComponent,
 	],
 	exports: [
 		AboutPageComponent,
@@ -48,6 +54,7 @@ import { SigninComponent } from './signin-page/signin-page.component';
 		MainPageComponent,
 		NotFoundPageComponent,
 		SigninComponent,
+		SupportPageComponent,
 	],
 })
 export class PageComponentsModule {}

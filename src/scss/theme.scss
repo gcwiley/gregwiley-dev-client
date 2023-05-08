@@ -1,8 +1,6 @@
 @use "@angular/material" as mat;
 
-// import google font 
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap");
-$roboto-font-family: "Roboto", sans-serif;
+@include mat.core();
 
 // define the light primary color
 $light-primary: mat.define-palette(
@@ -45,26 +43,33 @@ $dark-accent: mat.define-palette(
 	$lighter: 500
 );
 
+// every parameter for 'define-typography-config' is optional, the styles for a level will default to Material Design's baseline if unspecified
+
+// font size, line-height, font-weight, font-family, letter spacing
 
 // CUSTOM TOPOGRAPGY
 $custom-typography: mat.define-typography-config(
-  $font-family: $roboto-font-family,
-  $display-4:     mat.define-typography-level(112px, 112px, 700, $letter-spacing: -0.05em, $font-family: roboto-font-family),
-  $display-3:     mat.define-typography-level(56px, 56px, 700, $letter-spacing: -0.02em, $font-family: roboto-font-family),
-  $display-2:     mat.define-typography-level(45px, 48px, 700, $letter-spacing: -0.005em, $font-family: $roboto-font-family),
-  $display-1:     mat.define-typography-level(34px, 40px, 700, $font-family: roboto-font-family),
-  $headline:      mat.define-typography-level(18px, 32px, 700, $font-family: roboto-font-family),
-  $title:         mat.define-typography-level(50px, 32px, 700, $font-family: roboto-font-family),
-  $subheading-2:  mat.define-typography-level(18px, 28px, 700, $letter-spacing: .2em, $font-family: roboto-font-family),
-  $subheading-1:  mat.define-typography-level(18px, 24px, 700, $font-family: roboto-font-family),
-  $body-2:        mat.define-typography-level(18px, 24px, 700, $font-family: roboto-font-family),
-  $body-1:        mat.define-typography-level(16px, 20px, 700, $font-family: roboto-font-family),
-  $caption:       mat.define-typography-level(16px, 20px, 700, $font-family: roboto-font-family),
-  $button:        mat.define-typography-level(18px, 28px, 700, $font-family: roboto-font-family),
-  $input:         mat.define-typography-level(inherit, 1.125, 700, $font-family: roboto-font-family)
+	$headline-1:
+		mat.define-typography-level(97px, 1, 100, $letter-spacing: -1.5px),
+	$headline-2:
+		mat.define-typography-level(61px, 1, 100, $letter-spacing: -0.5px),
+	$headline-3: mat.define-typography-level(48px, 1, 400, $letter-spacing: 0px),
+	$headline-4:
+		mat.define-typography-level(34px, 1, 400, $letter-spacing: 0.25px),
+	$headline-5: mat.define-typography-level(24px, 1, 400, $letter-spacing: 0px),
+	$headline-6:
+		mat.define-typography-level(20px, 1, 400, $letter-spacing: 0.15px),
+	$subtitle-1:
+		mat.define-typography-level(16px, 1, 400, $letter-spacing: 0.2px),
+	$subtitle-2:
+		mat.define-typography-level(14px, 1, 500, $letter-spacing: 0.15px),
+	$body-1: mat.define-typography-level(16px, 1, 400, $letter-spacing: 0.5px),
+	$body-2: mat.define-typography-level(14px, 1, 400, $letter-spacing: 0.25px),
+	$caption: mat.define-typography-level(12px, 1, 400, $letter-spacing: 0.4px),
+	$button: mat.define-typography-level(14px, 1, 500, $letter-spacing: 1.25px),
 );
 
-// define the light theme - Fix this!!!!!!
+// define the light theme
 $light-theme: mat.define-light-theme(
 	(
 		color: (
@@ -72,6 +77,8 @@ $light-theme: mat.define-light-theme(
 			accent: $light-accent,
 			warn: $light-warn,
 		),
+		typography: $custom-typography,
+		density: 0,
 	)
 );
 
@@ -85,25 +92,11 @@ $dark-theme: mat.define-dark-theme(
 	)
 );
 
-@include mat.core();
-@include mat.core-theme($light-theme);
+// apply the light theme as default
 @include mat.all-component-themes($light-theme);
-@include mat.all-component-typographies($light-theme);
 
-.dark-theme {
+// apply the dark theme only when the user prefers dark themes
+@media (prefers-color-scheme: dark) {
 	@include mat.core-color($dark-theme);
-	@include mat.all-component-themes($dark-theme);
-}
-
-body {
-	margin: 0;
-	--webkit-appearance: none;
-	background-color: mat.get-color-from-palette($light-accent, default);
-	color: mat.get-contrast-color-from-palette($light-accent, default);
-	font-family: "Open Sans", sans-serif;
-}
-
-.dark-theme body {
-	background-color: mat.get-color-from-palette($dark-accent, default);
-	color: mat.get-contrast-color-from-palette($dark-accent, default);
+	@include mat.button-color($dark-theme);
 }
