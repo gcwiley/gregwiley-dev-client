@@ -1,6 +1,12 @@
+@use "@angular/material" as mat;
+
+$my-palette: mat.define-palette(mat.$blue-palette);
+
 .project-details {
-	margin-top: 1rem;
 	box-shadow: none;
 	border: 0.5px gainsboro solid;
-	background-color: #e3f2fd;
+	background: mat.get-color-from-palette($my-palette, 50);
+	color: mat.get-color-from-palette($my-palette, 700);
 }
+
+

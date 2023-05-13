@@ -1,21 +1,18 @@
-.container {
+.signin-page-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-
-	background-image: url(../../../assets/images/banner_image.jpg);
-	background-size: cover;
-	background-position: center;
-	opacity: 0.9;
+	background-color: aliceblue;
 }
 
 .signin-form {
-	max-width: 350px;
+	width: 400px;
+	// max-width: 550px;
 	border-radius: 10px;
 	box-shadow: none;
 	border: 0.5px solid rgb(193, 193, 193);
-	padding: 1.5rem;
+	padding: 2rem;
 }
 
 .full-width {
@@ -23,13 +20,13 @@
 	margin: 0.4rem 0;
 }
 
-mat-card-title,
-mat-card-subtitle {
-	text-align: center;
-}
-
-mat-card-actions {
+.card-actions {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+}
+
+button {
+	flex: 1;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
 }

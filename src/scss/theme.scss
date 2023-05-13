@@ -6,24 +6,24 @@
 $light-primary: mat.define-palette(
 	mat.$light-blue-palette,
 	$default: 900,
-	$lighter: 100,
-	$darker: 100,
+	$lighter: 50,
+	$darker: 700,
 	$text: 900
 );
 
 // define the light accent color
 $light-accent: mat.define-palette(
-	mat.$grey-palette,
-	$default: A200,
-	$lighter: 100,
-	$darker: 100,
+	mat.$green-palette,
+	$default: 900,
+	$lighter: 50,
+	$darker: 700,
 	$text: 900
 );
 
 // define the light warn color - The warn palette is optional
 $light-warn: mat.define-palette(
 	mat.$red-palette,
-	$default: A100,
+	$default: A700,
 	$lighter: 100,
 	$darker: 100,
 	$text: 900
@@ -34,13 +34,16 @@ $dark-primary: mat.define-palette(
 	mat.$light-green-palette,
 	$default: A100,
 	$lighter: 50,
+	$darker: 100,
 	$text: 900
 );
 // define the light accent color
 $dark-accent: mat.define-palette(
 	mat.$indigo-palette,
 	$default: 600,
-	$lighter: 500
+	$lighter: 500,
+	$darker: 100,
+	$text: 900
 );
 
 // every parameter for 'define-typography-config' is optional, the styles for a level will default to Material Design's baseline if unspecified
@@ -94,6 +97,7 @@ $dark-theme: mat.define-dark-theme(
 
 // apply the light theme as default
 @include mat.all-component-themes($light-theme);
+@include mat.typography-hierarchy($custom-typography);
 
 // apply the dark theme only when the user prefers dark themes
 @media (prefers-color-scheme: dark) {

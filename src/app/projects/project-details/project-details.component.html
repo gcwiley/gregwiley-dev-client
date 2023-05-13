@@ -1,31 +1,26 @@
 <mat-card class="project-details">
 	<mat-list>
+		<div mat-subheader>Project Details</div>
 		<mat-list-item>
-			<p>Project Status: {{ project.status }}</p>
+			<span matListItemTitle>Project Status</span>
+			<span matListItemLine>{{ project.status }}</span>
 		</mat-list-item>
-
-		<mat-divider></mat-divider>
-
 		<mat-list-item>
-			<p>Project Category: {{ project.category }}</p>
+			<span matListItemTitle>Project Category</span>
+			<span matListItemLine>{{ project.category }}</span>
 		</mat-list-item>
-
-		<mat-divider></mat-divider>
-
 		<mat-list-item>
-			<p>Programming Language: {{ project.language }}</p>
+			<span matListItemTitle>Programming Language</span>
+			<span matListItemLine>{{ project.language }}</span>
 		</mat-list-item>
-
 		<mat-divider></mat-divider>
-
 		<mat-list-item>
-			<p>Start Date: {{ project.startDate | date }}</p>
+			<span matListItemTitle>Start Date</span>
+			<span matListItemLine>{{ project.startDate | date }}</span>
 		</mat-list-item>
-
-		<mat-divider></mat-divider>
-
 		<mat-list-item>
-			<p>Updated At: {{ project.updatedAt | date }}</p>
+			<span matListItemTitle>Last Updated</span>
+			<span matListItemLine>{{ project.updatedAt | date }}</span>
 		</mat-list-item>
 	</mat-list>
 </mat-card>

@@ -11,11 +11,13 @@ import { IssueService } from 'src/app/services/issue.service';
 	styleUrls: ['./issue-list.component.scss'],
 })
 export class IssueListComponent implements OnInit {
-	// set the data source
-	dataSource = new MatTableDataSource();
-
 	// columns to display
 	columnsToDisplay = ['title', 'category', 'status'];
+
+	isLoadingResults = true;
+
+	// set the data source
+	dataSource = new MatTableDataSource();
 
 	constructor(private issueService: IssueService, private router: Router) {}
 
