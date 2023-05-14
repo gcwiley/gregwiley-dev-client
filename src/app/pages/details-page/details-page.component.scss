@@ -1,39 +1,53 @@
+@use "@angular/material" as mat;
+
+$my-palette: mat.define-palette(mat.$blue-palette);
+
 .container {
-	height: 100vh;
 	display: flex;
 	flex-direction: row;
-	max-width: 1200px;
+	height: 100vh;
+	max-width: 1320px;
 	margin: auto;
+	// border: 1px red solid;
 }
 
 .main-content {
-	width: 70%;
+	background-color: white;
+	flex-grow: 3;
+	// border: 1px red solid;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	margin-right: .5rem;
+}
+
+.aside-content {
+	background-color: mat.get-color-from-palette($my-palette, 50);
+	flex-grow: 1;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	margin-left: .5rem;
+	border-radius: 10px;
 }
 
 .section-content {
 	margin: 1rem;
-	border-radius: 10px;
+	// border: 1px blue solid;
 }
 
 .article-content {
 	margin: 1rem;
 }
 
-.aside-content {
-	background-color: aliceblue;
-	width: 30%;
-}
-
 // media queries
-@media (min-width: 45em) {
-	main {
-		display: flex;
-		flex-direction: row;
-	}
-	main article {
-		flex: 2;
-	}
-	main aside {
-		flex: 1;
-	}
-}
+// @media (min-width: 45em) {
+// 	main {
+// 		display: flex;
+// 		flex-direction: row;
+// 	}
+// 	main article {
+// 		flex: 2;
+// 	}
+// 	main aside {
+// 		flex: 1;
+// 	}
+// }

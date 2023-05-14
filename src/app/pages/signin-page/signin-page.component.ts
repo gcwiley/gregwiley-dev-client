@@ -12,7 +12,6 @@ import { AuthService } from '../../services/auth.service';
 	styleUrls: ['./signin-page.component.scss'],
 })
 export class SigninComponent {
-	
 	// inject the router, form builder, and auth service
 	constructor(
 		private router: Router,
@@ -25,8 +24,6 @@ export class SigninComponent {
 		email: ['', Validators.required, Validators.email],
 		password: ['', Validators.required],
 	});
-
-	// invalid email error message - FIX THIS
 
 	// Sign in with email and password
 	// if successful, navigate user to the main page
