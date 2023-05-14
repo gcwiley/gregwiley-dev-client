@@ -3,10 +3,7 @@
 $my-palette: mat.define-palette(mat.$blue-palette);
 
 .project-details {
-	box-shadow: none;
-	border: 0.5px gainsboro solid;
-	background: mat.get-color-from-palette($my-palette, 50);
+	// border: 1px red solid;
 	color: mat.get-color-from-palette($my-palette, 700);
+	margin: 1rem;
 }
-
-

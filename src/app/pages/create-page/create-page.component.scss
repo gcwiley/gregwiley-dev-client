@@ -1,3 +1,30 @@
+.container {
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+	max-width: 1200px;
+	margin: auto;
+}
+
+.main-content {
+	width: 70%;
+}
+
+.section-content {
+	margin: 1rem;
+	border-radius: 10px;
+}
+
+.article-content {
+	margin: 1rem;
+}
+
+.aside-content {
+	background-color: aliceblue;
+	width: 30%;
+}
+
+// media queries
 @media (min-width: 45em) {
 	main {
 		display: flex;

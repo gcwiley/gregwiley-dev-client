@@ -10,22 +10,22 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 // import the create page
 import { CreatePageComponent } from './pages/create-page/create-page.component';
 
-// Admin Page - Admin Dashboard
+// import the Admin Page
 import { DashboardComponent } from './pages/dashboard-page/dashboard-page.component';
 
-// Details Page
+// import the details Page
 import { DetailsPageComponent } from './pages/details-page/details-page.component';
 
 // Main HomePage
 import { MainPageComponent } from './pages/main-page/main-page.component';
 
-// Not Found Page
+// import the Not Found Page
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 // Sign In Page
 import { SigninComponent } from './pages/signin-page/signin-page.component';
 
-// support page
+// import the support page
 import { SupportPageComponent } from './pages/support-page/support-page.component';
 
 const routes: Routes = [

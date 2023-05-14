@@ -22,12 +22,14 @@ export class SigninComponent {
 
 	// create the sign in form with email and password fields
 	signinForm = this.formBuilder.group({
-		email: ['', Validators.required],
+		email: ['', Validators.required, Validators.email],
 		password: ['', Validators.required],
 	});
 
+	// invalid email error message - FIX THIS
+
 	// Sign in with email and password
-	// if successful, navigate user to the home page
+	// if successful, navigate user to the main page
 	onSubmitSignIn() {
 		this.authService
 			.SigninUserwithEmailAndPassword(

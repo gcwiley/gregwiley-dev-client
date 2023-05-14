@@ -1,141 +1,88 @@
 <form
 	[formGroup]="projectForm"
-	#formDir
 	novalidate
 	(ngSubmit)="onSaveProject()"
 >
 	<mat-card class="project-form">
-		<mat-card-header>
-			<mat-card-title>Add Project</mat-card-title>
-		</mat-card-header>
+		<!-- PROJECT TITLE -->
+		<mat-form-field class="full-width" appearance="outline">
+			<mat-label>Project Title</mat-label>
+			<input matInput type="text" formControlName="title" />
+			<mat-error *ngIf="projectForm.hasError('required')"
+				>Please enter a project title</mat-error
+			>
+		</mat-form-field>
 
-		<mat-card-content>
-			<div class="row">
-				<!-- row -->
-				<!-- TITLE (title) -->
-				<mat-form-field class="full-width" appearance="outline">
-					<mat-label>Project Title</mat-label>
-					<input matInput type="text" formControlName="title" />
-					<mat-error>Please enter a project title.</mat-error>
-				</mat-form-field>
-			</div>
-			<!-- row -->
+		<!-- PROJECT STATUS -->
+		<mat-form-field class="full-width" appearance="outline">
+			<mat-label>Status</mat-label>
+			<mat-select>
+				<mat-option>None</mat-option>
+				<mat-option *ngFor="let status of statues" [value]="status.value">
+					{{ status.viewValue }}
+				</mat-option>
+			</mat-select>
+			<mat-error *ngIf="projectForm.hasError('required')"
+				>Please enter a project status</mat-error
+			>
+		</mat-form-field>
 
-			<!-- __________________________ -->
+		<!-- PROJECT CATEGORY -->
+		<mat-form-field class="full-width" appearance="outline">
+			<mat-label>Project Category</mat-label>
+			<mat-select matNativeControl formControlName="category">
+				<mat-option value="Tutorial">Tutorial</mat-option>
+				<mat-option value="Personal Project">Personal Project</mat-option>
+				<mat-option value="GIS Project">GIS Project</mat-option>
+			</mat-select>
+			<mat-error>Please enter a project category.</mat-error>
+		</mat-form-field>
 
-			<div class="row">
-				<!-- row -->
+		<!-- PROJECT START DATE -->
+		<mat-form-field class="full-width" appearance="outline">
+			<mat-label>Project Start Date</mat-label>
+			<input matInput [matDatepicker]="picker" formControlName="startDate" />
+			<mat-datepicker-toggle
+				matSuffix
+				[for]="picker"
+			></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-error>Please enter a project start date.</mat-error>
+		</mat-form-field>
 
-				<div class="col">
-					<!-- STATUS (status) -->
-					<mat-form-field class="full-width" appearance="outline">
-						<mat-label>Project Status</mat-label>
-						<mat-select matNativeControl formControlName="status">
-							<mat-option value="Not Started">Not Started</mat-option>
-							<mat-option value="In Development"
-								>In Development</mat-option
-							>
-							<mat-option value="Completed">Completed</mat-option>
-						</mat-select>
-						<mat-error>Please enter a project status.</mat-error>
-					</mat-form-field>
-				</div>
-				<!-- row -->
+		<!-- PROGRAMMING LANGUAGE -->
+		<mat-form-field class="full-width" appearance="outline">
+			<mat-label>Programming Language</mat-label>
+			<mat-select matNativeControl formControlName="language">
+				<mat-option value="JavaScript">JavaScript</mat-option>
+				<mat-option value="Python">Python</mat-option>
+				<mat-option value="Dart">Dart</mat-option>
+			</mat-select>
+			<mat-error
+				>Please specify the programming language of project.</mat-error
+			>
+		</mat-form-field>
 
-				<div class="col">
-					<!-- column -->
+		<!-- LIVE URL -->
+		<mat-form-field class="full-width" appearance="outline">
+			<mat-label>Production URL</mat-label>
+			<input matInput type="url" formControlName="liveUrl" />
+			<mat-error>Please provide a URL of the project.</mat-error>
+		</mat-form-field>
 
-					<!-- CATEGORY (category) -->
-					<mat-form-field class="full-width" appearance="outline">
-						<mat-label>Project Category</mat-label>
-						<mat-select matNativeControl formControlName="category">
-							<mat-option value="Tutorial">Tutorial</mat-option>
-							<mat-option value="Personal Project"
-								>Personal Project</mat-option
-							>
-							<mat-option value="GIS Project">GIS Project</mat-option>
-						</mat-select>
-						<mat-error>Please enter a project category.</mat-error>
-					</mat-form-field>
-				</div>
-				<!-- column -->
-			</div>
-			<!-- row -->
+		<!-- URL -->
+		<mat-form-field class="full-width" appearance="outline">
+			<mat-label>GitHub URL</mat-label>
+			<input matInput type="url" formControlName="gitUrl" />
+			<mat-error>Please provide a URL of the project.</mat-error>
+		</mat-form-field>
 
-			<!-- __________________________ -->
-
-			<div class="row">
-				<div class="col">
-					<!-- START DATE (startDate) -->
-					<mat-form-field class="full-width" appearance="outline">
-						<mat-label>Project Start Date</mat-label>
-						<input
-							matInput
-							[matDatepicker]="picker"
-							formControlName="startDate"
-						/>
-						<mat-datepicker-toggle
-							matSuffix
-							[for]="picker"
-						></mat-datepicker-toggle>
-						<mat-datepicker #picker></mat-datepicker>
-						<mat-error>Please enter a project start date.</mat-error>
-					</mat-form-field>
-				</div>
-				<!-- col -->
-
-				<div class="col">
-					<!-- LANGUAGE (language) -->
-					<mat-form-field class="full-width" appearance="outline">
-						<mat-label>Programming Language</mat-label>
-						<mat-select matNativeControl formControlName="language">
-							<mat-option value="JavaScript">JavaScript</mat-option>
-							<mat-option value="Python">Python</mat-option>
-							<mat-option value="Dart">Dart</mat-option>
-						</mat-select>
-						<mat-error
-							>Please specify the programming language of
-							project.</mat-error
-						>
-					</mat-form-field>
-				</div>
-			</div>
-			<!-- row -->
-
-			<div class="row">
-				<!-- LIVE URL (liveUrl)-->
-				<mat-form-field class="full-width" appearance="outline">
-					<mat-label>Production URL</mat-label>
-					<input matInput type="url" formControlName="liveUrl" />
-					<mat-error>Please provide a URL of the project.</mat-error>
-				</mat-form-field>
-			</div>
-			<!-- row -->
-
-			<div class="row">
-				<!-- GIT URL (gitUrl)-->
-				<mat-form-field class="full-width" appearance="outline">
-					<mat-label>GitHub URL</mat-label>
-					<input matInput type="url" formControlName="gitUrl" />
-					<mat-error>Please provide a URL of the project.</mat-error>
-				</mat-form-field>
-			</div>
-			<!-- row -->
-
-			<div class="row">
-				<!-- DESCRIPTION (description) -->
-				<mat-form-field class="full-width" appearance="outline">
-					<mat-label>Project Description</mat-label>
-					<textarea
-						matInput
-						rows="10"
-						formControlName="description"
-					></textarea>
-					<mat-error>Please provide a project description.</mat-error>
-				</mat-form-field>
-			</div>
-			<!-- row -->
-		</mat-card-content>
+		<!-- DESCRIPTION -->
+		<mat-form-field class="full-width" appearance="outline">
+			<mat-label>Project Description</mat-label>
+			<textarea matInput rows="7" formControlName="description"></textarea>
+			<mat-error>Please provide a project description.</mat-error>
+		</mat-form-field>
 
 		<mat-card-actions>
 			<button

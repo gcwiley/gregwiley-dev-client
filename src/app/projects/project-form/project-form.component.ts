@@ -5,14 +5,11 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 // import the project service
 import { ProjectService } from '../../services/project.service';
 
-// import project interface
+// import the project interface
 import { Project } from '../../types/project.interface';
 
-// import project type
-import { ProjectCategory } from '../../types/project.interface';
-
-// Import Project Status
-import { PROJECT_CATAGORIES } from '../../types/project.interface';
+// import the status interface
+import { Status } from '../../types/project.interface';
 
 @Component({
   selector: 'app-project-form',
@@ -24,8 +21,11 @@ export class ProjectFormComponent implements OnInit {
   private id!: string | null;
   private project!: Project;
 
-  // import Project Types - Follow Up
-  projectCategory: ProjectCategory[] = PROJECT_CATAGORIES;
+  statues: Status[] = [
+	{ value: 'not-started', viewValue: 'Not Started' },
+	{ value: 'in-development', viewValue: 'In Development' },
+	{ value: 'completed', viewValue: 'Completed' },
+  ]
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,8 +41,8 @@ export class ProjectFormComponent implements OnInit {
     category: ['', Validators.required],
     language: ['', Validators.required],
     startDate: ['', Validators.required],
-    liveUrl: [''],
-    gitUrl: [''],
+    liveUrl: ['', Validators.required],
+    gitUrl: ['', Validators.required],
     description: ['', Validators.required],
   });
 

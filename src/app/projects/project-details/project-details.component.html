@@ -1,26 +1,32 @@
-<mat-card class="project-details">
-	<mat-list>
-		<div mat-subheader>Project Details</div>
-		<mat-list-item>
-			<span matListItemTitle>Project Status</span>
-			<span matListItemLine>{{ project.status }}</span>
-		</mat-list-item>
-		<mat-list-item>
-			<span matListItemTitle>Project Category</span>
-			<span matListItemLine>{{ project.category }}</span>
-		</mat-list-item>
-		<mat-list-item>
-			<span matListItemTitle>Programming Language</span>
-			<span matListItemLine>{{ project.language }}</span>
-		</mat-list-item>
-		<mat-divider></mat-divider>
-		<mat-list-item>
-			<span matListItemTitle>Start Date</span>
-			<span matListItemLine>{{ project.startDate | date }}</span>
-		</mat-list-item>
-		<mat-list-item>
-			<span matListItemTitle>Last Updated</span>
-			<span matListItemLine>{{ project.updatedAt | date }}</span>
-		</mat-list-item>
-	</mat-list>
-</mat-card>
+<mat-list class="project-details">
+	<div mat-subheader>Project Details</div>
+
+	<mat-divider></mat-divider>
+
+	<mat-list-item>
+		<div matListItemLine>Project Status</div>
+		<div matListItemMeta><strong>{{ project.status }}</strong></div>
+	</mat-list-item>
+
+	<mat-list-item>
+		<div matListItemLine>Project Category</div>
+		<div matListItemMeta><strong>{{ project.category }}</strong></div>
+	</mat-list-item>
+
+	<mat-list-item>
+		<div matListItemLine>Programming Language</div>
+		<div matListItemMeta><strong>{{ project.language }}</strong></div>
+	</mat-list-item>
+
+	<mat-list-item>
+		<div matListItemLine>Start Date</div>
+		<div matListItemMeta><strong>{{ project.startDate | date }}</strong></div>
+	</mat-list-item>
+
+	<mat-list-item>
+		<div matListItemLine>Last Updated</div>
+		<div matListItemMeta><strong>{{ project.updatedAt | date }}</strong></div>
+	</mat-list-item>
+
+	<mat-divider></mat-divider>
+</mat-list>

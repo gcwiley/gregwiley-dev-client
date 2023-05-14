@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-// Import Project Service
+// import the project service
 import { ProjectService } from '../../services/project.service';
 
-// Import project type
+// import project interface
 import { Project } from 'src/app/types/project.interface';
 
 @Component({

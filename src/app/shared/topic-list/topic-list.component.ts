@@ -14,21 +14,21 @@ export class TopicListComponent {
 	topics: Topic[] = [
 		{
 			name: 'Angular',
-			description: 'Angular is an open source web application platform',
+			description: 'This website was built using Angular',
 		},
 		{
 			name: 'Bootstrap',
-			description: 'Bootstrap is an HTML, CSS, and JavaScript framework',
+			description: 'Very family with this CSS framework',
 		},
 		{
 			name: 'CSS',
 			description:
-				'Cascading Style Sheets (CSS) is a language used most often to style and improve upon the appearance of websites.',
+				'Extensive experience using CSS, HTML, and JavaScript',
 		},
 		{
 			name: 'Git',
 			description:
-				'Git is the most widely used version control system, which allows for the tracking and managing of source code over time.',
+				'Very active on GitHub',
 		},
 	];
 }

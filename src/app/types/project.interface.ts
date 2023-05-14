@@ -13,14 +13,14 @@ export interface Project {
 	updatedAt: string;
 }
 
-// Project Status Type
-export interface ProjectStatus {
+// define project status interface
+export interface Status {
 	value: string;
 	viewValue: string;
 }
 
 // Project Status Data Values
-export const PROJECT_STATUS: ProjectStatus[] = [
+export const status: Status[] = [
 	{ value: 'not-started', viewValue: 'Not Started' },
 	{ value: 'in-development', viewValue: 'In Development' },
 	{ value: 'completed', viewValue: 'Completed' },

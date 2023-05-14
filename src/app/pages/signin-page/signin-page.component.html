@@ -1,27 +1,46 @@
 <app-header></app-header>
+
 <main class="signin-page-container">
 	<form [formGroup]="signinForm" novalidate (ngSubmit)="onSubmitSignIn()">
+
 		<mat-card class="signin-form">
-			<h3 class="mat-headline-6">Sign In</h3>
+
+			<h3 class="mat-headline-3">Sign In</h3>
+
+			<h4 class="mat-headline-4">Get access to your account</h4>
+
 			<!-- EMAIL (email) -->
 			<mat-form-field class="full-width" appearance="outline">
 				<mat-label>Username</mat-label>
-				<input matInput type="email" formControlName="email" />
-				<mat-error>Please enter your email address.</mat-error>
+				<input
+					matInput
+					type="email"
+					formControlName="email"
+					placeholder="name@example.com"
+				/>
+				<mat-icon matSuffix>person</mat-icon>
+				<mat-error>Invalid Email</mat-error>
 			</mat-form-field>
 
 			<!-- PASSWORD (password) -->
 			<mat-form-field class="full-width" appearance="outline">
 				<mat-label>Password</mat-label>
 				<input matInput type="password" formControlName="password" />
+				<mat-icon matSuffix>lock</mat-icon>
 				<mat-error>Please enter your password.</mat-error>
 			</mat-form-field>
+
+			<div>
+				<!-- add checkbox here -->
+			</div>
 
 			<div class="card-actions">
 				<button mat-flat-button color="primary" type="submit">
 					Sign In
 				</button>
 			</div>
+
 		</mat-card>
+		
 	</form>
 </main>

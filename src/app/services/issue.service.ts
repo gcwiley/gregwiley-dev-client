@@ -6,7 +6,7 @@ import { catchError, tap } from 'rxjs/operators';
 // import the message service
 import { MessageService } from './message.service';
 
-// import the issue model
+// import the issue interface
 import { Issue } from '../types/issue.interface';
 
 @Injectable({ providedIn: 'root' })
@@ -96,7 +96,7 @@ export class IssueService {
 	updateIssue(issue: Issue | any): Observable<any> {
 		return this.http.put(this.issuesUrl, issue, this.httpOptions).pipe(
 			tap(() => this.log(`updated issue id=${issue._id}`)),
-			catchError(this.handleError<any>('updateIssue'))
+			catchError(this.handleError<Issue>('updateIssue'))
 		);
 	}
 
@@ -106,7 +106,7 @@ export class IssueService {
 	// @param result - optional value to return as the observable result
 
 	private handleError<T>(operation = 'operation', result?: T) {
-		return (error: any): Observable<T> => {
+		return (error: Error): Observable<T> => {
 			// TODO: send the error to remote logging infrastructure
 			console.error(error); // log to console instead
 
