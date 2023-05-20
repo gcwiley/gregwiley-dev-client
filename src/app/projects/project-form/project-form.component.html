@@ -8,9 +8,7 @@
 		<mat-form-field class="full-width" appearance="outline">
 			<mat-label>Project Title</mat-label>
 			<input matInput type="text" formControlName="title" />
-			<mat-error *ngIf="projectForm.hasError('required')"
-				>Please enter a project title</mat-error
-			>
+			<mat-error>Please enter a project title</mat-error>
 		</mat-form-field>
 
 		<!-- PROJECT STATUS -->

@@ -1,29 +1,28 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 // import the auth service
 import { AuthService } from '../../services/auth.service';
 
-// Signin Component
 @Component({
 	selector: 'app-signin',
 	templateUrl: './signin-page.component.html',
 	styleUrls: ['./signin-page.component.scss'],
 })
-export class SigninComponent {
+export class SigninComponent implements OnInit {
 	// inject the router, form builder, and auth service
-	constructor(
-		private router: Router,
-		private formBuilder: FormBuilder,
-		private authService: AuthService
-	) {}
+	constructor(private router: Router, private authService: AuthService) {}
 
-	// create the sign in form with email and password fields
-	signinForm = this.formBuilder.group({
-		email: ['', Validators.required, Validators.email],
-		password: ['', Validators.required],
-	});
+	signinForm!: FormGroup;
+
+	ngOnInit(): void {
+		// create the sign in form with email and password fields
+		this.signinForm = new FormGroup({
+			email: new FormControl('', [Validators.required, Validators.email]),
+			password: new FormControl('', [Validators.required]),
+		});
+	}
 
 	// Sign in with email and password
 	// if successful, navigate user to the main page
@@ -31,7 +30,7 @@ export class SigninComponent {
 		this.authService
 			.SigninUserwithEmailAndPassword(
 				this.signinForm.value.email!,
-				this.signinForm.value.password!
+				this.signinForm.value.password!,
 			)
 			.then(() => {
 				// navigates user to the main page

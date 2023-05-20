@@ -17,6 +17,7 @@ import { ProjectGridComponent } from './project-grid/project-grid.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { RecentProjectsComponent } from './recent-projects/recent-projects.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
+import { ProjectSearchComponent } from './project-search/project-search.component';
 
 @NgModule({
 	imports: [
@@ -35,6 +36,7 @@ import { ProjectCardComponent } from './project-card/project-card.component';
 		ProjectListComponent,
 		RecentProjectsComponent,
   ProjectCardComponent,
+  ProjectSearchComponent,
 	],
 	exports: [
 		ProjectCountComponent,
