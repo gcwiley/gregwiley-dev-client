@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
-	<a mat-icon-button routerLink="/" aria-label="menu icon">
+	<a mat-icon-button routerLink="/" aria-label="code icon">
 		<mat-icon>code</mat-icon>
 	</a>
 
-	<span class="header-text">wiley.dev</span>
+	<span>gregwiley.dev</span>
 
 	<span class="spacer"></span>
 
@@ -31,7 +31,7 @@
 
 	<mat-menu #menu="matMenu">
 		<!-- If user is signed in -->
-		<ng-container *ngIf="auth.user | async as user; else showSignInTest">
+		<ng-container *ngIf="auth.user | async as user; else showSignIn">
 			<!-- admin dashbord -->
 			<a mat-menu-item routerLink="/admin">
 				<mat-icon>dashboard</mat-icon>
@@ -52,7 +52,7 @@
 		</ng-container>
 
 		<!-- if user is NOT signed in -->
-		<ng-template #showSignInTest>
+		<ng-template #showSignIn>
 			<a mat-menu-item routerLink="/signin">
 				<mat-icon>login</mat-icon>
 				<span>Sign In</span>

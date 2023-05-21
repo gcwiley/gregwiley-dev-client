@@ -2,6 +2,9 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap");
 
+$headline-text-color: black;
+$headline-margin-bottom: 24px;
+
 html,
 body {
 	height: 100%;
@@ -9,15 +12,37 @@ body {
 
 body {
 	margin: 0;
-	font-family: Roboto, sans-serif;
+	font-family: "Roboto", sans-serif;
 }
 
-// .container {
-// 	max-width: 1200px;
-// 	margin: auto;
-// 	background: aliceblue;
-// 	height: 100vh;
-// 	border-left: .5px solid red;
-// 	border-right: .5px solid red;
-// 	// border: red 1px solid;
-// }
+
+Typography Styles
+.mat-headline-1 {
+	// color: $headline-text-color;
+	margin-bottom: $headline-margin-bottom;
+}
+
+.mat-headline-2 {
+	// color: $headline-text-color;
+	margin-bottom: $headline-margin-bottom;
+}
+
+.mat-headline-3 {
+	// color: $headline-text-color;
+	margin-bottom: $headline-margin-bottom;
+}
+
+.mat-headline-4 {
+	// color: $headline-text-color;
+	margin-bottom: $headline-margin-bottom;
+}
+
+.mat-headline-5 {
+	// color: $headline-text-color;
+	margin-bottom: $headline-margin-bottom;
+}
+
+.mat-headline-6 {
+	// color: $headline-text-color;
+	margin-bottom: $headline-margin-bottom;
+}

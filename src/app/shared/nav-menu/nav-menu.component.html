@@ -1,10 +1,7 @@
-<mat-nav-list>
-	<a mat-list-item routerLink="/">
-		<mat-icon matListItemIcon>home</mat-icon>
-		<div matListItemTitle>Home</div>
-	</a>
-	<a mat-list-item routerLink="/create">
-		<mat-icon matListItemIcon>note</mat-icon>
-		<div matListItemTitle>Create Project</div>
-	</a>
-</mat-nav-list>
+<mat-toolbar class="navigation-links" color="accent">
+	<nav>
+		<a mat-button routerLink="/about" routerLinkActive="active">About</a>
+		<a mat-button routerLink="/projects" routerLinkActive="active">Projects</a>
+		<a mat-button routerLink="/resources" routerLinkActive="active">Resources</a>
+	</nav>
+</mat-toolbar>

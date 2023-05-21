@@ -1,27 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 // import the auth service
 import { AuthService } from '../../services/auth.service';
 
+// Signin Component
 @Component({
 	selector: 'app-signin',
 	templateUrl: './signin-page.component.html',
 	styleUrls: ['./signin-page.component.scss'],
 })
-export class SigninComponent implements OnInit {
-	// inject the router, form builder, and auth service
-	constructor(private router: Router, private authService: AuthService) {}
+export class SigninComponent {
+	// inject the router, form builder, and the auth service
+	constructor(
+		private router: Router,
+		private formBuilder: FormBuilder,
+		private authService: AuthService
+	) {}
 
-	signinForm!: FormGroup;
+	// create the signin form with email and password fields
+	signinForm = this.formBuilder.group({
+		email: ['', Validators.required, Validators.email],
+		password: ['', Validators.required],
+	});
 
-	ngOnInit(): void {
-		// create the sign in form with email and password fields
-		this.signinForm = new FormGroup({
-			email: new FormControl('', [Validators.required, Validators.email]),
-			password: new FormControl('', [Validators.required]),
-		});
+	getErrorMessage() {
+		if (this.signinForm.get('email')?.hasError('required')) {
+			return 'Please enter a value';
+		}
+
+		return this.signinForm.get('email')?.hasError('email')
+			? 'Not a valid email address'
+			: '';
 	}
 
 	// Sign in with email and password
@@ -30,7 +41,7 @@ export class SigninComponent implements OnInit {
 		this.authService
 			.SigninUserwithEmailAndPassword(
 				this.signinForm.value.email!,
-				this.signinForm.value.password!,
+				this.signinForm.value.password!
 			)
 			.then(() => {
 				// navigates user to the main page

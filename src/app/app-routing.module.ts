@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// Import the route guard
+// import the route guard
 import { RouteGuard } from './guards/route.guard';
 
 // import the about page
@@ -16,13 +16,13 @@ import { DashboardComponent } from './pages/dashboard-page/dashboard-page.compon
 // import the details Page
 import { DetailsPageComponent } from './pages/details-page/details-page.component';
 
-// Main HomePage
+// import the main page
 import { MainPageComponent } from './pages/main-page/main-page.component';
 
 // import the Not Found Page
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
-// Sign In Page
+// import the sign in page
 import { SigninComponent } from './pages/signin-page/signin-page.component';
 
 // import the support page

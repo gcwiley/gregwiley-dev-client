@@ -38,6 +38,9 @@ export class HeaderComponent implements OnInit {
 
 	// signs out the current user
 	onClickSignOut(): void {
-		this.auth.signOut().then(() => this.router.navigateByUrl('/signin'));
+		this.auth.signOut().then(() => {
+			// navigates user to the sign in page
+			this.router.navigateByUrl('/signin');
+		});
 	}
 }

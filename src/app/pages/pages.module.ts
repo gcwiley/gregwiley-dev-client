@@ -15,7 +15,7 @@ import { SharedComponentsModule } from '../shared/shared.module';
 // import the issue components module
 import { IssueComponentsModule } from '../issues/issue.module';
 
-// import individual page components
+// import the individual page components
 import { AboutPageComponent } from './about-page/about-page.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { DashboardComponent } from './dashboard-page/dashboard-page.component';
@@ -24,6 +24,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { SigninComponent } from './signin-page/signin-page.component';
 import { SupportPageComponent } from './support-page/support-page.component';
+import { ResourcesPageComponent } from './resources-page/resources-page.component';
 
 @NgModule({
 	imports: [
@@ -45,6 +46,7 @@ import { SupportPageComponent } from './support-page/support-page.component';
 		NotFoundPageComponent,
 		SigninComponent,
 		SupportPageComponent,
+		ResourcesPageComponent,
 	],
 	exports: [
 		AboutPageComponent,
@@ -55,6 +57,7 @@ import { SupportPageComponent } from './support-page/support-page.component';
 		NotFoundPageComponent,
 		SigninComponent,
 		SupportPageComponent,
+		ResourcesPageComponent,
 	],
 })
 export class PageComponentsModule {}

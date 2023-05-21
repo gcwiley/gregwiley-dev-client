@@ -54,7 +54,7 @@ export class ProjectService {
 					? this.log(`found projects matching "${term}"`)
 					: this.log(`no projects matching "${term}"`)
 			),
-			catchError(this.handleError<Project[]>('searchProjects', []))
+			catchError(this.handleError<Project[]>('search Projects', []))
 		);
 	}
 
