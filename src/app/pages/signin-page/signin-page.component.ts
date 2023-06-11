@@ -27,7 +27,7 @@ export class SigninComponent {
 
 	getErrorMessage() {
 		if (this.signinForm.get('email')?.hasError('required')) {
-			return 'Please enter a value';
+			return 'Please enter a valid e-mail address.';
 		}
 
 		return this.signinForm.get('email')?.hasError('email')

@@ -23,7 +23,7 @@ import { DetailsPageComponent } from './details-page/details-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { SigninComponent } from './signin-page/signin-page.component';
-import { SupportPageComponent } from './support-page/support-page.component';
+import { IssuesPageComponent } from './issues-page/issues-page.component';
 import { ResourcesPageComponent } from './resources-page/resources-page.component';
 
 @NgModule({
@@ -45,7 +45,7 @@ import { ResourcesPageComponent } from './resources-page/resources-page.componen
 		MainPageComponent,
 		NotFoundPageComponent,
 		SigninComponent,
-		SupportPageComponent,
+		IssuesPageComponent,
 		ResourcesPageComponent,
 	],
 	exports: [
@@ -56,7 +56,7 @@ import { ResourcesPageComponent } from './resources-page/resources-page.componen
 		MainPageComponent,
 		NotFoundPageComponent,
 		SigninComponent,
-		SupportPageComponent,
+		IssuesPageComponent,
 		ResourcesPageComponent,
 	],
 })

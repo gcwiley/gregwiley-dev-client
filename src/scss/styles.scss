@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap');
 
 $headline-text-color: black;
 $headline-margin-bottom: 24px;
@@ -12,11 +12,9 @@ body {
 
 body {
 	margin: 0;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
-
-Typography Styles
 .mat-headline-1 {
 	// color: $headline-text-color;
 	margin-bottom: $headline-margin-bottom;
