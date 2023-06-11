@@ -13,13 +13,13 @@ export interface Project {
 	updatedAt: string;
 }
 
-// define project status interface
+// define the project status interface
 export interface Status {
 	value: string;
 	viewValue: string;
 }
 
-// Project Status Data Values
+// define the data values for project status
 export const status: Status[] = [
 	{ value: 'not-started', viewValue: 'Not Started' },
 	{ value: 'in-development', viewValue: 'In Development' },
@@ -27,13 +27,13 @@ export const status: Status[] = [
 ];
 
 // Project Category Data Type
-export interface ProjectCategory {
+export interface Category {
 	value: string;
 	viewValue: string;
 }
 
 // Project Category Data Values
-export const PROJECT_CATAGORIES: ProjectCategory[] = [
+export const PROJECT_CATAGORIES: Category[] = [
 	{ value: 'tutorial', viewValue: 'Web Tutorial' },
 	{ value: 'personal-project', viewValue: 'Personal Project' },
 	{ value: 'arc-gis-project', viewValue: 'ArcGIS Project' },

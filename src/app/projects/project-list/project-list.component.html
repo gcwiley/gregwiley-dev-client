@@ -1,5 +1,10 @@
+<div class="container">
+
+  
+
+</div>
+
 <table mat-table [dataSource]="dataSource">
-	
   <!-- Actions Column -->
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Action</th>
@@ -8,11 +13,13 @@
       <a mat-icon-button [routerLink]="['/edit', project._id]">
         <mat-icon>edit</mat-icon>
       </a>
-      <button mat-icon-button color="warn" (click)="onDeleteProject(project._id)">
+      <button
+        mat-icon-button
+        color="warn"
+        (click)="onDeleteProject(project._id)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>
-    
   </ng-container>
 
   <!-- Title Column -->

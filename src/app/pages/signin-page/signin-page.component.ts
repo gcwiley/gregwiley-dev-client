@@ -7,49 +7,51 @@ import { AuthService } from '../../services/auth.service';
 
 // Signin Component
 @Component({
-	selector: 'app-signin',
-	templateUrl: './signin-page.component.html',
-	styleUrls: ['./signin-page.component.scss'],
+  selector: 'app-signin',
+  templateUrl: './signin-page.component.html',
+  styleUrls: ['./signin-page.component.scss'],
 })
 export class SigninComponent {
-	// inject the router, form builder, and the auth service
-	constructor(
-		private router: Router,
-		private formBuilder: FormBuilder,
-		private authService: AuthService
-	) {}
+  year = new Date().getFullYear();
 
-	// create the signin form with email and password fields
-	signinForm = this.formBuilder.group({
-		email: ['', Validators.required, Validators.email],
-		password: ['', Validators.required],
-	});
+  // inject the router, form builder, and the auth service
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {}
 
-	getErrorMessage() {
-		if (this.signinForm.get('email')?.hasError('required')) {
-			return 'Please enter a valid e-mail address.';
-		}
+  // create the signin form with email and password fields
+  signinForm = this.formBuilder.group({
+    email: ['', Validators.required, Validators.email],
+    password: ['', Validators.required],
+  });
 
-		return this.signinForm.get('email')?.hasError('email')
-			? 'Not a valid email address'
-			: '';
-	}
+  getErrorMessage() {
+    if (this.signinForm.get('email')?.hasError('required')) {
+      return 'Please enter a valid e-mail address.';
+    }
 
-	// Sign in with email and password
-	// if successful, navigate user to the main page
-	onSubmitSignIn() {
-		this.authService
-			.SigninUserwithEmailAndPassword(
-				this.signinForm.value.email!,
-				this.signinForm.value.password!
-			)
-			.then(() => {
-				// navigates user to the main page
-				this.router.navigateByUrl('/');
-			})
-			// if error, display the error message
-			.catch((error) => {
-				window.alert(error.message);
-			});
-	}
+    return this.signinForm.get('email')?.hasError('email')
+      ? 'Not a valid email address'
+      : '';
+  }
+
+  // Sign in with email and password
+  // if successful, navigate user to the main page
+  onSubmitSignIn() {
+    this.authService
+      .SigninUserwithEmailAndPassword(
+        this.signinForm.value.email!,
+        this.signinForm.value.password!
+      )
+      .then(() => {
+        // navigates user to the main page
+        this.router.navigateByUrl('/');
+      })
+      // if error, display the error message
+      .catch((error) => {
+        window.alert(error.message);
+      });
+  }
 }

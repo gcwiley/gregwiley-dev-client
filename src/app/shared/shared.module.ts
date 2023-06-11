@@ -12,6 +12,7 @@ import { HeroComponent } from './hero/hero.component';
 import { LogoComponent } from './logo/logo.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { TopicListComponent } from './topic-list/topic-list.component';
+import { AdminHeaderComponent } from './admin-header/admin-header.component';
 // add new shared components here
 
 @NgModule({
@@ -23,6 +24,7 @@ import { TopicListComponent } from './topic-list/topic-list.component';
 		LogoComponent,
 		NavMenuComponent,
 		TopicListComponent,
+  AdminHeaderComponent,
 	],
 	exports: [
 		FooterComponent,
