@@ -7,3 +7,5 @@ export interface Post {
   createdAt: string;
   updatedAt: string;
 }
+
+// FIX THIS!

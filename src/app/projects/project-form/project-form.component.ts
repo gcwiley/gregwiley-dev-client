@@ -5,11 +5,8 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 // import the project service
 import { ProjectService } from '../../services/project.service';
 
-// import the project interface
-import { Project } from '../../types/project.interface';
-
-// import the status interface
-import { Status } from '../../types/project.interface';
+// import the required interfaces
+import { Project, ProjectStatus } from '../../types/project.interface';
 
 @Component({
   selector: 'app-project-form',
@@ -21,11 +18,12 @@ export class ProjectFormComponent implements OnInit {
   private id!: string | null;
   private project!: Project;
 
-  statues: Status[] = [
-	{ value: 'not-started', viewValue: 'Not Started' },
-	{ value: 'in-development', viewValue: 'In Development' },
-	{ value: 'completed', viewValue: 'Completed' },
-  ]
+  // FIX THIS!
+  statues: ProjectStatus[] = [
+    { value: 'not-started', viewValue: 'Not Started' },
+    { value: 'in-development', viewValue: 'In Development' },
+    { value: 'completed', viewValue: 'Completed' },
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -81,12 +79,10 @@ export class ProjectFormComponent implements OnInit {
         this.router.navigateByUrl('/');
       });
     } else {
-      this.projectService
-        .updateProject(this.projectForm.value)
-        .subscribe(() => {
-          // navigates user back to homepage
-          this.router.navigateByUrl('/');
-        });
+      this.projectService.updateProject(this.projectForm.value).subscribe(() => {
+        // navigates user back to homepage
+        this.router.navigateByUrl('/');
+      });
     }
   }
 }

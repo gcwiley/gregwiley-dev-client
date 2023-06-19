@@ -6,35 +6,35 @@ import { MatTableDataSource } from '@angular/material/table';
 import { IssueService } from 'src/app/services/issue.service';
 
 @Component({
-	selector: 'app-issue-list',
-	templateUrl: './issue-list.component.html',
-	styleUrls: ['./issue-list.component.scss'],
+  selector: 'app-issue-list',
+  templateUrl: './issue-list.component.html',
+  styleUrls: ['./issue-list.component.scss'],
 })
 export class IssueListComponent implements OnInit {
-	// columns to display
-	columnsToDisplay = ['title', 'category', 'status'];
+  // columns to display
+  columnsToDisplay = ['title', 'category', 'status'];
 
-	isLoadingResults = true;
+  isLoadingResults = true;
 
-	// set the data source
-	dataSource = new MatTableDataSource();
+  // set the data source
+  dataSource = new MatTableDataSource();
 
-	constructor(private issueService: IssueService, private router: Router) {}
+  constructor(private issueService: IssueService, private router: Router) {}
 
-	ngOnInit(): void {
-		this.getIssues();
-	}
+  ngOnInit(): void {
+    this.getIssues();
+  }
 
-	getIssues(): void {
-		this.issueService.getIssues().subscribe((issues) => {
-			this.dataSource.data = issues;
-		});
-	}
+  getIssues(): void {
+    this.issueService.getIssues().subscribe((issues) => {
+      this.dataSource.data = issues;
+    });
+  }
 
-	onDeleteIssue(id: string) {
-		this.issueService.deleteIssue(id).subscribe(() => {
-			// navigates admin user back to the issues page
-			this.router.navigateByUrl('/support');
-		});
-	}
+  onDeleteIssue(id: string) {
+    this.issueService.deleteIssue(id).subscribe(() => {
+      // navigates admin user back to the issues page
+      this.router.navigateByUrl('/support');
+    });
+  }
 }

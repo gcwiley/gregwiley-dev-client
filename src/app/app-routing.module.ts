@@ -46,7 +46,7 @@ const routes: Routes = [
 	{ path: 'about', component: AboutPageComponent },
 	{ path: 'admin', component: DashboardComponent, canActivate: [RouteGuard] },
 	{
-		path: 'issues',
+		path: 'issue-tracker',
 		component: IssuesPageComponent,
 		canActivate: [RouteGuard],
 	},
