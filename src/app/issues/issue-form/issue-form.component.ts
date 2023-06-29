@@ -5,8 +5,11 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 // import the issue service
 import { IssueService } from 'src/app/services/issue.service';
 
-// import the issue interface
+// import the issue interfaces
 import { Issue, IssueCategory, IssueStatus } from 'src/app/types/issue.interface';
+
+// import the issue data values
+import { ISSUE_CATEGORY, ISSUE_STATUS } from 'src/app/data/issue-data';
 
 @Component({
   selector: 'app-issue-form',
@@ -18,14 +21,8 @@ export class IssueFormComponent implements OnInit {
   private id!: string | null;
   private issue!: Issue;
 
-  // FIX THIS!
-  issueCategories: IssueCategory [] = [
-    { value: 'test', viewValue: 'test' },
-    { value: 'test', viewValue: 'test' },
-    { value: 'test', viewValue: 'test' },
-  ];
-
-  
+  statues: IssueStatus[] = ISSUE_STATUS;
+  categories: IssueCategory[] = ISSUE_CATEGORY;
 
   constructor(
     private formBuilder: FormBuilder,

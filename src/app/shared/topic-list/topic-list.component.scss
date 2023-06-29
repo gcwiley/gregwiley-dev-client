@@ -4,7 +4,7 @@ $my-palette: mat.define-palette(mat.$blue-palette);
 
 .topic-list {
 	box-shadow: none;
-	border: 0.5px gainsboro solid;
+	// border: 0.5px gainsboro solid;
 	background: mat.get-color-from-palette($my-palette, 50);
 	color: mat.get-color-from-palette($my-palette, 700);
 }

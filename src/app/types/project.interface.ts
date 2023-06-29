@@ -1,4 +1,4 @@
-// DEFINE THE INTERFACES
+// DEFINE THE PROJECT INTERFACES
 
 // define the project interface
 export interface Project {

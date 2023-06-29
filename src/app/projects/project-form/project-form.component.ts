@@ -5,8 +5,16 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 // import the project service
 import { ProjectService } from '../../services/project.service';
 
-// import the required interfaces
-import { Project, ProjectStatus } from '../../types/project.interface';
+// import the required project interfaces
+import {
+  Project,
+  ProjectStatus,
+  ProjectCategory,
+  ProjectLanguage,
+} from '../../types/project.interface';
+
+// import the project data values
+import { PROJECT_STATUS, PROJECT_CATAGORIES, PROJECT_LANGUAGE } from '../../data/project-data'
 
 @Component({
   selector: 'app-project-form',
@@ -18,12 +26,9 @@ export class ProjectFormComponent implements OnInit {
   private id!: string | null;
   private project!: Project;
 
-  // FIX THIS!
-  statues: ProjectStatus[] = [
-    { value: 'not-started', viewValue: 'Not Started' },
-    { value: 'in-development', viewValue: 'In Development' },
-    { value: 'completed', viewValue: 'Completed' },
-  ];
+  statues: ProjectStatus[] = PROJECT_STATUS;
+  categories: ProjectCategory[] = PROJECT_CATAGORIES;
+  languages: ProjectLanguage[] = PROJECT_LANGUAGE;
 
   constructor(
     private formBuilder: FormBuilder,

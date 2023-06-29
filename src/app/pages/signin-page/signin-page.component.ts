@@ -23,28 +23,15 @@ export class SigninComponent {
 
   // create the signin form with email and password fields
   signinForm = this.formBuilder.group({
-    email: ['', Validators.required, Validators.email],
-    password: ['', Validators.required],
+    email: [null, Validators.required, Validators.email],
+    password: [null, Validators.required],
   });
-
-  getErrorMessage() {
-    if (this.signinForm.get('email')?.hasError('required')) {
-      return 'Please enter a valid e-mail address.';
-    }
-
-    return this.signinForm.get('email')?.hasError('email')
-      ? 'Not a valid email address'
-      : '';
-  }
 
   // Sign in with email and password
   // if successful, navigate user to the main page
   onSubmitSignIn() {
     this.authService
-      .SigninUserwithEmailAndPassword(
-        this.signinForm.value.email!,
-        this.signinForm.value.password!
-      )
+      .SigninUserwithEmailAndPassword(this.signinForm.value.email!, this.signinForm.value.password!)
       .then(() => {
         // navigates user to the main page
         this.router.navigateByUrl('/');

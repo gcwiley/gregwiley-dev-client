@@ -12,15 +12,11 @@
       <!-- EMAIL (email) -->
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Email address</mat-label>
-        <input
-          matInput
-          type="email"
-          formControlName="email"
-          placeholder="name@example.com" />
+        <input matInput type="email" formControlName="email" placeholder="name@example.com" />
         <mat-icon matSuffix>person</mat-icon>
-        <mat-error *ngIf="signinForm.invalid">{{
-          getErrorMessage()
-        }}</mat-error>
+        <mat-error *ngIf="signinForm.controls['email'].hasError('required')"
+          >Please enter your e-mail address.</mat-error
+        >
       </mat-form-field>
 
       <!-- PASSWORD (password) -->
@@ -28,7 +24,7 @@
         <mat-label>Password</mat-label>
         <input matInput type="password" formControlName="password" />
         <mat-icon matSuffix>lock</mat-icon>
-        <mat-error *ngIf="signinForm.invalid"></mat-error>
+        <mat-error *ngIf="signinForm.controls['password'].hasError('required')"></mat-error>
       </mat-form-field>
 
       <!-- FORM CHECK -->

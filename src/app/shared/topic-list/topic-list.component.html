@@ -1,12 +1,10 @@
 <mat-card class="topic-list">
-	<mat-list>
+  <mat-list>
+    <div mat-subheader>My Technical Skills</div>
 
-		<div mat-subheader>My Technical Skills</div>
-
-		<mat-list-item *ngFor="let topic of topics">
-			<h3 matListItemTitle>{{ topic.name }}</h3>
-			<p matListItemLine>{{ topic.description }}</p>
-		</mat-list-item>
-
-	</mat-list>
+    <mat-list-item *ngFor="let topic of topics">
+      <h3 matListItemTitle>{{ topic.name }}</h3>
+      <p matListItemLine>{{ topic.description }}</p>
+    </mat-list-item>
+  </mat-list>
 </mat-card>
