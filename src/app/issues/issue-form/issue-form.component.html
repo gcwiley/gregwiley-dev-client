@@ -47,9 +47,7 @@
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Issue Status</mat-label>
           <mat-select matNativeControl formControlName="status">
-            <mat-option value="Not Started">Not Started</mat-option>
-            <mat-option value="In Development">In Development</mat-option>
-            <mat-option value="Completed">Completed</mat-option>
+            <mat-option>Not Started</mat-option>
           </mat-select>
           <mat-error *ngIf="issueForm.controls['status'].hasError('required')"
             >Please enter a project status.</mat-error
@@ -59,10 +57,11 @@
     </mat-card-content>
 
     <mat-card-actions>
+      <!-- create button -->
       <button mat-flat-button color="primary" type="submit" [disabled]="!issueForm.valid">
         Create Issue
       </button>
-
+      <!-- reset form buttom -->
       <button mat-flat-button color="warn" type="button">Reset</button>
     </mat-card-actions>
   </mat-card>

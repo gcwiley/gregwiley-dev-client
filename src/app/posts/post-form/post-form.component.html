@@ -1,6 +1,5 @@
 <form [formGroup]="postForm" novalidate (ngSubmit)="onSavePost()">
   <mat-card class="post-form">
-    
     <mat-card-header>
       <mat-card-title>Add Post</mat-card-title>
     </mat-card-header>
@@ -16,7 +15,6 @@
       </div>
 
       <div class="row">
-
         <div class="col">
           <!-- AUTHOR (author) -->
           <mat-form-field class="full-width" appearance="outline">
@@ -35,9 +33,10 @@
             <mat-datepicker #picker></mat-datepicker>
             <mat-error>Please enter a date.</mat-error>
           </mat-form-field>
-        </div><!-- col -->
-
-      </div> <!-- row -->
+        </div>
+        <!-- col -->
+      </div>
+      <!-- row -->
 
       <div class="row">
         <!-- BODY (body) -->
@@ -46,15 +45,14 @@
           <textarea matInput rows="10" formControlName="body"></textarea>
           <mat-error>Please add content to your post.</mat-error>
         </mat-form-field>
-      </div> <!-- row -->
-
+      </div>
+      <!-- row -->
     </mat-card-content>
 
     <mat-card-actions>
-
-      <button mat-flat-button color="primary" type="submit" [disabled]="!postForm.valid">Post</button>
-
+      <button mat-flat-button color="primary" type="submit" [disabled]="!postForm.valid">
+        Post
+      </button>
     </mat-card-actions>
-
   </mat-card>
 </form>

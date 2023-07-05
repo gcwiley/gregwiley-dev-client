@@ -31,7 +31,10 @@ export class SigninComponent {
   // if successful, navigate user to the main page
   onSubmitSignIn() {
     this.authService
-      .SigninUserwithEmailAndPassword(this.signinForm.value.email!, this.signinForm.value.password!)
+      .SigninUserwithEmailAndPassword(
+        this.signinForm.value.email ?? '',
+        this.signinForm.value.password ?? ''
+      )
       .then(() => {
         // navigates user to the main page
         this.router.navigateByUrl('/');

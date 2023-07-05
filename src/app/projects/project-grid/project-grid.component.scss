@@ -1,9 +1,21 @@
-.project-grid {
-	display: grid;
-	grid-template-columns: repeat(3, 33%); // research more
-	gap: 3px;
-	grid-auto-rows: auto;
-	place-content: left;
-	overflow-x: none;
-	margin-top: 1rem;
+.grid-container {
+  margin: 20px;
+}
+
+.project-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  box-shadow: none;
+  border: 1px solid gainsboro;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }

@@ -56,9 +56,7 @@ $dark-warn: mat.define-palette(
 );
 
 // CUSTOM TOPOGRAPGY
-
 // font-size
-
 $custom-typography: mat.define-typography-config(
   $headline-1:
     mat.define-typography-level(97px, 1, 100, $letter-spacing: -1.5px),

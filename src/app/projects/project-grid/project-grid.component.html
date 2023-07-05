@@ -1,6 +1,28 @@
-<div *ngIf="projects" class="project-grid">
-	<app-project-card
-		*ngFor="let item of projects"
-		[project]="item"
-	></app-project-card>
+<div class="grid-container">
+  <h1 class="mat-h1">My Projects</h1>
+
+  <mat-grid-list [cols]="cols" [rowHeight]="rowHeight">
+    <mat-grid-tile *ngFor="let project of projects" [colspan]="colspan" [rowspan]="rowspan">
+      <mat-card class="project-card">
+        <mat-card-header>
+          <mat-card-title>{{ project.title }}</mat-card-title>
+          <mat-card-subtitle>{{ project.category }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>{{ project.description | simpletruncate }}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <a mat-button color="primary" routerLink="/projects/{{ project._id }}">OPEN</a>
+
+          <span class="spacer"></span>
+
+          <a mat-icon-button color="primary" href="{{ project.gitUrl }}" disabled>
+            <mat-icon>code</mat-icon>
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

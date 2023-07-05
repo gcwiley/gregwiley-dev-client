@@ -13,13 +13,9 @@ import { ProjectService } from '../../services/project.service';
   styleUrls: ['./project-details.component.scss'],
 })
 export class ProjectDetailsComponent implements OnInit {
-
   project!: Project;
 
-  constructor(
-    private route: ActivatedRoute,
-    private projectService: ProjectService
-  ) {}
+  constructor(private route: ActivatedRoute, private projectService: ProjectService) {}
 
   ngOnInit(): void {
     this.getProject();
@@ -27,9 +23,7 @@ export class ProjectDetailsComponent implements OnInit {
 
   // GET project by id
   getProject(): void {
-    const id = this.route.snapshot.paramMap.get('id')!;
-    this.projectService
-      .getProject(id)
-      .subscribe((project) => (this.project = project));
+    const id = this.route.snapshot.paramMap.get('id') ?? '';
+    this.projectService.getProject(id).subscribe((project) => (this.project = project));
   }
 }

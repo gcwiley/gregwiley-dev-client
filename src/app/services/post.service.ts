@@ -85,7 +85,7 @@ export class PostService {
   // @param result - optional value to return as the observable result
 
   private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+    return (error: Error): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
