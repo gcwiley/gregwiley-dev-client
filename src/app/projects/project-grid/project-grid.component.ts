@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
+// import angular material
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+
 // import the project service
 import { ProjectService } from '../../services/project.service';
 
@@ -11,6 +15,8 @@ import { Project } from '../../types/project.interface';
   selector: 'app-project-grid',
   templateUrl: './project-grid.component.html',
   styleUrls: ['./project-grid.component.scss'],
+  standalone: true,
+  imports: [MatGridListModule, MatCardModule],
 })
 export class ProjectGridComponent implements OnInit {
   // creating member variables
@@ -25,6 +31,7 @@ export class ProjectGridComponent implements OnInit {
     private breakpointObserver: BreakpointObserver
   ) {}
 
+  // responsive code
   layoutChanges(): void {
     this.breakpointObserver
       .observe([
@@ -40,7 +47,7 @@ export class ProjectGridComponent implements OnInit {
 
         const breakpoints = result.breakpoints;
 
-        // check to see if in table portrait mode
+        // check to see if viewport is in table portrait mode
         if (breakpoints[Breakpoints.TabletPortrait]) {
           // set the number of cols to 1
           this.cols = 1;

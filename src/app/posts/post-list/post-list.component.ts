@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.scss'],
+  standalone: true,
 })
 export class PostListComponent {}

@@ -12,6 +12,7 @@ import { Post } from '../../types/post.interface';
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.scss'],
+  standalone: true,
 })
 export class PostFormComponent implements OnInit {
   public mode = 'create';
@@ -64,11 +65,9 @@ export class PostFormComponent implements OnInit {
         this.router.navigateByUrl('/');
       });
     } else
-      this.postService
-        .updatePost(this.postForm.value)
-        .subscribe(() => {
-          // navigates user back to homepage
-          this.router.navigateByUrl('/');
-        });
+      this.postService.updatePost(this.postForm.value).subscribe(() => {
+        // navigates user back to homepage
+        this.router.navigateByUrl('/');
+      });
   }
 }

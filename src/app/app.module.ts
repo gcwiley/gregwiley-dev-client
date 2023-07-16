@@ -24,16 +24,16 @@ import { PipesModule } from './pipes/pipes.module';
 import { AppComponent } from './app.component';
 
 // Page Components
-import { PageComponentsModule } from './pages/pages.module';
+import { PageComponentsModule } from './pages';
 
 // Shared Components
-import { SharedComponentsModule } from './shared/shared.module';
+import { SharedComponentsModule } from './shared';
 
 // Project Components
-import { ProjectComponentsModule } from './projects/projects.module';
+import { ProjectComponentsModule } from './projects';
 
 // POST COMPONENTS
-import { PostComponentsModule } from './posts/post.module';
+import { PostComponentsModule } from './posts';
 
 @NgModule({
 	declarations: [AppComponent],

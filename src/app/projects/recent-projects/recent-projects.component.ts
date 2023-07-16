@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+// import angular material
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+
 // import the project service
 import { ProjectService } from '../../services/project.service';
 
@@ -7,22 +11,24 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from 'src/app/types/project.interface';
 
 @Component({
-	selector: 'app-recent-projects',
-	templateUrl: './recent-projects.component.html',
-	styleUrls: ['./recent-projects.component.scss'],
+  selector: 'app-recent-projects',
+  templateUrl: './recent-projects.component.html',
+  styleUrls: ['./recent-projects.component.scss'],
+  standalone: true,
+  imports: [MatCardModule, MatListModule],
 })
 export class RecentProjectsComponent implements OnInit {
-	recentProjects!: Project[];
+  recentProjects!: Project[];
 
-	constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService) {}
 
-	ngOnInit(): void {
-		this.getRecentProjects();
-	}
+  ngOnInit(): void {
+    this.getRecentProjects();
+  }
 
-	getRecentProjects(): void {
-		this.projectService
-			.getRecentProjects()
-			.subscribe((recentProjects) => (this.recentProjects = recentProjects));
-	}
+  getRecentProjects(): void {
+    this.projectService
+      .getRecentProjects()
+      .subscribe((recentProjects) => (this.recentProjects = recentProjects));
+  }
 }

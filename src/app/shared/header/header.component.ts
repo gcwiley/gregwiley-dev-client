@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 	selector: 'app-header',
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.scss'],
+	standalone: true,
 })
 export class HeaderComponent implements OnInit {
 	isDark: boolean | undefined;

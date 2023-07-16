@@ -1,20 +1,15 @@
 <app-header></app-header>
 
 <div class="container">
-  <main class="main-content">
-    <section class="section-content">
-      <article class="article-content">
-        <h3 class="mat-headline-4">About Me</h3>
-        <p class="mat-headline-5">{{ biographyText }}</p>
-      </article>
-    </section>
-  </main>
+  <mat-grid-list [cols]="cols" [rowHeight]="rowHeight">
+    <mat-grid-tile>
+      <mat-card> About Me Text goes here </mat-card>
+    </mat-grid-tile>
 
-  <aside class="aside-content">
-    <section class="section-content">
-      <app-topic-list></app-topic-list>
-    </section>
-  </aside>
+    <mat-grid-tile>
+      <mat-card> My skills section goes here </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
 
 <app-footer></app-footer>
