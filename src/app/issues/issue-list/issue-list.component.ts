@@ -9,6 +9,8 @@ import { IssueService } from 'src/app/services/issue.service';
   selector: 'app-issue-list',
   templateUrl: './issue-list.component.html',
   styleUrls: ['./issue-list.component.scss'],
+  standalone: true,
+  
 })
 export class IssueListComponent implements OnInit {
   // columns to display

@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // used for both type of Forms
+
+// import angular material
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 // import the project service
 import { ProjectService } from '../../services/project.service';
@@ -14,12 +21,21 @@ import {
 } from '../../types/project.interface';
 
 // import the project data values
-import { PROJECT_STATUS, PROJECT_CATAGORIES, PROJECT_LANGUAGE } from '../../data/project-data'
+import { PROJECT_STATUS, PROJECT_CATAGORIES, PROJECT_LANGUAGE } from '../../data/project-data';
 
 @Component({
   selector: 'app-project-form',
   templateUrl: './project-form.component.html',
   styleUrls: ['./project-form.component.scss'],
+  standalone: true,
+  imports: [
+    MatCardModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class ProjectFormComponent implements OnInit {
   public mode = 'create';

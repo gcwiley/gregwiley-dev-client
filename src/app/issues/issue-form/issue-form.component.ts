@@ -15,6 +15,7 @@ import { ISSUE_CATEGORY, ISSUE_STATUS } from 'src/app/data/issue-data';
   selector: 'app-issue-form',
   templateUrl: './issue-form.component.html',
   styleUrls: ['./issue-form.component.scss'],
+  standalone: true,
 })
 export class IssueFormComponent implements OnInit {
   public mode = 'create';

@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // used for both type of Forms
+import { RouterModule } from '@angular/router';
 
 // import angular material
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+
+// import pipe
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 // import the project service
 import { ProjectService } from '../../services/project.service';
@@ -16,7 +22,15 @@ import { Project } from '../../types/project.interface';
   templateUrl: './project-grid.component.html',
   styleUrls: ['./project-grid.component.scss'],
   standalone: true,
-  imports: [MatGridListModule, MatCardModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    MatGridListModule,
+    MatCardModule,
+    MatIconModule,
+    PipesModule,
+  ],
 })
 export class ProjectGridComponent implements OnInit {
   // creating member variables

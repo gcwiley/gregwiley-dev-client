@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
 
+// import shared components
+import { HeaderComponent, FooterComponent,  } from 'src/app/shared';
+
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
+  standalone: true,
+  imports: [HeaderComponent, FooterComponent]
 })
 export class MainPageComponent {
   titleText = 'Things I’ve made trying to put my dent in the universe.';

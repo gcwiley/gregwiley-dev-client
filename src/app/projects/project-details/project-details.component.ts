@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+// import angular material modules
+import { MatListModule } from '@angular/material/list';
+
 // import the project type
 import { Project } from '../../types/project.interface';
 
@@ -11,6 +14,8 @@ import { ProjectService } from '../../services/project.service';
   selector: 'app-project-details',
   templateUrl: './project-details.component.html',
   styleUrls: ['./project-details.component.scss'],
+  standalone: true,
+  imports: [MatListModule],
 })
 export class ProjectDetailsComponent implements OnInit {
   project!: Project;

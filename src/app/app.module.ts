@@ -23,36 +23,20 @@ import { PipesModule } from './pipes/pipes.module';
 // Main App Component
 import { AppComponent } from './app.component';
 
-// Page Components
-import { PageComponentsModule } from './pages';
-
-// Shared Components
-import { SharedComponentsModule } from './shared';
-
-// Project Components
-import { ProjectComponentsModule } from './projects';
-
-// POST COMPONENTS
-import { PostComponentsModule } from './posts';
-
 @NgModule({
-	declarations: [AppComponent],
-	imports: [
-		BrowserModule,
-		BrowserAnimationsModule,
-		FormsModule,
-		ReactiveFormsModule,
-		MaterialModule,
-		AppRoutingModule,
-		HttpClientModule,
-		AngularFireModule.initializeApp(environment.firebase),
-		PageComponentsModule,
-		ProjectComponentsModule,
-		SharedComponentsModule,
-		PipesModule,
-		PostComponentsModule,
-	],
-	providers: [],
-	bootstrap: [AppComponent],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    AppRoutingModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    PipesModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

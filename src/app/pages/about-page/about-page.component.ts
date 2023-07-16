@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
-// import angular material
+// import angular material modules
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 
-// import shared component
+// import shared components
 import { HeaderComponent } from 'src/app/shared';
 import { FooterComponent } from 'src/app/shared';
 

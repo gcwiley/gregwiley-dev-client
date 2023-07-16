@@ -1,21 +1,15 @@
 <app-header></app-header>
 
 <div class="container">
-	<main class="main-content">
-		<section class="section-content">
-			<!-- INSERT TEXT HERE -->
-		</section>
-	</main>
-
-	<aside class="aside-content">
-		<section class="section-content">
-			<app-project-details></app-project-details>
-		</section>
-
-		<section class="section-content">
-			<!-- INSERT TEXT HERE -->
-		</section>
-	</aside>
-</div>
+	<mat-grid-list [cols]="cols" [rowHeight]="rowHeight">
+	  <mat-grid-tile>
+		<mat-card> About Me Text goes here </mat-card>
+	  </mat-grid-tile>
+  
+	  <mat-grid-tile>
+		<mat-card> My skills section goes here </mat-card>
+	  </mat-grid-tile>
+	</mat-grid-list>
+  </div>
 
 <app-footer></app-footer>
