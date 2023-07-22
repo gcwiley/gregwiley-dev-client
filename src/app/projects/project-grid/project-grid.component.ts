@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // used for both type of Forms
 import { RouterModule } from '@angular/router';
@@ -7,9 +8,10 @@ import { RouterModule } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
-// import pipe
-import { PipesModule } from 'src/app/pipes/pipes.module';
+// import simple truncate pipe
+import { SimpleTruncatePipe } from 'src/app/pipes/simple-truncate.pipe';
 
 // import the project service
 import { ProjectService } from '../../services/project.service';
@@ -23,13 +25,15 @@ import { Project } from '../../types/project.interface';
   styleUrls: ['./project-grid.component.scss'],
   standalone: true,
   imports: [
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
     MatGridListModule,
     MatCardModule,
     MatIconModule,
-    PipesModule,
+    MatButtonModule,
+    SimpleTruncatePipe,
   ],
 })
 export class ProjectGridComponent implements OnInit {

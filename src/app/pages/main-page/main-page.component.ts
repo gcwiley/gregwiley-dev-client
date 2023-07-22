@@ -1,14 +1,28 @@
 import { Component } from '@angular/core';
 
 // import shared components
-import { HeaderComponent, FooterComponent,  } from 'src/app/shared';
+import {
+  HeaderComponent,
+  FooterComponent,
+  AnnouncmentBannerComponent,
+  HeroComponent,
+} from 'src/app/shared';
+
+// import project grid
+import { ProjectGridComponent } from 'src/app/projects';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
   standalone: true,
-  imports: [HeaderComponent, FooterComponent]
+  imports: [
+    HeaderComponent,
+    FooterComponent,
+    AnnouncmentBannerComponent,
+    HeroComponent,
+    ProjectGridComponent,
+  ],
 })
 export class MainPageComponent {
   titleText = 'Things I’ve made trying to put my dent in the universe.';

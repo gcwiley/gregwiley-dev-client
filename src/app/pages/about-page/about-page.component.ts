@@ -16,12 +16,14 @@ import { FooterComponent } from 'src/app/shared';
   standalone: true,
   imports: [MatGridListModule, MatCardModule, HeaderComponent, FooterComponent],
 })
-export class AboutPageComponent implements OnInit {
-  // creating member variables
-  cols = 4; // Amount of columns in the grid list.
-  rowHeight = '300px'; // row height
-  colspan = 1;
-  rowspan = 1;
+export class AboutPageComponent {
+  
+  // grid list demensions
+  cols = 4; // sets the number of columns in the grid
+  rowHeight = 'fit' ; // sets the height of the rows in the grid
+  gutterSize = '15px'; // sets the gutter size of the grid
+
+  colspan = 3;
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
@@ -59,7 +61,7 @@ export class AboutPageComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {
-    this.layoutChanges();
-  }
+  // ngOnInit(): void {
+  //   this.layoutChanges();
+  // }
 }

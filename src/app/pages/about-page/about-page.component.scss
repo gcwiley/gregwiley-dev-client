@@ -1,46 +1,13 @@
-.container {
-	// background-color: aliceblue;
+mat-grid-list {
+	background-color: aqua;
 	height: 100vh;
-	display: flex;
-	flex-direction: row;
 	max-width: 1200px;
 	margin: auto;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
-.main-content {
-	// background-color: brown;
-	width: 60%;
-
-}
-
-.section-content {
-	// background-color: cadetblue;
-	margin: 1rem;
-	// border: .5px gainsboro solid;
-	border-radius: 10px;
-}
-
-.article-content {
-	// background-color: rgb(11, 52, 38);
-	margin: 1rem;
-}
-
-.aside-content {
-	// background-color: aliceblue;
-	// border: 1px blue solid;
-	width: 40%;
-}
-
-// media queries
-@media (min-width: 45em) {
-	main {
-		display: flex;
-		flex-direction: row;
-	}
-	main article {
-		flex: 2;
-	}
-	main aside {
-		flex: 1;
-	}
+mat-grid-tile {
+//   background-color: cadetblue;
+  border: 1px red solid;
 }

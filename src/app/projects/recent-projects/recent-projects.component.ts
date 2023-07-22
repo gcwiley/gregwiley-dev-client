@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 // import angular material
 import { MatCardModule } from '@angular/material/card';
@@ -15,7 +16,7 @@ import { Project } from 'src/app/types/project.interface';
   templateUrl: './recent-projects.component.html',
   styleUrls: ['./recent-projects.component.scss'],
   standalone: true,
-  imports: [MatCardModule, MatListModule],
+  imports: [CommonModule, MatCardModule, MatListModule],
 })
 export class RecentProjectsComponent implements OnInit {
   recentProjects!: Project[];

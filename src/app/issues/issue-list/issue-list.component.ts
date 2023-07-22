@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+
+// import angualr material modules
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
 
 // import the issue service
@@ -10,7 +15,7 @@ import { IssueService } from 'src/app/services/issue.service';
   templateUrl: './issue-list.component.html',
   styleUrls: ['./issue-list.component.scss'],
   standalone: true,
-  
+  imports: [CommonModule, MatProgressSpinnerModule, MatTableModule],
 })
 export class IssueListComponent implements OnInit {
   // columns to display

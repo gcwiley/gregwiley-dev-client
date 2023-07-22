@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 // import angular material modules
 import { MatCardModule } from '@angular/material/card';
@@ -14,7 +15,7 @@ export interface Topic {
   templateUrl: './topic-list.component.html',
   styleUrls: ['./topic-list.component.scss'],
   standalone: true,
-  imports: [MatCardModule, MatListModule],
+  imports: [CommonModule, MatCardModule, MatListModule],
 })
 export class TopicListComponent {
   topics: Topic[] = [

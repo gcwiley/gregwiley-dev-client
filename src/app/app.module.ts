@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // used for both type of Forms
 import { HttpClientModule } from '@angular/common/http';
 
@@ -17,9 +18,6 @@ import { MaterialModule } from './material.module';
 // App Routing Module
 import { AppRoutingModule } from './app-routing.module';
 
-// import pipes
-import { PipesModule } from './pipes/pipes.module';
-
 // Main App Component
 import { AppComponent } from './app.component';
 
@@ -31,10 +29,10 @@ import { AppComponent } from './app.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    RouterModule,
     AppRoutingModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    PipesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

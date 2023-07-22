@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+
+// import angular material modules
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 // import the issue service
 import { IssueService } from 'src/app/services/issue.service';
@@ -16,6 +22,7 @@ import { ISSUE_CATEGORY, ISSUE_STATUS } from 'src/app/data/issue-data';
   templateUrl: './issue-form.component.html',
   styleUrls: ['./issue-form.component.scss'],
   standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, MatCardModule, MatFormFieldModule, MatSelectModule],
 })
 export class IssueFormComponent implements OnInit {
   public mode = 'create';
