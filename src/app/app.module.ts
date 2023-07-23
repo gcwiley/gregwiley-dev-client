@@ -12,9 +12,6 @@ import { AngularFireModule } from '@angular/fire/compat';
 // Load environment - follow up
 import { environment } from '../environments/environment';
 
-// Angular Material Modules
-import { MaterialModule } from './material.module';
-
 // App Routing Module
 import { AppRoutingModule } from './app-routing.module';
 
@@ -28,7 +25,6 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
     RouterModule,
     AppRoutingModule,
     HttpClientModule,

@@ -16,13 +16,13 @@ import { FooterComponent } from 'src/app/shared';
   standalone: true,
   imports: [MatGridListModule, MatCardModule, HeaderComponent, FooterComponent],
 })
-export class AboutPageComponent {
-  
-  // grid list demensions
+export class AboutPageComponent implements OnInit {
+  // set the default values of the grid list here
   cols = 4; // sets the number of columns in the grid
-  rowHeight = 'fit' ; // sets the height of the rows in the grid
+  rowHeight = 'fit'; // sets the height of the rows in the grid
   gutterSize = '15px'; // sets the gutter size of the grid
 
+  // set the default values of the grid tile here
   colspan = 3;
 
   constructor(private breakpointObserver: BreakpointObserver) {}
@@ -37,31 +37,25 @@ export class AboutPageComponent {
         Breakpoints.HandsetLandscape,
       ])
       .subscribe((result) => {
-        // set the default values
-        this.cols = 4;
-        this.rowHeight = '300px';
-
         const breakpoints = result.breakpoints;
-
         // check to see if viewport is in table portrait mode
         if (breakpoints[Breakpoints.TabletPortrait]) {
-          // set the number of cols to 1
-          this.cols = 1;
+          this.cols = 1; // grid list changes to 1 column
+          this.colspan = 1; // grid tile takes up one column
         } else if (breakpoints[Breakpoints.HandsetPortrait]) {
-          // set the number of cols to 1
           this.cols = 1;
-          this.rowHeight = '300px';
+          this.colspan = 1; // grid tile takes up one column
         } else if (breakpoints[Breakpoints.HandsetLandscape]) {
-          // set the number of cols to 1
           this.cols = 1;
+          this.colspan = 1; // grid tile takes up one column
         } else if (breakpoints[Breakpoints.TabletLandscape]) {
-          // set the number of cols to 2
-          this.cols = 2;
+          this.cols = 1;
+          this.colspan = 1; // grid tile takes up one column
         }
       });
   }
 
-  // ngOnInit(): void {
-  //   this.layoutChanges();
-  // }
+  ngOnInit(): void {
+    this.layoutChanges();
+  }
 }

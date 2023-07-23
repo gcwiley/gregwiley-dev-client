@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms'; // used for both type of Forms
 
 // import angular material modules
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 // import app header
 import { HeaderComponent } from 'src/app/shared';
@@ -27,6 +28,8 @@ import { AuthService } from '../../services/auth.service';
     MatCardModule,
     MatFormFieldModule,
     MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
     HeaderComponent,
   ],
 })

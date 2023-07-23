@@ -1,18 +1,18 @@
 .grid-container {
-  margin: 20px;
+  max-width: 1320px;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .project-card {
   position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
   box-shadow: none;
   border: 1px solid gainsboro;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-between;
   border-radius: 10px;
 }
 

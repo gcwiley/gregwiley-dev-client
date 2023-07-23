@@ -3,5 +3,7 @@
 $my-palette: mat.define-palette(mat.$blue-palette);
 
 .project-details {
-	color: mat.get-color-from-palette($my-palette, 700);
+	background-color: mat.get-color-from-palette($my-palette, 50);
+	color: mat.get-color-from-palette($my-palette, 600);
+	box-shadow: none;
 }

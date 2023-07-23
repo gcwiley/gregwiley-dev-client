@@ -10,6 +10,9 @@ import { MatCardModule } from '@angular/material/card';
 import { HeaderComponent } from 'src/app/shared';
 import { FooterComponent } from 'src/app/shared';
 
+// import project details component
+import { ProjectDetailsComponent } from 'src/app/projects';
+
 // import the project type
 import { Project } from 'src/app/types/project.interface';
 
@@ -21,15 +24,24 @@ import { ProjectService } from 'src/app/services/project.service';
   templateUrl: './details-page.component.html',
   styleUrls: ['./details-page.component.scss'],
   standalone: true,
-  imports: [MatGridListModule, MatCardModule, HeaderComponent, FooterComponent],
+  imports: [
+    MatGridListModule,
+    MatCardModule,
+    HeaderComponent,
+    FooterComponent,
+    ProjectDetailsComponent,
+  ],
 })
 export class DetailsPageComponent implements OnInit {
-  // creating member variables
+  // set the default values of the grid list here
+  cols = 4; // sets the number of columns in the grid
+  rowHeight = 'fit'; // sets the height of the rows in the grid
+  gutterSize = '15px'; // sets the gutter size of the grid
+
+  // set the default values of the grid tile here
+  colspan = 3;
+
   project!: Project;
-  cols = 4; // Amount of columns in the grid list.
-  rowHeight = '300px'; // row height
-  colspan = 1;
-  rowspan = 1;
 
   constructor(
     private route: ActivatedRoute,
@@ -47,32 +59,26 @@ export class DetailsPageComponent implements OnInit {
         Breakpoints.HandsetLandscape,
       ])
       .subscribe((result) => {
-        // set the default values
-        this.cols = 4;
-        this.rowHeight = '300px';
-
         const breakpoints = result.breakpoints;
-
         // check to see if viewport is in table portrait mode
         if (breakpoints[Breakpoints.TabletPortrait]) {
-          // set the number of cols to 1
-          this.cols = 1;
+          this.cols = 1; // grid list changes to 1 column
+          this.colspan = 1; // grid tile takes up one column
         } else if (breakpoints[Breakpoints.HandsetPortrait]) {
-          // set the number of cols to 1
           this.cols = 1;
-          this.rowHeight = '300px';
+          this.colspan = 1; // grid tile takes up one column
         } else if (breakpoints[Breakpoints.HandsetLandscape]) {
-          // set the number of cols to 1
           this.cols = 1;
+          this.colspan = 1; // grid tile takes up one column
         } else if (breakpoints[Breakpoints.TabletLandscape]) {
-          // set the number of cols to 2
-          this.cols = 2;
+          this.cols = 1;
+          this.colspan = 1; // grid tile takes up one column
         }
       });
   }
 
   ngOnInit(): void {
-	this.layoutChanges();
+    this.layoutChanges();
     this.getProject();
   }
 

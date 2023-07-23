@@ -1,15 +1,24 @@
 <app-header></app-header>
 
-<div class="container">
-	<mat-grid-list [cols]="cols" [rowHeight]="rowHeight">
-	  <mat-grid-tile>
-		<mat-card> About Me Text goes here </mat-card>
-	  </mat-grid-tile>
-  
-	  <mat-grid-tile>
-		<mat-card> My skills section goes here </mat-card>
-	  </mat-grid-tile>
-	</mat-grid-list>
-  </div>
+<mat-grid-list class="container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+
+  <mat-grid-tile [colspan]="colspan">
+    <!-- project description section -->
+    <mat-card class="project-description">
+      <mat-card-header>
+        <mat-card-title>{{ project.title }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>{{ project.description }}</p>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <app-project-details></app-project-details>
+  </mat-grid-tile>
+</mat-grid-list>
 
 <app-footer></app-footer>

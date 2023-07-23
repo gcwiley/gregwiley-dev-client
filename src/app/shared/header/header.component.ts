@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Router } from '@angular/router';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 
 // import angular material modules
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -15,7 +15,14 @@ import { MatMenuModule } from '@angular/material/menu';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+  ],
 })
 export class HeaderComponent implements OnInit {
   isDark: boolean | undefined;
