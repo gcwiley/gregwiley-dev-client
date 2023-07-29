@@ -1,14 +1,26 @@
 <app-header></app-header>
 
 <mat-grid-list class="container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
-  <!-- colspan is important! -->
+
   <mat-grid-tile [colspan]="colspan">
-    <mat-card> About Me Text goes here </mat-card>
+
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>About Me</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p class="mat-headline-5">{{ bioText }}</p>
+      </mat-card-content>
+
+    </mat-card>
+
   </mat-grid-tile>
 
-  <mat-grid-tile>
-    <mat-card> My skills section goes here </mat-card>
+  <mat-grid-tile [colspan]="colspan">
+    <app-topic-list class="topic-list"></app-topic-list>
   </mat-grid-tile>
+
 </mat-grid-list>
 
 <app-footer></app-footer>

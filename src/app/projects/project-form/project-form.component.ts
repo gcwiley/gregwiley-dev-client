@@ -6,9 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // used for b
 
 // import angular material
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 // import the project service
 import { ProjectService } from '../../services/project.service';
@@ -32,9 +35,12 @@ import { PROJECT_STATUS, PROJECT_CATAGORIES, PROJECT_LANGUAGE } from '../../data
   imports: [
     CommonModule,
     MatCardModule,
+    MatButtonModule,
     MatFormFieldModule,
+    MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule,
   ],

@@ -1,9 +1,4 @@
-<div class="container mat-elevation-z8">
-  <!-- LOADING SPINNER -->
-  <div class="loading-shade" *ngIf="isLoadingResults">
-    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-    <div>Loading Issue Table</div>
-  </div>
+<div class="container">
 
   <div class="issue-table-container">
     <table mat-table [dataSource]="dataSource">

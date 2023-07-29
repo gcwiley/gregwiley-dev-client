@@ -6,24 +6,31 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 
 // import shared components
-import { HeaderComponent } from 'src/app/shared';
-import { FooterComponent } from 'src/app/shared';
+import { HeaderComponent, FooterComponent } from 'src/app/shared';
+
+// import app topic list
+import { TopicListComponent } from 'src/app/shared';
+
+// import bio text 
+import { biographyText } from 'src/app/data/bio-info';
 
 @Component({
   selector: 'app-about-page',
   templateUrl: './about-page.component.html',
   styleUrls: ['./about-page.component.scss'],
   standalone: true,
-  imports: [MatGridListModule, MatCardModule, HeaderComponent, FooterComponent],
+  imports: [MatGridListModule, MatCardModule, HeaderComponent, FooterComponent, TopicListComponent],
 })
 export class AboutPageComponent implements OnInit {
   // set the default values of the grid list here
-  cols = 4; // sets the number of columns in the grid
+  cols = 6; // sets the number of columns in the grid
   rowHeight = 'fit'; // sets the height of the rows in the grid
-  gutterSize = '15px'; // sets the gutter size of the grid
+  gutterSize = '10px'; // sets the gutter size of the grid
 
   // set the default values of the grid tile here
   colspan = 3;
+
+  bioText = biographyText;
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 

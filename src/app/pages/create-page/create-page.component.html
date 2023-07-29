@@ -1,26 +1,20 @@
 <app-header></app-header>
 
-<div class="container">
-	
-	<main class="main-content">
+<mat-grid-list class="container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
 
-		<section class="section-content">
-
-			<article class="article-content">
-				<app-project-form></app-project-form>
-			</article>
-
-		</section>
-
-	</main>
-
-	<aside class="aside-content">
-		<section class="section-content">
-			<app-recent-projects></app-recent-projects>
-		</section>
-	</aside>
-
-</div>
+	<mat-grid-tile [colspan]="colspan">
+  
+	  <mat-card>
+		<app-project-form></app-project-form>
+	  </mat-card>
+  
+	</mat-grid-tile>
+  
+	<mat-grid-tile>
+	  <app-recent-projects></app-recent-projects>
+	</mat-grid-tile>
+  
+  </mat-grid-list>
 
 <app-footer></app-footer>
 

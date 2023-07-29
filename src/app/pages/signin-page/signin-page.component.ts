@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 // import angular material modules
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
@@ -26,6 +27,7 @@ import { AuthService } from '../../services/auth.service';
     CommonModule,
     ReactiveFormsModule,
     MatCardModule,
+    MatInputModule,
     MatFormFieldModule,
     MatCheckboxModule,
     MatButtonModule,

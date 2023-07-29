@@ -6,12 +6,13 @@ import { map, shareReplay } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
-// import angular material
+// import angular material modules
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 // import project list
 import { ProjectListComponent } from 'src/app/projects';
@@ -28,6 +29,7 @@ import { ProjectListComponent } from 'src/app/projects';
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
+    MatButtonModule,
     ProjectListComponent,
   ],
 })

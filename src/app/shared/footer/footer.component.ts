@@ -11,4 +11,6 @@ export class FooterComponent {
   version = VERSION.full;
 
   year = new Date().getFullYear();
+
+  
 }

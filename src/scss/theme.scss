@@ -65,7 +65,7 @@ $custom-typography: mat.define-typography-config(
   $headline-3: mat.define-typography-level(48px, 1, 200, $letter-spacing: 0px),
   $headline-4:
     mat.define-typography-level(34px, 1, 200, $letter-spacing: 0.25px),
-  $headline-5: mat.define-typography-level(24px, 1, 200, $letter-spacing: 0px),
+  $headline-5: mat.define-typography-level(24px, 1, 200, $letter-spacing: 0.15px),
   $headline-6:
     mat.define-typography-level(20px, 1, 400, $letter-spacing: 0.15px),
   $subtitle-1: mat.define-typography-level(16px, 1, 400, $letter-spacing: 0.2px),

@@ -7,8 +7,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 
 // import shared components
-import { HeaderComponent } from 'src/app/shared';
-import { FooterComponent } from 'src/app/shared';
+import { HeaderComponent, FooterComponent } from 'src/app/shared';
 
 // import project details component
 import { ProjectDetailsComponent } from 'src/app/projects';

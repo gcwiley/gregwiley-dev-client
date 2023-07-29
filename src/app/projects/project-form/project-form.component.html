@@ -6,87 +6,100 @@
       <mat-card-title>New Project</mat-card-title>
     </mat-card-header>
 
-    <!-- PROJECT TITLE (title)-->
-    <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Project Title</mat-label>
-      <input matInput type="text" formControlName="title" />
-      <mat-error *ngIf="projectForm.controls['title'].hasError('required')"
-        >Please enter a project title</mat-error
-      >
-    </mat-form-field>
+    <!-- CARD CONTENT -->
+    <mat-card-content>
+      <!-- PROJECT TITLE (title)-->
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Project Title</mat-label>
+        <input matInput type="text" formControlName="title" />
+        <mat-error *ngIf="projectForm.controls['title'].hasError('required')"
+          >Please enter a project title</mat-error
+        >
+      </mat-form-field>
 
-    <!-- PROJECT STATUS (status)-->
-    <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Status</mat-label>
-      <mat-select formControlName="status">
-        <mat-option *ngFor="let status of statues" [value]="status.value">
-          {{ status.viewValue }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="projectForm.controls['status'].hasError('required')"
-        >Please enter a project status</mat-error
-      >
-    </mat-form-field>
+      <div class="row">
+        <div class="col">
+          <!-- PROJECT STATUS (status)-->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status">
+              <mat-option *ngFor="let status of statues" [value]="status.value">
+                {{ status.viewValue }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="projectForm.controls['status'].hasError('required')"
+              >Please enter a project status</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <!-- PROJECT CATEGORY (category) -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Project Category</mat-label>
+            <mat-select formControlName="category">
+              <mat-option *ngFor="let category of categories">{{ category.viewValue }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="projectForm.controls['category'].hasError('required')"
+              >Please enter a project category.</mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
 
-    <!-- PROJECT CATEGORY (category) -->
-    <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Project Category</mat-label>
-      <mat-select formControlName="category">
-        <mat-option *ngFor="let category of categories">{{ category.viewValue }}</mat-option>
-      </mat-select>
-      <mat-error *ngIf="projectForm.controls['category'].hasError('required')"
-        >Please enter a project category.</mat-error
-      >
-    </mat-form-field>
+      <div class="row">
+        <div class="col">
+          <!-- PROJECT START DATE (startDate)-->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Project Start Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="startDate" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="projectForm.controls['status'].hasError('required')"
+              >Please enter a project start date.</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <!-- PROGRAMMING LANGUAGE (language)-->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Programming Language</mat-label>
+            <mat-select formControlName="language">
+              <mat-option *ngFor="let language of languages">{{ language.viewValue }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="projectForm.controls['language'].hasError('required')"
+              >Please specify the programming language of project.</mat-error
+            >
+          </mat-form-field>
+        </div>
+      </div>
 
-    <!-- PROJECT START DATE (startDate)-->
-    <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Project Start Date</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="startDate" />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="projectForm.controls['status'].hasError('required')"
-        >Please enter a project start date.</mat-error
-      >
-    </mat-form-field>
+      <!-- LIVE URL (liveUrl)-->
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Production URL</mat-label>
+        <input matInput type="url" formControlName="liveUrl" />
+        <mat-error *ngIf="projectForm.controls['liveUrl'].hasError('required')"
+          >Please provide a URL of the project.</mat-error
+        >
+      </mat-form-field>
 
-    <!-- PROGRAMMING LANGUAGE (language)-->
-    <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Programming Language</mat-label>
-      <mat-select formControlName="language">
-        <mat-option *ngFor="let language of languages">{{ language.viewValue }}</mat-option>
-      </mat-select>
-      <mat-error *ngIf="projectForm.controls['language'].hasError('required')"
-        >Please specify the programming language of project.</mat-error
-      >
-    </mat-form-field>
+      <!-- GIT URL (gitUrl)-->
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>GitHub URL</mat-label>
+        <input matInput type="url" formControlName="gitUrl" />
+        <mat-error *ngIf="projectForm.controls['gitUrl'].hasError('required')"
+          >Please provide the GitHub URL of the project.</mat-error
+        >
+      </mat-form-field>
 
-    <!-- LIVE URL (liveUrl)-->
-    <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Production URL</mat-label>
-      <input matInput type="url" formControlName="liveUrl" />
-      <mat-error *ngIf="projectForm.controls['liveUrl'].hasError('required')"
-        >Please provide a URL of the project.</mat-error
-      >
-    </mat-form-field>
-
-    <!-- GIT URL (gitUrl)-->
-    <mat-form-field class="full-width" appearance="outline">
-      <mat-label>GitHub URL</mat-label>
-      <input matInput type="url" formControlName="gitUrl" />
-      <mat-error *ngIf="projectForm.controls['gitUrl'].hasError('required')"
-        >Please provide the GitHub URL of the project.</mat-error
-      >
-    </mat-form-field>
-
-    <!-- DESCRIPTION (description)-->
-    <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Project Description</mat-label>
-      <textarea matInput rows="7" formControlName="description"></textarea>
-      <mat-error *ngIf="projectForm.controls['description'].hasError('required')"
-        >Please provide a project description.</mat-error
-      >
-    </mat-form-field>
+      <!-- DESCRIPTION (description)-->
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Project Description</mat-label>
+        <textarea matInput rows="7" formControlName="description"></textarea>
+        <mat-error *ngIf="projectForm.controls['description'].hasError('required')"
+          >Please provide a project description.</mat-error
+        >
+      </mat-form-field>
+    </mat-card-content>
 
     <mat-card-actions>
       <button mat-flat-button color="primary" type="submit" [disabled]="!projectForm.valid">

@@ -1,14 +1,13 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 // import angular material modules
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
 
 // import the project service
 import { ProjectService } from '../../services/project.service';
@@ -28,9 +27,9 @@ import { Project } from 'src/app/types/project.interface';
     ]),
   ],
   standalone: true,
-  imports: [NgFor, NgIf, MatTableModule, MatIconModule, MatButtonModule],
+  imports: [CommonModule, MatTableModule, MatIconModule, MatButtonModule],
 })
-export class ProjectListComponent implements OnInit, AfterViewInit {
+export class ProjectListComponent implements OnInit {
   // set the data source
   dataSource = new MatTableDataSource<Project>();
 
@@ -40,8 +39,6 @@ export class ProjectListComponent implements OnInit, AfterViewInit {
   // colums to display with expand
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
 
-  @ViewChild(MatSort) sort!: MatSort;
-
   expandedProject!: Project | null;
 
   constructor(private projectService: ProjectService, private router: Router) {}
@@ -49,11 +46,6 @@ export class ProjectListComponent implements OnInit, AfterViewInit {
   // this method executes right away
   ngOnInit(): void {
     this.getProjects();
-  }
-
-  // this method executes after the view is done rendering
-  ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
   }
 
   // gets all projects from service
