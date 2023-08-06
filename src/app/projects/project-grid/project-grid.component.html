@@ -13,8 +13,10 @@
 
       <span class="spacer"></span>
 
+      <mat-divider></mat-divider>
+
       <mat-card-actions>
-        <a mat-button color="primary" routerLink="/projects/{{ project._id }}">OPEN</a>
+        <a mat-button color="accent" routerLink="/projects/{{ project._id }}">VIEW PROJECT</a>
         <span class="spacer"></span>
         <a mat-icon-button color="primary" href="{{ project.gitUrl }}" disabled>
           <mat-icon>code</mat-icon>

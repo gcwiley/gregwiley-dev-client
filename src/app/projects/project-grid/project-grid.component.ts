@@ -9,6 +9,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 
 // import simple truncate pipe
 import { SimpleTruncatePipe } from 'src/app/pipes/simple-truncate.pipe';
@@ -33,6 +34,7 @@ import { Project } from '../../types/project.interface';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
+    MatDividerModule,
     SimpleTruncatePipe,
   ],
 })
@@ -43,10 +45,10 @@ export class ProjectGridComponent implements OnInit {
   // set up the grid list demensions
   cols = 4; // Amount of columns in the grid list.
   rowHeight = '300px'; // row height
-  gutterSize = '15px'; 
+  gutterSize = '15px';
 
   // set up the grid list dimensions
-  colspan = 1; // comment 
+  colspan = 1; // comment
   rowspan = 1; // comment
 
   constructor(
