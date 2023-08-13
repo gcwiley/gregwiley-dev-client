@@ -1,5 +1,5 @@
 // import the project interfaces
-import { ProjectStatus, ProjectCategory, ProjectLanguage } from '../types/project.interface';
+import { ProjectStatus, ProjectCategory, ProjectLanguage } from '../../app/types/project.interface';
 
 // define the data values for project status
 export const PROJECT_STATUS: ProjectStatus[] = [

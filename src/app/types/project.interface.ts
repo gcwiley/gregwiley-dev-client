@@ -2,7 +2,7 @@
 
 // define the project interface
 export interface Project {
-  _id?: string;
+  _id?: string | null;
   title: string;
   status: string;
   category: string;

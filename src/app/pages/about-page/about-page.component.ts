@@ -12,7 +12,7 @@ import { HeaderComponent, FooterComponent } from 'src/app/shared';
 import { TopicListComponent } from 'src/app/shared';
 
 // import bio text 
-import { biographyText } from 'src/app/data/bio-info';
+import { biographyText } from 'src/assets/data/bio-info';
 
 @Component({
   selector: 'app-about-page',
