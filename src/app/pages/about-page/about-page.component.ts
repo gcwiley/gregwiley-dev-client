@@ -5,13 +5,13 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 
-// import shared components
-import { HeaderComponent, FooterComponent } from 'src/app/shared';
+// import the shared components
+import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from 'src/app/shared';
 
 // import app topic list
 import { TopicListComponent } from 'src/app/shared';
 
-// import bio text 
+// import bio text
 import { biographyText } from 'src/assets/data/bio-info';
 
 @Component({
@@ -19,13 +19,20 @@ import { biographyText } from 'src/assets/data/bio-info';
   templateUrl: './about-page.component.html',
   styleUrls: ['./about-page.component.scss'],
   standalone: true,
-  imports: [MatGridListModule, MatCardModule, HeaderComponent, FooterComponent, TopicListComponent],
+  imports: [
+    MatGridListModule,
+    MatCardModule,
+    HeaderComponent,
+    AnnouncementBannerComponent,
+    FooterComponent,
+    TopicListComponent,
+  ],
 })
 export class AboutPageComponent implements OnInit {
   // set the default values of the grid list here
-  cols = 6; // sets the number of columns in the grid
+  cols = 4; // sets the number of columns in the grid
   rowHeight = 'fit'; // sets the height of the rows in the grid
-  gutterSize = '10px'; // sets the gutter size of the grid
+  gutterSize = '25px'; // sets the gutter size of the grid
 
   // set the default values of the grid tile here
   colspan = 3;

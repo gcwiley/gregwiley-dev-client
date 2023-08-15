@@ -6,17 +6,14 @@
         <mat-card-subtitle>{{ project.category }}</mat-card-subtitle>
       </mat-card-header>
 
-      <!-- card content -->
       <mat-card-content>
         <p>{{ project.description }}</p>
       </mat-card-content>
 
       <span class="spacer"></span>
 
-      <mat-divider></mat-divider>
-
       <mat-card-actions>
-        <a mat-button color="accent" routerLink="/projects/{{ project._id }}">VIEW PROJECT</a>
+        <a mat-button color="accent" routerLink="/projects/{{ project._id }}">VIEW</a>
         <span class="spacer"></span>
         <a mat-icon-button color="primary" href="{{ project.gitUrl }}" disabled>
           <mat-icon>code</mat-icon>

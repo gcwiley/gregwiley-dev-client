@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import {
   HeaderComponent,
   FooterComponent,
-  AnnouncmentBannerComponent,
+  AnnouncementBannerComponent,
   HeroComponent,
 } from 'src/app/shared';
 
@@ -19,7 +19,7 @@ import { ProjectGridComponent } from 'src/app/projects';
   imports: [
     HeaderComponent,
     FooterComponent,
-    AnnouncmentBannerComponent,
+    AnnouncementBannerComponent,
     HeroComponent,
     ProjectGridComponent,
   ],

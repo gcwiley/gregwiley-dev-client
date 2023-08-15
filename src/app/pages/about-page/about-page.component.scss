@@ -2,6 +2,8 @@
   height: 100vh;
   max-width: 1320px;
   margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 // mat-grid-tile {
@@ -10,12 +12,8 @@
 // }
 
 .about-me-text {
-  position: absolute;
-  top: 25px;
-  left: 0px;
-  right: 15px;
-  bottom: 15px;
-
+  height: 100%;
+  width: 100%;
   padding: 1.5rem;
   box-shadow: none;
   border: 1px gainsboro solid;
@@ -23,8 +21,6 @@
 }
 
 .topic-list {
-  position: absolute;
-  top: 25px;
-  left: 15px;
-  right: 0px;
+  height: 100%;
+  width: 100%;
 }

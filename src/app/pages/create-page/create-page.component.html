@@ -1,20 +1,13 @@
 <app-header></app-header>
 
 <mat-grid-list class="container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+  <mat-grid-tile [colspan]="colspan">
+      <app-project-form></app-project-form>
+  </mat-grid-tile>
 
-	<mat-grid-tile [colspan]="colspan">
-  
-	  <mat-card>
-		<app-project-form></app-project-form>
-	  </mat-card>
-  
-	</mat-grid-tile>
-  
-	<mat-grid-tile>
-	  <app-recent-projects></app-recent-projects>
-	</mat-grid-tile>
-  
-  </mat-grid-list>
+  <mat-grid-tile>
+    <app-recent-projects></app-recent-projects>
+  </mat-grid-tile>
+</mat-grid-list>
 
 <app-footer></app-footer>
-

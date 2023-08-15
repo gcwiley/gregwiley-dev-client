@@ -7,4 +7,6 @@ $my-palette: mat.define-palette(mat.$blue-palette);
 	border: 0.5px gainsboro solid;
 	background: mat.get-color-from-palette($my-palette, 50);
 	color: mat.get-color-from-palette($my-palette, 700);
+	height: 100%;
+	width: 100%;
 }

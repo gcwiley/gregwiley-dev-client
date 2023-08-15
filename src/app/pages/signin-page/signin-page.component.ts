@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 // import app header
-import { HeaderComponent, AnnouncmentBannerComponent, FooterComponent } from 'src/app/shared';
+import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from 'src/app/shared';
 
 // import the auth service
 import { AuthService } from '../../services/auth.service';
@@ -33,7 +33,7 @@ import { AuthService } from '../../services/auth.service';
     MatButtonModule,
     MatIconModule,
     HeaderComponent,
-    AnnouncmentBannerComponent,
+    AnnouncementBannerComponent,
     FooterComponent,
   ],
 })

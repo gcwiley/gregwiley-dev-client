@@ -17,9 +17,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Main App Component
 import { AppComponent } from './app.component';
+import { ProfileComponent } from './shared/profile/profile.component';
+import { ProjectDescriptionComponent } from './projects/project-description/project-description.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ProfileComponent, ProjectDescriptionComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

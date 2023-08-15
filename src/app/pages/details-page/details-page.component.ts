@@ -7,7 +7,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 
 // import shared components
-import { HeaderComponent, FooterComponent } from 'src/app/shared';
+import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from 'src/app/shared';
 
 // import project details component
 import { ProjectDetailsComponent } from 'src/app/projects';
@@ -27,6 +27,7 @@ import { ProjectService } from 'src/app/services/project.service';
     MatGridListModule,
     MatCardModule,
     HeaderComponent,
+    AnnouncementBannerComponent,
     FooterComponent,
     ProjectDetailsComponent,
   ],

@@ -25,7 +25,7 @@ import {
 } from '../../types/project.interface';
 
 // import the project data values
-import { PROJECT_STATUS, PROJECT_CATAGORIES, PROJECT_LANGUAGE } from '../../../assets/data/project-data';
+import { PROJECT_STATUS, PROJECT_LANGUAGE, PROJECT_CATAGORIES } from '../../../assets/data/project-data';
 
 @Component({
   selector: 'app-project-form',
