@@ -1,10 +1,15 @@
-@use "@angular/material" as mat;
+@use '@angular/material' as mat;
 
 $my-palette: mat.define-palette(mat.$blue-palette);
 
 .project-details {
-	background-color: mat.get-color-from-palette($my-palette, 50);
-	color: mat.get-color-from-palette($my-palette, 600);
-	box-shadow: none;
-	border-radius: 10px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  margin: 5px;
+  background-color: mat.get-color-from-palette($my-palette, 50);
+  color: mat.get-color-from-palette($my-palette, 600);
+  box-shadow: none;
+  border-radius: 10px;
 }

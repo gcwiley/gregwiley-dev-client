@@ -6,7 +6,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 
 // import shared components
-import { HeaderComponent, FooterComponent } from 'src/app/shared';
+import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from 'src/app/shared';
 
 // import project components
 import { ProjectFormComponent, RecentProjectsComponent } from 'src/app/projects';
@@ -20,6 +20,7 @@ import { ProjectFormComponent, RecentProjectsComponent } from 'src/app/projects'
     MatGridListModule,
     MatCardModule,
     HeaderComponent,
+    AnnouncementBannerComponent,
     FooterComponent,
     ProjectFormComponent,
     RecentProjectsComponent,
@@ -39,12 +40,7 @@ export class CreatePageComponent implements OnInit {
   // responsive code
   layoutChanges(): void {
     this.breakpointObserver
-      .observe([
-        Breakpoints.TabletPortrait,
-        Breakpoints.TabletLandscape,
-        Breakpoints.HandsetPortrait,
-        Breakpoints.HandsetLandscape,
-      ])
+      .observe([Breakpoints.TabletPortrait, Breakpoints.TabletLandscape, Breakpoints.HandsetPortrait, Breakpoints.HandsetLandscape])
       .subscribe((result) => {
         const breakpoints = result.breakpoints;
         // check to see if viewport is in table portrait mode

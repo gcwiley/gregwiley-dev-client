@@ -10,7 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from 'src/app/shared';
 
 // import project details component
-import { ProjectDetailsComponent } from 'src/app/projects';
+import { ProjectDetailsComponent, ProjectDescriptionComponent } from 'src/app/projects';
 
 // import the project type
 import { Project } from 'src/app/types/project.interface';
@@ -30,6 +30,7 @@ import { ProjectService } from 'src/app/services/project.service';
     AnnouncementBannerComponent,
     FooterComponent,
     ProjectDetailsComponent,
+    ProjectDescriptionComponent,
   ],
 })
 export class DetailsPageComponent implements OnInit {
@@ -43,21 +44,12 @@ export class DetailsPageComponent implements OnInit {
 
   project!: Project;
 
-  constructor(
-    private route: ActivatedRoute,
-    private projectService: ProjectService,
-    private breakpointObserver: BreakpointObserver
-  ) {}
+  constructor(private route: ActivatedRoute, private projectService: ProjectService, private breakpointObserver: BreakpointObserver) {}
 
   // responsive code
   layoutChanges(): void {
     this.breakpointObserver
-      .observe([
-        Breakpoints.TabletPortrait,
-        Breakpoints.TabletLandscape,
-        Breakpoints.HandsetPortrait,
-        Breakpoints.HandsetLandscape,
-      ])
+      .observe([Breakpoints.TabletPortrait, Breakpoints.TabletLandscape, Breakpoints.HandsetPortrait, Breakpoints.HandsetLandscape])
       .subscribe((result) => {
         const breakpoints = result.breakpoints;
         // check to see if viewport is in table portrait mode
