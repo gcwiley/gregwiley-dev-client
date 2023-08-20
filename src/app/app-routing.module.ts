@@ -10,6 +10,8 @@ import {
   CreatePageComponent,
   DashboardComponent,
   DetailsPageComponent,
+  FeedbackPageComponent,
+  IssuesPageComponent,
   MainPageComponent,
   NotFoundPageComponent,
   SigninComponent,
@@ -31,6 +33,8 @@ const routes: Routes = [
   },
   { path: 'signin', component: SigninComponent },
   { path: 'about', component: AboutPageComponent },
+  { path: 'feedback', component: FeedbackPageComponent },
+  { path: 'issues', component: IssuesPageComponent },
   { path: 'admin', component: DashboardComponent, canActivate: [RouteGuard] },
   { path: '**', component: NotFoundPageComponent },
 ];

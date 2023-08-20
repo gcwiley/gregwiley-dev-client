@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // used for both type of Forms
 
 // import angular material
 import { MatCardModule } from '@angular/material/card';

@@ -1,5 +1,5 @@
 // import the issue category and status interface
-import { IssueCategory, IssueStatus } from '../types/issue.interface';
+import { IssueCategory, IssueStatus } from '../../app/types/issue.interface';
 
 // define the data values for issue "category"
 export const ISSUE_CATEGORY: IssueCategory[] = [
