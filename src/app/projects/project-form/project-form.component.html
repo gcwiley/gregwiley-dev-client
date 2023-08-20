@@ -39,7 +39,9 @@
             <mat-error *ngIf="projectForm.controls['category'].hasError('required')">Please enter a project category.</mat-error>
           </mat-form-field>
         </div>
+      </div>
 
+      <div class="row">
         <div class="col">
           <!-- PROJECT START DATE (startDate)-->
           <mat-form-field class="full-width" appearance="outline">
@@ -92,7 +94,7 @@
           <!-- DESCRIPTION (description)-->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Project Description</mat-label>
-            <textarea matInput rows="7" formControlName="description"></textarea>
+            <textarea matInput rows="6" formControlName="description"></textarea>
             <mat-error *ngIf="projectForm.controls['description'].hasError('required')">Please provide a project description.</mat-error>
           </mat-form-field>
         </div>

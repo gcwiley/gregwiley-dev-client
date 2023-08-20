@@ -1,12 +1,15 @@
-@use "@angular/material" as mat;
+@use '@angular/material' as mat;
 
 $my-palette: mat.define-palette(mat.$blue-palette);
 
 .recent-projects {
-	box-shadow: none;
-	border: 0.5px gainsboro solid;
-	background: mat.get-color-from-palette($my-palette, 50);
-	color: mat.get-color-from-palette($my-palette, 700);
-	height: 100%;
-	width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  margin: 5px;
+  background-color: mat.get-color-from-palette($my-palette, 50);
+  color: mat.get-color-from-palette($my-palette, 700);
+  box-shadow: none;
+  border-radius: 10px;
 }
