@@ -33,7 +33,7 @@ const routes: Routes = [
   },
   { path: 'signin', component: SigninComponent },
   { path: 'about', component: AboutPageComponent },
-  { path: 'feedback', component: FeedbackPageComponent },
+  { path: 'submit-feedback', component: FeedbackPageComponent },
   { path: 'issues', component: IssuesPageComponent },
   { path: 'admin', component: DashboardComponent, canActivate: [RouteGuard] },
   { path: '**', component: NotFoundPageComponent },

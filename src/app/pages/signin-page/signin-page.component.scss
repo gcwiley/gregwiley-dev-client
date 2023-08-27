@@ -1,4 +1,9 @@
+@use 'sass:map';
 @use "@angular/material" as mat;
+
+@mixin theme($theme) {
+	$primary: map.get($theme, primary)
+}
 
 $my-palette: mat.define-palette(mat.$blue-palette);
 

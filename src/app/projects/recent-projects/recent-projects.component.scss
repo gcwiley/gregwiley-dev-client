@@ -7,7 +7,7 @@ $my-palette: mat.define-palette(mat.$blue-palette);
   top: 0px;
   left: 0px;
   right: 0px;
-  margin: 5px;
+  margin: 1rem;
   background-color: mat.get-color-from-palette($my-palette, 50);
   color: mat.get-color-from-palette($my-palette, 700);
   box-shadow: none;

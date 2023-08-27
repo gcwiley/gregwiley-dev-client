@@ -7,6 +7,19 @@
 
   <span class="spacer"></span>
 
+  <button mat-icon-button matTooltip="Submit Feedback" [matMenuTriggerFor]="feedbackMenu" aria-label="submit feedback">
+    <mat-icon>help</mat-icon>
+  </button>
+
+  <!-- FEEDBACK MENU -->
+  <mat-menu #feedbackMenu="matMenu">
+    <!-- support page -->
+    <a mat-menu-item routerLink="/submit-feedback">
+      <mat-icon>bug_report</mat-icon>
+      <span>Submit Feedback</span>
+    </a>
+  </mat-menu>
+
   <!-- toggle theme button -->
   <button
     mat-icon-button
@@ -19,11 +32,7 @@
   </button>
 
   <!-- Account Button -->
-  <button
-    mat-icon-button
-    matTooltip="Admin Signin"
-    [matMenuTriggerFor]="menu"
-    aria-label="account menu">
+  <button mat-icon-button matTooltip="Admin Signin" [matMenuTriggerFor]="menu" aria-label="account menu">
     <mat-icon>account_circle</mat-icon>
   </button>
 
@@ -34,12 +43,6 @@
       <a mat-menu-item routerLink="/admin">
         <mat-icon>dashboard</mat-icon>
         <span>Admin Dashboard</span>
-      </a>
-
-      <!-- support page -->
-      <a mat-menu-item routerLink="/feedback">
-        <mat-icon>bug_report</mat-icon>
-        <span>Submit Feedback</span>
       </a>
 
       <!-- sign out button -->
