@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <a mat-icon-button routerLink="/" aria-label="code icon">
-    <mat-icon>code</mat-icon>
+    <mat-icon>home</mat-icon>
   </a>
 
   <span>gregwiley.dev</span>
@@ -39,10 +39,17 @@
   <mat-menu #menu="matMenu">
     <!-- If user is signed in -->
     <ng-container *ngIf="auth.user | async as user; else showSignIn">
+
       <!-- admin dashbord -->
       <a mat-menu-item routerLink="/admin">
         <mat-icon>dashboard</mat-icon>
         <span>Admin Dashboard</span>
+      </a>
+
+      <!-- issue tracker page -->
+      <a mat-menu-item routerLink="/issues">
+        <mat-icon>bug_report</mat-icon>
+        <span>Issue Tracker</span>
       </a>
 
       <!-- sign out button -->

@@ -9,9 +9,9 @@
     [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="/">Home</a>
-      <a mat-list-item href="/create">Create Project</a>
-      <a mat-list-item href="/about">About</a>
+      <a mat-list-item routerLink="/">Home</a>
+      <a mat-list-item routerLink="/create">Create Project</a>
+      <a mat-list-item routerLink="/about">About</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -27,7 +27,7 @@
       </button>
 
       <!-- TITLE -->
-      <span>Admin Dashboard</span>
+      <span>Issue Tracker</span>
 
       <span class="spacer"></span>
 
@@ -50,9 +50,9 @@
           </a>
 
           <!-- support page -->
-          <a mat-menu-item routerLink="/support">
+          <a mat-menu-item routerLink="/issues">
             <mat-icon>bug_report</mat-icon>
-            <span>Support Page</span>
+            <span>Issue Tracker</span>
           </a>
 
           <!-- sign out button -->

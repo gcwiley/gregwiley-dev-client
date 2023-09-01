@@ -8,7 +8,7 @@
     <mat-list-item>
       <div matListItemLine>Project Status</div>
       <div matListItemMeta>
-        <strong>{{ project.status }}</strong>
+        <strong>{{ project.status  | uppercase }}</strong>
       </div>
     </mat-list-item>
 
@@ -16,7 +16,7 @@
     <mat-list-item>
       <div matListItemLine>Project Category</div>
       <div matListItemMeta>
-        <strong>{{ project.category }}</strong>
+        <strong>{{ project.category | uppercase }}</strong>
       </div>
     </mat-list-item>
 

@@ -11,7 +11,7 @@ import { HeaderComponent, AnnouncementBannerComponent, AboutMeComponent, FooterC
 // import app topic list
 import { TopicListComponent } from 'src/app/shared';
 
-// import bio text
+// import the bio text
 import { biographyText } from 'src/assets/data/bio-info';
 
 @Component({

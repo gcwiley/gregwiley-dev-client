@@ -3,7 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 // import angular material modules
@@ -12,6 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 // import app issues list
 import { IssueListComponent } from 'src/app/issues/issue-list/issue-list.component';
@@ -22,11 +23,13 @@ import { IssueListComponent } from 'src/app/issues/issue-list/issue-list.compone
   styleUrls: ['./issues-page.component.scss'],
   standalone: true,
   imports: [CommonModule,
+    RouterModule,
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
+    MatButtonModule,
     IssueListComponent,]
 })
 export class IssuesPageComponent {
