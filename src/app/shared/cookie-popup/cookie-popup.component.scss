@@ -1,0 +1,29 @@
+@use 'sass:math';
+@use '@angular/cdk' as cdk;
+@use '@angular/material' as mat;
+
+$inner-spacing: 16px;
+
+.pop-up {
+  // apply elevation styles using the elevation sass mixen
+  // adds a shadow for elevation level 6 with color blue and 80% of the default opacity.
+  @include mat.elevation(6);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 24px;
+  max-width: 430px;
+  z-index: cdk.$overlay-container-z-index + 1;
+  padding: $inner-spacing $inner-spacing math.div($inner-spacing, 2);
+  border-radius: 4px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin: $inner-spacing math.div($inner-spacing, -2) 0 0;
+
+  .mat-mdc-button {
+    text-transform: uppercase;
+  }
+}

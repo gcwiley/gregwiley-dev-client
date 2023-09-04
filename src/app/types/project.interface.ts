@@ -1,5 +1,3 @@
-// DEFINE THE PROJECT INTERFACES
-
 // define the project interface
 export interface Project {
   _id?: string | null;

@@ -2,13 +2,14 @@
 <app-announcement-banner></app-announcement-banner>
 
 <mat-grid-list class="container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
-
   <mat-grid-tile [colspan]="colspan">
+    <!-- PROJECT DESCRIPTION -->
     <app-project-description></app-project-description>
   </mat-grid-tile>
 
-  <mat-grid-tile >
-    <app-project-details class="project-details"></app-project-details>
+  <mat-grid-tile>
+    <!-- PROJECT DETAILS -->
+    <app-project-details></app-project-details>
   </mat-grid-tile>
 </mat-grid-list>
 

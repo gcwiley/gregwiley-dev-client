@@ -1,0 +1,12 @@
+<mat-card class="recent-posts">
+    <mat-list>
+      <div mat-subheader>Recently Added Projects</div>
+  
+      <mat-list-item *ngFor="let post of recentPosts">
+        <div matListItemLine>{{ post.title }}</div>
+        <div matListItemMeta>
+          <strong>{{ post.createdAt | date }}</strong>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>

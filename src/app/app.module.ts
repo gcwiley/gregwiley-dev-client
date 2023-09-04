@@ -18,6 +18,9 @@ import { AppRoutingModule } from './app-routing.module';
 // Main App Component
 import { AppComponent } from './app.component';
 
+// cookie popup
+import { CookiePopupComponent } from './shared';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -29,6 +32,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
+    CookiePopupComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

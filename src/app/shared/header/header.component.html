@@ -1,26 +1,14 @@
 <mat-toolbar color="primary">
+  
   <a mat-icon-button routerLink="/" aria-label="code icon">
-    <mat-icon>home</mat-icon>
+    <mat-icon>code</mat-icon>
   </a>
 
   <span>gregwiley.dev</span>
 
   <span class="spacer"></span>
 
-  <button mat-icon-button matTooltip="Submit Feedback" [matMenuTriggerFor]="feedbackMenu" aria-label="submit feedback">
-    <mat-icon>help</mat-icon>
-  </button>
-
-  <!-- FEEDBACK MENU -->
-  <mat-menu #feedbackMenu="matMenu">
-    <!-- support page -->
-    <a mat-menu-item routerLink="/submit-feedback">
-      <mat-icon>bug_report</mat-icon>
-      <span>Submit Feedback</span>
-    </a>
-  </mat-menu>
-
-  <!-- toggle theme button -->
+  <!-- toggle theme button - FIX THIS -->
   <button
     mat-icon-button
     (click)="toggleTheme()"
@@ -42,14 +30,14 @@
 
       <!-- admin dashbord -->
       <a mat-menu-item routerLink="/admin">
-        <mat-icon>dashboard</mat-icon>
+        <mat-icon>build</mat-icon>
         <span>Admin Dashboard</span>
       </a>
 
-      <!-- issue tracker page -->
-      <a mat-menu-item routerLink="/issues">
-        <mat-icon>bug_report</mat-icon>
-        <span>Issue Tracker</span>
+      <!-- add new blog post -->
+      <a mat-menu-item routerLink="/admin">
+        <mat-icon>post_add</mat-icon>
+        <span>New Post</span>
       </a>
 
       <!-- sign out button -->
