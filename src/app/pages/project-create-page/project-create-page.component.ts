@@ -12,9 +12,9 @@ import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from 's
 import { ProjectFormComponent, RecentProjectsComponent } from 'src/app/projects';
 
 @Component({
-  selector: 'app-create-page',
-  templateUrl: './create-page.component.html',
-  styleUrls: ['./create-page.component.scss'],
+  selector: 'app-project-create-page',
+  templateUrl: './project-create-page.component.html',
+  styleUrls: ['./project-create-page.component.scss'],
   standalone: true,
   imports: [
     MatGridListModule,
@@ -26,7 +26,7 @@ import { ProjectFormComponent, RecentProjectsComponent } from 'src/app/projects'
     RecentProjectsComponent,
   ],
 })
-export class CreatePageComponent implements OnInit {
+export class ProjectCreatePageComponent implements OnInit {
   // set the default values of the grid list here
   cols = 4; // sets the number of columns in the grid
   rowHeight = 'fit'; // sets the height of the rows in the grid

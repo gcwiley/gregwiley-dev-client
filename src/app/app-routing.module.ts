@@ -6,41 +6,43 @@ import { RouteGuard } from './guards/route.guard';
 
 // import pages
 import {
-  AboutPageComponent,
-  CreatePageComponent,
-  DashboardComponent,
-  DetailsPageComponent,
-  FeedbackPageComponent,
-  IssuesPageComponent,
-  MainPageComponent,
-  NotFoundPageComponent,
-  SigninComponent,
+   AboutPageComponent,
+   BlogPageComponent,
+   DashboardComponent,
+   DetailsPageComponent,
+   MainPageComponent,
+   NotFoundPageComponent,
+   PostCreatePageComponent,
+   ProjectCreatePageComponent,
+   ResourcesPageComponent,
+   SigninComponent,
 } from './pages';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/projects', pathMatch: 'full' },
-  { path: 'projects', component: MainPageComponent, pathMatch: 'full' },
-  { path: 'projects/:id', component: DetailsPageComponent },
-  {
-    path: 'create',
-    component: CreatePageComponent,
-    canActivate: [RouteGuard],
-  },
-  {
-    path: 'edit/:id',
-    component: CreatePageComponent,
-    canActivate: [RouteGuard],
-  },
-  { path: 'signin', component: SigninComponent },
-  { path: 'about', component: AboutPageComponent },
-  { path: 'submit-feedback', component: FeedbackPageComponent },
-  { path: 'issues', component: IssuesPageComponent },
-  { path: 'admin', component: DashboardComponent, canActivate: [RouteGuard] },
-  { path: '**', component: NotFoundPageComponent },
+   { path: '', redirectTo: '/projects', pathMatch: 'full' },
+   { path: 'projects', component: MainPageComponent, pathMatch: 'full' },
+   { path: 'projects/:id', component: DetailsPageComponent },
+   {
+      path: 'create-project',
+      component: ProjectCreatePageComponent,
+      canActivate: [RouteGuard],
+   },
+   { path: 'create-post', component: PostCreatePageComponent, canActivate: [RouteGuard] },
+   {
+      path: 'edit/:id',
+      component: ProjectCreatePageComponent,
+      canActivate: [RouteGuard],
+   },
+   { path: 'signin', component: SigninComponent },
+   { path: 'about', component: AboutPageComponent },
+   { path: 'blog', component: BlogPageComponent },
+   { path: 'resources', component: ResourcesPageComponent },
+   { path: 'admin', component: DashboardComponent, canActivate: [RouteGuard] },
+   { path: '**', component: NotFoundPageComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+   imports: [RouterModule.forRoot(routes)],
+   exports: [RouterModule],
 })
 export class AppRoutingModule {}
