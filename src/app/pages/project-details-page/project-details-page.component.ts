@@ -4,7 +4,6 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
 // import angular material modules
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
 
 // import shared components
 import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from 'src/app/shared';
@@ -19,13 +18,12 @@ import { Project } from 'src/app/types/project.interface';
 import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
-  selector: 'app-details-page',
-  templateUrl: './details-page.component.html',
-  styleUrls: ['./details-page.component.scss'],
+  selector: 'app-project-details-page',
+  templateUrl: './project-details-page.component.html',
+  styleUrls: ['./project-details-page.component.scss'],
   standalone: true,
   imports: [
     MatGridListModule,
-    MatCardModule,
     HeaderComponent,
     AnnouncementBannerComponent,
     FooterComponent,
@@ -33,7 +31,7 @@ import { ProjectService } from 'src/app/services/project.service';
     ProjectDescriptionComponent,
   ],
 })
-export class DetailsPageComponent implements OnInit {
+export class ProjectDetailsPageComponent implements OnInit {
   // set the default values of the grid list here
   cols = 4; // sets the number of columns in the grid
   rowHeight = 'fit'; // sets the height of the rows in the grid

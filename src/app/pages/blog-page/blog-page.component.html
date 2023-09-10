@@ -2,15 +2,14 @@
 <app-announcement-banner></app-announcement-banner>
 
 <mat-grid-list class="container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
-
     <mat-grid-tile [colspan]="colspan">
       <!-- POSTS LIST -->
-      
+      <app-post-list></app-post-list>
     </mat-grid-tile>
   
     <mat-grid-tile>
       <!-- RECENT POSTS -->
-      <app-topic-list></app-topic-list>
+      <app-recent-posts></app-recent-posts>
     </mat-grid-tile>
   
   </mat-grid-list>

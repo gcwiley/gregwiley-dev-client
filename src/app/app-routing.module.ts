@@ -9,7 +9,7 @@ import {
    AboutPageComponent,
    BlogPageComponent,
    DashboardComponent,
-   DetailsPageComponent,
+   ProjectDetailsPageComponent,
    MainPageComponent,
    NotFoundPageComponent,
    PostCreatePageComponent,
@@ -21,7 +21,7 @@ import {
 const routes: Routes = [
    { path: '', redirectTo: '/projects', pathMatch: 'full' },
    { path: 'projects', component: MainPageComponent, pathMatch: 'full' },
-   { path: 'projects/:id', component: DetailsPageComponent },
+   { path: 'projects/:id', component: ProjectDetailsPageComponent },
    {
       path: 'create-project',
       component: ProjectCreatePageComponent,
