@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // used for both type of Forms
 import { RouterModule } from '@angular/router';
 
-// import angular material
+// import angular material modules
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -27,8 +26,6 @@ import { Project } from '../../types/project.interface';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
     RouterModule,
     MatGridListModule,
     MatCardModule,
@@ -44,7 +41,7 @@ export class ProjectGridComponent implements OnInit {
 
   // set up the grid list demensions
   cols = 4; // Amount of columns in the grid list.
-  rowHeight = '300px'; // row height
+  rowHeight = '250px'; // row height
   gutterSize = '0px';
 
   // set up the grid list dimensions

@@ -1,6 +1,6 @@
 // define the post interface
 export interface Post {
-  _id?: string | null;
+  _id?: string | undefined;
   title: string;
   author: string;
   body: string;

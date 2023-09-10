@@ -57,7 +57,7 @@ export class ProjectService {
   }
 
   // GET: recent projects added
-  getRecentProjects(): Observable<Project[]> {
+  getRecentlyCreatedProjects(): Observable<Project[]> {
     return this.http.get<Project[]>('/api/recent-projects');
   }
 

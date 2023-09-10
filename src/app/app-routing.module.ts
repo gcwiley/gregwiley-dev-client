@@ -9,18 +9,19 @@ import {
    AboutPageComponent,
    BlogPageComponent,
    DashboardComponent,
-   ProjectDetailsPageComponent,
    MainPageComponent,
    NotFoundPageComponent,
    PostCreatePageComponent,
    ProjectCreatePageComponent,
+   ProjectDetailsPageComponent,
+   ProjectGridPageComponent,
    ResourcesPageComponent,
    SigninComponent,
 } from './pages';
 
 const routes: Routes = [
-   { path: '', redirectTo: '/projects', pathMatch: 'full' },
-   { path: 'projects', component: MainPageComponent, pathMatch: 'full' },
+   { path: '', component: MainPageComponent },
+   { path: 'projects', component: ProjectGridPageComponent, pathMatch: 'full' },
    { path: 'projects/:id', component: ProjectDetailsPageComponent },
    {
       path: 'create-project',

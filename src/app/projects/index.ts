@@ -1,3 +1,4 @@
+export { FeaturedProjectsComponent } from './featured-projects/featured-projects.component';
 export { ProjectCarouselComponent } from './project-carousel/project-carousel.component';
 export { ProjectCountComponent } from './project-count/project-count.component';
 export { ProjectDescriptionComponent } from './project-description/project-description.component';

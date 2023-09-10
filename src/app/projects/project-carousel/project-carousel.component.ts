@@ -25,7 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 @Directive({
-   selector: '[carousel-item]',
+   selector: '[appCarouselItem]',
    standalone: true,
 })
 export class CarouselItemDirective implements FocusableOption {

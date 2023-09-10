@@ -22,41 +22,41 @@ $dark-warn: mat.define-palette(mat.$red-palette, $default: 900, $lighter: 100, $
 // CUSTOM TOPOGRAPGY
 // font-size
 $custom-typography: mat.define-typography-config(
-  $headline-1: mat.define-typography-level(97px, 1, 100, $letter-spacing: 1.5px),
-  $headline-2: mat.define-typography-level(61px, 1, 100, $letter-spacing: 0.5px),
-  $headline-3: mat.define-typography-level(48px, 1, 200, $letter-spacing: 0px),
-  $headline-4: mat.define-typography-level(34px, 1, 200, $letter-spacing: 0.25px),
-  $headline-5: mat.define-typography-level(24px, 1, 200, $letter-spacing: 0.15px),
-  $headline-6: mat.define-typography-level(20px, 1, 400, $letter-spacing: 0.15px),
-  $subtitle-1: mat.define-typography-level(16px, 1, 400, $letter-spacing: 0.2px),
-  $subtitle-2: mat.define-typography-level(14px, 1, 500, $letter-spacing: 0.15px),
-  $body-1: mat.define-typography-level(20px, 1.5, 200, $letter-spacing: 0.5px),
-  $body-2: mat.define-typography-level(14px, 1, 400, $letter-spacing: 0.25px),
-  $caption: mat.define-typography-level(12px, 1, 400, $letter-spacing: 0.4px),
-  $button: mat.define-typography-level(14px, 1, 500, $letter-spacing: 1.25px),
+   $headline-1: mat.define-typography-level(97px, 1, 100, $letter-spacing: 1.5px),
+   $headline-2: mat.define-typography-level(61px, 1, 100, $letter-spacing: 0.5px),
+   $headline-3: mat.define-typography-level(48px, 1, 200, $letter-spacing: 0px),
+   $headline-4: mat.define-typography-level(34px, 1, 200, $letter-spacing: 0.25px),
+   $headline-5: mat.define-typography-level(24px, 1, 200, $letter-spacing: 0.15px),
+   $headline-6: mat.define-typography-level(20px, 1, 400, $letter-spacing: 0.15px),
+   $subtitle-1: mat.define-typography-level(16px, 1, 400, $letter-spacing: 0.2px),
+   $subtitle-2: mat.define-typography-level(14px, 1, 500, $letter-spacing: 0.15px),
+   $body-1: mat.define-typography-level(20px, 1.5, 200, $letter-spacing: 0.5px),
+   $body-2: mat.define-typography-level(14px, 1, 400, $letter-spacing: 0.25px),
+   $caption: mat.define-typography-level(12px, 1, 400, $letter-spacing: 0.4px),
+   $button: mat.define-typography-level(14px, 1, 500, $letter-spacing: 1.25px),
 );
 
 // define the light theme
 $light-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $light-primary,
-      accent: $light-accent,
-      warn: $light-warn,
-    ),
-    typography: $custom-typography,
-    density: 0,
-  )
+   (
+      color: (
+         primary: $light-primary,
+         accent: $light-accent,
+         warn: $light-warn,
+      ),
+      typography: $custom-typography,
+      density: 0,
+   )
 );
 
 // define the dark theme
 $dark-theme: mat.define-dark-theme(
-  (
-    color: (
-      primary: $dark-primary,
-      accent: $dark-accent,
-    ),
-  )
+   (
+      color: (
+         primary: $dark-primary,
+         accent: $dark-accent,
+      ),
+   )
 );
 
 // apply the light theme as default
@@ -65,6 +65,6 @@ $dark-theme: mat.define-dark-theme(
 
 // apply the dark theme only when the user prefers dark themes
 @media (prefers-color-scheme: dark) {
-  @include mat.core-color($dark-theme);
-  @include mat.button-color($dark-theme);
+   @include mat.core-color($dark-theme);
+   @include mat.button-color($dark-theme);
 }
