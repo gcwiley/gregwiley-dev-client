@@ -6,6 +6,7 @@ export interface Project {
   category: string;
   language: string;
   startDate: string;
+  favoriteProject: boolean;
   liveUrl: string;
   gitUrl: string;
   description: string;

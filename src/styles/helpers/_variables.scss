@@ -1,0 +1,19 @@
+// Border
+$border-color: rgba(0, 0, 0, 0.12) !default;
+
+$borders: (
+   0: 0,
+   1: 1px solid $border-color,
+   2: 2px solid $border-color,
+   4: 4px solid $border-color,
+   8: 8px solid $border-color,
+) !default;
+
+$border-widths: (
+   0: 0,
+   1: 1px,
+   2: 2px,
+   4: 4px,
+   8: 8px,
+) !default;
+

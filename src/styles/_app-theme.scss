@@ -1,0 +1,24 @@
+@use '@angular/material' as mat;
+
+// look this up!
+@use 'sass:map';
+
+// INCLUDE THE THEME MIXENS
+
+// SHARED COMPONENTS THEMES
+@use '../app/shared/header/header-theme' as header;
+
+// PROJECTS COMPONENT THEMES
+@use '../app/projects/recent-projects/recent-projects-theme' as recent-projects;
+@use '../app/projects/project-details/project-details-theme' as project-details;
+
+// Styles for the app that are based on the current theme.
+@mixin theme($theme) {
+
+   $primary: map.get($theme, pimary);
+
+
+   @include header.theme($theme);
+   @include recent-projects.theme($theme);
+   @include project-details.theme($theme);
+}

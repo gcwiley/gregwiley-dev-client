@@ -1,1 +1,44 @@
-// test of scss
+// color and typography styles moved in mixins
+
+// _ underscore indicates that this is a SASS partial file
+
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+// extract the values we need from the theme passed into the mixins
+@mixin color($theme) {
+   // Get the color config from the theme
+   $color-config: mat.get-color-config($theme);
+
+   // get the primary color palette from the color-config
+   $primary-palette: map.get($color-config, 'accent');
+
+   // sets the background color
+   .recent-projects {
+      color: mat.get-color-from-palette($primary-palette, 900);
+      background-color: mat.get-color-from-palette($primary-palette, 50);
+   }
+}
+
+// create a typography mixin
+@mixin typography($theme) {
+   // get the typography config from the theme.
+   $typography-config: mat.get-typography-config($theme);
+
+   .recent-projects {
+      font-family: mat.font-family($typography-config);
+   }
+}
+
+// add a theme mixin that includes both color and typography
+@mixin theme($theme) {
+   $color-config: mat.get-color-config($theme);
+   @if $color-config != null {
+      @include color($theme);
+   }
+
+   $typography-config: mat.get-typography-config($theme);
+   @if $typography-config != null {
+      @include typography($theme);
+   }
+}

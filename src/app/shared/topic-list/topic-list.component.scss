@@ -10,7 +10,7 @@ $my-palette: mat.define-palette(mat.$blue-palette);
   margin: 1rem;
 
   box-shadow: none;
-  border-radius: 15px;
-  background: mat.get-color-from-palette($my-palette, 50);
+  // border-radius: 15px;
+  background-color: mat.get-color-from-palette($my-palette, 50);
   color: mat.get-color-from-palette($my-palette, 700);
 }

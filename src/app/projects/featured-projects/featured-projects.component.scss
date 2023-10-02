@@ -1,9 +1,8 @@
 .grid-container {
-   max-width: 1380px;
+   max-width: 1400px;
    margin: auto;
    margin-top: 25px;
    margin-bottom: 25px;
-   padding: 1rem;
 }
 
 .project-card {
@@ -12,9 +11,10 @@
    left: 0px;
    right: 0px;
    bottom: 0px;
-   box-shadow: none;
-   border: 1px solid gainsboro;
-   // border-radius: 15px;
+   margin: .5rem;
+
+   // box-shadow: none;
+   // border: .5px solid gainsboro;
 }
 
 .spacer {
