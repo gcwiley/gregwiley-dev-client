@@ -53,6 +53,7 @@ $light-theme: mat.define-light-theme(
       density: 0,
    )
 );
+
 // apply the light theme as default
 @include mat.all-component-themes($light-theme);
 @include app-theme.theme($light-theme);
