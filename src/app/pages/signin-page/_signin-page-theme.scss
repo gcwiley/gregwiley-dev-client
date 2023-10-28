@@ -11,7 +11,9 @@
 
    .signin-page-container {
       // read the 500 hue from the primary color palette
-      color: mat.get-color-from-palette($primary-palette, 500);
+      color: mat.get-color-from-palette($primary-palette, 900);
+      // sets the background color
+      background-color: mat.get-color-from-palette($primary-palette, 50);
    }
 }
 

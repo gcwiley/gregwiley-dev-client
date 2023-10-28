@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -13,24 +13,24 @@ import { Project } from '../../types/project.interface';
 import { ProjectService } from '../../services/project.service';
 
 @Component({
-  selector: 'app-project-details',
-  templateUrl: './project-details.component.html',
-  styleUrls: ['./project-details.component.scss'],
-  standalone: true,
-  imports: [CommonModule, MatListModule, MatCardModule],
+   selector: 'app-project-details',
+   templateUrl: './project-details.component.html',
+   styleUrls: ['./project-details.component.scss'],
+   standalone: true,
+   imports: [CommonModule, MatListModule, MatCardModule],
 })
 export class ProjectDetailsComponent implements OnInit {
-  project!: Project;
+   project!: Project;
 
-  constructor(private route: ActivatedRoute, private projectService: ProjectService) {}
+   constructor(private route: ActivatedRoute, private projectService: ProjectService) {}
 
-  ngOnInit(): void {
-    this.getProject();
-  }
+   ngOnInit(): void {
+      this.getProject();
+   }
 
-  // GET project by id
-  getProject(): void {
-    const id = this.route.snapshot.paramMap.get('id') ?? '';
-    this.projectService.getProject(id).subscribe((project) => (this.project = project));
-  }
+   // GET project by id
+   getProject(): void {
+      const id = this.route.snapshot.paramMap.get('id') ?? '';
+      this.projectService.getProject(id).subscribe((project) => (this.project = project));
+   }
 }

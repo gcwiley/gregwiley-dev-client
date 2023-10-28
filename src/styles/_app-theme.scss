@@ -9,11 +9,18 @@
 @use '../app/projects/project-details/project-details-theme';
 
 // PAGE THEMES
+@use '../app/pages/signin-page/signin-page-theme';
+@use '../app/pages/not-found-page/not-found-page-theme.scss';
 
 // Styles for the app that are based on the current theme.
 @mixin theme($theme) {
+   // shared components
    @include header-theme.theme($theme);
-   @include footer-theme.color($theme);
+   @include footer-theme.theme($theme);
+   // projects
    @include recent-projects-theme.theme($theme);
    @include project-details-theme.theme($theme);
+   // pages
+   @include signin-page-theme.theme($theme);
+   @include not-found-page-theme.theme($theme);
 }

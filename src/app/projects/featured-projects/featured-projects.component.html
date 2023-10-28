@@ -6,7 +6,7 @@
 
    <mat-grid-list [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
       <mat-grid-tile *ngFor="let recentProject of recentProjects" [colspan]="colspan" [rowspan]="rowspan">
-         <mat-card class="project-card">
+         <mat-card class="project-card" appearance="raised">
             <mat-card-header>
                <mat-card-title>{{ recentProject.title }}</mat-card-title>
                <mat-card-subtitle>{{ recentProject.category }}</mat-card-subtitle>

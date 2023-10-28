@@ -9,7 +9,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { HeaderComponent, FooterComponent, AnnouncementBannerComponent, HeroComponent } from 'src/app/shared';
 
 // import post list and recent posts components
-import { PostListComponent, RecentPostsComponent } from 'src/app/posts';
+import { PostGridComponent, RecentPostsComponent } from 'src/app/posts';
 
 @Component({
    selector: 'app-blog-page',
@@ -22,7 +22,7 @@ import { PostListComponent, RecentPostsComponent } from 'src/app/posts';
       FooterComponent,
       AnnouncementBannerComponent,
       HeroComponent,
-      PostListComponent,
+      PostGridComponent,
       RecentPostsComponent,
    ],
 })
