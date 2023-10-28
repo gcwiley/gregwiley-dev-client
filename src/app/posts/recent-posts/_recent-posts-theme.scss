@@ -1,4 +1,10 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 
+// color mixin
+@mixin color($theme) {
+}
 
+// typography mixin
+@mixin typography($theme) {
+}

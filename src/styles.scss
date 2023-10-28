@@ -3,3 +3,5 @@
 @use 'styles/styles.scss';
 // import the custom theme
 @use 'styles/themes';
+
+@use './styles/helpers/variables';

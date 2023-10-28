@@ -8,6 +8,8 @@
 @use '../app/projects/recent-projects/recent-projects-theme';
 @use '../app/projects/project-details/project-details-theme';
 
+// PAGE THEMES
+
 // Styles for the app that are based on the current theme.
 @mixin theme($theme) {
    @include header-theme.theme($theme);

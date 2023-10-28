@@ -1,4 +1,4 @@
-// custom theming for Angular Materia
+// custom theming for Angular Material
 @use '@angular/material' as mat;
 @use 'app-theme';
 
@@ -7,7 +7,7 @@
 // be sure that you only ever include this mixin once!
 @include mat.core();
 
-// define the light theme primary color - appears most 
+// define the light theme primary color - appears most
 $light-primary: mat.define-palette(mat.$light-blue-palette, $default: 900, $lighter: 50, $darker: 700, $text: 900);
 
 // define the light theme accent color
@@ -56,6 +56,7 @@ $light-theme: mat.define-light-theme(
 
 // apply the light theme as default
 @include mat.all-component-themes($light-theme);
+// apply the component themes
 @include app-theme.theme($light-theme);
 
 // define the dark theme
@@ -68,10 +69,7 @@ $dark-theme: mat.define-dark-theme(
    )
 );
 
-
 @include mat.typography-hierarchy($custom-typography);
-
-
 
 // apply the dark theme only when the user prefers dark themes
 @media (prefers-color-scheme: dark) {

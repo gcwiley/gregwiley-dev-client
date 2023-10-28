@@ -1,17 +1,13 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 
-@mixin theme($theme) {
-  $primary: map.get($theme, primary);
-  $accent: map.get($theme, accent);
-  $warn: map.get($theme, warn);
-  $background: map.get($theme, background);
-  $foreground: map.get($theme, foreground);
-  $is-dark-theme: map.get($theme, is-dark);
+@mixin color($theme) {
+   $color-config: mat.get-color-config($theme);
 
-  app-cookie-popup {
-    .popup {
-      color: if($is-dark-theme);
-    }
-  }
+   $primary-palatte: map.get($color-config, 'primary');
+
+   .popup {
+      background-color: mat.get-color-from-palette($primary-palette, 500);
+   }
 }
+
