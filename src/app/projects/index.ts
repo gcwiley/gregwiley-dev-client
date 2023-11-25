@@ -6,5 +6,7 @@ export { ProjectDetailsComponent } from './project-details/project-details.compo
 export { ProjectFormComponent } from './project-form/project-form.component';
 export { ProjectGridComponent } from './project-grid/project-grid.component';
 export { ProjectListComponent } from './project-list/project-list.component';
-export { RecentProjectsComponent } from './recent-projects/recent-projects.component';
 export { ProjectSearchComponent } from './project-search/project-search.component';
+export { ProjectTagsComponent } from './project-tags/project-tags.component';
+export { ProjectToolbarComponent } from './project-toolbar/project-toolbar.component';
+export { RecentProjectsComponent } from './recent-projects/recent-projects.component';

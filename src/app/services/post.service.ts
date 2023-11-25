@@ -11,104 +11,104 @@ import { Post } from '../types/post.interface';
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
-  private postsUrl = 'api/posts'; // URL to web api
+   private postsUrl = 'api/posts'; // URL to web api
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-    }),
-  };
+   httpOptions = {
+      headers: new HttpHeaders({
+         'Content-Type': 'application/json',
+      }),
+   };
 
-  // inject "HttpClient" into the Post service
-  constructor(private http: HttpClient, private messageService: MessageService) {}
+   // inject "HttpClient" into the Post service
+   constructor(private http: HttpClient, private messageService: MessageService) {}
 
-  // GET: all posts from the server
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.postsUrl).pipe(
-      tap(() => this.log('fetched posts')),
-      catchError(this.handleError<Post[]>('getPosts', []))
-    );
-  }
+   // GET: all posts from the server
+   getPosts(): Observable<Post[]> {
+      return this.http.get<Post[]>(this.postsUrl).pipe(
+         tap(() => this.log('fetched posts')),
+         catchError(this.handleError<Post[]>('getPosts', []))
+      );
+   }
 
-  // GET: a post by ID. Will 404 if id not found
-  getPost(id: string | null): Observable<Post> {
-    const url = `${this.postsUrl}/${id}`;
-    return this.http.get<Post>(url).pipe(
-      tap(() => this.log(`fetched post id=${id}`)),
-      catchError(this.handleError<Post>(`getPost id=${id}`))
-    );
-  }
+   // GET: a post by ID. Will 404 if id not found
+   getPost(id: string | null): Observable<Post> {
+      const url = `${this.postsUrl}/${id}`;
+      return this.http.get<Post>(url).pipe(
+         tap(() => this.log(`fetched post id=${id}`)),
+         catchError(this.handleError<Post>(`getPost id=${id}`))
+      );
+   }
 
-  // GET posts whose name contains search term - SEARCH
-  searchPosts(term: string): Observable<Post[]> {
-    if (!term.trim()) {
-      // if no search term, return an empty post arrary
-      return of([]);
-    }
-    return this.http.get<Post[]>(`${this.postsUrl}/?name=${term}`).pipe(
-      tap((x) => (x.length ? this.log(`found posts matching "${term}"`) : this.log(`no posts matching "${term}"`))),
-      catchError(this.handleError<Post[]>('search Posts', []))
-    );
-  }
+   // GET posts whose name contains search term - SEARCH
+   searchPosts(term: string): Observable<Post[]> {
+      if (!term.trim()) {
+         // if no search term, return an empty post arrary
+         return of([]);
+      }
+      return this.http.get<Post[]>(`${this.postsUrl}/?name=${term}`).pipe(
+         tap((x) => (x.length ? this.log(`found posts matching "${term}"`) : this.log(`no posts matching "${term}"`))),
+         catchError(this.handleError<Post[]>('search Posts', []))
+      );
+   }
 
-  // GET: post count from database
-  getPostCount(): Observable<number> {
-    return this.http.get<number>('/api/post-count');
-  }
+   // GET: post count from database
+   getPostCount(): Observable<number> {
+      return this.http.get<number>('/api/post-count');
+   }
 
-  // GET: recent posts added
-  getRecentPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>('/api/recent-posts');
-  }
+   // GET: recent posts added
+   getRecentPosts(): Observable<Post[]> {
+      return this.http.get<Post[]>('/api/recent-posts');
+   }
 
-  // SAVE METHODS //
+   // SAVE METHODS //
 
-  // POST: add a new post to the server
-  addPost(newPost: Post | any): Observable<Post> {
-    return this.http.post<Post>(this.postsUrl, newPost, this.httpOptions).pipe(
-      tap((newPost: Post) => this.log(`added post with id=${newPost._id}`)),
-      catchError(this.handleError<Post>('addHero'))
-    );
-  }
+   // POST: add a new post to the server
+   addPost(newPost: Post | any): Observable<Post> {
+      return this.http.post<Post>(this.postsUrl, newPost, this.httpOptions).pipe(
+         tap((newPost: Post) => this.log(`added post with id=${newPost._id}`)),
+         catchError(this.handleError<Post>('addHero'))
+      );
+   }
 
-  // DELETE a post by ID from the server
-  deletePost(id: string): Observable<Post> {
-    const url = `${this.postsUrl}/${id}`;
+   // DELETE a post by ID from the server
+   deletePost(id: string): Observable<Post> {
+      const url = `${this.postsUrl}/${id}`;
 
-    return this.http.delete<Post>(url, this.httpOptions).pipe(
-      tap(() => this.log(`deleted post id=${id}`)),
-      catchError(this.handleError<Post>('deletePost'))
-    );
-  }
+      return this.http.delete<Post>(url, this.httpOptions).pipe(
+         tap(() => this.log(`deleted post id=${id}`)),
+         catchError(this.handleError<Post>('deletePost'))
+      );
+   }
 
-  // PUT: update the post in the database
-  updatePost(post: Post | any): Observable<any> {
-    return this.http.put(this.postsUrl, post, this.httpOptions).pipe(
-      tap(() => this.log(`updated post id=${post._id}`)),
-      catchError(this.handleError<any>('updatePost'))
-    );
-  }
+   // PUT: update the post in the database
+   updatePost(post: Post | any): Observable<any> {
+      return this.http.put(this.postsUrl, post, this.httpOptions).pipe(
+         tap(() => this.log(`updated post id=${post._id}`)),
+         catchError(this.handleError<any>('updatePost'))
+      );
+   }
 
-  // Handle Http operation that failed
-  // let the app continue
-  // @param operation - name of the operation that failed
-  // @param result - optional value to return as the observable result
+   // Handle Http operation that failed
+   // let the app continue
+   // @param operation - name of the operation that failed
+   // @param result - optional value to return as the observable result
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+   private handleError<T>(operation = 'operation', result?: T) {
+      return (error: any): Observable<T> => {
+         // TODO: send the error to remote logging infrastructure
+         console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+         // TODO: better job of transforming error for user consumption
+         this.log(`${operation} failed: ${error.message}`);
 
-      // let the app keep running by return an empty result
-      return of(result as T);
-    };
-  }
+         // let the app keep running by return an empty result
+         return of(result as T);
+      };
+   }
 
-  // Log a postService message with postService
-  private log(message: string): void {
-    return this.messageService.add(`PostService: ${message}`);
-  }
+   // Log a postService message with postService
+   private log(message: string): void {
+      return this.messageService.add(`PostService: ${message}`);
+   }
 }

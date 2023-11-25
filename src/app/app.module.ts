@@ -3,13 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // used for both type of Forms
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 // Set Up Firebase
 import { AngularFireModule } from '@angular/fire/compat';
 
-// Load environment - follow up
+// Load environment vars
 import { environment } from '../environments/environment';
 
 // App Routing Module
@@ -19,18 +19,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebase),
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+   declarations: [AppComponent],
+   imports: [
+      BrowserModule,
+      BrowserAnimationsModule,
+      FormsModule,
+      ReactiveFormsModule,
+      RouterModule,
+      AppRoutingModule,
+      HttpClientModule,
+      AngularFireModule.initializeApp(environment.firebase),
+   ],
+   providers: [],
+   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,17 +1,7 @@
-// @use '@angular/material' as mat;
-
-// @use '../../../styles.scss';
-
-// $my-palette: mat.define-palette(mat.$blue-palette);
-
-// .recent-posts {
-//   position: absolute;
-//   top: 0px;
-//   left: 0px;
-//   right: 0px;
-//   margin: 1rem;
-//   background-color: mat.get-color-from-palette($my-palette, 50);
-//   color: mat.get-color-from-palette($my-palette, 700);
-//   box-shadow: none;
-//   border-radius: $my-palette
-// }
+.recent-posts {
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   right: 0px;
+   margin: 1rem;
+}

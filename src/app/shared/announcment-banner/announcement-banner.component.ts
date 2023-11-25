@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
 
-// import angular material
-import { MatToolbarModule } from '@angular/material/toolbar';
-
 @Component({
-  selector: 'app-announcement-banner',
-  templateUrl: './announcement-banner.component.html',
-  styleUrls: ['./announcement-banner.component.scss'],
-  standalone: true,
-  imports: [MatToolbarModule],
+   selector: 'app-announcement-banner',
+   templateUrl: './announcement-banner.component.html',
+   styleUrls: ['./announcement-banner.component.scss'],
+   standalone: true,
 })
 export class AnnouncementBannerComponent {
-  text = 'gregwiley.dev is currently in development.';
+   text = 'gregwiley.dev is currently in development.';
 }

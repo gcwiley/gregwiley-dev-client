@@ -9,7 +9,7 @@
    // gets the primary color palette from the color-config
    $primary-palette: map.get($color-config, 'primary');
 
-   .footer {
+   .footer-content {
       // read the 900 hue from the primary color palette
       color: mat.get-color-from-palette($primary-palette, 900);
       // sets the background color
