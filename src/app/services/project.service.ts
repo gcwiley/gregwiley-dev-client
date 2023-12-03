@@ -30,7 +30,7 @@ export class ProjectService {
       );
    }
 
-   // GET: a project by ID. Will 404 if id not found
+   // GET: a individual project by ID. Will 404 error if the ID is not found
    getProject(id: string | null): Observable<Project> {
       const url = `${this.projectsUrl}/${id}`;
       return this.http.get<Project>(url).pipe(
@@ -62,6 +62,8 @@ export class ProjectService {
    getRecentlyCreatedProjects(): Observable<Project[]> {
       return this.http.get<Project[]>('/api/recent-projects');
    }
+
+
 
    // SAVE METHODS //
 

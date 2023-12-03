@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
 
-// import angular material modules
+// import the angular material modules
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,9 +20,9 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
-   selector: 'app-featured-projects',
-   templateUrl: './featured-projects.component.html',
-   styleUrls: ['./featured-projects.component.scss'],
+   selector: 'app-favorite-projects',
+   templateUrl: './favorite-projects.component.html',
+   styleUrls: ['./favorite-projects.component.scss'],
    standalone: true,
    imports: [
       CommonModule,
@@ -35,7 +35,7 @@ import { Project } from '../../types/project.interface';
       SimpleTruncatePipe,
    ],
 })
-export class FeaturedProjectsComponent implements OnInit {
+export class FavoriteProjectsComponent implements OnInit {
    // create member variables
    recentProjects: Project[] = [];
 

@@ -10,8 +10,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 
-// import the project components
-import { FeaturedProjectsComponent } from 'src/app/projects';
+// import the favorite project components
+import { FavoriteProjectsComponent } from 'src/app/projects';
 
 // import the project service
 import { ProjectService } from 'src/app/services/project.service';
@@ -33,7 +33,7 @@ import { Project } from 'src/app/types/project.interface';
       MatDividerModule,
       MatIconModule,
       MatCardModule,
-      FeaturedProjectsComponent,
+      FavoriteProjectsComponent,
    ],
 })
 export class MainPageComponent implements OnInit {

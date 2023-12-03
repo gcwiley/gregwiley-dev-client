@@ -3,6 +3,7 @@
 // SHARED COMPONENTS THEMES
 @use '../app/shared/header/header-theme';
 @use '../app/shared/footer/footer-theme';
+@use '../app/shared/announcment-banner/announcement-banner-theme';
 
 // PROJECTS COMPONENT THEMES
 @use '../app/projects/recent-projects/recent-projects-theme';
@@ -17,6 +18,8 @@
    // shared components
    @include header-theme.theme($theme);
    @include footer-theme.theme($theme);
+   @include announcement-banner-theme.theme($theme);
+
    // projects
    @include recent-projects-theme.theme($theme);
    @include project-details-theme.theme($theme);

@@ -1,4 +1,4 @@
-export { FeaturedProjectsComponent } from './featured-projects/featured-projects.component';
+export { FavoriteProjectsComponent } from './favorite-projects/favorite-projects.component';
 export { ProjectCarouselComponent } from './project-carousel/project-carousel.component';
 export { ProjectCountComponent } from './project-count/project-count.component';
 export { ProjectDescriptionComponent } from './project-description/project-description.component';
@@ -8,5 +8,5 @@ export { ProjectGridComponent } from './project-grid/project-grid.component';
 export { ProjectListComponent } from './project-list/project-list.component';
 export { ProjectSearchComponent } from './project-search/project-search.component';
 export { ProjectTagsComponent } from './project-tags/project-tags.component';
-export { ProjectToolbarComponent } from './project-toolbar/project-toolbar.component';
+export { ProjectActionBarComponent } from './project-actionbar/project-actionbar.component';
 export { RecentProjectsComponent } from './recent-projects/recent-projects.component';

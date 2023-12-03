@@ -10,19 +10,25 @@ import { MatCardModule } from '@angular/material/card';
 import { ProjectService } from '../../services/project.service';
 
 @Component({
-   selector: 'app-project-toolbar',
-   templateUrl: './project-toolbar.component.html',
-   styleUrls: ['./project-toolbar.component.scss'],
+   selector: 'app-project-actionbar',
+   templateUrl: './project-actionbar.component.html',
+   styleUrls: ['./project-actionbar.component.scss'],
    standalone: true,
    imports: [MatIconModule, MatButtonModule, MatCardModule],
 })
-export class ProjectToolbarComponent {
+export class ProjectActionBarComponent {
    constructor(private projectService: ProjectService, private router: Router) {}
 
+   // deletes project
    onDeleteProject(id: string) {
       this.projectService.deleteProject(id).subscribe(() => {
          // navigates admin back to the project grid page
          this.router.navigateByUrl('/projects');
       });
+   }
+
+   // favorite project
+   favoriteProject() {
+      console.log('This feature is broken!');
    }
 }
