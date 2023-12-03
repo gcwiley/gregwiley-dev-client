@@ -66,18 +66,18 @@
                },
                "configurations": {
                   "production": {
-                     "browserTarget": "wiley-dev-client:build:production"
+                    "buildTarget": "wiley-dev-client:build:production"
                   },
                   "development": {
-                     "browserTarget": "wiley-dev-client:build:development"
+                    "buildTarget": "wiley-dev-client:build:development"
                   }
                },
                "defaultConfiguration": "development"
             },
             "extract-i18n": {
                "builder": "@angular-devkit/build-angular:extract-i18n",
-               "options": {
-                  "browserTarget": "wiley-dev-client:build"
+              "options": {
+                "buildTarget": "wiley-dev-client:build"
                }
             },
             "test": {
