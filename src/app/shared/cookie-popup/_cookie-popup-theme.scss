@@ -1,13 +1,14 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 
+// color mixin
 @mixin color($theme) {
-   $color-config: mat.get-color-config($theme);
-
-   $primary-palatte: map.get($color-config, 'primary');
-
-   .popup {
-      background-color: mat.get-color-from-palette($primary-palette, 500);
+   .cookie-popup {
+      color: mat.get-theme-color($theme, primary, 100-contrast);
    }
 }
 
+// theme mixin
+@mixin theme($theme) {
+   // add more code here
+}

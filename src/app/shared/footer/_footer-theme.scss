@@ -1,41 +1,22 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 
-// accepts the theme as an agrument
+// color mixin
 @mixin color($theme) {
-   // get the color config from the theme - returns a sass map
-   $color-config: mat.get-color-config($theme);
-
-   // gets the primary color palette from the color-config
-   $primary-palette: map.get($color-config, 'primary');
-
    footer {
-      // read the 900 hue from the primary color palette
-      color: mat.get-color-from-palette($primary-palette, '100-contrast');
-      // sets the background color
-      background-color: mat.get-color-from-palette($primary-palette, 100);
+      color: mat.get-theme-color($theme, primary, 100-contrast);
+      background-color: mat.get-color-from-palette($theme, accent, 100);
    }
 }
 
-// create a typography mixin
+// typography mixin
 @mixin typography($theme) {
-   // get the typography config from the theme.
-   $typography-config: mat.get-typography-config($theme);
-
    .footer {
-      font-family: mat.font-family($typography-config);
+      font: mat.get-theme-typography($theme, headline-1);
    }
 }
 
-// add a theme mixin that includes both color and typography
+// theme mixin
 @mixin theme($theme) {
-   $color-config: mat.get-color-config($theme);
-   @if $color-config != null {
-      @include color($theme);
-   }
-
-   $typography-config: mat.get-typography-config($theme);
-   @if $typography-config != null {
-      @include typography($theme);
-   }
+   // add code here
 }
