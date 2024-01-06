@@ -11,7 +11,7 @@ import { Post } from '../types/post.interface';
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
-   private postsUrl = 'api/posts'; // URL to web api
+   private postsUrl = '/api/posts'; // URL to web api
 
    httpOptions = {
       headers: new HttpHeaders({
@@ -26,7 +26,7 @@ export class PostService {
    getPosts(): Observable<Post[]> {
       return this.http.get<Post[]>(this.postsUrl).pipe(
          tap(() => this.log('fetched posts')),
-         catchError(this.handleError<Post[]>('getPosts', []))
+         catchError(this.handleError<Post[]>('get Posts', []))
       );
    }
 
@@ -35,7 +35,7 @@ export class PostService {
       const url = `${this.postsUrl}/${id}`;
       return this.http.get<Post>(url).pipe(
          tap(() => this.log(`fetched post id=${id}`)),
-         catchError(this.handleError<Post>(`getPost id=${id}`))
+         catchError(this.handleError<Post>(`get Post id=${id}`))
       );
    }
 
@@ -61,13 +61,18 @@ export class PostService {
       return this.http.get<Post[]>('/api/recent-posts');
    }
 
+   // GET: favorite posts
+   getFavoritePosts(): Observable<Post[]> {
+      return this.http.get<Post[]>('/api/favorite-posts');
+   }
+
    // SAVE METHODS //
 
    // POST: add a new post to the server
    addPost(newPost: Post | any): Observable<Post> {
       return this.http.post<Post>(this.postsUrl, newPost, this.httpOptions).pipe(
          tap((newPost: Post) => this.log(`added post with id=${newPost._id}`)),
-         catchError(this.handleError<Post>('addHero'))
+         catchError(this.handleError<Post>('add Post'))
       );
    }
 

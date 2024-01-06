@@ -8,7 +8,7 @@ import { MatListModule } from '@angular/material/list';
 // import the project service
 import { ProjectService } from '../../services/project.service';
 
-// import project interface
+// import the project interface
 import { Project } from 'src/app/types/project.interface';
 
 @Component({

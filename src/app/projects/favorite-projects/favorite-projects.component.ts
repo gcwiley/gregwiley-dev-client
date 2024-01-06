@@ -36,8 +36,7 @@ import { Project } from '../../types/project.interface';
    ],
 })
 export class FavoriteProjectsComponent implements OnInit {
-   // create member variables
-   recentProjects: Project[] = [];
+   favoriteProjects: Project[] = [];
 
    // set up the grid list demensions
    cols = 4; // Amount of columns in the grid list.
@@ -50,7 +49,6 @@ export class FavoriteProjectsComponent implements OnInit {
 
    constructor(private projectService: ProjectService, private breakpointObserver: BreakpointObserver) {}
 
-   // responsive code
    layoutChanges(): void {
       this.breakpointObserver
          .observe([
@@ -76,13 +74,13 @@ export class FavoriteProjectsComponent implements OnInit {
    }
 
    ngOnInit(): void {
-      this.getRecentlyCreatedProjects();
+      this.getFavoriteProjects();
       this.layoutChanges();
    }
 
-   getRecentlyCreatedProjects(): void {
-      this.projectService.getRecentlyCreatedProjects().subscribe((recentProjects) => {
-         this.recentProjects = recentProjects;
+   getFavoriteProjects(): void {
+      this.projectService.getFavoriteProjects().subscribe((favoriteProjects) => {
+         this.favoriteProjects = favoriteProjects;
       });
    }
 }

@@ -26,7 +26,7 @@ export class ProjectService {
    getProjects(): Observable<Project[]> {
       return this.http.get<Project[]>(this.projectsUrl).pipe(
          tap(() => this.log('fetched projects')),
-         catchError(this.handleError<Project[]>('getProjects', []))
+         catchError(this.handleError<Project[]>('get Projects', []))
       );
    }
 
@@ -35,11 +35,11 @@ export class ProjectService {
       const url = `${this.projectsUrl}/${id}`;
       return this.http.get<Project>(url).pipe(
          tap(() => this.log(`fetched project id=${id}`)),
-         catchError(this.handleError<Project>(`getProject id=${id}`))
+         catchError(this.handleError<Project>(`get Project id=${id}`))
       );
    }
 
-   // GET projects whose name contains search term - SEARCH
+   // GET projects whose name contains search term - SEARCH PROJECT
    searchProjects(term: string): Observable<Project[]> {
       if (!term.trim()) {
          // if no search term, return an empty project arrary
@@ -53,17 +53,20 @@ export class ProjectService {
       );
    }
 
-   // GET: project count from database
+   // GET: project the count from database
    getProjectCount(): Observable<number> {
       return this.http.get<number>('/api/project-count');
    }
 
-   // GET: recent projects added
+   // GET: recent projects added 
    getRecentlyCreatedProjects(): Observable<Project[]> {
       return this.http.get<Project[]>('/api/recent-projects');
    }
 
-
+   // GET: favorite projects
+   getFavoriteProjects(): Observable<Project[]> {
+      return this.http.get<Project[]>('/api/favorite-projects');
+   }
 
    // SAVE METHODS //
 
@@ -71,7 +74,7 @@ export class ProjectService {
    addProject(newProject: Project | any): Observable<Project> {
       return this.http.post<Project>(this.projectsUrl, newProject, this.httpOptions).pipe(
          tap((newProject: Project) => this.log(`added project with id=${newProject._id}`)),
-         catchError(this.handleError<Project>('addHero'))
+         catchError(this.handleError<Project>('add Project'))
       );
    }
 
