@@ -62,22 +62,22 @@
             "serve": {
                "builder": "@angular-devkit/build-angular:dev-server",
                "options": {
-                  "proxyConfig": "src/proxy.config.json"
+                  "proxyConfig": "src/proxy.conf.json"
                },
                "configurations": {
                   "production": {
-                    "buildTarget": "wiley-dev-client:build:production"
+                     "buildTarget": "wiley-dev-client:build:production"
                   },
                   "development": {
-                    "buildTarget": "wiley-dev-client:build:development"
+                     "buildTarget": "wiley-dev-client:build:development"
                   }
                },
                "defaultConfiguration": "development"
             },
             "extract-i18n": {
                "builder": "@angular-devkit/build-angular:extract-i18n",
-              "options": {
-                "buildTarget": "wiley-dev-client:build"
+               "options": {
+                  "buildTarget": "wiley-dev-client:build"
                }
             },
             "test": {

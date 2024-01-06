@@ -3,8 +3,7 @@
 // SHARED COMPONENTS THEMES
 @use '../app/shared/header/header-theme';
 @use '../app/shared/footer/footer-theme';
-@use '../app/shared/announcment-banner/announcement-banner-theme';
-@use '../app/shared/topic-list/topic-list-theme';
+@use '../app/shared/announcement-banner/announcement-banner-theme';
 @use '../app//shared/cookie-popup/cookie-popup-theme';
 
 // PROJECTS COMPONENT THEMES
@@ -21,12 +20,12 @@
    @include header-theme.theme($theme);
    @include footer-theme.theme($theme);
    @include announcement-banner-theme.theme($theme);
-   @include topic-list-theme.theme($theme);
-   @include cookie-popup-theme($theme);
+   @include cookie-popup-theme.theme($theme);
 
    // projects
    @include recent-projects-theme.theme($theme);
    @include project-details-theme.theme($theme);
+
    // pages
    @include signin-page-theme.theme($theme);
    @include not-found-page-theme.theme($theme);

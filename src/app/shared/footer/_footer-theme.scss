@@ -3,9 +3,9 @@
 
 // color mixin
 @mixin color($theme) {
-   footer {
+   .footer {
       color: mat.get-theme-color($theme, primary, 100-contrast);
-      background-color: mat.get-color-from-palette($theme, accent, 100);
+      background-color: mat.get-theme-color($theme, primary, 400);
    }
 }
 
@@ -18,5 +18,11 @@
 
 // theme mixin
 @mixin theme($theme) {
-   // add code here
+   @if mat.theme-has($theme, color) {
+      @include color($theme);
+   }
+
+   @if mat.theme-has($theme, typography) {
+      @include typography($theme);
+   }
 }

@@ -11,10 +11,10 @@
     - Data Type = String
 
 5. Date (date)
-    - Date Type = Date
+    - Data Type = Date
 
 6. created At (createdAt)
     - Data Type = Date
 
 7. updated At (updatedAt)
-    - Date Type = Date 
+    - Data Type = Date 

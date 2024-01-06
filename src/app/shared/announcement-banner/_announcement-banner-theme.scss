@@ -8,22 +8,20 @@
       background-color: mat.get-theme-color($theme, accent, 200);
    }
 }
-// typography
+// typography mixin
 @mixin typography($theme) {
    .announcement-banner {
-      font: mat.get-theme-typography($theme, headline-1);
+      font-size: mat.get-theme-typography($theme, headline-1);
    }
 }
 
 // theme mixin
 @mixin theme($theme) {
-   $color-config: mat.get-color-config($theme);
-   @if $color-config != null {
+   @if mat.theme-has($theme, color) {
       @include color($theme);
    }
 
-   $typography-config: mat.get-typography-config($theme);
-   @if $typography-config != null {
+   @if mat.theme-has($theme, typography) {
       @include typography($theme);
    }
 }
