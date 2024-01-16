@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 // import angular material modules
 import { MatCardModule } from '@angular/material/card';
 
-// import bio text
+// import the bio text
 import { biographyText } from 'src/assets/data/bio-info';
 
 @Component({

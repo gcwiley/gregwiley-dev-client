@@ -5,11 +5,11 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 // import angular material modules
 import { MatGridListModule } from '@angular/material/grid-list';
 
-// import shared components
+// import the shared components
 import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from 'src/app/shared';
 
-// import project details component
-import { ProjectDetailsComponent, ProjectDescriptionComponent } from 'src/app/projects';
+// import project components
+import { ProjectDetailsComponent, ProjectDescriptionComponent, ProjectTagsComponent } from 'src/app/projects';
 
 // import the project type
 import { Project } from 'src/app/types/project.interface';
@@ -29,6 +29,7 @@ import { ProjectService } from 'src/app/services/project.service';
     FooterComponent,
     ProjectDetailsComponent,
     ProjectDescriptionComponent,
+    ProjectTagsComponent,
   ],
 })
 export class ProjectDetailsPageComponent implements OnInit {

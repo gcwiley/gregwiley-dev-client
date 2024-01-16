@@ -53,7 +53,6 @@ export class PostFormComponent implements OnInit {
       title: ['', Validators.required],
       author: ['', Validators.required],
       body: ['', Validators.required],
-      datePublished: ['', Validators.required],
    });
 
    ngOnInit(): void {
@@ -70,7 +69,6 @@ export class PostFormComponent implements OnInit {
                   title: this.post.title,
                   author: this.post.author,
                   body: this.post.body,
-                  datePublished: this.post.datePublished,
                });
             });
          } else {

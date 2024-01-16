@@ -1,6 +1,6 @@
 <mat-grid-list class="grid-container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
   <mat-grid-tile *ngFor="let project of projects" [colspan]="colspan" [rowspan]="rowspan">
-    <mat-card class="project-card" appearance="outlined">
+    <mat-card class="project-card">
       <mat-card-header>
         <mat-card-title>{{ project.title }}</mat-card-title>
         <mat-card-subtitle>{{ project.category }}</mat-card-subtitle>

@@ -12,7 +12,10 @@
 
 // PAGE THEMES
 @use '../app/pages/signin-page/signin-page-theme';
-@use '../app/pages/not-found-page/not-found-page-theme.scss';
+@use '../app/pages/not-found-page/not-found-page-theme';
+
+// MISC
+@use '../app/components/about/about-theme';
 
 // Styles for the app that are based on the current theme.
 @mixin theme($theme) {
@@ -29,4 +32,7 @@
    // pages
    @include signin-page-theme.theme($theme);
    @include not-found-page-theme.theme($theme);
+
+   // misc
+   @include about-theme.theme($theme);
 }

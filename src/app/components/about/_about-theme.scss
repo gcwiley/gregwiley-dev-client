@@ -3,16 +3,15 @@
 
 // color mixin
 @mixin color($theme) {
-   .signin-page-container {
-      color: mat.get-theme-color($theme, primary, 200-contrast);
-      background-color: mat.get-theme-color($theme, primary, 50);
+   .about-me-text {
+      color: mat.get-theme-color($theme, accent, 200-contrast);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
-   .signin-page-container {
-      font-size: mat.get-theme-typography($theme, body-1);
+   .about-me-text {
+      font: mat.get-theme-typography($theme, body-1);
    }
 }
 
