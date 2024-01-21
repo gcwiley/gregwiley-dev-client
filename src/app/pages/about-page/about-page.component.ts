@@ -11,9 +11,6 @@ import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from 's
 // import the about component
 import { AboutMeComponent } from 'src/app/components/about/about.component';
 
-// import the bio text
-import { biographyText } from 'src/assets/data/bio-info';
-
 @Component({
    selector: 'app-about-page',
    templateUrl: './about-page.component.html',
@@ -29,8 +26,6 @@ export class AboutPageComponent implements OnInit {
 
    // set the default values of the grid tile here
    colspan = 3;
-
-   bioText = biographyText;
 
    constructor(private breakpointObserver: BreakpointObserver) {}
 

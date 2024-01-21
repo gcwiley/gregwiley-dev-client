@@ -1,4 +1,4 @@
-// Angular Core Modules
+// import angular core modules
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -6,10 +6,10 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-// Set Up Firebase
+// set up firebase
 import { AngularFireModule } from '@angular/fire/compat';
 
-// Load environment vars
+// Load the environment vars
 import { environment } from '../environments/environment';
 
 // App Routing Module

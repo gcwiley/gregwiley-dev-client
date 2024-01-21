@@ -11,7 +11,7 @@
 // typography mixin
 @mixin typography($theme) {
    .cookie-popup {
-      font-size: mat.get-theme-typography($theme, headline-1);
+      font: mat.get-theme-typography($theme, body-1);
    }
 }
 

@@ -32,7 +32,11 @@
       {
          "files": ["*.html"],
          "extends": ["plugin:@angular-eslint/template/recommended"],
-         "rules": {}
+         "rules": {
+            "semi": ["error", "always"], // requires semicolons
+            "quotes": ["error", "single"], // reguires single quotes
+            "arrow-parens": ["error", "always"] // requires parens around arrow functions
+          }
       }
    ]
 }

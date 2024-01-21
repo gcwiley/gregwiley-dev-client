@@ -8,13 +8,10 @@
    }
 }
 
-// typography mixin
+// typography mixin - fix
 @mixin typography($theme) {
-   // get the typography config from the theme.
-   $typography-config: mat.get-typography-config($theme);
-
    .recent-projects {
-      font-family: mat.font-family($typography-config);
+      font: mat.font-family($typography-config);
    }
 }
 

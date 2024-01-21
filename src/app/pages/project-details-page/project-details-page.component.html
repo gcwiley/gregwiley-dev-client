@@ -3,14 +3,13 @@
 
 <mat-grid-list class="container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
   <mat-grid-tile [colspan]="colspan">
-    <!-- PROJECT DESCRIPTION -->
     <app-project-description></app-project-description>
   </mat-grid-tile>
 
   <mat-grid-tile>
-    <!-- PROJECT DETAILS -->
+    <app-project-actionbar></app-project-actionbar>
     <app-project-details></app-project-details>
-    <app-project-tags></app-project-tags>
+    <!-- <app-project-tags></app-project-tags> -->
   </mat-grid-tile>
 </mat-grid-list>
 

@@ -5,13 +5,13 @@
 @mixin color($theme) {
    .announcement-banner {
       color: mat.get-theme-color($theme, accent, 200-contrast);
-      background-color: mat.get-theme-color($theme, accent, 200);
+      background-color: mat.get-theme-color($theme, primary, 200);
    }
 }
 // typography mixin
 @mixin typography($theme) {
    .announcement-banner {
-      font-size: mat.get-theme-typography($theme, headline-1);
+      font: mat.get-theme-typography($theme, subtitle-1);
    }
 }
 

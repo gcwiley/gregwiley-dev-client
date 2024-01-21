@@ -19,7 +19,15 @@ import { ProjectService } from '../../services/project.service';
 export class ProjectActionBarComponent {
    constructor(private projectService: ProjectService, private router: Router) {}
 
-   // deletes project
+   // updates a project
+   onUpdateProject(id: string) {
+      this.projectService.updateProject(id).subscribe(() => {
+         // navigates admin back to the project grid page
+         this.router.navigateByUrl('/projects');
+      })
+   }
+
+   // deletes a project
    onDeleteProject(id: string) {
       this.projectService.deleteProject(id).subscribe(() => {
          // navigates admin back to the project grid page
@@ -27,7 +35,7 @@ export class ProjectActionBarComponent {
       });
    }
 
-   // favorite project
+   // favorite a project
    favoriteProject() {
       console.log('This feature is broken!');
    }

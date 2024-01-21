@@ -4,14 +4,14 @@
 // color mixin
 @mixin color($theme) {
    .project-details {
-      color: mat.get-theme-color($theme, accent, 200-contrast);
+      color: mat.get-theme-color($theme, primary, 500);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
    .project-details {
-      font: mat.get-theme-typography($theme, headline-1);
+      font: mat.get-theme-typography($theme, headline-2);
    }
 }
 
