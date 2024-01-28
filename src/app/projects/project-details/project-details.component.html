@@ -1,45 +1,14 @@
-<mat-card appearance="raised" class="project-details">
-  <mat-list>
-    <div mat-subheader>Project Details</div>
-
-    <!-- PROJECT STATUS -->
-    <mat-list-item>
-      <div matListItemLine>Project Status</div>
-      <div matListItemMeta>
-        <strong>{{ project.status  | uppercase }}</strong>
-      </div>
-    </mat-list-item>
-
-    <!-- PROJECT CATEGORY -->
-    <mat-list-item>
-      <div matListItemLine>Project Category</div>
-      <div matListItemMeta>
-        <strong>{{ project.category | uppercase }}</strong>
-      </div>
-    </mat-list-item>
-
-    <!-- PROGRAMMING LANGUAGE -->
-    <mat-list-item>
-      <div matListItemLine>Programming Language</div>
-      <div matListItemMeta>
-        <strong>{{ project.language }}</strong>
-      </div>
-    </mat-list-item>
-
-    <!-- START DATE -->
-    <mat-list-item>
-      <div matListItemLine>Start Date</div>
-      <div matListItemMeta>
-        <strong>{{ project.startDate | date }}</strong>
-      </div>
-    </mat-list-item>
-
-    <!-- LAST UPDATED -->
-    <mat-list-item>
-      <div matListItemLine>Last Updated</div>
-      <div matListItemMeta>
-        <strong>{{ project.updatedAt | date }}</strong>
-      </div>
-    </mat-list-item>
-  </mat-list>
+<mat-card appearance="raised" class="project-details" *ngIf="project">
+   <mat-list>
+      <!-- STATUS -->
+      <mat-list-item lines="2">
+         <span matListItemTitle>Status</span>
+         <span matListItemLine>{{ project.status }}</span>
+      </mat-list-item>
+      <!-- CATEGORY -->
+      <mat-list-item lines="2">
+         <span matListItemTitle>Category</span>
+         <span matListItemLine>{{ project.category }}</span>
+      </mat-list-item>
+   </mat-list>
 </mat-card>

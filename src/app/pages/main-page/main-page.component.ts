@@ -1,22 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-// import shared components
+// import the shared components
 import { HeaderComponent, FooterComponent, AnnouncementBannerComponent, HeroComponent } from 'src/app/shared';
-
-// import the angular material modules
-import { MatDividerModule } from '@angular/material/divider';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
 
 // import the favorite project components
 import { FavoriteProjectsComponent } from 'src/app/projects';
-
-// import the project service
-import { ProjectService } from 'src/app/services/project.service';
-
-import { Project } from 'src/app/types/project.interface';
 
 @Component({
    selector: 'app-main-page',
@@ -30,25 +20,7 @@ import { Project } from 'src/app/types/project.interface';
       FooterComponent,
       AnnouncementBannerComponent,
       HeroComponent,
-      MatDividerModule,
-      MatIconModule,
-      MatCardModule,
       FavoriteProjectsComponent,
    ],
 })
-export class MainPageComponent implements OnInit {
-   // create member variables
-   recentProjects: Project[] = [];
-
-   constructor(private projectService: ProjectService) {}
-
-   ngOnInit(): void {
-      this.getRecentProjects();
-   }
-
-   getRecentProjects(): void {
-      this.projectService.getRecentlyCreatedProjects().subscribe((recentProjects) => {
-         this.recentProjects = recentProjects;
-      });
-   }
-}
+export class MainPageComponent {}

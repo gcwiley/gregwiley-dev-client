@@ -71,12 +71,5 @@ export class ProjectDetailsPageComponent implements OnInit {
 
    ngOnInit(): void {
       this.layoutChanges();
-      this.getProject();
-   }
-
-   // GET project by id
-   getProject(): void {
-      const id = this.route.snapshot.paramMap.get('id');
-      this.projectService.getProject(id).subscribe((project) => (this.project = project));
    }
 }

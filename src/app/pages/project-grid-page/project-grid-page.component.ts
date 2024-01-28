@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 // import shared components
 import { HeaderComponent, FooterComponent, AnnouncementBannerComponent, HeroComponent } from 'src/app/shared';
 
-// import project grid
+// import project grid component
 import { ProjectGridComponent } from 'src/app/projects';
 
 @Component({

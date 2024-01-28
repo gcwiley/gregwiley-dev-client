@@ -36,7 +36,7 @@
             "semi": ["error", "always"], // requires semicolons
             "quotes": ["error", "single"], // reguires single quotes
             "arrow-parens": ["error", "always"] // requires parens around arrow functions
-          }
+         }
       }
    ]
 }

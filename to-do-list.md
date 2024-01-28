@@ -4,8 +4,6 @@
 
 3. fix ssl cert
 
-4. move mongo db to azure from mongo atlas
-
 5. fix blog form
 
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
-// import angular material modules
+// import the angular material modules
 import { MatCardModule } from '@angular/material/card';
 
 // import the project type
@@ -15,7 +16,7 @@ import { ProjectService } from 'src/app/services/project.service';
   templateUrl: './project-description.component.html',
   styleUrls: ['./project-description.component.scss'],
   standalone: true,
-  imports: [MatCardModule],
+  imports: [CommonModule, MatCardModule],
 })
 export class ProjectDescriptionComponent implements OnInit {
   project!: Project;
@@ -28,7 +29,7 @@ export class ProjectDescriptionComponent implements OnInit {
 
   // GET project by id
   getProject(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id')!;
     this.projectService.getProject(id).subscribe((project) => (this.project = project));
   }
 }

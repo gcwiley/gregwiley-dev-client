@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-// import angular material modules
+// import the angular material modules
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 
@@ -20,7 +20,7 @@ import { ProjectService } from '../../services/project.service';
    imports: [CommonModule, MatListModule, MatCardModule],
 })
 export class ProjectDetailsComponent implements OnInit {
-   project!: Project;
+   project!: Project | undefined;
 
    constructor(private route: ActivatedRoute, private projectService: ProjectService) {}
 
@@ -30,7 +30,7 @@ export class ProjectDetailsComponent implements OnInit {
 
    // GET project by id
    getProject(): void {
-      const id = this.route.snapshot.paramMap.get('id') ?? '';
+      const id = this.route.snapshot.paramMap.get('id')!;
       this.projectService.getProject(id).subscribe((project) => (this.project = project));
    }
 }

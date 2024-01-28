@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 
-// import angular material modules
+// import the angular material modules
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+
+// material data source - follow up
 import { MatTableDataSource } from '@angular/material/table';
 
 // import the project service
@@ -16,49 +16,43 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from 'src/app/types/project.interface';
 
 @Component({
-  selector: 'app-project-list',
-  templateUrl: './project-list.component.html',
-  styleUrls: ['./project-list.component.scss'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0' })),
-      state('expanded', style({ height: '*' })),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
-  standalone: true,
-  imports: [CommonModule, MatTableModule, MatIconModule, MatButtonModule],
+   selector: 'app-project-list',
+   templateUrl: './project-list.component.html',
+   styleUrls: ['./project-list.component.scss'],
+   standalone: true,
+   imports: [MatTableModule, MatIconModule, MatButtonModule, RouterModule],
 })
 export class ProjectListComponent implements OnInit {
-  // set the data source
-  dataSource = new MatTableDataSource<Project>();
+   // set up the data source
+   dataSource = new MatTableDataSource<Project>();
 
-  // columns to display
-  columnsToDisplay = ['title', 'status', 'category', 'language'];
+   // columns to display
+   columnsToDisplay = ['title', 'status', 'category', 'language', 'startDate', 'favoriteProject', 'editProject', 'deleteProject'];
 
-  // colums to display with expand
-  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
+   constructor(private projectService: ProjectService, private router: Router) {}
 
-  expandedProject!: Project | null;
+   // this method executes right away
+   ngOnInit(): void {
+      this.getProjects();
+   }
 
-  constructor(private projectService: ProjectService, private router: Router) {}
+   // gets all projects from project service
+   getProjects(): void {
+      this.projectService.getProjects().subscribe((projects) => {
+         this.dataSource.data = projects;
+      });
+   }
 
-  // this method executes right away
-  ngOnInit(): void {
-    this.getProjects();
-  }
+   // favorites a project
+   onFavoriteProject(): void {
+      window.alert('You have add this project to favorites!');
+   }
 
-  // gets all projects from service
-  getProjects(): void {
-    this.projectService.getProjects().subscribe((projects) => {
-      this.dataSource.data = projects;
-    });
-  }
-
-  onDeleteProject(id: string) {
-    this.projectService.deleteProject(id).subscribe(() => {
-      // navigates admin back to the admin page
-      this.router.navigateByUrl('/admin');
-    });
-  }
+   // deletes a project
+   onDeleteProject(id: string): void {
+      this.projectService.deleteProject(id).subscribe(() => {
+         // navigates admin back to the admin page
+         this.router.navigateByUrl('/admin');
+      });
+   }
 }

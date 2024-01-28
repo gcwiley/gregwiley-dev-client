@@ -9,6 +9,8 @@ import { MatCardModule } from '@angular/material/card';
 // import the project service
 import { ProjectService } from '../../services/project.service';
 
+import { Project } from 'src/app/types/project.interface';
+
 @Component({
    selector: 'app-project-actionbar',
    templateUrl: './project-actionbar.component.html',
@@ -20,8 +22,8 @@ export class ProjectActionBarComponent {
    constructor(private projectService: ProjectService, private router: Router) {}
 
    // updates a project
-   onUpdateProject(id: string) {
-      this.projectService.updateProject(id).subscribe(() => {
+   onUpdateProject(project: Project) {
+      this.projectService.updateProject(project).subscribe(() => {
          // navigates admin back to the project grid page
          this.router.navigateByUrl('/projects');
       })
