@@ -107,7 +107,7 @@ export class ProjectFormComponent implements OnInit {
         this.router.navigateByUrl('/');
       });
     } else {
-      this.projectService.updateProject(this.projectForm.value).subscribe(() => {
+      this.projectService.updateProject(this.id!, this.projectForm.value).subscribe(() => {
         // navigates user back to homepage
         this.router.navigateByUrl('/');
       });

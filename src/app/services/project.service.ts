@@ -46,9 +46,7 @@ export class ProjectService {
          return of([]);
       }
       return this.http.get<Project[]>(`${this.projectsUrl}/?name=${term}`).pipe(
-         tap((x) =>
-            x.length ? this.log(`found projects matching "${term}"`) : this.log(`no projects matching "${term}"`)
-         ),
+         tap((x) => (x.length ? this.log(`found projects matching "${term}"`) : this.log(`no projects matching "${term}"`))),
          catchError(this.handleError<Project[]>('search Projects', []))
       );
    }
@@ -58,7 +56,7 @@ export class ProjectService {
       return this.http.get<number>('/api/project-count');
    }
 
-   // GET: recent projects added 
+   // GET: recent projects added
    getRecentlyCreatedProjects(): Observable<Project[]> {
       return this.http.get<Project[]>('/api/recent-projects');
    }
@@ -71,7 +69,7 @@ export class ProjectService {
    // SAVE METHODS //
 
    // POST: add a new Project to the server
-   addProject(newProject: Project | any): Observable<Project> {
+   addProject(newProject: Project | object): Observable<Project> {
       return this.http.post<Project>(this.projectsUrl, newProject, this.httpOptions).pipe(
          tap((newProject: Project) => this.log(`added project with id=${newProject._id}`)),
          catchError(this.handleError<Project>('add Project'))
@@ -90,10 +88,13 @@ export class ProjectService {
    }
 
    // PUT: update the project in the database
-   updateProject(project: Project | any): Observable<any> {
-      return this.http.put(this.projectsUrl, project, this.httpOptions).pipe(
-         tap(() => this.log(`updated project id=${project._id}`)),
-         catchError(this.handleError<any>('updateProject'))
+   updateProject(id: string, project: Project | object): Observable<object> {
+      // create the url
+      const url = `${this.projectsUrl}/${id}`;
+
+      return this.http.patch(url, project, this.httpOptions).pipe(
+         tap(() => this.log(`updated project id=${id}`)),
+         catchError(this.handleError<object>('updateProject'))
       );
    }
 
@@ -103,7 +104,7 @@ export class ProjectService {
    // @param result - optional value to return as the observable result
 
    private handleError<T>(operation = 'operation', result?: T) {
-      return (error: any): Observable<T> => {
+      return (error: Error): Observable<T> => {
          // TODO: send the error to remote logging infrastructure
          console.error(error); // log to console instead
 

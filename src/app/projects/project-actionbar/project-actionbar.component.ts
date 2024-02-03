@@ -22,8 +22,8 @@ export class ProjectActionBarComponent {
    constructor(private projectService: ProjectService, private router: Router) {}
 
    // updates a project
-   onUpdateProject(project: Project) {
-      this.projectService.updateProject(project).subscribe(() => {
+   onUpdateProject(id:string, project: Project) {
+      this.projectService.updateProject(id, project).subscribe(() => {
          // navigates admin back to the project grid page
          this.router.navigateByUrl('/projects');
       })

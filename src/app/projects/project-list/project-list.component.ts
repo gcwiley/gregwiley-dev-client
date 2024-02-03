@@ -36,7 +36,7 @@ export class ProjectListComponent implements OnInit {
       this.getProjects();
    }
 
-   // gets all projects from project service
+   // gets all projects from the project service
    getProjects(): void {
       this.projectService.getProjects().subscribe((projects) => {
          this.dataSource.data = projects;
