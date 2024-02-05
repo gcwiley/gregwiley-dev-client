@@ -14,8 +14,9 @@
 @use '../app/pages/signin-page/signin-page-theme';
 @use '../app/pages/not-found-page/not-found-page-theme';
 
-// MISC
+// INDIV COMPONENTS
 @use '../app/components/about/about-theme';
+@use '../app/components/skill-list/skill-list-theme';
 
 // Styles for the app that are based on the current theme.
 @mixin theme($theme) {
@@ -33,6 +34,7 @@
    @include signin-page-theme.theme($theme);
    @include not-found-page-theme.theme($theme);
 
-   // misc
+   // indiv components
    @include about-theme.theme($theme);
+   @include skill-list-theme.theme($theme);
 }

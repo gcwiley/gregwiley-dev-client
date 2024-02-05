@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent, FooterComponent, AnnouncementBannerComponent, HeroComponent } from 'src/app/shared';
 
 // import the favorite project components
-import { FavoriteProjectsComponent } from 'src/app/projects';
+import { ProjectCarouselComponent } from 'src/app/projects';
 
 @Component({
    selector: 'app-main-page',
@@ -20,7 +20,7 @@ import { FavoriteProjectsComponent } from 'src/app/projects';
       FooterComponent,
       AnnouncementBannerComponent,
       HeroComponent,
-      FavoriteProjectsComponent,
+      ProjectCarouselComponent,
    ],
 })
 export class MainPageComponent {}

@@ -1,5 +1,3 @@
-export { FavoriteProjectsComponent } from './favorite-projects/favorite-projects.component';
-export { ProjectActionBarComponent } from './project-actionbar/project-actionbar.component';
 export { ProjectCarouselComponent } from './project-carousel/project-carousel.component';
 export { ProjectCountComponent } from './project-count/project-count.component';
 export { ProjectDescriptionComponent } from './project-description/project-description.component';

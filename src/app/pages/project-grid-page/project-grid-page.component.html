@@ -1,6 +1,19 @@
+<!-- HEADER -->
 <app-header></app-header>
+<!-- BANNER -->
 <app-announcement-banner></app-announcement-banner>
 
-<app-project-grid></app-project-grid>
+<mat-grid-list class="container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+    <mat-grid-tile [colspan]="colspan">
+        <!-- PROJECT GRID -->
+        <app-project-grid></app-project-grid>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+        <!-- FIT THIS! -->
+        <h2>additional content here</h2>
+    </mat-grid-tile>
+
+</mat-grid-list>
 
 <app-footer></app-footer>

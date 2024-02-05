@@ -3,14 +3,14 @@
 
 // color mixin
 @mixin color($theme) {
-   .footer {
+   .post-grid {
       color: mat.get-color-from-palette($primary-palette, default-contrast);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
-   .announcement-banner {
+   .post-grid {
       font-size: mat.get-theme-typography($theme, headline-1);
    }
 }

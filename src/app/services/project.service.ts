@@ -61,8 +61,8 @@ export class ProjectService {
       return this.http.get<Project[]>('/api/recent-projects');
    }
 
-   // GET: favorite projects
-   getFavoriteProjects(): Observable<Project[]> {
+   // GET: featured projects for carousel
+   getFeaturedProjects(): Observable<Project[]> {
       return this.http.get<Project[]>('/api/favorite-projects');
    }
 

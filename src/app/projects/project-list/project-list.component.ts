@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 // import the angular material modules
-import { MatTableModule } from '@angular/material/table';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-
-// material data source - follow up
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 // import the project service
 import { ProjectService } from '../../services/project.service';
@@ -20,14 +19,30 @@ import { Project } from 'src/app/types/project.interface';
    templateUrl: './project-list.component.html',
    styleUrls: ['./project-list.component.scss'],
    standalone: true,
-   imports: [MatTableModule, MatIconModule, MatButtonModule, RouterModule],
+   imports: [
+      CommonModule,
+      MatTableModule,
+      MatIconModule,
+      MatButtonModule,
+      MatTooltipModule,
+      RouterModule,
+   ],
 })
 export class ProjectListComponent implements OnInit {
    // set up the data source
    dataSource = new MatTableDataSource<Project>();
 
    // columns to display
-   columnsToDisplay = ['title', 'status', 'category', 'language', 'startDate', 'favoriteProject', 'editProject', 'deleteProject'];
+   columnsToDisplay = [
+      'title',
+      'status',
+      'category',
+      'language',
+      'startDate',
+      'favoriteProject',
+      'editProject',
+      'deleteProject',
+   ];
 
    constructor(private projectService: ProjectService, private router: Router) {}
 
@@ -45,7 +60,7 @@ export class ProjectListComponent implements OnInit {
 
    // favorites a project
    onFavoriteProject(): void {
-      window.alert('You have add this project to favorites!');
+      window.alert('You have added this project to favorites!');
    }
 
    // deletes a project

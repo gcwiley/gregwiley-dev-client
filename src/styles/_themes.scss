@@ -9,18 +9,14 @@
 
 // define the light theme primary color - appears most
 $light-primary: mat.define-palette(mat.$light-blue-palette, $default: 900, $lighter: 50, $darker: 700, $text: 900);
-
 // define the light theme accent color
 $light-accent: mat.define-palette(mat.$green-palette, $default: 900, $lighter: 50, $darker: 700, $text: 900);
-
 // define the light theme warn color
 $light-warn: mat.define-palette(mat.$red-palette, $default: 600, $lighter: 100, $darker: 100, $text: 900);
-
 // define the dark theme primary color
 $dark-primary: mat.define-palette(mat.$light-green-palette, $default: 900, $lighter: 50, $darker: 100, $text: 900);
 // define the dark theme accent color
 $dark-accent: mat.define-palette(mat.$indigo-palette, $default: 600, $lighter: 500, $darker: 100, $text: 900);
-
 // define the dark theme warn color
 $dark-warn: mat.define-palette(mat.$red-palette, $default: 900, $lighter: 100, $darker: 100, $text: 900);
 
@@ -35,7 +31,7 @@ $custom-typography: mat.define-typography-config(
    $headline-6: mat.define-typography-level(20px, 1, 400, $letter-spacing: 0.15px),
    $subtitle-1: mat.define-typography-level(16px, 1, 400, $letter-spacing: 0.2px),
    $subtitle-2: mat.define-typography-level(14px, 1, 500, $letter-spacing: 0.15px),
-   $body-1: mat.define-typography-level(20px, 1.5, 200, $letter-spacing: 0.5px),
+   $body-1: mat.define-typography-level(16px, 1.5, 200, $letter-spacing: 1px),
    $body-2: mat.define-typography-level(14px, 1, 400, $letter-spacing: 0.25px),
    $caption: mat.define-typography-level(12px, 1, 400, $letter-spacing: 0.4px),
    $button: mat.define-typography-level(14px, 1, 500, $letter-spacing: 1.25px),

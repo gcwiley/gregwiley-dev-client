@@ -3,15 +3,16 @@
 
 // color mixin
 @mixin color($theme) {
-   .skill-list {
-      color: mat.get-theme-color($theme, warn, 100-contrast);
+   .skills-list {
+      color: mat.get-theme-color($theme, accent, 200-contrast);
+      background-color: mat.get-theme-color($theme, primary, 100);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
-   .skill-list {
-      font-family: mat.font-family($typography-config);
+   .skills-list {
+      font: mat.get-theme-typography($theme, subtitle-1);
    }
 }
 

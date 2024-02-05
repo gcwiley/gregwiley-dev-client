@@ -2,15 +2,13 @@
 <app-announcement-banner></app-announcement-banner>
 
 <mat-grid-list class="container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+   <mat-grid-tile [colspan]="colspan">
+      <app-about></app-about>
+   </mat-grid-tile>
 
-  <mat-grid-tile [colspan]="colspan">
-    <app-about></app-about>
-  </mat-grid-tile>
-
-  <mat-grid-tile>
-    <h2>My Skills</h2>
-  </mat-grid-tile>
-
+   <mat-grid-tile>
+      <app-skill-list></app-skill-list>
+   </mat-grid-tile>
 </mat-grid-list>
 
 <app-footer></app-footer>

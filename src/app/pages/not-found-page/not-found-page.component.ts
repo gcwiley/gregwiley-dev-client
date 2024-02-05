@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 // import shared components
 import { HeaderComponent, FooterComponent, AnnouncementBannerComponent, HeroComponent } from 'src/app/shared';
@@ -7,10 +8,10 @@ import { HeaderComponent, FooterComponent, AnnouncementBannerComponent, HeroComp
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-not-found-page',
-  templateUrl: './not-found-page.component.html',
-  styleUrls: ['./not-found-page.component.scss'],
-  standalone: true,
-  imports: [HeaderComponent, FooterComponent, AnnouncementBannerComponent, HeroComponent, MatButtonModule],
+   selector: 'app-not-found-page',
+   templateUrl: './not-found-page.component.html',
+   styleUrls: ['./not-found-page.component.scss'],
+   standalone: true,
+   imports: [RouterModule, HeaderComponent, FooterComponent, AnnouncementBannerComponent, HeroComponent, MatButtonModule],
 })
 export class NotFoundPageComponent {}

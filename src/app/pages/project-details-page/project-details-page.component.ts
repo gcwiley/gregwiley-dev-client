@@ -9,7 +9,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from 'src/app/shared';
 
 // import project components
-import { ProjectDetailsComponent, ProjectDescriptionComponent, ProjectTagsComponent, ProjectActionBarComponent } from 'src/app/projects';
+import { ProjectDetailsComponent, ProjectDescriptionComponent, ProjectTagsComponent } from 'src/app/projects';
 
 // import the project type
 import { Project } from 'src/app/types/project.interface';
@@ -30,7 +30,6 @@ import { ProjectService } from 'src/app/services/project.service';
       ProjectDetailsComponent,
       ProjectDescriptionComponent,
       ProjectTagsComponent,
-      ProjectActionBarComponent,
    ],
 })
 export class ProjectDetailsPageComponent implements OnInit {

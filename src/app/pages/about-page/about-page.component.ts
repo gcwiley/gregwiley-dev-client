@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
-// import angular material modules
+// import the angular material modules
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 
@@ -9,14 +9,22 @@ import { MatCardModule } from '@angular/material/card';
 import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from 'src/app/shared';
 
 // import the about component
-import { AboutMeComponent } from 'src/app/components/about/about.component';
+import { AboutMeComponent, SkillListComponent } from 'src/app/components';
 
 @Component({
    selector: 'app-about-page',
    templateUrl: './about-page.component.html',
    styleUrls: ['./about-page.component.scss'],
    standalone: true,
-   imports: [MatGridListModule, MatCardModule, HeaderComponent, AnnouncementBannerComponent, FooterComponent, AboutMeComponent],
+   imports: [
+      MatGridListModule,
+      MatCardModule,
+      HeaderComponent,
+      AnnouncementBannerComponent,
+      FooterComponent,
+      AboutMeComponent,
+      SkillListComponent,
+   ],
 })
 export class AboutPageComponent implements OnInit {
    // set the default values of the grid list here
