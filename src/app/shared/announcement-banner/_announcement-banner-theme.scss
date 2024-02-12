@@ -4,8 +4,8 @@
 // color mixin
 @mixin color($theme) {
    .announcement-banner {
-      color: mat.get-theme-color($theme, accent, 200-contrast);
-      background-color: mat.get-theme-color($theme, primary, 100);
+      color: mat.get-theme-color($theme, warn, 500-contrast);
+      background-color: mat.get-theme-color($theme, warn, 300);
    }
 }
 // typography mixin

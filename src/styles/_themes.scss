@@ -8,7 +8,7 @@
 @include mat.core();
 
 // define the light theme primary color - appears most
-$light-primary: mat.define-palette(mat.$light-blue-palette, $default: 900, $lighter: 50, $darker: 700, $text: 900);
+$light-primary: mat.define-palette(mat.$light-blue-palette, $default: 900, $lighter: 50, $darker: 700, $text: 700);
 // define the light theme accent color
 $light-accent: mat.define-palette(mat.$green-palette, $default: 900, $lighter: 50, $darker: 700, $text: 900);
 // define the light theme warn color

@@ -4,15 +4,16 @@
 // color mixin
 @mixin color($theme) {
    .skills-list {
-      color: mat.get-theme-color($theme, accent, 200-contrast);
-      background-color: mat.get-theme-color($theme, primary, 100);
+      color: mat.get-theme-color($theme, primary, A700);
+      background-color: mat.get-theme-color($theme, primary, 50);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
    .skills-list {
-      font: mat.get-theme-typography($theme, subtitle-1);
+      font: mat.get-theme-typography($theme, body-1);
+      letter-spacing: normal
    }
 }
 

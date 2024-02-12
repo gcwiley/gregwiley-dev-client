@@ -1,4 +1,4 @@
-<mat-card appearance="raised" *ngIf="project" class="project-details">
+<mat-card appearance="outlined" *ngIf="project" class="project-details">
    <mat-list>
       <!-- STATUS -->
       <mat-list-item lines="2">
@@ -18,7 +18,7 @@
       <!-- created At -->
       <mat-list-item lines="2">
          <span matListItemTitle>Created</span>
-         <span matListItemLine>{{ project.createdAt | date }}</span>
+         <span matListItemLine>{{ project.createdAt | date:'medium' }}</span>
       </mat-list-item>
       <!-- updated At -->
       <mat-list-item lines="2">

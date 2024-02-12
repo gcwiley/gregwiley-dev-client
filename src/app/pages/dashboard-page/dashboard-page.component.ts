@@ -1,54 +1,62 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router, RouterModule } from '@angular/router';
 
 // import angular material modules
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
 
-// import project list
-import { ProjectListComponent } from 'src/app/projects';
+// import the shared components
+import { HeaderComponent, FooterComponent } from 'src/app/shared';
+
+// import the project components
+import { ProjectListComponent, RecentProjectsComponent } from 'src/app/projects';
 
 @Component({
-  selector: 'app-dashboard-page',
-  templateUrl: './dashboard-page.component.html',
-  styleUrls: ['./dashboard-page.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatListModule,
-    MatMenuModule,
-    MatButtonModule,
-    ProjectListComponent,
-  ],
+   selector: 'app-dashboard-page',
+   templateUrl: './dashboard-page.component.html',
+   styleUrls: ['./dashboard-page.component.scss'],
+   standalone: true,
+   imports: [MatGridListModule, HeaderComponent, FooterComponent, ProjectListComponent, RecentProjectsComponent],
 })
-export class DashboardComponent {
-  private breakpointObserver = inject(BreakpointObserver);
+export class DashboardComponent implements OnInit {
+   // set the default values of the grid list here
+   cols = 4; // sets the number of columns in the grid
+   rowHeight = 'fit'; // sets the height of the rows in the grid
+   gutterSize = '25px'; // sets the gutter size of the grid
 
-  constructor(public auth: AngularFireAuth, private router: Router) {}
+   // set the default values of the grid tile here
+   colspan = 3;
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map((result) => result.matches),
-    shareReplay()
-  );
+   constructor(private breakpointObserver: BreakpointObserver) {}
 
-  // signs out the current user
-  onClickSignOut(): void {
-    this.auth.signOut().then(() => {
-      // navigates user to the sign in page
-      this.router.navigateByUrl('/signin');
-    });
-  }
+   // responsive code
+   layoutChanges(): void {
+      this.breakpointObserver
+         .observe([
+            Breakpoints.TabletPortrait,
+            Breakpoints.TabletLandscape,
+            Breakpoints.HandsetPortrait,
+            Breakpoints.HandsetLandscape,
+         ])
+         .subscribe((result) => {
+            const breakpoints = result.breakpoints;
+            // check to see if viewport is in table portrait mode
+            if (breakpoints[Breakpoints.TabletPortrait]) {
+               this.cols = 1; // grid list changes to 1 column
+               this.colspan = 1; // grid tile takes up one column
+            } else if (breakpoints[Breakpoints.HandsetPortrait]) {
+               this.cols = 1;
+               this.colspan = 1; // grid tile takes up one column
+            } else if (breakpoints[Breakpoints.HandsetLandscape]) {
+               this.cols = 1;
+               this.colspan = 1; // grid tile takes up one column
+            } else if (breakpoints[Breakpoints.TabletLandscape]) {
+               this.cols = 1;
+               this.colspan = 1; // grid tile takes up one column
+            }
+         });
+   }
+
+   ngOnInit(): void {
+      this.layoutChanges();
+   }
 }

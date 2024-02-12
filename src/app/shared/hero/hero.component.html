@@ -7,9 +7,11 @@
       <h3 class="mat-headline-5 subtitle">{{ subtitle }}</h3>
 
       <div class="hero-actions">
-         <a mat-raised-button color="primary" routerLink="/about">About</a>
-         <a mat-raised-button color="primary" routerLink="/blog">Blog</a>
-         <a mat-raised-button color="primary" routerLink="/projects">Projects</a>
+         <a mat-fab color="accent" routerLink="/about" extended>
+            <mat-icon>info</mat-icon>About
+         </a>
+         <a mat-fab color="primary" routerLink="/blog" extended>
+            <mat-icon>feed</mat-icon>Blog</a>
       </div>
    </div>
 </header>

@@ -3,7 +3,6 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
 // import the angular material modules
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
 
 // import the shared components
 import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from 'src/app/shared';
@@ -18,7 +17,6 @@ import { AboutMeComponent, SkillListComponent } from 'src/app/components';
    standalone: true,
    imports: [
       MatGridListModule,
-      MatCardModule,
       HeaderComponent,
       AnnouncementBannerComponent,
       FooterComponent,
@@ -30,7 +28,7 @@ export class AboutPageComponent implements OnInit {
    // set the default values of the grid list here
    cols = 4; // sets the number of columns in the grid
    rowHeight = 'fit'; // sets the height of the rows in the grid
-   gutterSize = '25px'; // sets the gutter size of the grid
+   gutterSize = '0px'; // sets the gutter size of the grid
 
    // set the default values of the grid tile here
    colspan = 3;
