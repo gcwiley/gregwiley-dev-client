@@ -1,29 +1,10 @@
-.container {
+.main-page-container {
   height: 100vh;
   max-width: 1400px;
   margin: auto;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
-.main-page-content {
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: auto;
-  max-width: 1320px;
-  margin: auto;
-  // border: 1px red dashed;
-  width: 100%;
-}
-
-.main-page-title {
-  font-weight: 300;
-}
-
-.main-text {
-	margin-top: 3rem;
-	margin-bottom: 2rem;
-  padding: 1rem;
-}
 
 

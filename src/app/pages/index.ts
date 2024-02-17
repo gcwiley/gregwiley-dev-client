@@ -1,6 +1,6 @@
 export { AboutPageComponent } from './about-page/about-page.component';
+export { AdminPageComponent } from './admin-page/admin-page.component';
 export { BlogPageComponent } from './blog-page/blog-page.component';
-export { DashboardComponent } from './dashboard-page/dashboard-page.component';
 export { MainPageComponent } from './main-page/main-page.component';
 export { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 export { PostCreatePageComponent } from './post-create-page/post-create-page.component';

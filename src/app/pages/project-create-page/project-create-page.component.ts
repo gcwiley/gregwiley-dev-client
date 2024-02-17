@@ -5,7 +5,6 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 
-
 // import shared components
 import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from 'src/app/shared';
 
@@ -30,7 +29,7 @@ import { ProjectFormComponent, RecentProjectsComponent } from 'src/app/projects'
 export class ProjectCreatePageComponent implements OnInit {
   // set the default values of the grid list here
   cols = 4; // sets the number of columns in the grid
-  rowHeight = 'fit'; // sets the height of the rows in the grid
+  rowHeight = '50px'; // sets the height of the rows in the grid
   gutterSize = '10px'; // sets the gutter size of the grid
 
   // set the default values of the grid tile here

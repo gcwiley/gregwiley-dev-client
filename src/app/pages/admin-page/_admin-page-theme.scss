@@ -3,15 +3,15 @@
 
 // color mixin
 @mixin color($theme) {
-   .main-page-container {
+   .admin-page-container {
       color: mat.get-theme-color($theme, primary, 900-contrast);
-      background-color: mat.get-theme-color($theme, primary, 200);
+      // background-color: mat.get-theme-color($theme, primary, 200);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
-   .main-page-container {
+   .admin-page-container {
       font: mat.get-theme-typography($theme, subtitle-1);
    }
 }

@@ -4,27 +4,25 @@
 // color mixin
 @mixin color($theme) {
    .recent-posts {
-      color: mat.get-color-from-palette($primary-palette, 900);
-      background-color: mat.get-color-from-palette($primary-palette, 50);
+      color: mat.get-theme-color($theme, accent, 50-contrast);
+      background-color: mat.get-theme-color($theme, accent, 50);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
    .recent-posts {
-      font: mat.font-family($typography-config);
+      font: mat.get-theme-typography($theme, subtitle-1);
    }
 }
 
 // theme mixi
 @mixin theme($theme) {
-   $color-config: mat.get-color-config($theme);
-   @if $color-config != null {
+   @if mat.theme-has($theme, color) {
       @include color($theme);
    }
 
-   $typography-config: mat.get-typography-config($theme);
-   @if $typography-config != null {
+   @if mat.theme-has($theme, typography) {
       @include typography($theme);
    }
 }

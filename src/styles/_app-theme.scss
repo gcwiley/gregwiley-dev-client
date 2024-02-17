@@ -10,9 +10,14 @@
 @use '../app/projects/recent-projects/recent-projects-theme';
 @use '../app/projects/project-details/project-details-theme';
 
+// POST COMPONENTS THEMES
+@use '../app/posts/recent-posts/recent-posts-theme';
+
 // PAGE THEMES
 @use '../app/pages/signin-page/signin-page-theme';
 @use '../app/pages/not-found-page/not-found-page-theme';
+@use '../app/pages/admin-page/admin-page-theme';
+@use '../app/pages/main-page/main-page-theme';
 
 // INDIV COMPONENTS
 @use '../app/components/about/about-theme';
@@ -30,9 +35,14 @@
    @include recent-projects-theme.theme($theme);
    @include project-details-theme.theme($theme);
 
+   // post
+   @include recent-posts-theme.theme($theme);
+
    // pages
    @include signin-page-theme.theme($theme);
    @include not-found-page-theme.theme($theme);
+   @include admin-page-theme.theme($theme);
+   @include main-page-theme.theme($theme);
 
    // indiv components
    @include about-theme.theme($theme);

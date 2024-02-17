@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 // import the route guard
 import { RouteGuard } from './guards/route.guard';
 
-// import pages
+// import the page components
 import {
    AboutPageComponent,
    BlogPageComponent,
-   DashboardComponent,
+   AdminPageComponent,
    MainPageComponent,
    NotFoundPageComponent,
    PostCreatePageComponent,
@@ -38,7 +38,7 @@ const routes: Routes = [
    { path: 'about', component: AboutPageComponent },
    { path: 'blog', component: BlogPageComponent },
    { path: 'resources', component: ResourcesPageComponent },
-   { path: 'admin', component: DashboardComponent, canActivate: [RouteGuard] },
+   { path: 'admin', component: AdminPageComponent, canActivate: [RouteGuard] },
    { path: '**', component: NotFoundPageComponent },
 ];
 

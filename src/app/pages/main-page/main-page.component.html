@@ -2,8 +2,8 @@
 <app-announcement-banner></app-announcement-banner>
 <app-hero></app-hero>
 
-<mat-grid-list>
-   <mat-grid-tile>
+<mat-grid-list class="main-page-container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+   <mat-grid-tile [colspan]="colspan">
       <app-project-carousel></app-project-carousel>
    </mat-grid-tile>
 </mat-grid-list>

@@ -1,3 +1,50 @@
-<table>
-    
+<table mat-table [dataSource]="dataSource" class="post-table">
+   <!-- title column -->
+   <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let post">{{ post.title }}</td>
+   </ng-container>
+
+   <!-- author column -->
+   <ng-container matColumnDef="author">
+      <th mat-header-cell *matHeaderCellDef>Author</th>
+      <td mat-cell *matCellDef="let post">{{ post.author }}</td>
+   </ng-container>
+
+   <!-- edit post button -->
+   <ng-container matColumnDef="editPost">
+      <!-- table header -->
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+      <!-- table data -->
+      <td mat-cell *matCellDef="let post">
+         <a
+            mat-icon-button
+            color="primary"
+            routerLink="/edit/{{ post._id }}"
+            matTooltip="Edit post"
+            aria-label="Edit post">
+            <mat-icon>edit</mat-icon>
+         </a>
+      </td>
+   </ng-container>
+
+   <!-- delete post button -->
+   <ng-container matColumnDef="deletePost">
+      <!-- table header -->
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <!-- table data -->
+      <td mat-cell *matCellDef="let post">
+         <button
+            mat-icon-button
+            color="warn"
+            (click)="onDeletePost(post._id)"
+            matTooltip="Delete post"
+            aria-label="Delete post">
+            <mat-icon>delete</mat-icon>
+         </button>
+      </td>
+   </ng-container>
+
+   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+   <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
 </table>

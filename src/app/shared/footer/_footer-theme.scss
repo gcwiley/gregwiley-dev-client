@@ -4,8 +4,8 @@
 // color mixin
 @mixin color($theme) {
    .footer {
-      color: mat.get-theme-color($theme, primary, 100-contrast);
-      background-color: mat.get-theme-color($theme, primary, 100);
+      color: mat.get-theme-color($theme, accent, 900);
+      background-color: mat.get-theme-color($theme, accent, 200);
    }
 }
 

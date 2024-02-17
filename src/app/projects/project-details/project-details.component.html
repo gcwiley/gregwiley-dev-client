@@ -1,29 +1,27 @@
-<mat-card appearance="outlined" *ngIf="project" class="project-details">
-   <mat-list>
-      <!-- STATUS -->
-      <mat-list-item lines="2">
-         <span matListItemTitle>Status</span>
-         <span matListItemLine>{{ project.status }}</span>
-      </mat-list-item>
-      <!-- CATEGORY -->
-      <mat-list-item lines="2">
-         <span matListItemTitle>Category</span>
-         <span matListItemLine>{{ project.category }}</span>
-      </mat-list-item>
-      <!-- language -->
-      <mat-list-item lines="2">
-         <span matListItemTitle>Language Used</span>
-         <span matListItemLine>{{ project.language }}</span>
-      </mat-list-item>
-      <!-- created At -->
-      <mat-list-item lines="2">
-         <span matListItemTitle>Created</span>
-         <span matListItemLine>{{ project.createdAt | date:'medium' }}</span>
-      </mat-list-item>
-      <!-- updated At -->
-      <mat-list-item lines="2">
-         <span matListItemTitle>Updated</span>
-         <span matListItemLine>{{ project.updatedAt | date }}</span>
-      </mat-list-item>
-   </mat-list>
-</mat-card>
+<mat-list *ngIf="project" class="project-details" role="list">
+   <span mat-subheader>Project Details</span>
+   <mat-list-item lines="2">
+      <span matListItemTitle>Status</span>
+      <span matListItemLine>{{ project.status }}</span>
+   </mat-list-item>
+   <mat-divider></mat-divider>
+   <mat-list-item lines="2">
+      <span matListItemTitle>Category</span>
+      <span matListItemLine>{{ project.category }}</span>
+   </mat-list-item>
+   <mat-divider></mat-divider>
+   <mat-list-item lines="2">
+      <span matListItemTitle>Language Used</span>
+      <span matListItemLine>{{ project.language }}</span>
+   </mat-list-item>
+   <mat-divider></mat-divider>
+   <mat-list-item lines="2">
+      <span matListItemTitle>Created</span>
+      <span matListItemLine>{{ project.createdAt | date : 'medium' }}</span>
+   </mat-list-item>
+   <mat-divider></mat-divider>
+   <mat-list-item lines="2">
+      <span matListItemTitle>Last Updated</span>
+      <span matListItemLine>{{ project.updatedAt | date : 'medium' }}</span>
+   </mat-list-item>
+</mat-list>

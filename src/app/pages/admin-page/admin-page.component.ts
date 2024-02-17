@@ -11,13 +11,13 @@ import { HeaderComponent, FooterComponent } from 'src/app/shared';
 import { ProjectListComponent, RecentProjectsComponent } from 'src/app/projects';
 
 @Component({
-   selector: 'app-dashboard-page',
-   templateUrl: './dashboard-page.component.html',
-   styleUrls: ['./dashboard-page.component.scss'],
+   selector: 'app-admin-page',
+   templateUrl: './admin-page.component.html',
+   styleUrls: ['./admin-page.component.scss'],
    standalone: true,
    imports: [MatGridListModule, HeaderComponent, FooterComponent, ProjectListComponent, RecentProjectsComponent],
 })
-export class DashboardComponent implements OnInit {
+export class AdminPageComponent implements OnInit {
    // set the default values of the grid list here
    cols = 4; // sets the number of columns in the grid
    rowHeight = 'fit'; // sets the height of the rows in the grid

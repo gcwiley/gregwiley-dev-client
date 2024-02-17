@@ -1,12 +1,10 @@
-<mat-card appearance="raised">
-   <mat-list>
-      <div mat-subheader>Recent Projects</div>
-
-      <mat-list-item *ngFor="let project of recentProjects">
-         <div matListItemLine>{{ project.title }}</div>
-         <div matListItemMeta>
-            <strong>{{ project.createdAt | date }}</strong>
-         </div>
-      </mat-list-item>
-   </mat-list>
-</mat-card>
+<mat-list class="recent-projects">
+   <span mat-subheader>Recent Projects</span>
+   @for (project of recentProjects; track project) {
+   <mat-list-item lines="2">
+      <span matListItemTitle>{{ project.title }}</span>
+      <span matListItemLine>{{ project.createdAt | date }}</span>
+   </mat-list-item>
+   <mat-divider></mat-divider>
+   }
+</mat-list>

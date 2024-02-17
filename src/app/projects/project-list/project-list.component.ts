@@ -46,7 +46,7 @@ export class ProjectListComponent implements OnInit {
 
    constructor(private projectService: ProjectService, private router: Router) {}
 
-   // this method executes right away
+   
    ngOnInit(): void {
       this.getProjects();
    }

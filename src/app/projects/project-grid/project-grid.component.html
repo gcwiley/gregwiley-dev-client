@@ -1,24 +1,24 @@
 <mat-grid-list class="grid-container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
-  <mat-grid-tile *ngFor="let project of projects" [colspan]="colspan" [rowspan]="rowspan">
-    <mat-card class="project-card">
-      <mat-card-header>
-        <mat-card-title>{{ project.title }}</mat-card-title>
-        <mat-card-subtitle>{{ project.category }}</mat-card-subtitle>
-      </mat-card-header>
+   <mat-grid-tile *ngFor="let project of projects" [colspan]="colspan" [rowspan]="rowspan">
+      <mat-card class="project-card" appearance="raised">
+         <mat-card-header>
+            <mat-card-title>{{ project.title }}</mat-card-title>
+            <mat-card-subtitle>{{ project.category }}</mat-card-subtitle>
+         </mat-card-header>
 
-      <mat-card-content>
-        <p>{{ project.description }}</p>
-      </mat-card-content>
+         <mat-card-content>
+            <p>{{ project.description }}</p>
+         </mat-card-content>
 
-      <span class="spacer"></span>
+         <span class="spacer"></span>
 
-      <mat-card-actions>
-        <a mat-button color="accent" routerLink="/projects/{{ project._id }}">VIEW</a>
-        <span class="spacer"></span>
-        <a mat-icon-button color="primary" href="{{ project.gitUrl }}" disabled>
-          <mat-icon>code</mat-icon>
-        </a>
-      </mat-card-actions>
-    </mat-card>
-  </mat-grid-tile>
+         <mat-card-actions>
+            <a mat-button color="accent" routerLink="/projects/{{ project._id }}">VIEW</a>
+            <span class="spacer"></span>
+            <a mat-icon-button color="primary" href="{{ project.gitUrl }}" disabled>
+               <mat-icon>code</mat-icon>
+            </a>
+         </mat-card-actions>
+      </mat-card>
+   </mat-grid-tile>
 </mat-grid-list>

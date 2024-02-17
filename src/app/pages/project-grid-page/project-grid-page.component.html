@@ -1,19 +1,13 @@
-<!-- HEADER -->
 <app-header></app-header>
-<!-- BANNER -->
 <app-announcement-banner></app-announcement-banner>
 
-<mat-grid-list class="container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
-    <mat-grid-tile [colspan]="colspan">
-        <!-- PROJECT GRID -->
-        <app-project-grid></app-project-grid>
-    </mat-grid-tile>
+<!-- <mat-grid-list class="project-grid-page-container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+   <mat-grid-tile [colspan]="colspan">
+   </mat-grid-tile>
+</mat-grid-list> -->
 
-    <mat-grid-tile>
-        <!-- FIT THIS! -->
-        <h2>additional content here</h2>
-    </mat-grid-tile>
-
-</mat-grid-list>
+<main class="project-grid-page-container">
+   <app-project-grid></app-project-grid>
+</main>
 
 <app-footer></app-footer>

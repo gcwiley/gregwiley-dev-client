@@ -38,7 +38,7 @@ export class ProjectGridComponent implements OnInit {
    projects: Project[] = [];
 
    // set up the grid list demensions
-   cols = 4; // Amount of columns in the grid list.
+   cols = 5; // Amount of columns in the grid list.
    rowHeight = '250px'; // row height
    gutterSize = '0px';
 

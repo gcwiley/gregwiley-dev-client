@@ -3,18 +3,28 @@
 
 // color mixin
 @mixin color($theme) {
-   .mat-mdc-card {
-      color: mat.get-color-from-palette($primary-palette, 500);
+   .recent-projects {
+      color: mat.get-theme-color($theme, primary, 900);
+      background-color: mat.get-theme-color($theme, primary, 50);
+      border: .5px mat.get-theme-color($theme, primary, 200) solid;
+      border-radius: .5rem;
    }
 }
 
-// typography mixin - fix
+// typography mixin
 @mixin typography($theme) {
    .recent-projects {
-      font: mat.font-family($typography-config);
+      font: mat.get-theme-typography($theme, subtitle-1);
    }
 }
 
-// theme mixin - FIX THIS
+// theme mixin
 @mixin theme($theme) {
+   @if mat.theme-has($theme, color) {
+      @include color($theme);
+   }
+
+   @if mat.theme-has($theme, typography) {
+      @include typography($theme);
+   }
 }
