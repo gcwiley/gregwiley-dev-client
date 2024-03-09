@@ -37,7 +37,7 @@ export class PostGridComponent implements OnInit {
 
   // set up the grid list demensions
   cols = 4; // Amount of columns in the grid list.
-  rowHeight = '250px'; // row height
+  rowHeight = '1:1'; // row height
   gutterSize = '0px';
 
   // set up the grid list dimensions

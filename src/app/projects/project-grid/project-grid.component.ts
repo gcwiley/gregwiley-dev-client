@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
 
-// import angular material modules
+// import the angular material modules
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -38,13 +38,13 @@ export class ProjectGridComponent implements OnInit {
    projects: Project[] = [];
 
    // set up the grid list demensions
-   cols = 5; // Amount of columns in the grid list.
-   rowHeight = '250px'; // row height
+   cols = 4; // Amount of columns in the grid list.
+   rowHeight = '1:1'; // row height
    gutterSize = '0px';
 
    // set up the grid list dimensions
-   colspan = 1; // comment
-   rowspan = 1; // comment
+   colspan = 1; // fix this!
+   rowspan = 1; // fix this!
 
    constructor(private projectService: ProjectService, private breakpointObserver: BreakpointObserver) {}
 

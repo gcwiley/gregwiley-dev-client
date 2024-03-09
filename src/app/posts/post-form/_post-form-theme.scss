@@ -1,16 +1,18 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 
+// fix this page
+
 // color mixin
 @mixin color($theme) {
-   .announcement-banner {
+   .post-form {
       color: mat.get-theme-color($theme, accent, 200-contrast);
       background-color: mat.get-theme-color($theme, primary, 200);
    }
 }
 // typography mixin
 @mixin typography($theme) {
-   .announcement-banner {
+   .post-form {
       font: mat.get-theme-typography($theme, subtitle-1);
    }
 }

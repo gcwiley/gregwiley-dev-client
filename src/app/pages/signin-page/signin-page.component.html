@@ -1,5 +1,4 @@
 <app-header></app-header>
-<app-announcement-banner></app-announcement-banner>
 
 <main class="signin-page-container">
   <form [formGroup]="signinForm" novalidate (ngSubmit)="onSubmitSignIn()">
@@ -23,7 +22,7 @@
         <mat-label>Password</mat-label>
         <input matInput type="password" formControlName="password" />
         <mat-icon matSuffix>lock</mat-icon>
-        <mat-error *ngIf="signinForm.controls['password'].hasError('required')"></mat-error>
+        <mat-error *ngIf="signinForm.controls['password'].hasError('required')">Please enter your password.</mat-error>
       </mat-form-field>
 
       <!-- SIGN IN BUTTON -->
@@ -33,4 +32,6 @@
     </mat-card>
   </form>
 </main>
+
+
 <app-footer></app-footer>

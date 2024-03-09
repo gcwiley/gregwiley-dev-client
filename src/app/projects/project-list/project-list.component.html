@@ -1,3 +1,7 @@
+<a mat-flat-button routerLink="/create-project">Add Project</a>
+
+<input type="text">
+
 <table mat-table [dataSource]="dataSource" class="project-table mat-elevation-z1">
    <!-- title column -->
    <ng-container matColumnDef="title">
@@ -29,11 +33,9 @@
       <td mat-cell *matCellDef="let project">{{ project.startDate | date : 'short' }}</td>
    </ng-container>
 
-   <!-- delete project button -->
+   <!-- delete project icon button -->
    <ng-container matColumnDef="deleteProject">
-      <!-- table header -->
       <th mat-header-cell *matHeaderCellDef>Delete</th>
-      <!-- table data -->
       <td mat-cell *matCellDef="let project">
          <button
             mat-icon-button
@@ -46,11 +48,9 @@
       </td>
    </ng-container>
 
-   <!-- favorite project button -->
+   <!-- favorite project icon button -->
    <ng-container matColumnDef="favoriteProject">
-      <!-- table header -->
       <th mat-header-cell *matHeaderCellDef>Favorite</th>
-      <!-- table data -->
       <td mat-cell *matCellDef="let project">
          <button
             mat-icon-button
@@ -64,11 +64,9 @@
       </td>
    </ng-container>
 
-   <!-- edit project button -->
+   <!-- edit project icon button -->
    <ng-container matColumnDef="editProject">
-      <!-- table header -->
       <th mat-header-cell *matHeaderCellDef>Edit</th>
-      <!-- table data -->
       <td mat-cell *matCellDef="let project">
          <a
             mat-icon-button

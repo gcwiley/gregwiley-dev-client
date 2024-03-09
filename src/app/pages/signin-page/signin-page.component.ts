@@ -11,8 +11,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-// import app header
-import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from 'src/app/shared';
+// import the shared components
+import { HeaderComponent, FooterComponent } from 'src/app/shared';
 
 // import the auth service
 import { AuthService } from '../../services/auth.service';
@@ -33,7 +33,6 @@ import { AuthService } from '../../services/auth.service';
     MatButtonModule,
     MatIconModule,
     HeaderComponent,
-    AnnouncementBannerComponent,
     FooterComponent,
   ],
 })
@@ -54,7 +53,7 @@ export class SigninComponent {
   });
 
   // Sign in with email and password
-  // if successful, navigate user to the main page
+  // if successful, navigate admin to the main page
   onSubmitSignIn() {
     this.authService
       .SigninUserwithEmailAndPassword(

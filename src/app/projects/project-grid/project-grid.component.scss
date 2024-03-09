@@ -1,19 +1,12 @@
-.grid-container {
-  max-width: 1400px;
-  margin: auto;
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-
 .project-card {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  margin: .5rem;
+   position: absolute;
+   top: 1rem;
+   left: 1rem;
+   right: 1rem;
+   bottom: 1rem;
+   padding: 0.5rem;
 }
 
 .spacer {
-  flex: 1 1 auto;
+   flex: 1 1 auto;
 }

@@ -1,5 +1,6 @@
 <mat-grid-list class="grid-container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
-   <mat-grid-tile *ngFor="let project of projects" [colspan]="colspan" [rowspan]="rowspan">
+   @for (project of projects; track project) {
+   <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
       <mat-card class="project-card" appearance="raised">
          <mat-card-header>
             <mat-card-title>{{ project.title }}</mat-card-title>
@@ -21,4 +22,5 @@
          </mat-card-actions>
       </mat-card>
    </mat-grid-tile>
+   }
 </mat-grid-list>
