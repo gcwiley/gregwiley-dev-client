@@ -1,8 +1,8 @@
 <app-header></app-header>
 <app-announcement-banner></app-announcement-banner>
 
-<mat-grid-list>
-    <mat-grid-tile>
+<mat-grid-list class="resources-page-container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+    <mat-grid-tile [colspan]="colspan">
         <h2>Add Content</h2>
     </mat-grid-tile>
 

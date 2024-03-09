@@ -34,17 +34,17 @@ import { ProjectService } from '../../services/project.service';
    ],
 })
 export class ProjectCarouselComponent implements OnInit {
-   // creating member variables
+   // create the member variables
    projects: Project[] = [];
 
    // set up the grid list demensions
-   cols = 4; // Amount of columns in the grid list.
-   rowHeight = '200px'; // row height
+   cols = 5; // Amount of columns in the grid list.
+   rowHeight = '1:1'; // row height
    gutterSize = '0px';
 
    // set up the grid list dimensions
-   colspan = 1; // comment
-   rowspan = 1; // comment
+   colspan = 1; // fix this!
+   rowspan = 1; // fix this!
 
    constructor(private projectService: ProjectService, private breakpointObserver: BreakpointObserver) {}
 

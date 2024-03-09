@@ -1,4 +1,4 @@
-<mat-grid-list class="grid-container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+<mat-grid-list [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
    @for (project of projects; track project) {
    <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
       <mat-card class="project-card" appearance="raised">

@@ -1,8 +1,4 @@
-<a mat-flat-button routerLink="/create-project">Add Project</a>
-
-<input type="text">
-
-<table mat-table [dataSource]="dataSource" class="project-table mat-elevation-z1">
+<table mat-table [dataSource]="dataSource">
    <!-- title column -->
    <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef>Title</th>
@@ -80,5 +76,5 @@
    </ng-container>
 
    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-   <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+   <tr mat-row matRipple *matRowDef="let row; columns: columnsToDisplay"></tr>
 </table>

@@ -3,6 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 // import the angular material modules
+import { MatRippleModule } from '@angular/material/core';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,6 +22,7 @@ import { Project } from 'src/app/types/project.interface';
    standalone: true,
    imports: [
       CommonModule,
+      MatRippleModule,
       MatTableModule,
       MatIconModule,
       MatButtonModule,
@@ -46,7 +48,6 @@ export class ProjectListComponent implements OnInit {
 
    constructor(private projectService: ProjectService, private router: Router) {}
 
-   
    ngOnInit(): void {
       this.getProjects();
    }

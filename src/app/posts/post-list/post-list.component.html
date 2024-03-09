@@ -1,5 +1,3 @@
-<a mat-raised-button routerLink="/new-post">New Post</a>
-
 <table mat-table [dataSource]="dataSource" class="post-table">
    <!-- title column -->
    <ng-container matColumnDef="title">
@@ -11,6 +9,18 @@
    <ng-container matColumnDef="author">
       <th mat-header-cell *matHeaderCellDef>Author</th>
       <td mat-cell *matCellDef="let post">{{ post.author }}</td>
+   </ng-container>
+
+   <!-- createdAt -->
+   <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef>Created</th>
+      <td mat-cell *matCellDef="let post">{{ post.createdAt}}</td>
+   </ng-container>
+
+   <!-- updatedAt -->
+   <ng-container matColumnDef="updatedAt">
+      <th mat-header-cell *matHeaderCellDef>Updated</th>
+      <td mat-cell *matCellDef="let post">{{ post.updatedAt}}</td>
    </ng-container>
 
    <!-- edit post icon button -->
@@ -28,7 +38,7 @@
       </td>
    </ng-container>
 
-   <!-- delete post button -->
+   <!-- delete post icon button -->
    <ng-container matColumnDef="deletePost">
       <th mat-header-cell *matHeaderCellDef>Delete</th>
       <td mat-cell *matCellDef="let post">

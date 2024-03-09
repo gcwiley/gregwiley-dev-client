@@ -34,11 +34,11 @@ import { Project } from '../../types/project.interface';
    ],
 })
 export class ProjectGridComponent implements OnInit {
-   // creating member variables
+   // create the member variables
    projects: Project[] = [];
 
    // set up the grid list demensions
-   cols = 4; // Amount of columns in the grid list.
+   cols = 5; // Amount of columns in the grid list.
    rowHeight = '1:1'; // row height
    gutterSize = '0px';
 

@@ -2,10 +2,12 @@
 <app-announcement-banner></app-announcement-banner>
 <app-hero></app-hero>
 
-<mat-grid-list class="main-page-container" [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
-   <mat-grid-tile [colspan]="colspan">
-      <app-project-carousel></app-project-carousel>
-   </mat-grid-tile>
-</mat-grid-list>
+<main class="main-page-container">
+   <div>
+      <h2>My Recent Projects</h2>
+      <a mat-stroked-button color="primary">All Projects</a>
+   </div>
+   <app-project-carousel></app-project-carousel>
+</main>
 
 <app-footer></app-footer>

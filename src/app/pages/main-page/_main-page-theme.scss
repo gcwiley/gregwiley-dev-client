@@ -4,8 +4,8 @@
 // color mixin
 @mixin color($theme) {
    .main-page-container {
-      color: mat.get-theme-color($theme, primary, 900-contrast);
-      background-color: mat.get-theme-color($theme, primary, 200);
+      color: mat.get-theme-color($theme, primary, 200-contrast);
+      // background-color: mat.get-theme-color($theme, primary, 200);
    }
 }
 

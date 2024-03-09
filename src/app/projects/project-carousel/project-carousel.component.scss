@@ -1,11 +1,12 @@
-// this scss files contains structral, color and topography styles
-
-.my-carousel {
-   display: flex;
-   font-family: serif;
+.project-card {
+   position: absolute;
+   top: 1rem;
+   left: 1rem;
+   right: 1rem;
+   bottom: 1rem;
+   padding: 0.5rem;
 }
 
-.my-carousel-button {
-   border-radius: 50%;
-   color: blue;
+.spacer {
+   flex: 1 1 auto;
 }
