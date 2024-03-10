@@ -1,10 +1,8 @@
-1. git hub component from template 
+1. Add the ability to favorite a project
 
-2. toolbar from library app
+2. Figure out how to make a interactive project cousel 
 
-3. fix ssl cert
-
-5. fix blog form
+3. redeploy to azure web app
 
 
 

@@ -9,6 +9,7 @@
 // PROJECTS COMPONENT THEMES
 @use '../app/projects/recent-projects/recent-projects-theme';
 @use '../app/projects/project-details/project-details-theme';
+@use '../app/projects/project-description/project-description-theme';
 
 // POST COMPONENTS THEMES
 @use '../app/posts/recent-posts/recent-posts-theme';
@@ -34,6 +35,7 @@
    // projects
    @include recent-projects-theme.theme($theme);
    @include project-details-theme.theme($theme);
+   @include project-description-theme.theme($theme);
 
    // post
    @include recent-posts-theme.theme($theme);

@@ -8,6 +8,7 @@ import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // import the project service
 import { ProjectService } from '../../services/project.service';
@@ -27,10 +28,14 @@ import { Project } from 'src/app/types/project.interface';
       MatIconModule,
       MatButtonModule,
       MatTooltipModule,
+      MatProgressSpinnerModule,
       RouterModule,
    ],
 })
 export class ProjectListComponent implements OnInit {
+   // fix this later!
+   isLoadingResults = true;
+
    // set up the data source
    dataSource = new MatTableDataSource<Project>();
 
@@ -41,7 +46,7 @@ export class ProjectListComponent implements OnInit {
       'category',
       'language',
       'startDate',
-      'favoriteProject',
+      'openProject',
       'editProject',
       'deleteProject',
    ];
@@ -60,9 +65,9 @@ export class ProjectListComponent implements OnInit {
    }
 
    // favorites a project
-   onFavoriteProject(): void {
-      window.alert('You have added this project to favorites!');
-   }
+   // onFavoriteProject(): void {
+   //    window.alert('You have added this project to favorites!');
+   // }
 
    // deletes a project
    onDeleteProject(id: string): void {

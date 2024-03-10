@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 // import angular material modules
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +16,7 @@ import { ProjectCarouselComponent } from 'src/app/projects';
    styleUrls: ['./main-page.component.scss'],
    standalone: true,
    imports: [
+      RouterModule,
       MatButtonModule,
       HeaderComponent,
       FooterComponent,
@@ -23,6 +25,4 @@ import { ProjectCarouselComponent } from 'src/app/projects';
       ProjectCarouselComponent,
    ],
 })
-export class MainPageComponent {
-   
-}
+export class MainPageComponent {}

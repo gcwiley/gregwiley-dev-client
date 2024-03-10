@@ -1,9 +1,4 @@
-<mat-card class="project-description" appearance="raised" *ngIf="project">
-  <mat-card-header>
-    <mat-card-title>{{ project.title }}</mat-card-title>
-  </mat-card-header>
-
-  <mat-card-content>
-    <p>{{ project.description }}</p>
-  </mat-card-content>
-</mat-card>
+<section class="project-description mat-elevation-z1" *ngIf="project">
+   <h2>{{ project.title }}</h2>
+   <p>{{ project.description }}</p>
+</section>

@@ -5,5 +5,19 @@
   margin: auto;
 }
 
+.main-page-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main-page-container h2 {
+  margin: 0;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+  padding-left: 1rem;
+}
+
+
 
 

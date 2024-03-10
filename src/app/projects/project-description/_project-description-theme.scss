@@ -3,17 +3,17 @@
 
 // color mixin
 @mixin color($theme) {
-   .project-details {
+   .project-description {
       color: mat.get-theme-color($theme, primary, 900);
-      background-color: mat.get-theme-color($theme, primary, 50);
-      // border: .5px mat.get-theme-color($theme, primary, 200) solid;
+      // background-color: mat.get-theme-color($theme, primary, 50);
+      // border: .5px mat.get-theme-color($theme, primary, 900) solid;
       border-radius: .5rem;
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
-   .project-details {
+   .project-description {
       font: mat.get-theme-typography($theme, subtitle-1);
    }
 }
