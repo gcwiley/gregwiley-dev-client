@@ -1,0 +1,15 @@
+.about-page-container {
+   max-width: 1300px;
+   margin: auto;
+   display: flex;
+   flex-direction: row;
+   min-height: 100vh;
+}
+
+.main-content {
+   flex-basis: 70%;
+}
+
+.side-content {
+   flex-basis: 30%;
+}

@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+// color mixin
+@mixin color($theme) {
+   .header {
+      color: mat.get-theme-color($theme, primary, 10);
+   }
+}
+
+// typography mixin
+@mixin typography($theme) {
+   .header {
+      font: mat.get-theme-typography($theme, body-medium);
+   }
+}
+
+// theme mixin
+@mixin theme($theme) {
+   @if mat.theme-has($theme, color) {
+      @include color($theme);
+   }
+
+   @if mat.theme-has($theme, typography) {
+      @include typography($theme);
+   }
+}

@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+
+// color mixin
+@mixin color($theme) {
+   .announcement-banner {
+      color: mat.get-theme-color($theme, secondary, 90);
+      background-color: mat.get-theme-color($theme, error, 90);
+   }
+}
+// typography mixin
+@mixin typography($theme) {
+   .announcement-banner {
+      font: mat.get-theme-typography($theme, body-large);
+   }
+}
+
+// theme mixin
+@mixin theme($theme) {
+   @if mat.theme-has($theme, color) {
+      @include color($theme);
+   }
+
+   @if mat.theme-has($theme, typography) {
+      @include typography($theme);
+   }
+}

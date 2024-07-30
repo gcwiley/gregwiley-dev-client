@@ -1,0 +1,49 @@
+.navbar-header {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   padding: 8px 16px;
+
+   > .mat-mdc-button {
+      &:last-child {
+         margin-left: auto;
+      }
+   }
+}
+
+// .mat-mdc-icon-button {
+//    color: inherit;
+// }
+
+// controls the size of the app logo and github logo
+.github-logo,
+app-logo {
+   margin-right: 12px;
+   width: 32px;
+   height: 32px;
+}
+
+// sets up space between navbar
+.flex-spacer {
+   flex: 1 1 auto;
+}
+
+// does not display github logo on large screen
+.navbar-show-small {
+   display: none;
+}
+
+// rules for when the device is detected to be on a small screen
+@media (max-width: 720px) {
+   .navbar-hide-small {
+      display: none;
+   }
+
+   .navbar-show-small {
+      display: block;
+   }
+
+   .github-logo {
+      margin: 0;
+   }
+}

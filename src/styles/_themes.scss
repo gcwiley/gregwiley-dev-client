@@ -1,0 +1,42 @@
+@use '@angular/material' as mat;
+
+// import the individual component themes
+@use 'app-theme';
+
+// comment here!
+@include mat.core();
+
+// define the light theme
+$light-theme: mat.define-theme(
+   (
+      color: (
+         theme-type: light,
+         primary: mat.$azure-palette,
+      ),
+      typography: (
+         brand-family: 'Roboto',
+         bold-weight: 900,
+      ),
+   )
+);
+
+// define the dark theme
+$dark-theme: mat.define-theme(
+   (
+      color: (
+         theme-type: dark,
+         primary: mat.$red-palette,
+      ),
+      typography: (
+         brand-family: 'Roboto',
+         bold-weight: 900,
+      ),
+   )
+);
+
+html {
+   // apply the light theme as default
+   @include mat.all-component-themes($light-theme);
+   // apply the individual component themes
+   @include app-theme.theme($light-theme);
+}

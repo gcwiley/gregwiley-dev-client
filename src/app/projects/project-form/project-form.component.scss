@@ -1,0 +1,31 @@
+.project-form {
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   right: 0px;
+   margin: 1rem;
+   padding: 1rem;
+}
+
+.full-width {
+   width: 100%;
+}
+
+/* FLEX PROPERTIES */
+.row {
+   display: flex;
+   flex-direction: row;
+}
+
+.col {
+   flex: 1;
+   margin-right: 20px;
+}
+
+.col:last-child {
+   margin-right: 0;
+}
+
+.card-actions button {
+   margin: 0.5rem;
+}

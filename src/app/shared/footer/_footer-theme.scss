@@ -1,0 +1,27 @@
+@use '@angular/material' as mat;
+
+// color mixin
+@mixin color($theme) {
+   .footer {
+      color: mat.get-theme-color($theme, secondary, 0);
+      background-color: mat.get-theme-color($theme, primary, 90);
+   }
+}
+
+// typography mixin
+@mixin typography($theme) {
+   .footer {
+      font: mat.get-theme-typography($theme, body-large);
+   }
+}
+
+// theme mixin
+@mixin theme($theme) {
+   @if mat.theme-has($theme, color) {
+      @include color($theme);
+   }
+
+   @if mat.theme-has($theme, typography) {
+      @include typography($theme);
+   }
+}

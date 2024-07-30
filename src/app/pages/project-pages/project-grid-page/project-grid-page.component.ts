@@ -1,0 +1,28 @@
+import { Component } from '@angular/core';
+
+import { MatDividerModule } from '@angular/material/divider';
+
+// import the shared components
+import { HeaderComponent, FooterComponent, AnnouncementBannerComponent, HeroComponent } from '../../../shared';
+
+// import the project grid component
+import { ProjectGridComponent } from '../../../projects';
+
+@Component({
+   selector: 'app-project-grid-page',
+   templateUrl: './project-grid-page.component.html',
+   styleUrls: ['./project-grid-page.component.scss'],
+   standalone: true,
+   imports: [
+      MatDividerModule,
+      HeaderComponent,
+      FooterComponent,
+      AnnouncementBannerComponent,
+      HeroComponent,
+      ProjectGridComponent,
+   ],
+})
+export class ProjectGridPageComponent {
+   text =
+      'I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved.';
+}

@@ -1,0 +1,30 @@
+@use '@angular/material' as mat;
+
+// color mixin
+@mixin color($theme) {
+   .about-page-container {
+      color: mat.get-theme-color($theme, primary, 10);
+      background-color: mat.get-theme-color($theme, primary, 20);
+   }
+   .main-content {
+      background-color: mat.get-theme-color($theme, error, 90);
+   }
+}
+
+// typography mixin
+@mixin typography($theme) {
+   .about-page-container {
+      font: mat.get-theme-typography($theme, body-medium);
+   }
+}
+
+// theme mixin
+@mixin theme($theme) {
+   @if mat.theme-has($theme, color) {
+      @include color($theme);
+   }
+
+   @if mat.theme-has($theme, typography) {
+      @include typography($theme);
+   }
+}

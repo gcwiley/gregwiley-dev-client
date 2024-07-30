@@ -1,0 +1,27 @@
+.post-form {
+    margin: 1rem;
+    padding: 1rem;
+ }
+ 
+ .full-width {
+    width: 100%;
+ }
+ 
+ /* FLEX PROPERTIES */
+ .row {
+    display: flex;
+    flex-direction: row;
+ }
+ 
+ .column {
+    flex: 1;
+    margin-right: 20px;
+ }
+ 
+ .column:last-child {
+    margin-right: 0;
+ }
+ 
+ .card-actions button {
+    margin: 0.5rem;
+ }

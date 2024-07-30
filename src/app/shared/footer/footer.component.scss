@@ -1,0 +1,23 @@
+.footer-content {
+   max-width: 1340px;
+   margin: auto;
+   // flex properties
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 6rem;
+}
+
+.footer-copyright {
+   display: flex;
+   align-items: center;
+}
+
+.footer-copyright a {
+  text-decoration: none;
+  margin-right: 0.5rem;
+}
+
+.footer-logos a {
+   margin-right: 0.5rem;
+}

@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<app-announcement-banner></app-announcement-banner>
+
+<main class="signin-page-container">
+  <form [formGroup]="signinForm" novalidate (ngSubmit)="onSubmitSignIn()">
+    <mat-card appearance="raised" class="signin-form">
+      <!-- TITLE TEXT -->
+      <div class="title-text">
+        <h3 class="mat-headline-4">Sign In</h3>
+        <h4 class="mat-body-2">Please sign in to your account.</h4>
+      </div>
+
+      <!-- EMAIL (email) -->
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Email address</mat-label>
+        <input matInput type="email" formControlName="email" placeholder="name@example.com" />
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error *ngIf="signinForm.controls['email'].hasError('required')">Please enter your e-mail address.</mat-error>
+      </mat-form-field>
+
+      <!-- PASSWORD (password) -->
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" />
+        <mat-icon matSuffix>lock</mat-icon>
+        <mat-error *ngIf="signinForm.controls['password'].hasError('required')">Please enter your password.</mat-error>
+      </mat-form-field>
+
+      <!-- SIGN IN BUTTON -->
+      <div class="card-actions">
+        <button mat-flat-button color="primary" type="submit">Sign In</button>
+      </div>
+    </mat-card>
+  </form>
+</main>
+
+
+<app-footer></app-footer>

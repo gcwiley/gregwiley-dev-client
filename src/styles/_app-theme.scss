@@ -1,0 +1,79 @@
+@use '@angular/material' as mat;
+
+// PAGE THEMES
+@use '../app/pages/about-page/about-page-theme';
+@use '../app/pages/admin-page/admin-page-theme';
+@use '../app/pages/home-page/home-page-theme';
+@use '../app/pages/not-found-page/not-found-page-theme';
+@use '../app/pages/post-pages/blog-page/blog-page-theme';
+@use '../app/pages/post-pages/post-create-page/post-create-page-theme';
+@use '../app/pages/project-pages/project-create-page/project-create-page-theme';
+@use '../app/pages/project-pages/project-details-page/project-details-page-theme';
+@use '../app/pages/project-pages/project-grid-page/project-grid-page-theme';
+@use '../app/pages/resources-page/resources-page-theme';
+@use '../app/pages/signin-page/signin-page-theme';
+
+// POST COMPONENT THEMES
+@use '../app/posts/post-form/post-form-theme';
+@use '../app/posts/post-list/post-list-theme';
+@use '../app/posts/post-table/post-table-theme';
+@use '../app/posts/recent-posts/recent-posts-theme';
+
+// PROJECTS COMPONENT THEMES
+@use '../app/projects/project-count/project-count-theme';
+@use '../app/projects/project-description/project-description-theme';
+@use '../app/projects/project-details/project-details-theme';
+@use '../app/projects/project-form/project-form-theme';
+@use '../app/projects/project-grid/project-grid-theme';
+@use '../app/projects/project-list/project-list-theme';
+@use '../app/projects/project-search/project-search-theme';
+@use '../app/projects/project-tags/project-tags-theme';
+@use '../app/projects/recent-projects/recent-projects-theme';
+
+// SHARED COMPONENTS THEMES
+@use '../app/shared/announcement-banner/announcement-banner-theme';
+@use '../app/shared/carousel/carousel-theme';
+@use '../app/shared/footer/footer-theme';
+@use '../app/shared/header/header-theme'; // fix this
+@use '../app/shared/hero/hero-component-theme';
+@use '../app/shared/logo/logo-theme';
+@use '../app/shared/navbar/navbar-theme';
+
+// INDIV COMPONENTS
+@use '../app/components/about/about-theme';
+@use '../app/components/skill-list/skill-list-theme';
+
+// Styles for the app that are based on the current theme.
+@mixin theme($theme) {
+
+   // pages
+   @include about-page-theme.theme($theme);
+   @include home-page-theme.theme($theme);
+   @include signin-page-theme.theme($theme);
+   @include not-found-page-theme.theme($theme);
+   @include admin-page-theme.theme($theme);
+
+   // post component themes
+   @include post-form-theme.theme($theme);
+   @include post-list-theme.theme($theme);
+   @include post-table-theme.theme($theme);
+   @include recent-posts-theme.theme($theme);
+
+   // project component themes
+   @include recent-projects-theme.theme($theme);
+   @include project-details-theme.theme($theme);
+   @include project-description-theme.theme($theme);
+
+   // shared components
+   @include announcement-banner-theme.theme($theme);
+   @include carousel-theme.theme($theme);
+   @include footer-theme.theme($theme);
+   @include header-theme.theme($theme);
+   @include hero-component-theme.theme($theme);
+   @include logo-theme.theme($theme);
+   @include navbar-theme.theme($theme);
+   
+   // indiv components
+   @include about-theme.theme($theme);
+   @include skill-list-theme.theme($theme);
+}
