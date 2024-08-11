@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, Component, ViewChild} from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -12,25 +12,25 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 // import mat dialog
-// import {
-//    MatDialog,
-//    MatDialogActions,
-//    MatDialogClose,
-//    MatDialogContent,
-//    MatDialogRef,
-//    MatDialogTitle,
-// } from '@angular/material/dialog';
+import {
+   MatDialog,
+   MatDialogActions,
+   MatDialogClose,
+   MatDialogContent,
+   MatDialogRef,
+   MatDialogTitle,
+} from '@angular/material/dialog';
 
 // DIALOG BOX COMPONENT
-// @Component({
-//    selector: 'app-project-list-dialog',
-//    templateUrl: 'project-list-dialog.html',
-//    standalone: true,
-//    changeDetection: ChangeDetectionStrategy.OnPush,
-//    imports: [MatButtonModule],
-// })
+@Component({
+   selector: 'app-project-table-dialog',
+   templateUrl: 'project-table-dialog.html',
+   standalone: true,
+   changeDetection: ChangeDetectionStrategy.OnPush,
+   imports: [MatButtonModule],
+})
 export class DialogProjectListComponent {
-   // readonly dialogRef = inject(MatDialogRef<DialogProjectList>);
+   readonly dialogRef = inject(MatDialogRef<DialogProjectList>);
 }
 
 // import the project service
@@ -40,9 +40,9 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
-   selector: 'app-project-list',
-   templateUrl: './project-list.component.html',
-   styleUrls: ['./project-list.component.scss'],
+   selector: 'app-project-table',
+   templateUrl: './project-table.component.html',
+   styleUrls: ['./project-table.component.scss'],
    standalone: true,
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
@@ -57,18 +57,18 @@ import { Project } from '../../types/project.interface';
       RouterModule,
    ],
 })
-export class ProjectListComponent implements OnInit {
+export class ProjectTableComponent implements OnInit {
    // sets up the dialog box
-   // readonly dialog = inject(MatDialog);
+   readonly dialog = inject(MatDialog);
 
    // opens the dialog box
-   // openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-   //    this.dialog.open(DialogProjectList, {
-   //       width: '250px',
-   //       enterAnimationDuration,
-   //       exitAnimationDuration,
-   //    });
-   // }
+   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+      this.dialog.open(DialogProjectList, {
+         width: '250px',
+         enterAnimationDuration,
+         exitAnimationDuration,
+      });
+   }
 
    // fix this later!
    resultsLength = 0;

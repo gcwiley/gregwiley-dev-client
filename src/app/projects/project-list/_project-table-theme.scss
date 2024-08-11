@@ -2,14 +2,14 @@
 
 // color mixin
 @mixin color($theme) {
-   .project-count {
+   .project-table {
       color: mat.get-theme-color($theme, primary, 10);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
-   .project-count {
+   .project-table {
       font: mat.get-theme-typography($theme, body-medium);
    }
 }
