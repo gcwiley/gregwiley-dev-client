@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -9,29 +9,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatPaginatorModule } from '@angular/material/paginator';
+
+// import mat paginator and mat sort
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 // import mat dialog here
-import {
-   MatDialog,
-   MatDialogActions,
-   MatDialogClose,
-   MatDialogContent,
-   MatDialogRef,
-   MatDialogTitle,
-} from '@angular/material/dialog';
-
-// DIALOG BOX COMPONENT
-@Component({
-   selector: 'app-dialog-post-table',
-   templateUrl: 'post-table-dialog.html',
-   standalone: true,
-   changeDetection: ChangeDetectionStrategy.OnPush,
-   imports: [MatButtonModule],
-})
-export class DialogProjectListComponent {
-   readonly dialogRef = inject(MatDialogRef<DialogProjectList>);
-}
+import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 
 // import the post service
 import { PostService } from '../../services/post.service';
@@ -57,41 +41,30 @@ import { Post } from '../../types/post.interface';
       RouterModule,
    ],
 })
-export class PostTableComponent implements OnInit {
-   // set up dialog box
-   // readonly dialog = inject(MatDialog);
+export class PostTableComponent implements AfterViewInit {
+   // inject MatDialog
+   readonly dialog = inject(MatDialog);
 
-   // opens the dialog box
-   // openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-   //    this.dialog.open(DialogProjectList, {
-   //       width: '250px',
-   //       enterAnimationDuration,
-   //       exitAnimationDuration,
-   //    });
-   // }
+   // setup pagination for post table
+   @ViewChild(MatPaginator) paginator!: MatPaginator;
+   // setup sort in table
+   @ViewChild(MatSort) sort!: MatSort;
 
-   // fix this later!
-   resultsLength = 0;
+   // set the loading spinner to true
    isLoadingResults = true;
 
    // set up the data source
    dataSource = new MatTableDataSource<Post>();
 
    // columns to display
-   columnsToDisplay = [
-      'title',
-      'author',
-      'category',
-      'datePublished',
-      'createdAt',
-      'deletePost',
-      'editPost',
-      'openDialog',
-   ];
+   columnsToDisplay = ['title', 'author', 'category', 'datePublished', 'createdAt', 'deletePost', 'editPost', 'openDialog'];
 
    constructor(private postService: PostService, private router: Router) {}
 
-   ngOnInit(): void {
+   // a callback method that is invoked immediately after angular has completed initialization of a component's view
+   ngAfterViewInit(): void {
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
       this.getPosts();
    }
 
@@ -99,14 +72,36 @@ export class PostTableComponent implements OnInit {
    getPosts(): void {
       this.postService.getPosts().subscribe((posts) => {
          this.dataSource.data = posts;
+         // sets the loading results to false
+         this.isLoadingResults = false;
       });
    }
 
-   // deletes a post
+   // open dialog window
+   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+      this.dialog.open(PostTableDialogComponent, {
+         width: '250px',
+         enterAnimationDuration,
+         exitAnimationDuration,
+      });
+   }
+
+   // deletes a post by ID
    onDeletePost(id: string): void {
       this.postService.deletePost(id).subscribe(() => {
          // navigates admin back to the admin page
          this.router.navigateByUrl('/admin');
       });
    }
+}
+
+@Component({
+   selector: 'app-post-table-dialog',
+   templateUrl: './post-table-dialog.html',
+   standalone: true,
+   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+   changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class PostTableDialogComponent {
+   readonly dialogRef = inject(MatDialogRef<PostTableDialogComponent>);
 }

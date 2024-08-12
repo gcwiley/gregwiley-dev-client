@@ -2,9 +2,13 @@
 
 // color mixin
 @mixin color($theme) {
-   .admin-page-container {
-      color: mat.get-theme-color($theme, primary, 10);
-      background-color: mat.get-theme-color($theme, primary, 20);
+   .sidenav {
+      color: mat.get-theme-color($theme, primary, 0);
+      background-color: mat.get-theme-color($theme, primary, 90);
+   }
+
+   .toolbar {
+      background-color: mat.get-theme-color($theme, primary, 40);
    }
 }
 

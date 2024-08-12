@@ -13,9 +13,7 @@
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Title</mat-label>
                   <input matInput type="text" formControlName="title" />
-                  <mat-error *ngIf="postForm.controls['title'].hasError('required')"
-                     >Please enter a post title</mat-error
-                  >
+                  <mat-error *ngIf="postForm.controls['title'].hasError('required')">Please enter a post title</mat-error>
                </mat-form-field>
             </div>
          </div>
@@ -26,9 +24,7 @@
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Author</mat-label>
                   <input matInput type="text" formControlName="author" />
-                  <mat-error *ngIf="postForm.controls['author'].hasError('required')"
-                     >Please enter a post title</mat-error
-                  >
+                  <mat-error *ngIf="postForm.controls['author'].hasError('required')">Please enter a post title</mat-error>
                </mat-form-field>
             </div>
          </div>
@@ -41,9 +37,7 @@
                   <input matInput [matDatepicker]="picker" formControlName="datePublished" />
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
-                  <mat-error *ngIf="postForm.controls['datePublished'].hasError('required')"
-                     >Please enter a date.</mat-error
-                  >
+                  <mat-error *ngIf="postForm.controls['datePublished'].hasError('required')">Please enter a date.</mat-error>
                </mat-form-field>
             </div>
 
@@ -54,9 +48,7 @@
                   <mat-select formControlName="category">
                      <mat-option *ngFor="let category of categories" [value]="category.value">{{ category.viewValue }}</mat-option>
                   </mat-select>
-                  <mat-error *ngIf="postForm.controls['category'].hasError('required')"
-                     >Please provide a category.</mat-error
-                  >
+                  <mat-error *ngIf="postForm.controls['category'].hasError('required')">Please provide a category.</mat-error>
                </mat-form-field>
             </div>
          </div>

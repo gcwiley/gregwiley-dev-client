@@ -3,11 +3,11 @@
 // color mixin
 @mixin color($theme) {
    .header-background {
-      background-color: mat.get-theme-color($theme, secondary, 90);
+      background-color: mat.get-theme-color($theme, primary, 80);
    }
 
    .header-headline {
-      color: mat.get-theme-color($theme, primary, 90);
+      color: mat.get-theme-color($theme, primary, 0);
    }
 }
 

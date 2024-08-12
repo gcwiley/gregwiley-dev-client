@@ -20,13 +20,12 @@
 @use '../app/posts/recent-posts/recent-posts-theme';
 
 // PROJECTS COMPONENT THEMES
-@use '../app/projects/project-count/project-count-theme';
 @use '../app/projects/project-description/project-description-theme';
 @use '../app/projects/project-details/project-details-theme';
 @use '../app/projects/project-form/project-form-theme';
 @use '../app/projects/project-grid/project-grid-theme';
-@use '../app/projects/project-list/project-list-theme';
 @use '../app/projects/project-search/project-search-theme';
+@use '../app/projects/project-table/project-table-theme';
 @use '../app/projects/project-tags/project-tags-theme';
 @use '../app/projects/recent-projects/recent-projects-theme';
 
@@ -60,10 +59,15 @@
    @include recent-posts-theme.theme($theme);
 
    // project component themes
-   @include recent-projects-theme.theme($theme);
-   @include project-details-theme.theme($theme);
    @include project-description-theme.theme($theme);
-
+   @include project-details-theme.theme($theme);
+   @include project-form-theme.theme($theme);
+   @include project-grid-theme.theme($theme);
+   @include project-search-theme.theme($theme);
+   @include project-table-theme.theme($theme);
+   @include project-tags-theme.theme($theme);
+   @include recent-projects-theme.theme($theme);
+   
    // shared components
    @include announcement-banner-theme.theme($theme);
    @include carousel-theme.theme($theme);

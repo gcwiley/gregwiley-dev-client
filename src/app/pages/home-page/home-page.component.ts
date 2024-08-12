@@ -6,7 +6,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-// fix mat ripple here!
 
 // import the shared components
 import { NavbarComponent, AnnouncementBannerComponent, CarouselComponent, FooterComponent, LogoComponent } from '../../shared';

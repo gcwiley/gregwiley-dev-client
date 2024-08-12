@@ -1,9 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router, RouterModule } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 // import the angular material modules
@@ -14,12 +10,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltip } from '@angular/material/tooltip';
 
-// import the project list component
-import { ProjectListComponent } from '../../projects';
+// import the project table component
+import { ProjectTableComponent } from '../../projects';
 
-// import the post list component
-import { PostListComponent } from '../../posts';
+// import the post table component
+import { PostTableComponent } from '../../posts';
 
 @Component({
    selector: 'app-admin-page',
@@ -35,26 +32,13 @@ import { PostListComponent } from '../../posts';
       MatMenuModule,
       MatButtonModule,
       MatTabsModule,
-      ProjectListComponent,
-      PostListComponent,
+      MatTooltip,
+      ProjectTableComponent,
+      PostTableComponent,
       RouterModule,
    ],
 })
 export class AdminPageComponent {
-   private breakpointObserver = inject(BreakpointObserver);
-
-   constructor(public auth: AngularFireAuth, private router: Router) {}
-
-   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-      map((result) => result.matches),
-      shareReplay()
-   );
-
-   // signs out the current user
-   onClickSignOut(): void {
-      this.auth.signOut().then(() => {
-         // navigates user to the sign in page
-         this.router.navigateByUrl('/signin');
-      });
-   }
+   events: string[] = [];
+   opened!: boolean;
 }

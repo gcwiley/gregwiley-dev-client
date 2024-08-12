@@ -56,7 +56,7 @@ export class ProjectService {
       return this.http.get<number>('/api/project-count');
    }
 
-   // GET: recent projects added
+   // GET: recently created projects added to database
    getRecentlyCreatedProjects(): Observable<Project[]> {
       return this.http.get<Project[]>('/api/recent-projects');
    }

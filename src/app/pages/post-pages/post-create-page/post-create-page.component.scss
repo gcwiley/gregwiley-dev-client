@@ -1,5 +1,7 @@
+@use '../../../../styles/helpers/constants';
+
 .post-create-page-container {
-   max-width: 1400px;
+   max-width: constants.$max-width;
    margin: auto;
    display: flex;
    flex-direction: row;
@@ -8,8 +10,10 @@
 
 .post-form {
    flex-basis: 70%;
+   max-width: 70%;
 }
 
 .recent-posts {
    flex-basis: 30%;
+   max-width: 30%;
 }

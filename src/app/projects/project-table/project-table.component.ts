@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -9,29 +9,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatPaginatorModule } from '@angular/material/paginator';
+
+// import mat paginator and mat sort
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 // import mat dialog
-import {
-   MatDialog,
-   MatDialogActions,
-   MatDialogClose,
-   MatDialogContent,
-   MatDialogRef,
-   MatDialogTitle,
-} from '@angular/material/dialog';
-
-// DIALOG BOX COMPONENT
-@Component({
-   selector: 'app-project-table-dialog',
-   templateUrl: 'project-table-dialog.html',
-   standalone: true,
-   changeDetection: ChangeDetectionStrategy.OnPush,
-   imports: [MatButtonModule],
-})
-export class DialogProjectListComponent {
-   readonly dialogRef = inject(MatDialogRef<DialogProjectList>);
-}
+import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 
 // import the project service
 import { ProjectService } from '../../services/project.service';
@@ -57,42 +41,30 @@ import { Project } from '../../types/project.interface';
       RouterModule,
    ],
 })
-export class ProjectTableComponent implements OnInit {
-   // sets up the dialog box
+export class ProjectTableComponent implements AfterViewInit {
+   // inject MatDialog
    readonly dialog = inject(MatDialog);
 
-   // opens the dialog box
-   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-      this.dialog.open(DialogProjectList, {
-         width: '250px',
-         enterAnimationDuration,
-         exitAnimationDuration,
-      });
-   }
+   // setup pagination for project table
+   @ViewChild(MatPaginator) paginator!: MatPaginator;
+   // setup sort in table
+   @ViewChild(MatSort) sort!: MatSort;
 
-   // fix this later!
-   resultsLength = 0;
+   // set the loading spinner to true
    isLoadingResults = true;
 
    // set up the data source
    dataSource = new MatTableDataSource<Project>();
 
    // columns to display
-   columnsToDisplay = [
-      'title',
-      'status',
-      'category',
-      'language',
-      'startDate',
-      'openProject',
-      'editProject',
-      'deleteProject',
-      'openDialog',
-   ];
+   columnsToDisplay = ['title', 'status', 'category', 'language', 'startDate', 'openProject', 'editProject', 'deleteProject', 'openDialog'];
 
    constructor(private projectService: ProjectService, private router: Router) {}
 
-   ngOnInit(): void {
+   // a callback method that is invoked immediately after angular has completed initialization of a component's view
+   ngAfterViewInit(): void {
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
       this.getProjects();
    }
 
@@ -100,14 +72,36 @@ export class ProjectTableComponent implements OnInit {
    getProjects(): void {
       this.projectService.getProjects().subscribe((projects) => {
          this.dataSource.data = projects;
+         // sets the loading results to false
+         this.isLoadingResults = false;
       });
    }
 
-   // deletes a project
+   // open dialog window
+   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+      this.dialog.open(ProjectTableDialogComponent, {
+         width: '250px',
+         enterAnimationDuration,
+         exitAnimationDuration,
+      });
+   }
+
+   // deletes a project by ID
    onDeleteProject(id: string): void {
       this.projectService.deleteProject(id).subscribe(() => {
          // navigates admin back to the admin page
          this.router.navigateByUrl('/admin');
       });
    }
+}
+
+@Component({
+   selector: 'app-project-table-dialog',
+   templateUrl: './project-table-dialog.html',
+   standalone: true,
+   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+   changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ProjectTableDialogComponent {
+   readonly dialogRef = inject(MatDialogRef<ProjectTableDialogComponent>);
 }

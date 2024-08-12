@@ -1,84 +1,77 @@
-<div>
-   <table mat-table [dataSource]="dataSource">
-      <!-- title (title) -->
-      <ng-container matColumnDef="title">
-         <th mat-header-cell *matHeaderCellDef>Title</th>
-         <td mat-cell *matCellDef="let post">{{ post.title }}</td>
-      </ng-container>
+<div class="post-table-container">
+   @if (isLoadingResults) {
+   <div class="post-table-loading-shade">
+      <mat-spinner></mat-spinner>
+   </div>
+   }
 
-      <!-- author (author) -->
-      <ng-container matColumnDef="author">
-         <th mat-header-cell *matHeaderCellDef>Author</th>
-         <td mat-cell *matCellDef="let post">{{ post.author }}</td>
-      </ng-container>
+   <div>
+      <table mat-table [dataSource]="dataSource">
+         <!-- title (title) -->
+         <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>Title</th>
+            <td mat-cell *matCellDef="let post">{{ post.title }}</td>
+         </ng-container>
 
-      <!-- category (category) -->
-      <ng-container matColumnDef="category">
-        <th mat-header-cell *matHeaderCellDef>Category</th>
-        <td mat-cell *matCellDef="let post">{{ post.category }}</td>
-     </ng-container>
+         <!-- author (author) -->
+         <ng-container matColumnDef="author">
+            <th mat-header-cell *matHeaderCellDef>Author</th>
+            <td mat-cell *matCellDef="let post">{{ post.author }}</td>
+         </ng-container>
 
-      <!-- date published (datePublished) -->
-      <ng-container matColumnDef="datePublished">
-         <th mat-header-cell *matHeaderCellDef>Date Published</th>
-         <td mat-cell *matCellDef="let post">{{ post.datePublished }}</td>
-      </ng-container>
+         <!-- category (category) -->
+         <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef>Category</th>
+            <td mat-cell *matCellDef="let post">{{ post.category }}</td>
+         </ng-container>
 
-      <!-- created at (createdAt) -->
-      <ng-container matColumnDef="createdAt">
-         <th mat-header-cell *matHeaderCellDef>Created</th>
-         <td mat-cell *matCellDef="let post">{{ post.createdAt }}</td>
-      </ng-container>
+         <!-- date published (datePublished) -->
+         <ng-container matColumnDef="datePublished">
+            <th mat-header-cell *matHeaderCellDef>Date Published</th>
+            <td mat-cell *matCellDef="let post">{{ post.datePublished }}</td>
+         </ng-container>
 
-      <!-- delete post icon button -->
-      <ng-container matColumnDef="deletePost">
-         <th mat-header-cell *matHeaderCellDef>Delete</th>
-         <td mat-cell *matCellDef="let post">
-            <button
-               mat-icon-button
-               color="warn"
-               (click)="onDeletePost(post._id)"
-               matTooltip="Delete post"
-               aria-label="Delete post">
-               <mat-icon>delete</mat-icon>
-            </button>
-         </td>
-      </ng-container>
+         <!-- created at (createdAt) -->
+         <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef>Created</th>
+            <td mat-cell *matCellDef="let post">{{ post.createdAt }}</td>
+         </ng-container>
 
-      <!-- edit post icon button -->
-      <ng-container matColumnDef="editPost">
-         <th mat-header-cell *matHeaderCellDef>Edit</th>
-         <td mat-cell *matCellDef="let post">
-            <a
-               mat-icon-button
-               color="accent"
-               routerLink="/edit/{{ post._id }}"
-               matTooltip="Edit post"
-               aria-label="Edit post">
-               <mat-icon>edit</mat-icon>
-            </a>
-         </td>
-      </ng-container>
+         <!-- delete post icon button -->
+         <ng-container matColumnDef="deletePost">
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+            <td mat-cell *matCellDef="let post">
+               <button mat-icon-button color="warn" (click)="onDeletePost(post._id)" matTooltip="Delete post" aria-label="Delete post">
+                  <mat-icon>delete</mat-icon>
+               </button>
+            </td>
+         </ng-container>
 
-      <!-- open dialog button (used for delete) -->
-      <ng-container matColumnDef="openDialog">
-         <th mat-header-cell *matHeaderCellDef>Open Dialog</th>
-         <td mat-cell *matCellDef="let post">
-            <button mat-icon-button color="warn" (click)="openDialog('0ms', '0ms')">
-               <mat-icon>FIX THIS!!!!!!</mat-icon>
-            </button>
-         </td>
-      </ng-container>
+         <!-- edit post icon button -->
+         <ng-container matColumnDef="editPost">
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
+            <td mat-cell *matCellDef="let post">
+               <a mat-icon-button color="accent" routerLink="/edit/{{ post._id }}" matTooltip="Edit post" aria-label="Edit post">
+                  <mat-icon>edit</mat-icon>
+               </a>
+            </td>
+         </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-      <tr mat-row matRipple *matRowDef="let row; columns: columnsToDisplay"></tr>
-   </table>
+         <!-- open dialog button (used for delete) -->
+         <ng-container matColumnDef="openDialog">
+            <th mat-header-cell *matHeaderCellDef>Open Dialog</th>
+            <td mat-cell *matCellDef="let post">
+               <button mat-icon-button color="warn" (click)="openDialog('0ms', '0ms')">
+                  <mat-icon>FIX THIS!!!!!!</mat-icon>
+               </button>
+            </td>
+         </ng-container>
 
-   <mat-paginator
-      #paginator
-      [length]="100"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page">
-   </mat-paginator>
+         <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+         <tr mat-row matRipple *matRowDef="let row; columns: columnsToDisplay"></tr>
+      </table>
+
+      <mat-paginator #paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+      </mat-paginator>
+   </div>
 </div>
