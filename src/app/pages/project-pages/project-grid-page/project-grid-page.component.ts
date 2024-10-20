@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
+// import the angular material
 import { MatDividerModule } from '@angular/material/divider';
 
 // import the shared components
-import { HeaderComponent, FooterComponent, AnnouncementBannerComponent, HeroComponent } from '../../../shared';
+import { NavbarComponent, FooterComponent, AnnouncementBannerComponent  } from '../../../shared';
 
 // import the project grid component
 import { ProjectGridComponent } from '../../../projects';
@@ -15,10 +16,9 @@ import { ProjectGridComponent } from '../../../projects';
    standalone: true,
    imports: [
       MatDividerModule,
-      HeaderComponent,
-      FooterComponent,
+      NavbarComponent,
       AnnouncementBannerComponent,
-      HeroComponent,
+      FooterComponent,
       ProjectGridComponent,
    ],
 })

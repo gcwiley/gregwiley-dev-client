@@ -10,8 +10,8 @@
 
 // typography mixin
 @mixin typography($theme) {
-   .project-grid-page-container {
-      font: mat.get-theme-typography($theme, body-medium);
+   .title {
+      font: mat.get-theme-typography($theme, title-large);
    }
 }
 

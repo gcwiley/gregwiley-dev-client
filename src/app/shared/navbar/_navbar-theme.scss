@@ -3,8 +3,12 @@
 // color mixin
 @mixin color($theme) {
    .navbar-header {
-      color: mat.get-theme-color($theme, secondary, 0);
+      color: mat.get-theme-color($theme, secondary, 90);
       background-color: mat.get-theme-color($theme, primary, 50);
+   }
+
+   .navbar-header a {
+      color: aliceblue;
    }
 }
 

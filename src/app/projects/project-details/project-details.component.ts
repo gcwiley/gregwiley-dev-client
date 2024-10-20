@@ -22,6 +22,7 @@ import { ProjectService } from '../../services/project.service';
 export class ProjectDetailsComponent implements OnInit {
    project!: Project | undefined;
 
+   // inject the project and router services
    constructor(private route: ActivatedRoute, private projectService: ProjectService) {}
 
    ngOnInit(): void {

@@ -1,10 +1,19 @@
 @use '../../../../styles/helpers/constants';
 
 .project-details-page-container {
-   
-   height: 100vh;
-   max-width: 1400px;
+   max-width: constants.$max-width;
    margin: auto;
-   margin-top: 0px;
-   margin-bottom: 25px;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: row;
+}
+
+.project-description-container {
+   flex-basis: 70%;
+   max-width: 70%;
+}
+
+.project-details-container {
+   flex-basis: 30%;
+   max-width: 30%;
 }

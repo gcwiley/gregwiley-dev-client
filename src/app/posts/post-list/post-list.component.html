@@ -14,20 +14,10 @@
       <!-- CARD ACTIONS -->
       <mat-card-actions>
          <!-- edit post -->
-         <a
-            mat-icon-button
-            color="primary"
-            routerLink="/edit-post/{{ post._id }}"
-            matTooltip="Edit Post"
-            aria-label="Edit Post">
+         <a mat-icon-button color="primary" routerLink="/edit-post/{{ post._id }}" matTooltip="Edit Post" aria-label="Edit Post">
             <mat-icon>edit</mat-icon>
          </a>
-         <button
-            mat-icon-button
-            color="warn"
-            (click)="onDeletePost(post._id!)"
-            matTooltip="Delete Post"
-            aria-label="Delete Post">
+         <button mat-icon-button color="warn" (click)="onDeletePost(post._id!)" matTooltip="Delete Post" aria-label="Delete Post">
             <mat-icon>delete</mat-icon>
          </button>
       </mat-card-actions>

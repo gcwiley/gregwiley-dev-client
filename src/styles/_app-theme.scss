@@ -42,9 +42,11 @@
 @use '../app/components/about/about-theme';
 @use '../app/components/skill-list/skill-list-theme';
 
+@use '../styles/helpers/constants';
+
 // Styles for the app that are based on the current theme.
 @mixin theme($theme) {
-
+   
    // pages
    @include about-page-theme.theme($theme);
    @include home-page-theme.theme($theme);

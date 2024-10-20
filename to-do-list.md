@@ -8,7 +8,18 @@
 
 5. add cookie pop up component
 
-6. 
+6. fix auth routing 
+
+
+
+#### pathMatch
+
+The 'pathMatch' property is used to control how Angular router matches URLs to 
+routes
+
+The setting 'pathMatch: full', you ensure that a route only matches when the entire URL exactly matches the route path.
+
+
 
 
 

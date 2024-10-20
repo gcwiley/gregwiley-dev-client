@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
 
 // import the message service
 import { MessageService } from './message.service';
@@ -9,34 +8,26 @@ import { MessageService } from './message.service';
 // import the post interface
 import { Post } from '../types/post.interface';
 
+// set up headers
+const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
 @Injectable({ providedIn: 'root' })
 export class PostService {
-   private postsUrl = '/api/posts'; // URL to web api
-
-   httpOptions = {
-      headers: new HttpHeaders({
-         'Content-Type': 'application/json',
-      }),
-   };
+   // URL to web api
+   private postsUrl = '/api/posts';
 
    // inject "HttpClient" into the Post service
    constructor(private http: HttpClient, private messageService: MessageService) {}
 
    // GET: all posts from the server
    getPosts(): Observable<Post[]> {
-      return this.http.get<Post[]>(this.postsUrl).pipe(
-         tap(() => this.log('fetched posts')),
-         catchError(this.handleError<Post[]>('get Posts', []))
-      );
+      return this.http.get<Post[]>(this.postsUrl, { headers: headers })
    }
 
    // GET: a post by ID. Will 404 if id not found
    getPost(id: string | null): Observable<Post> {
       const url = `${this.postsUrl}/${id}`;
-      return this.http.get<Post>(url).pipe(
-         tap(() => this.log(`fetched post id=${id}`)),
-         catchError(this.handleError<Post>(`get Post id=${id}`))
-      );
+      return this.http.get<Post>(url, { headers: headers })
    }
 
    // GET posts whose name contains search term - SEARCH
@@ -45,20 +36,17 @@ export class PostService {
          // if no search term, return an empty post arrary
          return of([]);
       }
-      return this.http.get<Post[]>(`${this.postsUrl}/?name=${term}`).pipe(
-         tap((x) => (x.length ? this.log(`found posts matching "${term}"`) : this.log(`no posts matching "${term}"`))),
-         catchError(this.handleError<Post[]>('search Posts', []))
-      );
+      return this.http.get<Post[]>(`${this.postsUrl}/?name=${term}`)
    }
 
    // GET: post count from database
    getPostCount(): Observable<number> {
-      return this.http.get<number>('/api/post-count');
+      return this.http.get<number>('/api/post-count', { headers: headers });
    }
 
    // GET: recent posts added
    getRecentPosts(): Observable<Post[]> {
-      return this.http.get<Post[]>('/api/recent-posts');
+      return this.http.get<Post[]>('/api/recent-posts', { headers: headers });
    }
 
    // GET: favorite posts
@@ -70,20 +58,14 @@ export class PostService {
 
    // POST: add a new post to the server
    addPost(newPost: Post | object): Observable<Post> {
-      return this.http.post<Post>(this.postsUrl, newPost, this.httpOptions).pipe(
-         tap((newPost: Post) => this.log(`added post with id=${newPost._id}`)),
-         catchError(this.handleError<Post>('add Post'))
-      );
+      return this.http.post<Post>(this.postsUrl, newPost, { headers: headers })
    }
 
    // DELETE a post by ID from the server
    deletePost(id: string): Observable<Post> {
       const url = `${this.postsUrl}/${id}`;
 
-      return this.http.delete<Post>(url, this.httpOptions).pipe(
-         tap(() => this.log(`deleted post id=${id}`)),
-         catchError(this.handleError<Post>('deletePost'))
-      );
+      return this.http.delete<Post>(url, { headers: headers })
    }
 
    // PUT: update the post in the database
@@ -91,10 +73,7 @@ export class PostService {
       // create the url
       const url = `${this.postsUrl}/${id}`;
 
-      return this.http.put(url, post, this.httpOptions).pipe(
-         tap(() => this.log(`updated post id=${id}`)),
-         catchError(this.handleError<object>('updatePost'))
-      );
+      return this.http.put(url, post, { headers: headers })
    }
 
    // Handle Http operation that failed
@@ -102,15 +81,22 @@ export class PostService {
    // @param operation - name of the operation that failed
    // @param result - optional value to return as the observable result
 
-   private handleError<T>(operation = 'operation', result?: T) {
+   private handleError<T>(result?: T) {
       return (error: Error): Observable<T> => {
-         // TODO: send the error to remote logging infrastructure
-         console.error(error); // log to console instead
-
-         // TODO: better job of transforming error for user consumption
-         this.log(`${operation} failed: ${error.message}`);
-
-         // let the app keep running by return an empty result
+         if (error instanceof HttpErrorResponse) {
+            if (error.status === 0) {
+               // a client-side or network error occurred. handle it accordingly
+               console.error('An error occurred:', error.error);
+            } else {
+               // the backend returned an unsuccessful response code.
+               // the response body may contain clues as to what went wrong
+               console.error(`Backend returned code ${error.status}, body was `, error.error);
+            }
+         } else {
+            // handle other types of errors
+            console.error(error);
+         }
+         // let the app keep running by returning an empty result
          return of(result as T);
       };
    }

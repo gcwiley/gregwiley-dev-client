@@ -8,7 +8,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 // Configures Angular's HttpClient service to be available for injection.
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 // sets up providers necessary to enable Router functionality for the application
 import { provideRouter } from '@angular/router';
@@ -30,6 +30,6 @@ export const appConfig: ApplicationConfig = {
       // initializes an Auth instance
       provideAuth(() => getAuth()),
       // Configures Angular's HttpClient service to be available for injection.
-      provideHttpClient(),
+      provideHttpClient(withFetch()),
    ],
 };

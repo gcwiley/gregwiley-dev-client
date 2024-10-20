@@ -6,5 +6,9 @@
       <span matListItemLine>Added: {{ project.createdAt | date }}</span>
    </mat-list-item>
    <mat-divider></mat-divider>
+   } @empty {
+      <mat-list-item lines="2">
+         <span matListItemTitle>No Recent Projects</span>
+      </mat-list-item>
    }
 </mat-list>
