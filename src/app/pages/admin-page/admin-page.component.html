@@ -11,11 +11,7 @@
          </mat-list-item>
          <mat-list-item>
             <mat-icon matListItemIcon>add_circle</mat-icon>
-            <a mat-list-item routerLink="/projects/create">Create Project</a>
-         </mat-list-item>
-         <mat-list-item>
-            <mat-icon matListItemIcon>post_add</mat-icon>
-            <a mat-list-item routerLink="/posts/create">New Post</a>
+            <a mat-list-item routerLink="/create-project">Create Project</a>
          </mat-list-item>
       </mat-nav-list>
    </mat-sidenav>
@@ -41,9 +37,7 @@
          <mat-tab label="PROJECTS">
             <app-project-table></app-project-table>
          </mat-tab>
-         <mat-tab label="POSTS" disabled>
-            <app-post-table></app-post-table>
-         </mat-tab>
+         <!-- ADD POSTS HERE LATER - FIX THIS! -->
       </mat-tab-group>
    </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 // import the message service
 import { MessageService } from './message.service';
@@ -67,36 +67,10 @@ export class ProjectService {
    // SAVE METHODS //
 
    // POST: add a new Project to the server
-   // addProject(newProject: Project | object): Observable<Project> {
-   //    return this.http.post<Project>(this.projectsUrl, newProject, { headers: headers }).pipe(
-   //       tap((newProject: Project) => this.log(`added project with id=${newProject._id}`)),
-   //       catchError(this.handleError<Project>('add Project'))
-   //    );
-   // }
-
-   // ADD PROJECT
    addProject(newProject: Project | object): Observable<Project> {
       return this.http.post<Project>(this.projectsUrl, newProject, { headers: headers }).pipe(
-         // check if the response is successful based on status code and body
-         map((response: any) => {
-            if (response.status === 'success') {
-               return response.data; // assuming your server returns data in a 'data' property
-            } else {
-               throw new Error('Server returned an error');
-            }
-         }),
-         catchError((error: HttpErrorResponse) => {
-            console.error('Error creating project:', error);
-
-            if (error.status === 0) {
-               // a client-side or network error occurred. handle it accordingly.
-               return throwError(() => new Error('An error occurred: ' + error.error.message));
-            } else {
-               // the backend return an unsuccessful response code.
-               // the reponse body may contain clues as to what went wrong
-               return throwError(() => new Error(`Backend returned code ${error.status}, body as ${error.error}`));
-            }
-         })
+         tap((newProject: Project) => this.log(`added project with id=${newProject._id}`)),
+         catchError(this.handleError<Project>('add Project'))
       );
    }
 

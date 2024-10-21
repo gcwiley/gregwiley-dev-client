@@ -3,6 +3,7 @@
 .project-create-page-container {
    max-width: constants.$max-width;
    margin: auto;
+   min-height: 100vh;
    display: flex;
    flex-direction: row;
 }
