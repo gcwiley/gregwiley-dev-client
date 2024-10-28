@@ -6,15 +6,15 @@ import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
    providedIn: 'root',
 })
 export class AuthService {
-   // comment 
+   // inject the auth
    constructor(private auth: Auth) {}
 
-   // comment
+   // sign in with email and password
    async SignInWithEmailAndPassword(email: string, password: string) {
       return await signInWithEmailAndPassword(this.auth, email, password);
    }
 
-   // comment
+   // sign out user
    async signOut() {
       return await signOut(this.auth);
    }

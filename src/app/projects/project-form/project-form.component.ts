@@ -44,7 +44,7 @@ export class ProjectFormComponent implements OnInit {
    private id!: string | null;
    private project!: Project;
 
-   formBuilder = inject(FormBuilder)
+   formBuilder = inject(FormBuilder);
 
    statues: ProjectStatus[] = PROJECT_STATUS;
    categories: ProjectCategory[] = PROJECT_CATAGORIES;
@@ -61,11 +61,7 @@ export class ProjectFormComponent implements OnInit {
       description: ['', Validators.required],
    });
 
-   constructor(
-      private router: Router,
-      public route: ActivatedRoute,
-      private projectService: ProjectService
-   ) {}
+   constructor(private router: Router, public route: ActivatedRoute, private projectService: ProjectService) {}
 
    ngOnInit(): void {
       // find out if we have a "id" or not
@@ -94,6 +90,7 @@ export class ProjectFormComponent implements OnInit {
       });
    }
 
+   // save a new project
    onSaveProject(): void {
       if (this.mode === 'create') {
          this.projectService.addProject(this.projectForm.value).subscribe(() => {
@@ -106,5 +103,11 @@ export class ProjectFormComponent implements OnInit {
             this.router.navigateByUrl('/');
          });
       }
+   }
+
+   // reset the form - fix this!
+   onReset(event: Event): void {
+      event.preventDefault();
+      this.projectForm.reset();
    }
 }

@@ -1,6 +1,6 @@
 <form [formGroup]="projectForm" novalidate (ngSubmit)="onSaveProject()">
    <!-- PROJECT CARD -->
-   <mat-card class="project-form" appearance="raised">
+   <mat-card class="project-form" appearance="outlined">
       <!-- CARD HEADER -->
       <mat-card-header>
          <mat-card-title>New Project</mat-card-title>
@@ -11,7 +11,7 @@
          <!-- PROJECT TITLE (title)-->
          <mat-form-field class="full-width" appearance="outline">
             <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title" />
+            <input matInput type="text" formControlName="title" placeholder="title"/>
             <mat-error *ngIf="projectForm.controls['title'].hasError('required')">Please enter a project title</mat-error>
          </mat-form-field>
 
@@ -46,7 +46,7 @@
                <!-- PROJECT START DATE (startDate)-->
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Start Date</mat-label>
-                  <input matInput [matDatepicker]="picker" formControlName="startDate" />
+                  <input matInput [matDatepicker]="picker" formControlName="startDate" placeholder="Start Date"/>
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                   <mat-error *ngIf="projectForm.controls['status'].hasError('required')">Please enter a project start date.</mat-error>
@@ -72,7 +72,7 @@
                <!-- GIT URL (gitUrl)-->
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>GitHub URL</mat-label>
-                  <input matInput type="url" formControlName="gitUrl" />
+                  <input matInput type="url" formControlName="gitUrl" placeholder="GitHub Repo"/>
                   <mat-error *ngIf="projectForm.controls['gitUrl'].hasError('required')">Please provide a URL of the project.</mat-error>
                </mat-form-field>
             </div>
@@ -83,7 +83,7 @@
                <!-- DESCRIPTION (description)-->
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Description</mat-label>
-                  <textarea matInput rows="6" formControlName="description"></textarea>
+                  <textarea matInput rows="6" formControlName="description" title="Description"></textarea>
                   <mat-error *ngIf="projectForm.controls['description'].hasError('required')">Please provide a description.</mat-error>
                </mat-form-field>
             </div>

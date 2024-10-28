@@ -2,8 +2,12 @@ import { ApplicationConfig } from '@angular/core';
 
 // import the firebase libraries
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+
 // comment
 import { getAuth, provideAuth } from '@angular/fire/auth';
+
+// comment
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 // Returns the set of dependency-injection providers to enable animations in an application
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -32,5 +36,7 @@ export const appConfig: ApplicationConfig = {
       provideAuth(() => getAuth()),
       // Configures Angular's HttpClient service to be available for injection.
       provideHttpClient(),
+      // find out how this works!
+      { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
    ],
 };

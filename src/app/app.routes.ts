@@ -17,10 +17,12 @@ export const routes: Routes = [
    {
       path: '',
       component: HomePageComponent,
+      title: 'My Homepage',
    },
    {
       path: 'admin',
       component: AdminPageComponent,
+      title: 'Admin Dashboard',
    },
    {
       path: 'projects',
