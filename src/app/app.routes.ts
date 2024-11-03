@@ -17,7 +17,7 @@ export const routes: Routes = [
    {
       path: '',
       component: HomePageComponent,
-      title: 'My Homepage',
+      title: 'gregwiley.dev',
    },
    {
       path: 'admin',
@@ -43,17 +43,21 @@ export const routes: Routes = [
    {
       path: 'signin',
       component: SigninComponent,
+      title: 'Sign In'
    },
    {
       path: 'about',
       component: AboutPageComponent,
+      title: 'About Me'
    },
    {
       path: 'resources',
       component: ResourcesPageComponent,
+      title: 'Resources'
    },
    {
       path: '**',
       component: NotFoundPageComponent,
+      title: 'Not Found Page'
    },
 ];

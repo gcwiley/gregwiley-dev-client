@@ -7,6 +7,9 @@ $margin-promotion-sections-small: 15px;
    overflow: hidden;
    position: relative;
    height: 420px;
+   background-image: url('../../../assets/images/banner_image.jpg');
+   background-position: center;
+   background-size: cover; // follow up
 }
 
 // controls the size of the header section
@@ -18,7 +21,6 @@ $margin-promotion-sections-small: 15px;
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   // border: 1px solid red;
 }
 
 // comment goes here

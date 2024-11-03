@@ -12,10 +12,10 @@ import { PostService } from '../../services/post.service';
 import { Post } from '../../types/post.interface';
 
 @Component({
+   standalone: true,
    selector: 'app-recent-posts',
    templateUrl: './recent-posts.component.html',
    styleUrls: ['./recent-posts.component.scss'],
-   standalone: true,
    imports: [CommonModule, MatListModule, MatIconModule],
 })
 export class RecentPostsComponent implements OnInit {

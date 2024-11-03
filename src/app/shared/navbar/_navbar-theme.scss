@@ -4,7 +4,7 @@
 @mixin color($theme) {
    .navbar {
       color: mat.get-theme-color($theme, secondary, 90);
-      background-color: mat.get-theme-color($theme, primary, 50);
+      background-color: mat.get-theme-color($theme, primary, 80);
    }
 
    .navbar-header a {

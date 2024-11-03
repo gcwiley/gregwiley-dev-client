@@ -102,7 +102,7 @@
          </ng-container>
 
          <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-         <tr mat-row matRipple *matRowDef="let row; columns: columnsToDisplay" (click)="selection.toggle(row)"></tr>
+         <tr mat-row *matRowDef="let row; columns: columnsToDisplay" (click)="selection.toggle(row)"></tr>
       </table>
 
       <mat-paginator #paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">

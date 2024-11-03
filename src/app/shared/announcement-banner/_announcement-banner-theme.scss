@@ -3,13 +3,13 @@
 // color mixin
 @mixin color($theme) {
    .announcement-bar {
-      color: mat.get-theme-color($theme, secondary, 100);
-      background-color: mat.get-theme-color($theme, error, 90);
+      color: mat.get-theme-color($theme, primary, 100);
+      background-color: mat.get-theme-color($theme, primary, 50);
    }
 }
 // typography mixin
 @mixin typography($theme) {
-   .announcement-banner {
+   .announcement-bar {
       font: mat.get-theme-typography($theme, body-large);
    }
 }

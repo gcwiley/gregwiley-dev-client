@@ -24,10 +24,10 @@ import { PostService } from '../../services/post.service';
 import { Post } from '../../types/post.interface';
 
 @Component({
+   standalone: true,
    selector: 'app-post-table',
    templateUrl: './post-table.component.html',
    styleUrl: './post-table.component.scss',
-   standalone: true,
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
       CommonModule,
