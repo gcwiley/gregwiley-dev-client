@@ -1,23 +1,23 @@
 <mat-list *ngIf="project" class="project-details" role="list">
    <span mat-subheader>Project Details</span>
    <!-- status -->
-   <mat-list-item lines="2">
+   <mat-list-item lines="2" role="listitem">
       <span matListItemTitle>Status</span>
       <span matListItemLine>{{ project.status }}</span>
    </mat-list-item>
    <!-- category -->
-   <mat-list-item lines="2">
+   <mat-list-item lines="2" role="listitem">
       <span matListItemTitle>Category</span>
       <span matListItemLine>{{ project.category }}</span>
    </mat-list-item>
    <!-- language used -->
-   <mat-list-item lines="2">
+   <mat-list-item lines="2" role="listitem">
       <span matListItemTitle>Language Used</span>
       <span matListItemLine>{{ project.language }}</span>
    </mat-list-item>
    <!-- gitUrl -->
-   <mat-list-item lines="2">
+   <mat-list-item lines="2" role="listitem">
       <span matListItemTitle>Git Repo</span>
-      <a routerLink="{{ project.gitUrl }}">Git Hub Repo</a>
+      <a href="{{ project.gitUrl }}" target="_blank" rel="noopener noreferrer">Git Hub Repo</a>
    </mat-list-item>
 </mat-list>

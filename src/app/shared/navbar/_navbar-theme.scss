@@ -2,13 +2,17 @@
 
 // color mixin
 @mixin color($theme) {
-   .navbar-header {
+   .navbar {
       color: mat.get-theme-color($theme, secondary, 90);
       background-color: mat.get-theme-color($theme, primary, 50);
    }
 
    .navbar-header a {
       color: aliceblue;
+   }
+
+   .logo {
+      background-color: aliceblue;
    }
 }
 

@@ -11,7 +11,7 @@ export class CustomErrorHandlerService {
 
    public handleError(error: unknown): void {
       this.ngZone.run(() => {
-         // opens a snackbar with a message - fix this!
+         // opens a snackbar with a message
          this.snackBar.open('error.unexpected-exception', 'danger');
       });
 

@@ -1,8 +1,7 @@
-<nav class="navbar-header" aria-label="Navigation Toolbar">
-   
+<nav class="navbar" aria-label="Navigation Toolbar" role="navigation">
    <!-- app logo -->
-   <a mat-button routerLink="/" aria-label="gregwiley.dev">
-      <app-logo matButtonIcon/>
+   <a mat-button routerLink="/" aria-label="gregwiley.dev" class="logo">
+      <app-logo matButtonIcon />
       gregwiley.dev
    </a>
 
@@ -35,12 +34,24 @@
    </mat-menu>
 
    <!-- github button - normal screen -->
-   <a mat-button class="navbar-hide-small" href="https://github.com/gcwiley" aria-label="GitHub Repository" target="_blank">
+   <a
+      mat-button
+      class="navbar-hide-small"
+      href="https://github.com/gcwiley"
+      aria-label="GitHub Repository"
+      target="_blank"
+      rel="noopener noreferrer">
       <span matButtonIcon [ngTemplateOutlet]="githubIcon"></span>
       GitHub
    </a>
    <!-- github button - displays on small screen -->
-   <a mat-icon-button class="navbar-show-small" href="https://github.com/gcwiley" aria-label="GitHub Repository">
+   <a
+      mat-icon-button
+      class="navbar-show-small"
+      href="https://github.com/gcwiley"
+      aria-label="GitHub Repository"
+      target="_blank"
+      rel="noopener noreferrer">
       <ng-container [ngTemplateOutlet]="githubIcon" />
    </a>
 

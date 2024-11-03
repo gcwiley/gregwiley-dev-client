@@ -2,7 +2,7 @@
 
 // color mixin
 @mixin color($theme) {
-   .announcement-banner {
+   .announcement-bar {
       color: mat.get-theme-color($theme, secondary, 100);
       background-color: mat.get-theme-color($theme, error, 90);
    }

@@ -1,17 +1,11 @@
-.navbar-header {
+.navbar {
    display: flex;
    flex-wrap: wrap;
    align-items: center;
    padding: 8px 16px;
-
-   > .mat-mdc-button {
-      &:last-child {
-         margin-left: auto;
-      }
-   }
 }
 
-// controls the size of the app logo and github logo
+// controls the size of the app logo and the github logo
 .github-logo,
 app-logo {
    margin-right: 12px;

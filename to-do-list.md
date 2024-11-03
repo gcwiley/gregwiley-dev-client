@@ -10,6 +10,12 @@
 
 6. fix auth routing 
 
+7. move text below to learning - dev md
+
+8. add new colors to theme
+
+9. change background of homepage
+
 
 
 #### pathMatch
