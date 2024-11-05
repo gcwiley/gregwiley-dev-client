@@ -4,6 +4,7 @@ import { Routes } from '@angular/router';
 import {
    AboutPageComponent,
    AdminPageComponent,
+   ErrorPageComponent,
    HomePageComponent,
    NotFoundPageComponent,
    ProjectCreatePageComponent,
@@ -18,6 +19,8 @@ export const routes: Routes = [
       path: '',
       component: HomePageComponent,
       title: 'gregwiley.dev',
+      redirectTo: 'error',
+      pathMatch: 'full',
    },
    {
       path: 'admin',
@@ -27,6 +30,7 @@ export const routes: Routes = [
    {
       path: 'projects',
       component: ProjectGridPageComponent,
+      title: 'My Projects',
    },
    {
       path: 'projects/:id',
@@ -43,21 +47,26 @@ export const routes: Routes = [
    {
       path: 'signin',
       component: SigninComponent,
-      title: 'Sign In'
+      title: 'Sign In',
    },
    {
       path: 'about',
       component: AboutPageComponent,
-      title: 'About Me'
+      title: 'About Me',
    },
    {
       path: 'resources',
       component: ResourcesPageComponent,
-      title: 'Resources'
+      title: 'Resources',
+   },
+   {
+      path: 'error',
+      component: ErrorPageComponent,
+      title: 'Error',
    },
    {
       path: '**',
       component: NotFoundPageComponent,
-      title: 'Not Found Page'
+      title: 'Not Found Page',
    },
 ];

@@ -4,11 +4,11 @@
 @mixin color($theme) {
    .sidenav {
       color: mat.get-theme-color($theme, primary, 0);
-      background-color: mat.get-theme-color($theme, primary, 90);
+      background-color: mat.get-theme-color($theme, primary, 10);
    }
 
    .toolbar {
-      background-color: mat.get-theme-color($theme, primary, 40);
+      background-color: mat.get-theme-color($theme, primary, 80);
    }
 }
 

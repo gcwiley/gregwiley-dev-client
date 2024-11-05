@@ -11,48 +11,37 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
-  ],
+   standalone: true,
+   selector: 'app-header',
+   templateUrl: './header.component.html',
+   styleUrls: ['./header.component.scss'],
+   imports: [CommonModule, RouterModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule],
 })
 export class HeaderComponent implements OnInit {
-  isDark: boolean | undefined;
+   isDark: boolean | undefined;
 
-  constructor(
-    public auth: AngularFireAuth,
-    private router: Router,
-    private overlayContainer: OverlayContainer
-  ) {}
+   constructor(public auth: AngularFireAuth, private router: Router, private overlayContainer: OverlayContainer) {}
 
-  ngOnInit(): void {
-    this.isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    this.setTheme();
-  }
+   ngOnInit(): void {
+      this.isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      this.setTheme();
+   }
 
-  toggleTheme(): void {
-    this.isDark = !this.isDark;
-    this.setTheme();
-  }
+   toggleTheme(): void {
+      this.isDark = !this.isDark;
+      this.setTheme();
+   }
 
-  setTheme(): void {
-    document.documentElement.classList.toggle('dark-theme', this.isDark);
-    this.overlayContainer.getContainerElement().classList.toggle('dark-theme', this.isDark);
-  }
+   setTheme(): void {
+      document.documentElement.classList.toggle('dark-theme', this.isDark);
+      this.overlayContainer.getContainerElement().classList.toggle('dark-theme', this.isDark);
+   }
 
-  // signs out the current user
-  onClickSignOut(): void {
-    this.auth.signOut().then(() => {
-      // navigates user to the sign in page
-      this.router.navigateByUrl('/signin');
-    });
-  }
+   // signs out the current user
+   onClickSignOut(): void {
+      this.auth.signOut().then(() => {
+         // navigates user to the sign in page
+         this.router.navigateByUrl('/signin');
+      });
+   }
 }

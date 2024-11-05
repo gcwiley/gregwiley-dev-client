@@ -27,10 +27,10 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
+   standalone: true,
    selector: 'app-project-table',
    templateUrl: './project-table.component.html',
    styleUrls: ['./project-table.component.scss'],
-   standalone: true,
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
       CommonModule,
@@ -64,7 +64,18 @@ export class ProjectTableComponent implements AfterViewInit {
    dataSource = new MatTableDataSource<Project>();
 
    // columns to display
-   columnsToDisplay = ['select', 'title', 'status', 'category', 'language', 'startDate', 'openProject', 'editProject', 'deleteProject', 'openDialog'];
+   columnsToDisplay = [
+      'select',
+      'title',
+      'status',
+      'category',
+      'language',
+      'startDate',
+      'openProject',
+      'editProject',
+      'deleteProject',
+      'openDialog',
+   ];
 
    constructor(private projectService: ProjectService, private router: Router) {}
 

@@ -1,7 +1,7 @@
 <mat-grid-list [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
    @for (project of projects; track project) {
    <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
-      <mat-card class="project-card" appearance="raised">
+      <mat-card class="project-card" appearance="outlined">
          <mat-card-header>
             <mat-card-title>{{ project.title }}</mat-card-title>
             <mat-card-subtitle>{{ project.category | titlecase }}</mat-card-subtitle>
@@ -10,11 +10,7 @@
          <span class="spacer"></span>
 
          <mat-card-actions>
-            <a mat-button routerLink="/projects/{{ project._id }}">OPEN</a>
-            <span class="spacer"></span>
-            <a mat-icon-button href="{{ project.gitUrl }}" disabled>
-               <mat-icon>code</mat-icon>
-            </a>
+            <a mat-flat-button routerLink="/projects/{{ project._id }}">OPEN</a>
          </mat-card-actions>
       </mat-card>
    </mat-grid-tile>

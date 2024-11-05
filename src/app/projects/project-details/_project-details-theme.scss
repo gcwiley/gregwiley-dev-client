@@ -4,8 +4,8 @@
 // color mixin
 @mixin color($theme) {
    .project-details {
-      color: mat.get-theme-color($theme, primary, 50);
-      background-color: mat.get-theme-color($theme, primary, 95);
+      color: mat.get-theme-color($theme, primary, 99);
+      background-color: mat.get-theme-color($theme, primary, 10);
    }
 }
 

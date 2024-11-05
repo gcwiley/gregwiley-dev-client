@@ -19,10 +19,10 @@ import { AuthService } from '../../services/auth.service';
 
 // Signin Component
 @Component({
+   standalone: true,
    selector: 'app-signin',
    templateUrl: './signin-page.component.html',
    styleUrls: ['./signin-page.component.scss'],
-   standalone: true,
    imports: [
       CommonModule,
       ReactiveFormsModule,

@@ -12,10 +12,10 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
+   standalone: true,
    selector: 'app-recent-projects',
    templateUrl: './recent-projects.component.html',
    styleUrls: ['./recent-projects.component.scss'],
-   standalone: true,
    imports: [CommonModule, MatListModule, MatIconModule],
 })
 export class RecentProjectsComponent implements OnInit {
@@ -28,8 +28,6 @@ export class RecentProjectsComponent implements OnInit {
    }
 
    getRecentProjects(): void {
-      this.projectService
-         .getRecentlyCreatedProjects()
-         .subscribe((recentProjects) => (this.recentProjects = recentProjects));
+      this.projectService.getRecentlyCreatedProjects().subscribe((recentProjects) => (this.recentProjects = recentProjects));
    }
 }

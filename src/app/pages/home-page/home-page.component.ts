@@ -17,10 +17,10 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
+   standalone: true,
    selector: 'app-home-page',
    templateUrl: './home-page.component.html',
    styleUrls: ['./home-page.component.scss'],
-   standalone: true,
    imports: [
       RouterModule,
       MatCardModule,

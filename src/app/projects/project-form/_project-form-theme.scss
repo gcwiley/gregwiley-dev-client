@@ -4,6 +4,7 @@
 @mixin color($theme) {
    .project-form {
       color: mat.get-theme-color($theme, primary, 10);
+      background-color: white;
    }
 }
 

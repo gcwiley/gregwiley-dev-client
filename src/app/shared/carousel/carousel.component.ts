@@ -49,11 +49,11 @@ export class CarouselItemDirective implements FocusableOption {
 
 // decorator that marks a class a component
 @Component({
+   standalone: true,
    selector: 'app-carousel',
    templateUrl: './carousel.component.html',
    styleUrls: ['./carousel.component.scss'],
    encapsulation: ViewEncapsulation.None,
-   standalone: true,
    imports: [NgIf, MatButtonModule, MatIconModule],
 })
 export class CarouselComponent implements AfterContentInit {
@@ -169,8 +169,6 @@ export class CarouselComponent implements AfterContentInit {
          return true;
       }
 
-      return (
-         (!side || side === 'end') && offsetWidth + offsetLeft - this.position > this.list.nativeElement.clientWidth
-      );
+      return (!side || side === 'end') && offsetWidth + offsetLeft - this.position > this.list.nativeElement.clientWidth;
    }
 }

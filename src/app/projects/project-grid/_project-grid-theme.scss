@@ -2,15 +2,21 @@
 
 // color mixin
 @mixin color($theme) {
-   .project-grid {
-      color: mat.get-theme-color($theme, primary, 10);
+   .project-card {
+      color: mat.get-theme-color($theme, primary, 70);
+      background-color: mat.get-theme-color($theme, primary, 100);
+      // border-color: mat.get-theme-color($theme, primary, 30);
+   }
+
+   .project-card:hover {
+      background-color:  mat.get-theme-color($theme, primary, 10);
    }
 }
 
 // typography mixin
 @mixin typography($theme) {
-   .project-grid {
-      font: mat.get-theme-typography($theme, body-medium);
+   .project-card {
+      font: mat.get-theme-typography($theme, body-small);
    }
 }
 

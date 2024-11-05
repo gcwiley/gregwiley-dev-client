@@ -7,7 +7,7 @@ import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '.
 // import project components
 import { ProjectDetailsComponent, ProjectDescriptionComponent, ProjectTagsComponent } from '../../../projects';
 
-// import the project type
+// import the project interface
 import { Project } from '../../../types/project.interface';
 
 // import the project service
@@ -30,7 +30,7 @@ export class ProjectDetailsPageComponent implements OnInit {
       this.getProject();
    }
 
-   // GET project by Id - fix this
+   // GET project by ID
    getProject(): void {
       const id = this.route.snapshot.paramMap.get('id')!;
       this.projectService.getProject(id).subscribe((project) => (this.project = project));

@@ -22,10 +22,10 @@ import { Project, ProjectStatus, ProjectCategory, ProjectLanguage } from '../../
 import { PROJECT_STATUS, PROJECT_LANGUAGE, PROJECT_CATAGORIES } from '../../../assets/data/project-data';
 
 @Component({
+   standalone: true,
    selector: 'app-project-form',
    templateUrl: './project-form.component.html',
    styleUrls: ['./project-form.component.scss'],
-   standalone: true,
    imports: [
       CommonModule,
       FormsModule,
@@ -105,7 +105,7 @@ export class ProjectFormComponent implements OnInit {
       }
    }
 
-   // reset the form - fix this!
+   // reset the form
    onReset(event: Event): void {
       event.preventDefault();
       this.projectForm.reset();
