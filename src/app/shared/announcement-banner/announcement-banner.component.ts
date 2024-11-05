@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
    imports: [],
 })
 export class AnnouncementBannerComponent {
-   text = 'gregwiley.dev is currently in development. Features may change.';
+   text = 'The site is currently in development.';
 }

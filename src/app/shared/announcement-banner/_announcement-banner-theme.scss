@@ -3,8 +3,8 @@
 // color mixin
 @mixin color($theme) {
    .announcement-bar {
-      color: mat.get-theme-color($theme, primary, 70);
-      background-color: mat.get-theme-color($theme, primary, 20);
+      color: mat.get-theme-color($theme, error, 70);
+      background-color: mat.get-theme-color($theme, error, 10);
    }
 }
 // typography mixin

@@ -5,7 +5,6 @@
    .project-card {
       color: mat.get-theme-color($theme, primary, 70);
       background-color: mat.get-theme-color($theme, primary, 100);
-      // border-color: mat.get-theme-color($theme, primary, 30);
    }
 
    .project-card:hover {

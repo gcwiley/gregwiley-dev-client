@@ -3,7 +3,7 @@
 // color mixin
 @mixin color($theme) {
    .project-description {
-      color: mat.get-theme-color($theme, primary, 10);
+      color: mat.get-theme-color($theme, primary, 0);
    }
 }
 

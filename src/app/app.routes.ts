@@ -5,7 +5,7 @@ import {
    AboutPageComponent,
    AdminPageComponent,
    ErrorPageComponent,
-   HomePageComponent,
+   // HomePageComponent,
    NotFoundPageComponent,
    ProjectCreatePageComponent,
    ProjectDetailsPageComponent,
@@ -17,10 +17,9 @@ import {
 export const routes: Routes = [
    {
       path: '',
-      component: HomePageComponent,
-      title: 'gregwiley.dev',
-      redirectTo: 'error',
+      redirectTo: '/signin',
       pathMatch: 'full',
+      title: 'gregwiley.dev',
    },
    {
       path: 'admin',
