@@ -1,17 +1,10 @@
 <mat-list role="list" class="skills-list">
-   <span mat-subheader>My Skills</span>
-   <mat-list-item lines="1" role="listitem">
-      <span matListItemTitle>JavaScript</span>
+   <div mat-subheader>My Skills</div>
+   @for (skill of skills; track skill) {
+   <mat-list-item lines="3" role="listitem">
+      <mat-icon matListItemIcon>note</mat-icon>
+      <div matListItemTitle>{{ skill.name }}</div>
+      <div matListItemLine>{{ skill.overview }}</div>
    </mat-list-item>
-   <mat-divider />
-   <mat-list-item role="listitem">HTML and CSS</mat-list-item>
-   <mat-divider />
-   <mat-list-item role="listitem">Angular</mat-list-item>
-   <mat-divider />
-   <mat-list-item role="listitem">Express JS</mat-list-item>
+   }
 </mat-list>
-
-<!-- fix this! -->
-
-
-

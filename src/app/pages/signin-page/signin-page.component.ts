@@ -1,9 +1,13 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { from } from 'rxjs';
 
-// import angular material modules
+// import firebase auth
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+
+// import the angular material modules
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,18 +18,16 @@ import { MatIconModule } from '@angular/material/icon';
 // import the shared components
 import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '../../shared';
 
-// import the auth service fix this!
-import { AuthService } from '../../services/auth.service';
-
 // Signin Component
 @Component({
    standalone: true,
    selector: 'app-signin',
    templateUrl: './signin-page.component.html',
    styleUrls: ['./signin-page.component.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
-      CommonModule,
       ReactiveFormsModule,
+      NgIf,
       MatCardModule,
       MatInputModule,
       MatFormFieldModule,
@@ -38,22 +40,26 @@ import { AuthService } from '../../services/auth.service';
    ],
 })
 export class SigninComponent {
-   year = new Date().getFullYear();
-
-   formBuilder = inject(FormBuilder);
-
-   // inject the router and the auth service
-   constructor(private router: Router, private auth: AuthService) {}
-
    // create the signin form with email and password fields
-   signinForm = this.formBuilder.group({
-      email: [null, Validators.required, Validators.email],
-      password: [null, Validators.required],
+   public signinForm = this.formBuilder.nonNullable.group({
+      email: ['', Validators.required, Validators.email],
+      password: ['', Validators.required],
    });
 
-   // Sign in with email and password
-   // if successful, navigate admin to the main page
-   onSubmitSignIn() {
-      this.auth.SignInWithEmailAndPassword(this.signinForm.value.email ?? '', this.signinForm.value.password ?? '');
+   // inject the router, form builder, and the firebase auth
+   constructor(private router: Router, private formBuilder: FormBuilder, private auth: Auth) {}
+
+   // Sign in with email and password, if successful, navigate admin to the main page
+   public onSubmitSignIn(): void {
+      // error checking code
+      if (this.signinForm.invalid) {
+         return;
+      }
+
+      from(signInWithEmailAndPassword(this.auth, this.signinForm.controls.email.value, this.signinForm.controls.password.value)).subscribe(
+         () => {
+            this.router.navigate(['/']);
+         }
+      );
    }
 }

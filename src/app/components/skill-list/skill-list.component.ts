@@ -6,10 +6,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 
-// define the skill interface
 export interface Skill {
    name: string;
-   description: string;
+   overview: string;
 }
 
 @Component({
@@ -19,4 +18,23 @@ export interface Skill {
    styleUrls: ['./skill-list.component.scss'],
    imports: [CommonModule, MatCardModule, MatListModule, MatDividerModule],
 })
-export class SkillListComponent {}
+export class SkillListComponent {
+   skills: Skill[] = [
+      {
+         name: 'JavaScript',
+         overview: 'This is a test sentence.',
+      },
+      {
+         name: 'HTML and CSS',
+         overview: 'This is a test sentence.',
+      },
+      {
+         name: 'Python',
+         overview: 'This is a test sentence.',
+      },
+      {
+         name: 'TypeScript',
+         overview: 'This is a test sentence.',
+      },
+   ];
+}
