@@ -24,22 +24,21 @@ import { PostService } from '../../services/post.service';
 import { Post } from '../../types/post.interface';
 
 @Component({
-   standalone: true,
-   selector: 'app-post-table',
-   templateUrl: './post-table.component.html',
-   styleUrl: './post-table.component.scss',
-   changeDetection: ChangeDetectionStrategy.OnPush,
-   imports: [
-      CommonModule,
-      MatRippleModule,
-      MatTableModule,
-      MatIconModule,
-      MatButtonModule,
-      MatTooltipModule,
-      MatProgressSpinnerModule,
-      MatPaginatorModule,
-      RouterModule,
-   ],
+    selector: 'app-post-table',
+    templateUrl: './post-table.component.html',
+    styleUrl: './post-table.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CommonModule,
+        MatRippleModule,
+        MatTableModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTooltipModule,
+        MatProgressSpinnerModule,
+        MatPaginatorModule,
+        RouterModule,
+    ]
 })
 export class PostTableComponent implements AfterViewInit {
    // inject MatDialog
@@ -96,11 +95,10 @@ export class PostTableComponent implements AfterViewInit {
 }
 
 @Component({
-   selector: 'app-post-table-dialog',
-   templateUrl: './post-table-dialog.html',
-   standalone: true,
-   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
-   changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-post-table-dialog',
+    templateUrl: './post-table-dialog.html',
+    imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostTableDialogComponent {
    readonly dialogRef = inject(MatDialogRef<PostTableDialogComponent>);

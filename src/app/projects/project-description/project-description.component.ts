@@ -9,11 +9,10 @@ import { Project } from '../../types/project.interface';
 import { ProjectService } from '../../services/project.service';
 
 @Component({
-   standalone: true,
-   selector: 'app-project-description',
-   templateUrl: './project-description.component.html',
-   styleUrls: ['./project-description.component.scss'],
-   imports: [NgIf],
+    selector: 'app-project-description',
+    templateUrl: './project-description.component.html',
+    styleUrls: ['./project-description.component.scss'],
+    imports: [NgIf]
 })
 export class ProjectDescriptionComponent implements OnInit {
    project!: Project;

@@ -12,11 +12,10 @@ export interface Skill {
 }
 
 @Component({
-   standalone: true,
-   selector: 'app-skill-list',
-   templateUrl: './skill-list.component.html',
-   styleUrls: ['./skill-list.component.scss'],
-   imports: [CommonModule, MatCardModule, MatListModule, MatDividerModule],
+    selector: 'app-skill-list',
+    templateUrl: './skill-list.component.html',
+    styleUrls: ['./skill-list.component.scss'],
+    imports: [CommonModule, MatCardModule, MatListModule, MatDividerModule]
 })
 export class SkillListComponent {
    skills: Skill[] = [

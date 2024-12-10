@@ -22,21 +22,20 @@ import { Post, PostCategory } from '../../types/post.interface';
 import { POST_CATEGORIES } from '../../../assets/data/post-data';
 
 @Component({
-   selector: 'app-post-form',
-   templateUrl: './post-form.component.html',
-   styleUrl: './post-form.component.scss',
-   standalone: true,
-   imports: [
-      CommonModule,
-      MatCardModule,
-      MatButtonModule,
-      MatFormFieldModule,
-      MatInputModule,
-      MatSelectModule,
-      MatDatepickerModule,
-      MatNativeDateModule,
-      ReactiveFormsModule,
-   ],
+    selector: 'app-post-form',
+    templateUrl: './post-form.component.html',
+    styleUrl: './post-form.component.scss',
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        ReactiveFormsModule,
+    ]
 })
 export class PostFormComponent implements OnInit {
    public mode = 'create';

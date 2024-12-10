@@ -14,11 +14,10 @@ import { Project } from '../../../types/project.interface';
 import { ProjectService } from '../../../services/project.service';
 
 @Component({
-   standalone: true,
-   selector: 'app-project-details-page',
-   templateUrl: './project-details-page.component.html',
-   styleUrls: ['./project-details-page.component.scss'],
-   imports: [NavbarComponent, AnnouncementBannerComponent, FooterComponent, ProjectDetailsComponent, ProjectDescriptionComponent, ProjectTagsComponent, RouterModule],
+    selector: 'app-project-details-page',
+    templateUrl: './project-details-page.component.html',
+    styleUrls: ['./project-details-page.component.scss'],
+    imports: [NavbarComponent, AnnouncementBannerComponent, FooterComponent, ProjectDetailsComponent, ProjectDescriptionComponent, ProjectTagsComponent, RouterModule]
 })
 export class ProjectDetailsPageComponent implements OnInit {
    project!: Project | undefined;

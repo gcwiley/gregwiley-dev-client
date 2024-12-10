@@ -17,22 +17,21 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
-   standalone: true,
-   selector: 'app-home-page',
-   templateUrl: './home-page.component.html',
-   styleUrls: ['./home-page.component.scss'],
-   imports: [
-      RouterModule,
-      MatCardModule,
-      MatButtonModule,
-      MatDividerModule,
-      MatIconModule,
-      LogoComponent,
-      NavbarComponent,
-      AnnouncementBannerComponent,
-      CarouselComponent,
-      FooterComponent,
-   ],
+    selector: 'app-home-page',
+    templateUrl: './home-page.component.html',
+    styleUrls: ['./home-page.component.scss'],
+    imports: [
+        RouterModule,
+        MatCardModule,
+        MatButtonModule,
+        MatDividerModule,
+        MatIconModule,
+        LogoComponent,
+        NavbarComponent,
+        AnnouncementBannerComponent,
+        CarouselComponent,
+        FooterComponent,
+    ]
 })
 export class HomePageComponent implements OnInit {
    recentProjects!: Project[];

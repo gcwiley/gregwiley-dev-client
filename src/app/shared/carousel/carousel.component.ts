@@ -49,12 +49,11 @@ export class CarouselItemDirective implements FocusableOption {
 
 // decorator that marks a class a component
 @Component({
-   standalone: true,
-   selector: 'app-carousel',
-   templateUrl: './carousel.component.html',
-   styleUrls: ['./carousel.component.scss'],
-   encapsulation: ViewEncapsulation.None,
-   imports: [NgIf, MatButtonModule, MatIconModule],
+    selector: 'app-carousel',
+    templateUrl: './carousel.component.html',
+    styleUrls: ['./carousel.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    imports: [NgIf, MatButtonModule, MatIconModule]
 })
 export class CarouselComponent implements AfterContentInit {
    // find out what this does

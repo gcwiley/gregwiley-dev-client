@@ -19,24 +19,23 @@ import { ProjectTableComponent } from '../../projects';
 import { PostTableComponent } from '../../posts';
 
 @Component({
-   standalone: true,
-   selector: 'app-admin-page',
-   templateUrl: './admin-page.component.html',
-   styleUrls: ['./admin-page.component.scss'],
-   imports: [
-      CommonModule,
-      MatSidenavModule,
-      MatListModule,
-      MatToolbarModule,
-      MatIconModule,
-      MatMenuModule,
-      MatButtonModule,
-      MatTabsModule,
-      MatTooltip,
-      ProjectTableComponent,
-      PostTableComponent,
-      RouterModule,
-   ],
+    selector: 'app-admin-page',
+    templateUrl: './admin-page.component.html',
+    styleUrls: ['./admin-page.component.scss'],
+    imports: [
+        CommonModule,
+        MatSidenavModule,
+        MatListModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatMenuModule,
+        MatButtonModule,
+        MatTabsModule,
+        MatTooltip,
+        ProjectTableComponent,
+        PostTableComponent,
+        RouterModule,
+    ]
 })
 export class AdminPageComponent {
    events: string[] = [];

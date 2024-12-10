@@ -19,19 +19,18 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
-   selector: 'app-project-grid',
-   templateUrl: './project-grid.component.html',
-   styleUrls: ['./project-grid.component.scss'],
-   standalone: true,
-   imports: [
-      CommonModule,
-      RouterModule,
-      MatGridListModule,
-      MatCardModule,
-      MatIconModule,
-      MatButtonModule,
-      SimpleTruncatePipe,
-   ],
+    selector: 'app-project-grid',
+    templateUrl: './project-grid.component.html',
+    styleUrls: ['./project-grid.component.scss'],
+    imports: [
+        CommonModule,
+        RouterModule,
+        MatGridListModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        SimpleTruncatePipe,
+    ]
 })
 export class ProjectGridComponent implements OnInit {
    // create the member variables

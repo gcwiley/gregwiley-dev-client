@@ -27,23 +27,22 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
-   standalone: true,
-   selector: 'app-project-table',
-   templateUrl: './project-table.component.html',
-   styleUrls: ['./project-table.component.scss'],
-   changeDetection: ChangeDetectionStrategy.OnPush,
-   imports: [
-      CommonModule,
-      MatRippleModule,
-      MatTableModule,
-      MatCheckboxModule,
-      MatIconModule,
-      MatButtonModule,
-      MatTooltipModule,
-      MatProgressSpinnerModule,
-      MatPaginatorModule,
-      RouterModule,
-   ],
+    selector: 'app-project-table',
+    templateUrl: './project-table.component.html',
+    styleUrls: ['./project-table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CommonModule,
+        MatRippleModule,
+        MatTableModule,
+        MatCheckboxModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTooltipModule,
+        MatProgressSpinnerModule,
+        MatPaginatorModule,
+        RouterModule,
+    ]
 })
 export class ProjectTableComponent implements AfterViewInit {
    // inject MatDialog
@@ -139,11 +138,10 @@ export class ProjectTableComponent implements AfterViewInit {
 }
 
 @Component({
-   selector: 'app-project-table-dialog',
-   templateUrl: './project-table-dialog.html',
-   standalone: true,
-   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
-   changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-project-table-dialog',
+    templateUrl: './project-table-dialog.html',
+    imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectTableDialogComponent {
    readonly dialogRef = inject(MatDialogRef<ProjectTableDialogComponent>);

@@ -7,10 +7,9 @@ import { NavbarComponent, FooterComponent } from '../../../shared';
 import { PostListComponent, RecentPostsComponent } from '../../../posts';
 
 @Component({
-   standalone: true,
-   selector: 'app-blog-page',
-   templateUrl: './blog-page.component.html',
-   styleUrl: './blog-page.component.scss',
-   imports: [NavbarComponent, FooterComponent, PostListComponent, RecentPostsComponent],
+    selector: 'app-blog-page',
+    templateUrl: './blog-page.component.html',
+    styleUrl: './blog-page.component.scss',
+    imports: [NavbarComponent, FooterComponent, PostListComponent, RecentPostsComponent]
 })
 export class BlogPageComponent {}

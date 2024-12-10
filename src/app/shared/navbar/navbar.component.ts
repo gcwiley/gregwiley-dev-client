@@ -15,11 +15,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { LogoComponent } from '../logo/logo.component';
 
 @Component({
-   standalone: true,
-   selector: 'app-navbar',
-   templateUrl: './navbar.component.html',
-   styleUrls: ['./navbar.component.scss'],
-   imports: [CommonModule, RouterModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, LogoComponent],
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss'],
+    imports: [CommonModule, RouterModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, LogoComponent]
 })
 export class NavbarComponent {
    constructor(public auth: AuthService, private router: Router) {}

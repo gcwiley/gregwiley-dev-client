@@ -136,7 +136,8 @@ $_tertiary: map.merge(map.get($_palettes, tertiary), $_rest);
 @use 'app-theme';
 
 // comment here!
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();
 
 // define the light theme
 $light-theme: mat.define-theme(

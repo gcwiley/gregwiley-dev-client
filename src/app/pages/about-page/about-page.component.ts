@@ -7,10 +7,9 @@ import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '.
 import { AboutMeComponent, SkillListComponent } from '../../components';
 
 @Component({
-   standalone: true,
-   selector: 'app-about-page',
-   templateUrl: './about-page.component.html',
-   styleUrls: ['./about-page.component.scss'],
-   imports: [NavbarComponent, AnnouncementBannerComponent, FooterComponent, AboutMeComponent, SkillListComponent],
+    selector: 'app-about-page',
+    templateUrl: './about-page.component.html',
+    styleUrls: ['./about-page.component.scss'],
+    imports: [NavbarComponent, AnnouncementBannerComponent, FooterComponent, AboutMeComponent, SkillListComponent]
 })
 export class AboutPageComponent {}

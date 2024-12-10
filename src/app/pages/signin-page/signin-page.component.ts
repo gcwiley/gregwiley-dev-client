@@ -20,24 +20,23 @@ import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '.
 
 // Signin Component
 @Component({
-   standalone: true,
-   selector: 'app-signin',
-   templateUrl: './signin-page.component.html',
-   styleUrls: ['./signin-page.component.scss'],
-   changeDetection: ChangeDetectionStrategy.OnPush,
-   imports: [
-      ReactiveFormsModule,
-      NgIf,
-      MatCardModule,
-      MatInputModule,
-      MatFormFieldModule,
-      MatCheckboxModule,
-      MatButtonModule,
-      MatIconModule,
-      NavbarComponent,
-      AnnouncementBannerComponent,
-      FooterComponent,
-   ],
+    selector: 'app-signin',
+    templateUrl: './signin-page.component.html',
+    styleUrls: ['./signin-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        NgIf,
+        MatCardModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatCheckboxModule,
+        MatButtonModule,
+        MatIconModule,
+        NavbarComponent,
+        AnnouncementBannerComponent,
+        FooterComponent,
+    ]
 })
 export class SigninComponent {
    // create the signin form with email and password fields

@@ -11,11 +11,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
-   standalone: true,
-   selector: 'app-header',
-   templateUrl: './header.component.html',
-   styleUrls: ['./header.component.scss'],
-   imports: [CommonModule, RouterModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule],
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    imports: [CommonModule, RouterModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule]
 })
 export class HeaderComponent implements OnInit {
    isDark: boolean | undefined;

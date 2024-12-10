@@ -7,11 +7,10 @@ import { MatCardModule } from '@angular/material/card';
 import { biographyText } from '../../../assets/data/bio-info';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss'],
-  standalone: true,
-  imports: [MatCardModule],
+    selector: 'app-about',
+    templateUrl: './about.component.html',
+    styleUrls: ['./about.component.scss'],
+    imports: [MatCardModule]
 })
 export class AboutMeComponent {
   bioText = biographyText;
