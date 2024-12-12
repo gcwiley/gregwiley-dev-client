@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
@@ -20,25 +20,28 @@ import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '.
 
 // Signin Component
 @Component({
-    selector: 'app-signin',
-    templateUrl: './signin-page.component.html',
-    styleUrls: ['./signin-page.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ReactiveFormsModule,
-        NgIf,
-        MatCardModule,
-        MatInputModule,
-        MatFormFieldModule,
-        MatCheckboxModule,
-        MatButtonModule,
-        MatIconModule,
-        NavbarComponent,
-        AnnouncementBannerComponent,
-        FooterComponent,
-    ]
+   selector: 'app-signin',
+   templateUrl: './signin-page.component.html',
+   styleUrls: ['./signin-page.component.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush,
+   imports: [
+      ReactiveFormsModule,
+      NgIf,
+      MatCardModule,
+      MatInputModule,
+      MatFormFieldModule,
+      MatCheckboxModule,
+      MatButtonModule,
+      MatIconModule,
+      NavbarComponent,
+      AnnouncementBannerComponent,
+      FooterComponent,
+   ],
 })
 export class SigninComponent {
+   // inject the FormBuilder
+   formBuilder = inject(FormBuilder);
+
    // create the signin form with email and password fields
    public signinForm = this.formBuilder.nonNullable.group({
       email: ['', Validators.required, Validators.email],
@@ -46,9 +49,9 @@ export class SigninComponent {
    });
 
    // inject the router, form builder, and the firebase auth
-   constructor(private router: Router, private formBuilder: FormBuilder, private auth: Auth) {}
+   constructor(private router: Router, private auth: Auth) {}
 
-   // Sign in with email and password, if successful, navigate admin to the main page
+   // Sign in with email and password, if successful, navigate authenicated user to the main page
    public onSubmitSignIn(): void {
       // error checking code
       if (this.signinForm.invalid) {
@@ -57,7 +60,7 @@ export class SigninComponent {
 
       from(signInWithEmailAndPassword(this.auth, this.signinForm.controls.email.value, this.signinForm.controls.password.value)).subscribe(
          () => {
-            this.router.navigate(['/']);
+            this.router.navigateByUrl('/');
          }
       );
    }
