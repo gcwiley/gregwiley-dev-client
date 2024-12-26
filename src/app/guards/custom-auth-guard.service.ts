@@ -19,3 +19,5 @@ export class CustomAuthGuardService {
    // determines if the user can activate the requested router
    public canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot)
 }
+
+// fix this!

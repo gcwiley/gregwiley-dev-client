@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // import the shared components
 import { NavbarComponent, FooterComponent } from '../../../shared';
@@ -10,6 +10,7 @@ import { PostFormComponent, RecentPostsComponent } from '../../../posts';
     selector: 'app-post-create-page',
     templateUrl: './post-create-page.component.html',
     styleUrl: './post-create-page.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [NavbarComponent, FooterComponent, PostFormComponent, RecentPostsComponent]
 })
 export class PostCreatePageComponent {}

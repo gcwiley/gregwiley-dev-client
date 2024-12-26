@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // import the shared components
 import { NavbarComponent, FooterComponent } from '../../../shared';
@@ -10,6 +10,7 @@ import { PostListComponent, RecentPostsComponent } from '../../../posts';
     selector: 'app-blog-page',
     templateUrl: './blog-page.component.html',
     styleUrl: './blog-page.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [NavbarComponent, FooterComponent, PostListComponent, RecentPostsComponent]
 })
 export class BlogPageComponent {}

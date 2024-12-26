@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
 
@@ -12,6 +12,7 @@ import { ProjectService } from '../../services/project.service';
     selector: 'app-project-description',
     templateUrl: './project-description.component.html',
     styleUrls: ['./project-description.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [NgIf]
 })
 export class ProjectDescriptionComponent implements OnInit {

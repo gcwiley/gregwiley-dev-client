@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // import the shared components
 import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '../../shared';
@@ -7,9 +7,10 @@ import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '.
 import { AboutMeComponent, SkillListComponent } from '../../components';
 
 @Component({
-    selector: 'app-about-page',
-    templateUrl: './about-page.component.html',
-    styleUrls: ['./about-page.component.scss'],
-    imports: [NavbarComponent, AnnouncementBannerComponent, FooterComponent, AboutMeComponent, SkillListComponent]
+   selector: 'app-about-page',
+   templateUrl: './about-page.component.html',
+   styleUrls: ['./about-page.component.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush,
+   imports: [NavbarComponent, AnnouncementBannerComponent, FooterComponent, AboutMeComponent, SkillListComponent],
 })
 export class AboutPageComponent {}

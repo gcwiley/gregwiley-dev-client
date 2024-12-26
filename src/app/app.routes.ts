@@ -1,11 +1,13 @@
 import { Routes } from '@angular/router';
 
+// fix this!
+
 // import the page components
 import {
    AboutPageComponent,
    AdminPageComponent,
    ErrorPageComponent,
-   // HomePageComponent,
+   HomePageComponent,
    NotFoundPageComponent,
    ProjectCreatePageComponent,
    ProjectDetailsPageComponent,
