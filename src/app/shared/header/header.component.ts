@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { OverlayContainer } from '@angular/cdk/overlay';
@@ -11,10 +11,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss'],
-    imports: [CommonModule, RouterModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule]
+   selector: 'app-header',
+   templateUrl: './header.component.html',
+   styleUrls: ['./header.component.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush,
+   imports: [CommonModule, RouterModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule],
 })
 export class HeaderComponent implements OnInit {
    isDark: boolean | undefined;

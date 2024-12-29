@@ -19,13 +19,15 @@ import {
 export const routes: Routes = [
    {
       path: '',
-      redirectTo: '/signin',
+      component: HomePageComponent,
+      canActivate: [],
       pathMatch: 'full',
       title: 'gregwiley.dev',
    },
    {
       path: 'admin',
       component: AdminPageComponent,
+      canActivate: [],
       title: 'Admin Dashboard',
    },
    {
