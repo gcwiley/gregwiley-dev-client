@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-
-// import the message service
-import { MessageService } from './message.service';
 
 // import the post interface
 import { Post } from '../types/post.interface';
@@ -17,7 +14,7 @@ export class PostService {
    private postsUrl = '/api/posts';
 
    // inject "HttpClient" into the Post service
-   constructor(private http: HttpClient, private messageService: MessageService) {}
+   constructor(private http: HttpClient) {}
 
    // GET: all posts from the server
    getPosts(): Observable<Post[]> {
@@ -64,7 +61,6 @@ export class PostService {
    // DELETE a post by ID from the server
    deletePost(id: string): Observable<Post> {
       const url = `${this.postsUrl}/${id}`;
-
       return this.http.delete<Post>(url, { headers: headers })
    }
 
@@ -72,37 +68,8 @@ export class PostService {
    updatePost(id: string, post: Post | object): Observable<object> {
       // create the url
       const url = `${this.postsUrl}/${id}`;
-
       return this.http.put(url, post, { headers: headers })
    }
 
-   // Handle Http operation that failed
-   // let the app continue
-   // @param operation - name of the operation that failed
-   // @param result - optional value to return as the observable result
-
-   private handleError<T>(result?: T) {
-      return (error: Error): Observable<T> => {
-         if (error instanceof HttpErrorResponse) {
-            if (error.status === 0) {
-               // a client-side or network error occurred. handle it accordingly
-               console.error('An error occurred:', error.error);
-            } else {
-               // the backend returned an unsuccessful response code.
-               // the response body may contain clues as to what went wrong
-               console.error(`Backend returned code ${error.status}, body was `, error.error);
-            }
-         } else {
-            // handle other types of errors
-            console.error(error);
-         }
-         // let the app keep running by returning an empty result
-         return of(result as T);
-      };
-   }
-
-   // Log a postService message with postService
-   private log(message: string): void {
-      return this.messageService.add(`PostService: ${message}`);
-   }
+   
 }

@@ -15,10 +15,8 @@ import { MatTooltip } from '@angular/material/tooltip';
 // import the project table component
 import { ProjectTableComponent } from '../../projects';
 
-// import the post table component
-import { PostTableComponent } from '../../posts';
-
 @Component({
+   standalone: true,
    selector: 'app-admin-page',
    templateUrl: './admin-page.component.html',
    styleUrls: ['./admin-page.component.scss'],
@@ -34,7 +32,6 @@ import { PostTableComponent } from '../../posts';
       MatTabsModule,
       MatTooltip,
       ProjectTableComponent,
-      PostTableComponent,
       RouterModule,
    ],
 })

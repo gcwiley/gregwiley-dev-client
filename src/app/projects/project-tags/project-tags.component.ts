@@ -4,9 +4,10 @@ import { Component } from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
-    selector: 'app-project-tags',
-    templateUrl: './project-tags.component.html',
-    styleUrls: ['./project-tags.component.scss'],
-    imports: [MatChipsModule]
+   standalone: true,
+   selector: 'app-project-tags',
+   templateUrl: './project-tags.component.html',
+   styleUrls: ['./project-tags.component.scss'],
+   imports: [MatChipsModule],
 })
 export class ProjectTagsComponent {}

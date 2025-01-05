@@ -22,21 +22,22 @@ import { Project, ProjectStatus, ProjectCategory, ProjectLanguage } from '../../
 import { PROJECT_STATUS, PROJECT_LANGUAGE, PROJECT_CATAGORIES } from '../../../assets/data/project-data';
 
 @Component({
-    selector: 'app-project-form',
-    templateUrl: './project-form.component.html',
-    styleUrls: ['./project-form.component.scss'],
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatCardModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-    ]
+   standalone: true,
+   selector: 'app-project-form',
+   templateUrl: './project-form.component.html',
+   styleUrls: ['./project-form.component.scss'],
+   imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      MatCardModule,
+      MatButtonModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatSelectModule,
+      MatDatepickerModule,
+      MatNativeDateModule,
+   ],
 })
 export class ProjectFormComponent implements OnInit {
    public mode = 'create';

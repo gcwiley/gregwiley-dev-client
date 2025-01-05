@@ -7,6 +7,7 @@ import { NavbarComponent, FooterComponent } from '../../../shared';
 import { PostFormComponent, RecentPostsComponent } from '../../../posts';
 
 @Component({
+    standalone: true,
     selector: 'app-post-create-page',
     templateUrl: './post-create-page.component.html',
     styleUrl: './post-create-page.component.scss',

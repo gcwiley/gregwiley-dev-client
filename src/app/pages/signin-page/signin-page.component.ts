@@ -20,6 +20,7 @@ import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '.
 
 // Signin Component
 @Component({
+   standalone: true,
    selector: 'app-signin',
    templateUrl: './signin-page.component.html',
    styleUrls: ['./signin-page.component.scss'],

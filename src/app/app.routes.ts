@@ -1,75 +1,61 @@
 import { Routes } from '@angular/router';
-
-// fix this!
-
-// import the page components
-import {
-   AboutPageComponent,
-   AdminPageComponent,
-   ErrorPageComponent,
-   HomePageComponent,
-   NotFoundPageComponent,
-   ProjectCreatePageComponent,
-   ProjectDetailsPageComponent,
-   ProjectGridPageComponent,
-   ResourcesPageComponent,
-   SigninComponent,
-} from './pages';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
    {
       path: '',
-      component: HomePageComponent,
-      canActivate: [],
       pathMatch: 'full',
-      title: 'gregwiley.dev',
+      loadComponent: () => import('./pages/home-page/home-page.component').then((m) => m.HomePageComponent),
+      title: 'Home Page',
    },
    {
       path: 'admin',
-      component: AdminPageComponent,
-      canActivate: [],
-      title: 'Admin Dashboard',
+      canActivate: [AuthGuard],
+      loadComponent: () => import('./pages/admin-page/admin-page.component').then((m) => m.AdminPageComponent),
    },
    {
       path: 'projects',
-      component: ProjectGridPageComponent,
-      title: 'My Projects',
+      loadComponent: () =>
+         import('./pages/project-pages/project-grid-page/project-grid-page.component').then((m) => m.ProjectGridPageComponent),
    },
    {
       path: 'projects/:id',
-      component: ProjectDetailsPageComponent,
+      loadComponent: () =>
+         import('./pages/project-pages/project-details-page/project-details-page.component').then((m) => m.ProjectDetailsPageComponent),
    },
    {
       path: 'create-project',
-      component: ProjectCreatePageComponent,
+      canActivate: [AuthGuard],
+      loadComponent: () =>
+         import('./pages/project-pages/project-create-page/project-create-page.component').then((m) => m.ProjectCreatePageComponent),
    },
    {
       path: 'edit-project/:id',
-      component: ProjectCreatePageComponent,
+      loadComponent: () =>
+         import('./pages/project-pages/project-create-page/project-create-page.component').then((m) => m.ProjectCreatePageComponent),
    },
    {
       path: 'signin',
-      component: SigninComponent,
-      title: 'Sign In',
+      loadComponent: () => import('./pages/signin-page/signin-page.component').then((m) => m.SigninComponent),
    },
    {
       path: 'about',
-      component: AboutPageComponent,
-      title: 'About Me',
+      loadComponent: () => import('./pages/about-page/about-page.component').then((m) => m.AboutPageComponent),
    },
    {
       path: 'resources',
-      component: ResourcesPageComponent,
-      title: 'Resources',
+      loadComponent: () => import('./pages/resources-page/resources-page.component').then((m) => m.ResourcesPageComponent),
    },
    {
       path: 'error',
-      component: ErrorPageComponent,
-      title: 'Error',
+      loadComponent: () => import('./pages/error-page/error-page.component').then((m) => m.ErrorPageComponent),
+   },
+   {
+      path: '404',
+      loadComponent: () => import('./pages/not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent),
    },
    {
       path: '**',
-      component: NotFoundPageComponent,
-      title: 'Not Found Page',
+      redirectTo: '/404',
    },
 ];

@@ -5,13 +5,14 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-    selector: 'app-hero',
-    templateUrl: './hero.component.html',
-    styleUrls: ['./hero.component.scss'],
-    imports: [RouterModule, MatButtonModule]
+   standalone: true,
+   selector: 'app-hero',
+   templateUrl: './hero.component.html',
+   styleUrls: ['./hero.component.scss'],
+   imports: [RouterModule, MatButtonModule],
 })
 export class HeroComponent {
-  title = 'Gregory Wiley';
+   title = 'Gregory Wiley';
 
-  subtitle = 'Full Stack Web Developer';
+   subtitle = 'Full Stack Web Developer';
 }

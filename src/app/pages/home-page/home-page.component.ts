@@ -8,7 +8,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 
 // import the shared components
-import { NavbarComponent, AnnouncementBannerComponent, CarouselComponent, FooterComponent, LogoComponent } from '../../shared';
+import { NavbarComponent, AnnouncementBannerComponent, FooterComponent  } from '../../shared';
 
 // import the project service
 import { ProjectService } from '../../services/project.service';
@@ -17,6 +17,7 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
+   standalone: true,
    selector: 'app-home-page',
    templateUrl: './home-page.component.html',
    styleUrls: ['./home-page.component.scss'],
@@ -27,10 +28,8 @@ import { Project } from '../../types/project.interface';
       MatButtonModule,
       MatDividerModule,
       MatIconModule,
-      LogoComponent,
       NavbarComponent,
       AnnouncementBannerComponent,
-      CarouselComponent,
       FooterComponent,
    ],
 })

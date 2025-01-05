@@ -9,9 +9,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
-// import simple truncate pipe
-import { SimpleTruncatePipe } from '../../pipes/index';
-
 // import the project service
 import { ProjectService } from '../../services/project.service';
 
@@ -19,18 +16,11 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
-    selector: 'app-project-grid',
-    templateUrl: './project-grid.component.html',
-    styleUrls: ['./project-grid.component.scss'],
-    imports: [
-        CommonModule,
-        RouterModule,
-        MatGridListModule,
-        MatCardModule,
-        MatIconModule,
-        MatButtonModule,
-        SimpleTruncatePipe,
-    ]
+   standalone: true,
+   selector: 'app-project-grid',
+   templateUrl: './project-grid.component.html',
+   styleUrls: ['./project-grid.component.scss'],
+   imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule],
 })
 export class ProjectGridComponent implements OnInit {
    // create the member variables
@@ -55,12 +45,7 @@ export class ProjectGridComponent implements OnInit {
    // responsive code
    layoutChanges(): void {
       this.breakpointObserver
-         .observe([
-            Breakpoints.TabletPortrait,
-            Breakpoints.TabletLandscape,
-            Breakpoints.HandsetPortrait,
-            Breakpoints.HandsetLandscape,
-         ])
+         .observe([Breakpoints.TabletPortrait, Breakpoints.TabletLandscape, Breakpoints.HandsetPortrait, Breakpoints.HandsetLandscape])
          .subscribe((result) => {
             const breakpoints = result.breakpoints;
 

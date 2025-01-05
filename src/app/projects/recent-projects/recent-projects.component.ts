@@ -12,10 +12,11 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
-    selector: 'app-recent-projects',
-    templateUrl: './recent-projects.component.html',
-    styleUrls: ['./recent-projects.component.scss'],
-    imports: [CommonModule, MatListModule, MatIconModule]
+   standalone: true,
+   selector: 'app-recent-projects',
+   templateUrl: './recent-projects.component.html',
+   styleUrls: ['./recent-projects.component.scss'],
+   imports: [CommonModule, MatListModule, MatIconModule],
 })
 export class RecentProjectsComponent implements OnInit {
    recentProjects!: Project[];

@@ -10,6 +10,7 @@ import { NavbarComponent, FooterComponent, AnnouncementBannerComponent  } from '
 import { ProjectGridComponent } from '../../../projects';
 
 @Component({
+    standalone: true,
     selector: 'app-project-grid-page',
     templateUrl: './project-grid-page.component.html',
     styleUrls: ['./project-grid-page.component.scss'],

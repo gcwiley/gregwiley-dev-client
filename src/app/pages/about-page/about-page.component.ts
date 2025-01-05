@@ -4,13 +4,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '../../shared';
 
 // import the about component
-import { AboutMeComponent, SkillListComponent } from '../../components';
+import { SkillListComponent } from '../../components';
 
 @Component({
+   standalone: true,
    selector: 'app-about-page',
    templateUrl: './about-page.component.html',
    styleUrls: ['./about-page.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush,
-   imports: [NavbarComponent, AnnouncementBannerComponent, FooterComponent, AboutMeComponent, SkillListComponent],
+   imports: [NavbarComponent, AnnouncementBannerComponent, FooterComponent, SkillListComponent],
 })
 export class AboutPageComponent {}

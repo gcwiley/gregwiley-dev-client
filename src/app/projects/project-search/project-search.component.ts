@@ -14,10 +14,11 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
-    selector: 'app-project-search',
-    templateUrl: './project-search.component.html',
-    styleUrls: ['./project-search.component.scss'],
-    imports: [MatFormFieldModule, MatCardModule]
+   standalone: true,
+   selector: 'app-project-search',
+   templateUrl: './project-search.component.html',
+   styleUrls: ['./project-search.component.scss'],
+   imports: [MatFormFieldModule, MatCardModule],
 })
 export class ProjectSearchComponent implements OnInit {
    projects$!: Observable<Project[]>;
