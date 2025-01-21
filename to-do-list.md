@@ -12,6 +12,8 @@
 
 8. add new colors to theme
 
+9. Would you like to delete this project?
+
 
 
 

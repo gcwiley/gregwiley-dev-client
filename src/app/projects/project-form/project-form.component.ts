@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -44,8 +44,6 @@ export class ProjectFormComponent implements OnInit {
    private id!: string | null;
    private project!: Project;
 
-   formBuilder = inject(FormBuilder);
-
    statues: ProjectStatus[] = PROJECT_STATUS;
    categories: ProjectCategory[] = PROJECT_CATAGORIES;
    languages: ProjectLanguage[] = PROJECT_LANGUAGE;
@@ -61,7 +59,12 @@ export class ProjectFormComponent implements OnInit {
       description: ['', Validators.required],
    });
 
-   constructor(private router: Router, public route: ActivatedRoute, private projectService: ProjectService) {}
+   constructor(
+      private formBuilder: FormBuilder,
+      private router: Router,
+      public route: ActivatedRoute,
+      private projectService: ProjectService
+   ) {}
 
    ngOnInit(): void {
       // find out if we have a "id" or not
