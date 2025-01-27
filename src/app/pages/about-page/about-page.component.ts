@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // import the shared components
-import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '../../shared';
+import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '../../components/';
 
 // import the about component
 import { SkillListComponent } from '../../components';

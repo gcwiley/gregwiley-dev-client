@@ -16,7 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 // import the shared components
-import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '../../shared';
+import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '../../components';
 
 // Signin Component
 @Component({

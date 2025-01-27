@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 // import the shared components
-import { HeaderComponent, FooterComponent } from '../../../shared';
+import { HeaderComponent, FooterComponent } from '../../../components';
 
 // import the project components
 import { ProjectFormComponent, RecentProjectsComponent } from '../../../projects';

@@ -8,5 +8,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AnnouncementBannerComponent {
-   text = 'The site is currently in development.';
+   text = 'Fix this!';
 }

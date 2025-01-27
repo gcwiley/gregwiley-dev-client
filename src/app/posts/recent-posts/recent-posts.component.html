@@ -1,9 +1,0 @@
-<mat-list class="recent-posts" role="list">
-   <div mat-subheader>Recent Posts</div>
-   @for (post of recentPosts; track post) {
-   <mat-list-item role="listitem">
-      <div matListItemTitle>{{ post.title }}</div>
-      <div matListItemLine>Posted: {{ post.createdAt | date }}</div>
-   </mat-list-item>
-   }
-</mat-list>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 // import the shared components
-import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from '../../shared';
+import { HeaderComponent, AnnouncementBannerComponent, FooterComponent } from '../../components';
 
 @Component({
     standalone: true,

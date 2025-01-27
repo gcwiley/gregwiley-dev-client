@@ -8,7 +8,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 
 // import the shared components
-import { NavbarComponent, AnnouncementBannerComponent, FooterComponent  } from '../../shared';
+import { NavbarComponent, AnnouncementBannerComponent, FooterComponent  } from '../../components';
 
 // import the project service
 import { ProjectService } from '../../services/project.service';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 
 // import the shared components
-import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '../../../shared';
+import { NavbarComponent, AnnouncementBannerComponent, FooterComponent } from '../../../components';
 
 // import project components
 import { ProjectDetailsComponent, ProjectDescriptionComponent } from '../../../projects';

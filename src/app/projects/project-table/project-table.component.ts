@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -16,9 +16,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 // import mat paginator and mat sort
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-
-// import mat dialog
-import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 
 // import the project service
 import { ProjectService } from '../../services/project.service';
@@ -46,10 +43,6 @@ import { Project } from '../../types/project.interface';
    ],
 })
 export class ProjectTableComponent implements AfterViewInit {
-   // inject MatDialog
-   readonly dialog = inject(MatDialog);
-
-   // comment
    selection = new SelectionModel<Project>(true, []);
 
    // setup pagination for project table
@@ -95,23 +88,6 @@ export class ProjectTableComponent implements AfterViewInit {
       });
    }
 
-   // open dialog window
-   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-      this.dialog.open(ProjectTableDialogComponent, {
-         width: '250px',
-         enterAnimationDuration,
-         exitAnimationDuration,
-      });
-   }
-
-   // deletes a project by ID
-   onDeleteProject(id: string): void {
-      this.projectService.deleteProject(id).subscribe(() => {
-         // navigates admin back to the admin page
-         this.router.navigateByUrl('/admin');
-      });
-   }
-
    // whether the number of selected projects matches the total number of rows
    isAllSelected() {
       const numSelected = this.selection.selected.length;
@@ -136,14 +112,4 @@ export class ProjectTableComponent implements AfterViewInit {
       }
       return `${this.selection.isSelected(row) ? 'deselect' : 'select'}`;
    }
-}
-
-@Component({
-   selector: 'app-project-table-dialog',
-   templateUrl: './project-table-dialog.html',
-   imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
-   changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class ProjectTableDialogComponent {
-   readonly dialogRef = inject(MatDialogRef<ProjectTableDialogComponent>);
 }

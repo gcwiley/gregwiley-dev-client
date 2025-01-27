@@ -59,7 +59,7 @@ export class ProjectService {
    }
 
    // DELETE a project by ID from the server
-   deleteProject(id: string): Observable<Project> {
+   deleteProjectById(id: string): Observable<Project> {
       // create the url
       const url = `${this.projectsUrl}/${id}`;
       return this.http.delete<Project>(url, { headers: headers })
