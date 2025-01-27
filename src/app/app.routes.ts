@@ -1,22 +1,22 @@
 import { Routes } from '@angular/router';
-import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
    {
       path: '',
       pathMatch: 'full',
       loadComponent: () => import('./pages/home-page/home-page.component').then((m) => m.HomePageComponent),
-      title: 'Home Page',
+      title: 'Home',
    },
    {
       path: 'admin',
-      canActivate: [AuthGuard],
       loadComponent: () => import('./pages/admin-page/admin-page.component').then((m) => m.AdminPageComponent),
+      title: 'Admin'
    },
    {
       path: 'projects',
       loadComponent: () =>
          import('./pages/project-pages/project-grid-page/project-grid-page.component').then((m) => m.ProjectGridPageComponent),
+      title: 'Projects'
    },
    {
       path: 'projects/:id',
@@ -24,10 +24,10 @@ export const routes: Routes = [
          import('./pages/project-pages/project-details-page/project-details-page.component').then((m) => m.ProjectDetailsPageComponent),
    },
    {
-      path: 'create-project',
-      canActivate: [AuthGuard],
+      path: 'create',
       loadComponent: () =>
          import('./pages/project-pages/project-create-page/project-create-page.component').then((m) => m.ProjectCreatePageComponent),
+      title: 'Create Project'
    },
    {
       path: 'edit-project/:id',
@@ -37,14 +37,17 @@ export const routes: Routes = [
    {
       path: 'signin',
       loadComponent: () => import('./pages/signin-page/signin-page.component').then((m) => m.SigninComponent),
+      title: 'Sign In'
    },
    {
       path: 'about',
       loadComponent: () => import('./pages/about-page/about-page.component').then((m) => m.AboutPageComponent),
+      title: 'About'
    },
    {
       path: 'resources',
       loadComponent: () => import('./pages/resources-page/resources-page.component').then((m) => m.ResourcesPageComponent),
+      title: 'Resources'
    },
    {
       path: 'error',
@@ -53,6 +56,7 @@ export const routes: Routes = [
    {
       path: '404',
       loadComponent: () => import('./pages/not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent),
+      title: 'Page Not Found'
    },
    {
       path: '**',
