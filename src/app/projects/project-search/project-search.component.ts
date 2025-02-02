@@ -28,11 +28,11 @@ export class ProjectSearchComponent implements OnInit {
    constructor(private projectService: ProjectService) {}
 
    //  push a search term into the observable stream
-   search(term: string): void {
+   public search(term: string): void {
       this.searchTerms.next(term);
    }
 
-   ngOnInit(): void {
+   public ngOnInit(): void {
       this.projects$ = this.searchTerms.pipe(
          // wait 300ms after each keystroke before considering the term
          debounceTime(300),

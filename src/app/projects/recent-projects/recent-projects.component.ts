@@ -23,11 +23,11 @@ export class RecentProjectsComponent implements OnInit {
 
    constructor(private projectService: ProjectService) {}
 
-   ngOnInit(): void {
+   public ngOnInit(): void {
       this.getRecentProjects();
    }
 
-   getRecentProjects(): void {
+   public getRecentProjects(): void {
       this.projectService.getRecentlyCreatedProjects().subscribe((recentProjects) => (this.recentProjects = recentProjects));
    }
 }

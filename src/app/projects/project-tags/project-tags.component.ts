@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // import the angular material modules
 import { MatChipsModule } from '@angular/material/chips';
@@ -8,6 +8,7 @@ import { MatChipsModule } from '@angular/material/chips';
    selector: 'app-project-tags',
    templateUrl: './project-tags.component.html',
    styleUrls: ['./project-tags.component.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [MatChipsModule],
 })
 export class ProjectTagsComponent {}

@@ -22,7 +22,7 @@ export class ProjectService {
    }
 
    // GET: a individual project by ID. Will 404 error if the ID is not found
-   getProject(id: string | null): Observable<Project> {
+   getProjectById(id: string | null): Observable<Project> {
       const url = `${this.projectsUrl}/${id}`;
       return this.http.get<Project>(url)
    }
@@ -66,7 +66,7 @@ export class ProjectService {
    }
 
    // PUT: update the project in the database
-   updateProject(id: string, project: Project | object): Observable<object> {
+   updateProjectById(id: string, project: Project | object): Observable<object> {
       // create the url
       const url = `${this.projectsUrl}/${id}`;
       return this.http.patch(url, project, { headers: headers })

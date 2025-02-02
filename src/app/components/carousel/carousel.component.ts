@@ -42,7 +42,7 @@ export class CarouselItemDirective implements FocusableOption {
 
    constructor(readonly element: ElementRef<HTMLElement>) {}
 
-   focus(): void {
+   public focus(): void {
       this.element.nativeElement.focus({ preventScroll: true });
    }
 }
@@ -70,7 +70,7 @@ export class CarouselComponent implements AfterContentInit {
    index = 0;
    private _keyManager!: FocusKeyManager<CarouselItemDirective>;
 
-   onKeydown({ keyCode }: KeyboardEvent) {
+   public onKeydown({ keyCode }: KeyboardEvent) {
       const manager = this._keyManager;
       const previousActiveIndex = manager.activeItemIndex; // index of the currently active item
 

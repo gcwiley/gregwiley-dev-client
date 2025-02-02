@@ -37,13 +37,13 @@ export class ProjectGridComponent implements OnInit {
 
    constructor(private projectService: ProjectService, private breakpointObserver: BreakpointObserver) {}
 
-   ngOnInit(): void {
+   public ngOnInit(): void {
       this.getProjects();
       this.layoutChanges();
    }
 
    // responsive code
-   layoutChanges(): void {
+   public layoutChanges(): void {
       this.breakpointObserver
          .observe([Breakpoints.TabletPortrait, Breakpoints.TabletLandscape, Breakpoints.HandsetPortrait, Breakpoints.HandsetLandscape])
          .subscribe((result) => {
@@ -62,7 +62,7 @@ export class ProjectGridComponent implements OnInit {
          });
    }
 
-   getProjects(): void {
+   public getProjects(): void {
       this.projectService.getProjects().subscribe((projects) => {
          this.projects = projects;
       });

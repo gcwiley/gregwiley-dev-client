@@ -41,7 +41,7 @@ import { PROJECT_STATUS, PROJECT_LANGUAGE, PROJECT_CATAGORIES } from '../../../a
 })
 export class ProjectFormComponent implements OnInit {
    public mode = 'create';
-   private id!: string | null;
+   private id!: string;
    private project!: Project;
 
    statues: ProjectStatus[] = PROJECT_STATUS;
@@ -66,13 +66,13 @@ export class ProjectFormComponent implements OnInit {
       private projectService: ProjectService
    ) {}
 
-   ngOnInit(): void {
-      // find out if we have a "id" or not
+   public ngOnInit(): void {
+      // find out if we have an "id" or not
       this.route.paramMap.subscribe((paramMap: ParamMap) => {
          if (paramMap.has('id')) {
             this.mode = 'edit';
-            this.id = paramMap.get('id');
-            this.projectService.getProject(this.id).subscribe((project) => {
+            this.id = paramMap.get('id')!;
+            this.projectService.getProjectById(this.id!).subscribe((project) => {
                this.project = project;
                // overrides values of initial form controls
                this.projectForm.setValue({
@@ -88,20 +88,19 @@ export class ProjectFormComponent implements OnInit {
             });
          } else {
             this.mode = 'create';
-            this.id = null;
          }
       });
    }
 
    // save a new project
-   onSaveProject(): void {
+   public onSaveProject(): void {
       if (this.mode === 'create') {
          this.projectService.addProject(this.projectForm.value).subscribe(() => {
             // navigates user back to homepage
             this.router.navigateByUrl('/');
          });
       } else {
-         this.projectService.updateProject(this.id!, this.projectForm.value).subscribe(() => {
+         this.projectService.updateProjectById(this.id!, this.projectForm.value).subscribe(() => {
             // navigates user back to homepage
             this.router.navigateByUrl('/');
          });
@@ -109,7 +108,7 @@ export class ProjectFormComponent implements OnInit {
    }
 
    // reset the form
-   onReset(event: Event): void {
+   public onReset(event: Event): void {
       event.preventDefault();
       this.projectForm.reset();
    }

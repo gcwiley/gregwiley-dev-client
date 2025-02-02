@@ -2,8 +2,10 @@ import { Directive, EventEmitter, HostListener, Output, input } from '@angular/c
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { filter, first, switchMap } from 'rxjs';
 
+// import the project service
 import { ProjectService } from '../services/project.service';
 
+// import the custom dialog
 import { CustomConfirmDialog, CustomConfirmDialogService } from '../services/custom-confirm-dialog.service';
 
 @Directive({
@@ -41,7 +43,7 @@ export class ProjectDeleteDirective {
                // when data is emitted, it emits the deleted event
                this.deleted.emit(this.id());
                // opens a success snackbar
-               this.snackbar.open('Success', 'Close');
+               this.snackbar.open('Project Deleted', 'Close');
             },
             // if the deletion fails, it opens a "failed" snackbar
             error: () => {

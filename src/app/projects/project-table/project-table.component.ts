@@ -73,14 +73,14 @@ export class ProjectTableComponent implements AfterViewInit {
    constructor(private projectService: ProjectService, private router: Router) {}
 
    // a callback method that is invoked immediately after angular has completed initialization of a component's view
-   ngAfterViewInit(): void {
+   public ngAfterViewInit(): void {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.getProjects();
    }
 
    // gets all projects from the project service
-   getProjects(): void {
+   public getProjects(): void {
       this.projectService.getProjects().subscribe((projects) => {
          this.dataSource.data = projects;
          // sets the loading results to false
@@ -89,14 +89,14 @@ export class ProjectTableComponent implements AfterViewInit {
    }
 
    // whether the number of selected projects matches the total number of rows
-   isAllSelected() {
+   public isAllSelected() {
       const numSelected = this.selection.selected.length;
       const numRows = this.dataSource.data.length;
       return numSelected === numRows;
    }
 
    // select all rows if they are not all selected; otherwise clear selection
-   toggleAllRows() {
+   public toggleAllRows() {
       if (this.isAllSelected()) {
          this.selection.clear();
          return;
@@ -106,7 +106,7 @@ export class ProjectTableComponent implements AfterViewInit {
    }
 
    // the label for the checkbox on the passed row - fix this later
-   checkboxLabel(row?: Project): string {
+   public checkboxLabel(row?: Project): string {
       if (!row) {
          return `${this.isAllSelected() ? 'deslect' : 'select'} all`;
       }
