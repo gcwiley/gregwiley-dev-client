@@ -1,24 +1,20 @@
-import { ApplicationConfig } from '@angular/core';
-
-// import the firebase libraries
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-
-// comment
-import { getAuth, provideAuth } from '@angular/fire/auth';
-
-// comment
-import { FIREBASE_OPTIONS } from '@angular/fire/compat';
-
-// Returns the set of dependency-injection providers to enable animations in an application
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
-// Configures Angular's HttpClient service to be available for injection.
-import { provideHttpClient } from '@angular/common/http';
+// import the config function
+import { ApplicationConfig, inject } from '@angular/core';
 
 // sets up providers necessary to enable Router functionality for the application
 import { provideRouter } from '@angular/router';
 
-// import the environmental variables
+// Returns the set of dependency-injection providers to enable animations in an application
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+// import the firebase libraries
+import { FirebaseApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+
+// Configures Angular's HttpClient service to be available for injection.
+import { provideHttpClient } from '@angular/common/http';
+
+// import the env variables
 import { environment } from '../environments/environment';
 
 // import the routes
@@ -33,10 +29,11 @@ export const appConfig: ApplicationConfig = {
       // Creates and initializes a @firebase/app#FirebaseApp instance.
       provideFirebaseApp(() => initializeApp(environment.firebase)),
       // initializes an Auth instance
-      provideAuth(() => getAuth()),
+      provideAuth(() => {
+         const auth = getAuth(inject(FirebaseApp));
+         return auth;
+      }),
       // Configures Angular's HttpClient service to be available for injection.
       provideHttpClient(),
-      // find out how this works!
-      { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
    ],
 };

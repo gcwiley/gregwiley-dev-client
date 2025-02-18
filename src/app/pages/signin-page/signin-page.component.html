@@ -15,7 +15,6 @@
             <mat-label>Email address</mat-label>
             <input matInput type="email" formControlName="email" placeholder="name@example.com" autocomplete="email" />
             <mat-icon matSuffix>person</mat-icon>
-            <mat-error *ngIf="signinForm.controls['email'].hasError('required')">Please enter your e-mail address.</mat-error>
          </mat-form-field>
 
          <!-- PASSWORD (password) -->
@@ -23,7 +22,6 @@
             <mat-label>Password</mat-label>
             <input matInput type="password" formControlName="password" placeholder="Password" autocomplete="current-password" />
             <mat-icon matSuffix>lock</mat-icon>
-            <mat-error *ngIf="signinForm.controls['password'].hasError('required')">Please enter your password.</mat-error>
          </mat-form-field>
 
          <!-- SIGN IN BUTTON -->

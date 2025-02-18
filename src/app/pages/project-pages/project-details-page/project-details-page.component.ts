@@ -40,6 +40,6 @@ export class ProjectDetailsPageComponent implements OnInit {
    // GET project by ID
    getProject(): void {
       const id = this.route.snapshot.paramMap.get('id')!;
-      this.projectService.getProject(id).subscribe((project) => (this.project = project));
+      this.projectService.getProjectById(id).subscribe((project) => (this.project = project));
    }
 }
