@@ -4,9 +4,6 @@ import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { from } from 'rxjs';
 
-// import firebase auth
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
-
 // import the angular material modules
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -44,7 +41,7 @@ export class SigninComponent {
    formBuilder = inject(FormBuilder);
 
    // create the signin form with email and password fields
-   public signinForm = this.formBuilder.nonNullable.group({
+   public signinForm = this.formBuilder.group({
       email: ['', Validators.required, Validators.email],
       password: ['', Validators.required],
    });
