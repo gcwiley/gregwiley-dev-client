@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // import the shared components
 import { HeaderComponent, FooterComponent } from '../../../components';
@@ -11,6 +11,7 @@ import { ProjectFormComponent, RecentProjectsComponent } from '../../../projects
     selector: 'app-project-create-page',
     templateUrl: './project-create-page.component.html',
     styleUrls: ['./project-create-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         HeaderComponent,
         FooterComponent,

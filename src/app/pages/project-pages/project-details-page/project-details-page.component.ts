@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 
 // import the shared components
@@ -18,6 +18,7 @@ import { ProjectService } from '../../../services/project.service';
    selector: 'app-project-details-page',
    templateUrl: './project-details-page.component.html',
    styleUrls: ['./project-details-page.component.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
       NavbarComponent,
       AnnouncementBannerComponent,

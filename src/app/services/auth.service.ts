@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, from } from 'rxjs';
+import { Observable, catchError, from } from 'rxjs';
 
 import {
    Auth,
@@ -30,11 +30,21 @@ export class AuthService {
 
    // authenticates a firebase client using a popul-based OAuth authentication flow
    public signInWithGoogle(): Observable<UserCredential> {
-      return from(signInWithPopup(this.auth, new GoogleAuthProvider()));
+      return from(signInWithPopup(this.auth, new GoogleAuthProvider())).pipe(
+         catchError((error) => {
+            console.error('There was an error', error);
+            throw error;
+         })
+      );
    }
 
    // signs out the current user.
    public signOut(): Observable<void> {
-      return from(signOut(this.auth));
+      return from(signOut(this.auth)).pipe(
+         catchError((error) => {
+            console.error('Error signing out', error);
+            throw error;
+         })
+      );
    }
 }

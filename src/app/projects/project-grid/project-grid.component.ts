@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
@@ -20,6 +20,7 @@ import { Project } from '../../types/project.interface';
    selector: 'app-project-grid',
    templateUrl: './project-grid.component.html',
    styleUrls: ['./project-grid.component.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule],
 })
 export class ProjectGridComponent implements OnInit {

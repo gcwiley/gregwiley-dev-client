@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // import angular material modules
@@ -16,6 +16,7 @@ import { Project } from '../../types/project.interface';
    selector: 'app-recent-projects',
    templateUrl: './recent-projects.component.html',
    styleUrls: ['./recent-projects.component.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [CommonModule, MatListModule, MatIconModule],
 })
 export class RecentProjectsComponent implements OnInit {

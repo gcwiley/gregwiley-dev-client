@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -26,6 +26,7 @@ import { PROJECT_STATUS, PROJECT_LANGUAGE, PROJECT_CATAGORIES } from '../../../a
    selector: 'app-project-form',
    templateUrl: './project-form.component.html',
    styleUrls: ['./project-form.component.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
       CommonModule,
       FormsModule,

@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
 
+// import the can devacitvate guard
+import { CanDeactivateGuardService } from './guards/can-deactivate.guard';
+
 export const routes: Routes = [
    {
       path: '',
@@ -10,13 +13,13 @@ export const routes: Routes = [
    {
       path: 'admin',
       loadComponent: () => import('./pages/admin-page/admin-page.component').then((m) => m.AdminPageComponent),
-      title: 'Admin'
+      title: 'Admin',
    },
    {
       path: 'projects',
       loadComponent: () =>
          import('./pages/project-pages/project-grid-page/project-grid-page.component').then((m) => m.ProjectGridPageComponent),
-      title: 'Projects'
+      title: 'Projects',
    },
    {
       path: 'projects/:id',
@@ -25,9 +28,10 @@ export const routes: Routes = [
    },
    {
       path: 'create',
+      title: 'Create Project',
+      canDeactivate: [CanDeactivateGuardService],
       loadComponent: () =>
          import('./pages/project-pages/project-create-page/project-create-page.component').then((m) => m.ProjectCreatePageComponent),
-      title: 'Create Project'
    },
    {
       path: 'edit-project/:id',
@@ -37,17 +41,17 @@ export const routes: Routes = [
    {
       path: 'signin',
       loadComponent: () => import('./pages/signin-page/signin-page.component').then((m) => m.SigninComponent),
-      title: 'Sign In'
+      title: 'Sign In',
    },
    {
       path: 'about',
       loadComponent: () => import('./pages/about-page/about-page.component').then((m) => m.AboutPageComponent),
-      title: 'About'
+      title: 'About',
    },
    {
       path: 'resources',
       loadComponent: () => import('./pages/resources-page/resources-page.component').then((m) => m.ResourcesPageComponent),
-      title: 'Resources'
+      title: 'Resources',
    },
    {
       path: 'error',
@@ -56,7 +60,7 @@ export const routes: Routes = [
    {
       path: '404',
       loadComponent: () => import('./pages/not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent),
-      title: 'Page Not Found'
+      title: 'Page Not Found',
    },
    {
       path: '**',

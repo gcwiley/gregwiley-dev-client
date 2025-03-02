@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // import the angular material
 import { MatDividerModule } from '@angular/material/divider';
@@ -14,6 +14,7 @@ import { ProjectGridComponent } from '../../../projects';
     selector: 'app-project-grid-page',
     templateUrl: './project-grid-page.component.html',
     styleUrls: ['./project-grid-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatDividerModule,
         NavbarComponent,
