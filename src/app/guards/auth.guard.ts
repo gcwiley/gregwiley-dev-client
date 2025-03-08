@@ -3,14 +3,25 @@
 // imports necessary modules
 import { Injectable } from '@angular/core';
 import { Auth, user } from '@angular/fire/auth';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import {
+   ActivatedRouteSnapshot,
+   CanActivate,
+   Router,
+   RouterStateSnapshot,
+} from '@angular/router';
 import { User } from 'firebase/auth';
 import { Observable, UnaryFunction, of, pipe } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 
 // a function type that takes an ActivatedRouteSnapshot(information about the route) and 'RouterStateSnapshot' (information about the router state) and returns an AuthPipe
-export type AuthPipeGenerator = (next: ActivatedRouteSnapshot, state: RouterStateSnapshot) => AuthPipe;
-export type AuthPipe = UnaryFunction<Observable<User | null>, Observable<boolean | string | unknown[]>>;
+export type AuthPipeGenerator = (
+   next: ActivatedRouteSnapshot,
+   state: RouterStateSnapshot
+) => AuthPipe;
+export type AuthPipe = UnaryFunction<
+   Observable<User | null>,
+   Observable<boolean | string | unknown[]>
+>;
 
 export const loggedIn: AuthPipe = map((user) => !!user);
 
@@ -21,7 +32,8 @@ export class AuthGuard implements CanActivate {
    constructor(private router: Router, private auth: Auth) {}
 
    canActivate = (next: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-      const authPipeFactory = (next.data['authGuardPipe'] as AuthPipeGenerator) || (() => loggedIn);
+      const authPipeFactory =
+         (next.data['authGuardPipe'] as AuthPipeGenerator) || (() => loggedIn);
       return user(this.auth).pipe(
          take(1),
          authPipeFactory(next, state),
@@ -41,11 +53,17 @@ export const canActivate = (pipe: AuthPipeGenerator) => ({
    data: { authGuardPipe: pipe },
 });
 
-export const isNotAnonymous: AuthPipe = map((user) => !!user && !user.isAnonymous);
+export const isNotAnonymous: AuthPipe = map(
+   (user) => !!user && !user.isAnonymous
+);
 // comment
-export const idTokenResult = switchMap((user: User | null) => (user ? user.getIdTokenResult() : of(null)));
+export const idTokenResult = switchMap((user: User | null) =>
+   user ? user.getIdTokenResult() : of(null)
+);
 // comment
-export const emailVerified: AuthPipe = map((user) => !!user && user.emailVerified);
+export const emailVerified: AuthPipe = map(
+   (user) => !!user && user.emailVerified
+);
 // comment
 export const customClaims = pipe(
    idTokenResult,
@@ -59,13 +77,17 @@ export const hasCustomClaim: (claim: string) => AuthPipe = (claim) =>
       map((claims) => claims.hasOwnProperty(claim))
    );
 // comment
-export const redirectUnauthorizedTo: (redirect: string | unknown[]) => AuthPipe = (redirect) =>
+export const redirectUnauthorizedTo: (
+   redirect: string | unknown[]
+) => AuthPipe = (redirect) =>
    pipe(
       loggedIn,
       map((loggedIn) => loggedIn || redirect)
    );
 // comment
-export const redirectLoggedInTo: (redirect: string | unknown[]) => AuthPipe = (redirect) =>
+export const redirectLoggedInTo: (redirect: string | unknown[]) => AuthPipe = (
+   redirect
+) =>
    pipe(
       loggedIn,
       map((loggedIn) => (loggedIn && redirect) || true)
