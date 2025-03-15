@@ -1,4 +1,9 @@
-import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import {
+   AfterViewInit,
+   Component,
+   ViewChild,
+   ChangeDetectionStrategy,
+} from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -70,7 +75,10 @@ export class ProjectTableComponent implements AfterViewInit {
       'openDialog',
    ];
 
-   constructor(private projectService: ProjectService, private router: Router) {}
+   constructor(
+      private projectService: ProjectService,
+      private router: Router
+   ) {}
 
    // a callback method that is invoked immediately after angular has completed initialization of a component's view
    public ngAfterViewInit(): void {

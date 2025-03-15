@@ -29,6 +29,8 @@ export class RecentProjectsComponent implements OnInit {
    }
 
    public getRecentProjects(): void {
-      this.projectService.getRecentlyCreatedProjects().subscribe((recentProjects) => (this.recentProjects = recentProjects));
+      this.projectService
+         .getRecentlyCreatedProjects()
+         .subscribe((recentProjects) => (this.recentProjects = recentProjects));
    }
 }

@@ -24,15 +24,20 @@ export class ProjectDetailsComponent implements OnInit {
    project!: Project | undefined;
 
    // inject the project and router services
-   constructor(private route: ActivatedRoute, private projectService: ProjectService) {}
+   constructor(
+      private route: ActivatedRoute,
+      private projectService: ProjectService
+   ) {}
 
    public ngOnInit(): void {
-      this.getProject();
+      this.getProjectById();
    }
 
    // GET project by id
-   public getProject(): void {
+   public getProjectById(): void {
       const id = this.route.snapshot.paramMap.get('id')!;
-      this.projectService.getProjectById(id).subscribe((project) => (this.project = project));
+      this.projectService
+         .getProjectById(id)
+         .subscribe((project) => (this.project = project));
    }
 }

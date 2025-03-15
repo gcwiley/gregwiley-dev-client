@@ -19,15 +19,20 @@ import { ProjectService } from '../../services/project.service';
 export class ProjectDescriptionComponent implements OnInit {
    project!: Project;
 
-   constructor(private route: ActivatedRoute, private projectService: ProjectService) {}
+   constructor(
+      private route: ActivatedRoute,
+      private projectService: ProjectService
+   ) {}
 
    public ngOnInit(): void {
-      this.getProject();
+      this.getProjectById();
    }
 
    // GET project by id
-   public getProject(): void {
+   public getProjectById(): void {
       const id = this.route.snapshot.paramMap.get('id')!;
-      this.projectService.getProjectById(id).subscribe((project) => (this.project = project));
+      this.projectService
+         .getProjectById(id)
+         .subscribe((project) => (this.project = project));
    }
 }

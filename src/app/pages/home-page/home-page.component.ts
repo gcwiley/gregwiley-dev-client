@@ -8,7 +8,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 
 // import the shared components
-import { NavbarComponent, AnnouncementBannerComponent, FooterComponent  } from '../../components';
+import {
+   NavbarComponent,
+   AnnouncementBannerComponent,
+   FooterComponent,
+} from '../../components';
 
 // import the project service
 import { ProjectService } from '../../services/project.service';
@@ -38,12 +42,14 @@ export class HomePageComponent implements OnInit {
 
    constructor(private projectService: ProjectService) {}
 
-   ngOnInit(): void {
+   public ngOnInit(): void {
       this.getRecentProjects();
    }
 
    // get recent projects from server
-   getRecentProjects(): void {
-      this.projectService.getRecentlyCreatedProjects().subscribe((recentProjects) => (this.recentProjects = recentProjects));
+   public getRecentProjects(): void {
+      this.projectService
+         .getRecentlyCreatedProjects()
+         .subscribe((recentProjects) => (this.recentProjects = recentProjects));
    }
 }

@@ -6,8 +6,8 @@ import { Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { CanDeactivateGuardService } from './guards/can-deactivate.guard';
 
-// this is a helper function that returns a function that redirects unauthenicated users to the login page
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo('/signin');
+// this is a helper function that returns a function that redirects unauthenicated users to the signin page
+const redirectUnauthorizedToSignin = () => redirectUnauthorizedTo('/signin');
 // this is a helper function that redirects authenticated users to the posts section
 const redirectAuthorizedToProjects = () => redirectLoggedInTo('/projects');
 
@@ -30,7 +30,7 @@ export const routes: Routes = [
       canActivate: [AuthGuard],
       // this provides additional data to the route
       // sets a custom pipe that is used by the 'AuthGuard' this pipe uses 'redirectUnauthorizedToLogin' meaning that if a user is not authorized, they will be redirected to the login page
-      data: { authGuardPipe: redirectUnauthorizedToLogin },
+      data: { authGuardPipe: redirectUnauthorizedToSignin },
       loadComponent: () =>
          import('./pages/admin-page/admin-page.component').then(
             (m) => m.AdminPageComponent
