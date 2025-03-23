@@ -16,6 +16,8 @@ export const routes: Routes = [
       path: '',
       pathMatch: 'full',
       title: 'Home',
+      canActivate: [AuthGuard],
+      data: { authGuardPipe: redirectUnauthorizedToSignin },
       loadComponent: () =>
          import('./pages/home-page/home-page.component').then(
             (m) => m.HomePageComponent
@@ -40,6 +42,8 @@ export const routes: Routes = [
    {
       path: 'projects',
       title: 'Projects',
+      canActivate: [AuthGuard],
+      data: { authGuardPipe: redirectUnauthorizedToSignin },
       loadComponent: () =>
          import(
             './pages/project-pages/project-grid-page/project-grid-page.component'
@@ -48,6 +52,9 @@ export const routes: Routes = [
    // idiv project page
    {
       path: 'projects/:id',
+      title: 'Project Details',
+      canActivate: [AuthGuard],
+      data: { authGuardPipe: redirectUnauthorizedToSignin },
       loadComponent: () =>
          import(
             './pages/project-pages/project-details-page/project-details-page.component'
@@ -58,6 +65,8 @@ export const routes: Routes = [
       path: 'create',
       title: 'Create Project',
       canDeactivate: [CanDeactivateGuardService],
+      canActivate: [AuthGuard],
+      data: { authGuardPipe: redirectUnauthorizedToSignin },
       loadComponent: () =>
          import(
             './pages/project-pages/project-create-page/project-create-page.component'
@@ -66,7 +75,9 @@ export const routes: Routes = [
    // edit project page
    {
       path: 'edit-project/:id',
-      title: 'Edit Project Page',
+      title: 'Edit Project',
+      canActivate: [AuthGuard],
+      data: { authGuardPipe: redirectUnauthorizedToSignin },
       loadComponent: () =>
          import(
             './pages/project-pages/project-create-page/project-create-page.component'
@@ -85,6 +96,8 @@ export const routes: Routes = [
    {
       path: 'about',
       title: 'About',
+      canActivate: [AuthGuard],
+      data: { authGuardPipe: redirectUnauthorizedToSignin },
       loadComponent: () =>
          import('./pages/about-page/about-page.component').then(
             (m) => m.AboutPageComponent
@@ -94,6 +107,8 @@ export const routes: Routes = [
    {
       path: 'resources',
       title: 'Resources',
+      canActivate: [AuthGuard],
+      data: { authGuardPipe: redirectUnauthorizedToSignin },
       loadComponent: () =>
          import('./pages/resources-page/resources-page.component').then(
             (m) => m.ResourcesPageComponent
