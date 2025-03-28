@@ -8,6 +8,9 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
+// import rxjs
+import { first } from 'rxjs';
+
 // import angular material modules
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,6 +19,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+
 
 // import the project service
 import { ProjectService } from '../../services/project.service';
@@ -23,6 +29,7 @@ import { ProjectService } from '../../services/project.service';
 // import the required project interfaces
 import {
    Project,
+   ProjectInput,
    ProjectStatus,
    ProjectCategory,
    ProjectLanguage,
@@ -78,7 +85,8 @@ export class ProjectFormComponent implements OnInit {
       private formBuilder: FormBuilder,
       private router: Router,
       public route: ActivatedRoute,
-      private projectService: ProjectService
+      private projectService: ProjectService,
+      private snackBar: MatSnackBar
    ) {}
 
    public ngOnInit(): void {
@@ -113,17 +121,44 @@ export class ProjectFormComponent implements OnInit {
    public onSaveProject(): void {
       if (this.mode === 'create') {
          this.projectService
-            .addProject(this.projectForm.value)
-            .subscribe(() => {
-               // navigates user back to homepage
-               this.router.navigateByUrl('/');
+            .addProject(this.projectForm.value as ProjectInput)
+            .pipe(first())
+            .subscribe({
+               next: (project) => {
+                  // reset the form
+                  this.projectForm.reset(project);
+                  // display a success message
+                  this.snackBar.open('Project created', 'CLOSE', {
+                     duration: 3000,
+                  });
+                  // navigates user back to homepage
+                  this.router.navigateByUrl('/');
+               },
+               error: () => {
+                  this.snackBar.open('Error creating project', 'CLOSE', {
+                     duration: 3000,
+                  });
+               },
             });
       } else {
          this.projectService
-            .updateProjectById(this.id!, this.projectForm.value)
-            .subscribe(() => {
-               // navigates user back to homepage
-               this.router.navigateByUrl('/');
+            .updateProjectById(this.id!, this.projectForm.value as Project)
+            .subscribe({
+               next: (project) => {
+                  // reset the form
+                  this.projectForm.reset(project);
+                  // display a success message
+                  this.snackBar.open('Project updated', 'CLOSE', {
+                     duration: 3000,
+                  });
+                  // navigates user back to homepage
+                  this.router.navigateByUrl('/');
+               },
+               error: () => {
+                  this.snackBar.open('Error updating project', 'CLOSE', {
+                     duration: 3000,
+                  });
+               },
             });
       }
    }

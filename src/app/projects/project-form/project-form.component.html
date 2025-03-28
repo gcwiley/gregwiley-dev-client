@@ -11,8 +11,14 @@
          <!-- PROJECT TITLE (title)-->
          <mat-form-field class="full-width" appearance="outline">
             <mat-label>Title</mat-label>
-            <input matInput type="text" formControlName="title" placeholder="title"/>
-            <mat-error *ngIf="projectForm.controls['title'].hasError('required')">Please enter a project title</mat-error>
+            <input
+               matInput
+               type="text"
+               formControlName="title"
+               placeholder="title" />
+            @if (this.projectForm.controls['title'].hasError('required')) {
+               <mat-error>Please enter a project title.</mat-error>
+            }
          </mat-form-field>
 
          <div class="row">
@@ -21,11 +27,12 @@
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Status</mat-label>
                   <mat-select formControlName="status">
-                     <mat-option *ngFor="let status of statues" [value]="status.value">
+                     <mat-option
+                        *ngFor="let status of statues"
+                        [value]="status.value">
                         {{ status.viewValue }}
                      </mat-option>
                   </mat-select>
-                  <mat-error *ngIf="projectForm.controls['status'].hasError('required')">Please enter a project status</mat-error>
                </mat-form-field>
             </div>
 
@@ -34,9 +41,12 @@
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Category</mat-label>
                   <mat-select formControlName="category">
-                     <mat-option *ngFor="let category of categories" [value]="category.value">{{ category.viewValue }}</mat-option>
+                     <mat-option
+                        *ngFor="let category of categories"
+                        [value]="category.value"
+                        >{{ category.viewValue }}</mat-option
+                     >
                   </mat-select>
-                  <mat-error *ngIf="projectForm.controls['category'].hasError('required')">Please enter a project category.</mat-error>
                </mat-form-field>
             </div>
          </div>
@@ -46,10 +56,15 @@
                <!-- PROJECT START DATE (startDate)-->
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Start Date</mat-label>
-                  <input matInput [matDatepicker]="picker" formControlName="startDate" placeholder="Start Date"/>
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <input
+                     matInput
+                     [matDatepicker]="picker"
+                     formControlName="startDate"
+                     placeholder="Start Date" />
+                  <mat-datepicker-toggle
+                     matSuffix
+                     [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
-                  <mat-error *ngIf="projectForm.controls['status'].hasError('required')">Please enter a project start date.</mat-error>
                </mat-form-field>
             </div>
 
@@ -58,11 +73,12 @@
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Programming Language</mat-label>
                   <mat-select formControlName="language">
-                     <mat-option *ngFor="let language of languages" [value]="language.value">{{ language.viewValue }}</mat-option>
+                     <mat-option
+                        *ngFor="let language of languages"
+                        [value]="language.value"
+                        >{{ language.viewValue }}</mat-option
+                     >
                   </mat-select>
-                  <mat-error *ngIf="projectForm.controls['language'].hasError('required')"
-                     >Please specify the programming language.</mat-error
-                  >
                </mat-form-field>
             </div>
          </div>
@@ -72,8 +88,11 @@
                <!-- GIT URL (gitUrl)-->
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>GitHub URL</mat-label>
-                  <input matInput type="url" formControlName="gitUrl" placeholder="GitHub Repo"/>
-                  <mat-error *ngIf="projectForm.controls['gitUrl'].hasError('required')">Please provide a URL of the project.</mat-error>
+                  <input
+                     matInput
+                     type="url"
+                     formControlName="gitUrl"
+                     placeholder="GitHub Repo" />
                </mat-form-field>
             </div>
          </div>
@@ -83,15 +102,26 @@
                <!-- DESCRIPTION (description)-->
                <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Description</mat-label>
-                  <textarea matInput rows="6" formControlName="description" title="Description"></textarea>
-                  <mat-error *ngIf="projectForm.controls['description'].hasError('required')">Please provide a description.</mat-error>
+                  <textarea
+                     matInput
+                     rows="6"
+                     formControlName="description"
+                     title="Description"></textarea>
                </mat-form-field>
             </div>
          </div>
       </mat-card-content>
 
       <mat-card-actions class="card-actions">
-         <button mat-flat-button type="submit" [disabled]="!projectForm.valid">Create</button>
+         @if (this.mode === 'create') {
+         <button mat-flat-button type="submit" [disabled]="!projectForm.valid">
+            Create
+         </button>
+         } @else {
+         <button mat-flat-button type="submit" [disabled]="!projectForm.valid">
+            Update
+         </button>
+         }
          <button mat-flat-button type="button">Clear</button>
       </mat-card-actions>
    </mat-card>

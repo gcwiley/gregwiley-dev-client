@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 // import the shared components
 import {
@@ -43,7 +44,8 @@ export class SigninComponent {
    constructor(
       private formBuilder: FormBuilder,
       private authService: AuthService,
-      private router: Router
+      private router: Router,
+      private snackbar: MatSnackBar
    ) {}
 
    // create the signin form with email and password fields
@@ -52,7 +54,7 @@ export class SigninComponent {
       password: ['', Validators.required],
    });
 
-   // Sign in with email and password, if successful, navigate authenicated user to the main page
+   // sign in with email and password, if successfull, navigate authenicated user to the home page
    public onSubmitSignIn(): void {
       // if the form has validation errors, it returns early without doing anything
       if (this.signinForm.invalid) {
@@ -64,9 +66,16 @@ export class SigninComponent {
             this.signinForm.value.email!,
             this.signinForm.value.password!
          )
-         .subscribe(() => {
-            // redirects user to homepage
-            this.router.navigateByUrl('/');
+         .subscribe({
+            next: () => {
+               // navigates user to homepage
+               this.router.navigateByUrl('/');
+            },
+            error: () => {
+               this.snackbar.open('Unable to sign in', 'CLOSE', {
+                  duration: 3000,
+               });
+            },
          });
    }
 }

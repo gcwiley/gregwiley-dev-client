@@ -1,6 +1,6 @@
 // define the project interface
 export interface Project {
-  _id?: string;
+  _id: string;
   title: string;
   status: string;
   category: string;
@@ -12,6 +12,8 @@ export interface Project {
   createdAt: string;
   updatedAt: string;
 }
+
+export type ProjectInput = Omit<Project, '_id'>
 
 // define the project status interface
 export interface ProjectStatus {

@@ -17,7 +17,7 @@ export const routes: Routes = [
       pathMatch: 'full',
       title: 'Home',
       canActivate: [AuthGuard],
-      data: { authGuardPipe: redirectUnauthorizedToSignin },
+      data: { authGuardPipe: redirectUnauthorizedToSignin, redirectAuthorizedToProjects },
       loadComponent: () =>
          import('./pages/home-page/home-page.component').then(
             (m) => m.HomePageComponent
