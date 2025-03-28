@@ -15,20 +15,20 @@ export class ProjectService {
   // inject "HttpClient" into the project service
   constructor(private http: HttpClient) {}
 
-  // GET: all projects from the server
+  // GET: all projects from the server - GET PROJECTS
   public getProjects(): Observable<Project[]> {
     return this.http
       .get<Project[]>(this.projectsUrl, { headers: headers })
       .pipe(catchError(this.handleError));
   }
 
-  // GET: a individual project by ID. Will 404 error if the ID is not found
+  // GET: a individual project by ID. Will 404 error if the ID is not found - GET PROJECT BY ID
   public getProjectById(id: string): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
     return this.http.get<Project>(url).pipe(catchError(this.handleError));
   }
 
-  // GET projects whose name contains search term - SEARCH PROJECT
+  // GET projects whose name contains search term - SEARCH PROJECTS
   public searchProjects(term: string): Observable<Project[]> {
     if (!term.trim()) {
       // if no search term, return an empty project arrary

@@ -12,7 +12,7 @@ export class CustomErrorHandlerService {
    public handleError(error: unknown): void {
       this.ngZone.run(() => {
          // opens a snackbar with a message
-         this.snackBar.open('error.unexpected-exception', 'danger');
+         this.snackBar.open('fix this!', 'DANGER');
       });
 
       throw error;
