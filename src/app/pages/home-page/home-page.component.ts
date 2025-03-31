@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {
    NavbarComponent,
    AnnouncementBannerComponent,
+   ToolbarComponent,
    FooterComponent,
 } from '../../components';
 
@@ -34,6 +35,7 @@ import { Project } from '../../types/project.interface';
       MatIconModule,
       NavbarComponent,
       AnnouncementBannerComponent,
+      ToolbarComponent,
       FooterComponent,
    ],
 })

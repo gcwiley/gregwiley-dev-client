@@ -1,3 +1,4 @@
 {
-    "geminicodeassist.enable": false
+    "geminicodeassist.enable": false,
+    "geminicodeassist.codeGenerationPaneViewEnabled": true
 }

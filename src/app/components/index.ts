@@ -8,3 +8,4 @@ export { HeroComponent } from './hero/hero.component';
 export { LogoComponent } from './logo/logo.component';
 export { NavbarComponent } from './navbar/navbar.component';
 export { SkillListComponent } from './skill-list/skill-list.component';
+export { ToolbarComponent } from './toolbar/toolbar.component';

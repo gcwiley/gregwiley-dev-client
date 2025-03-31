@@ -1,5 +1,4 @@
 import {
-   redirectLoggedInTo,
    redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
 import { Routes } from '@angular/router';
@@ -9,7 +8,7 @@ import { CanDeactivateGuardService } from './guards/can-deactivate.guard';
 // this is a helper function that returns a function that redirects unauthenicated users to the signin page
 const redirectUnauthorizedToSignin = () => redirectUnauthorizedTo('/signin');
 // this is a helper function that redirects authenticated users to the posts section
-const redirectAuthorizedToProjects = () => redirectLoggedInTo('/projects');
+// const redirectAuthorizedToProjects = () => redirectLoggedInTo('/projects');
 
 export const routes: Routes = [
    {
@@ -17,7 +16,7 @@ export const routes: Routes = [
       pathMatch: 'full',
       title: 'Home',
       canActivate: [AuthGuard],
-      data: { authGuardPipe: redirectUnauthorizedToSignin, redirectAuthorizedToProjects },
+      data: { authGuardPipe: redirectUnauthorizedToSignin },
       loadComponent: () =>
          import('./pages/home-page/home-page.component').then(
             (m) => m.HomePageComponent
