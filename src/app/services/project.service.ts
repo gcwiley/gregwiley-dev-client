@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
 
 // import the project interface
@@ -17,9 +17,7 @@ export class ProjectService {
 
   // GET: all projects from the server - GET PROJECTS
   public getProjects(): Observable<Project[]> {
-    return this.http
-      .get<Project[]>(this.projectsUrl, { headers: headers })
-      .pipe(catchError(this.handleError));
+    return this.http.get<Project[]>(this.projectsUrl).pipe(catchError(this.handleError));
   }
 
   // GET: a individual project by ID. Will 404 error if the ID is not found - GET PROJECT BY ID
@@ -34,8 +32,10 @@ export class ProjectService {
       // if no search term, return an empty project arrary
       return of([]);
     }
+
+    const params = new HttpParams().set('name', term);
     return this.http
-      .get<Project[]>(`${this.projectsUrl}/?name=${term}`)
+      .get<Project[]>(this.projectsUrl, { params })
       .pipe(catchError(this.handleError));
   }
 

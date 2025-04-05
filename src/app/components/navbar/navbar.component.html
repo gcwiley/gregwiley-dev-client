@@ -8,37 +8,6 @@
    <!-- flex spacer -->
    <div class="flex-spacer"></div>
 
-   <mat-menu #menu="matMenu">
-      <!-- If user is signed in -->
-      <ng-container>
-         <!-- admin dashbord -->
-         <a mat-menu-item routerLink="/admin">
-            <mat-icon>admin_panel_settings</mat-icon>
-            <span>Admin Dashboard</span>
-         </a>
-
-         <!-- admin dashbord -->
-         <a mat-menu-item routerLink="/create">
-            <mat-icon>admin_panel_settings</mat-icon>
-            <span>Create Project</span>
-         </a>
-
-         <!-- sign out button -->
-         <button mat-menu-item>
-            <mat-icon>logout</mat-icon>
-            <span>Sign Out</span>
-         </button>
-      </ng-container>
-
-      <!-- if user is NOT signed in -->
-      <ng-template #showSignIn>
-         <a mat-menu-item routerLink="/signin">
-            <mat-icon>login</mat-icon>
-            <span>Sign In</span>
-         </a>
-      </ng-template>
-   </mat-menu>
-
    <!-- github button - normal screen -->
    <a
       mat-button
@@ -62,7 +31,7 @@
    </a>
 
    <!--  account button -->
-   <button mat-icon-button matTooltip="Admin Signin" [matMenuTriggerFor]="menu" aria-label="account-menu">
+   <button mat-icon-button matTooltip="Admin Signin" aria-label="account-menu">
       <mat-icon>account_circle</mat-icon>
    </button>
 </nav>

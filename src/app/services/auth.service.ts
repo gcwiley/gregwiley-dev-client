@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   // Asynchronously signs in as an anonymous user.
-  public signinAnonynously(): Observable<UserCredential> {
+  public signInAnonymously(): Observable<UserCredential> {
     return from(signInAnonymously(this.auth)).pipe(
       catchError(this.handleError)
     )

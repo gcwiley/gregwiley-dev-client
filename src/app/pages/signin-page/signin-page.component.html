@@ -1,5 +1,6 @@
 <app-navbar />
 <app-announcement-banner />
+<app-auth-status/>
 
 <main class="signin-page-container">
    <form [formGroup]="signinForm" novalidate (ngSubmit)="onSubmitSignIn()">
@@ -44,7 +45,7 @@
 
          <!-- SIGN IN BUTTON -->
          <div class="card-actions">
-            <button mat-flat-button color="primary" type="submit">
+            <button mat-flat-button type="submit">
                Sign In
             </button>
          </div>

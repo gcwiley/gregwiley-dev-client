@@ -12,7 +12,7 @@ export class CustomErrorHandlerService {
    public handleError(error: unknown): void {
       this.ngZone.run(() => {
          // opens a snackbar with a message
-         this.snackBar.open('fix this!', 'DANGER');
+         this.snackBar.open('There has been an error!', 'DANGER');
       });
 
       throw error;

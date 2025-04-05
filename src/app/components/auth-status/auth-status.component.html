@@ -1,0 +1,9 @@
+<mat-toolbar>
+  <a mat-flat-button routerLink="/signin"> Sign In </a>
+
+  @if (isLoggedIn) {
+  <p>Logged In - {{ userEmail }}</p>
+  } @else {
+  <p>Logged Out</p>
+  }
+</mat-toolbar>
