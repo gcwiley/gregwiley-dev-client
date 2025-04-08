@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { AuthGuard } from './guards/auth.guard';
+import { authGuard } from './guards/auth.guard';
 import { CanDeactivateGuardService } from './guards/can-deactivate.guard';
 
 export const routes: Routes = [
@@ -7,6 +7,7 @@ export const routes: Routes = [
     path: '',
     pathMatch: 'full',
     title: 'Home',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/home-page/home-page.component').then((m) => m.HomePageComponent),
   },
@@ -14,6 +15,7 @@ export const routes: Routes = [
   {
     path: 'admin',
     title: 'Admin Dashboard',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/admin-page/admin-page.component').then((m) => m.AdminPageComponent),
   },
@@ -21,7 +23,7 @@ export const routes: Routes = [
   {
     path: 'projects',
     title: 'Projects',
-    canActivate: [AuthGuard],
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/project-pages/project-grid-page/project-grid-page.component').then(
         (m) => m.ProjectGridPageComponent
@@ -31,6 +33,7 @@ export const routes: Routes = [
   {
     path: 'projects/:id',
     title: 'Project Details',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/project-pages/project-details-page/project-details-page.component').then(
         (m) => m.ProjectDetailsPageComponent
@@ -41,6 +44,7 @@ export const routes: Routes = [
     path: 'create',
     title: 'Create Project',
     canDeactivate: [CanDeactivateGuardService],
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/project-pages/project-create-page/project-create-page.component').then(
         (m) => m.ProjectCreatePageComponent
@@ -50,6 +54,7 @@ export const routes: Routes = [
   {
     path: 'edit-project/:id',
     title: 'Edit Project',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/project-pages/project-create-page/project-create-page.component').then(
         (m) => m.ProjectCreatePageComponent
@@ -66,6 +71,7 @@ export const routes: Routes = [
   {
     path: 'about',
     title: 'About',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/about-page/about-page.component').then((m) => m.AboutPageComponent),
   },
@@ -73,6 +79,7 @@ export const routes: Routes = [
   {
     path: 'resources',
     title: 'Resources',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/resources-page/resources-page.component').then(
         (m) => m.ResourcesPageComponent
