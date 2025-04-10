@@ -5,7 +5,9 @@ import { map, take } from 'rxjs/operators';
 import { Auth, authState } from '@angular/fire/auth';
 
 export const authGuard: CanActivateFn = (): Observable<boolean | UrlTree> => {
+  // inject the auth
   const auth = inject(Auth);
+  // inject router
   const router = inject(Router);
 
   return authState(auth).pipe(

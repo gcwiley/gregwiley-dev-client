@@ -59,7 +59,7 @@ const ERROR_MESSAGES = {
   ],
 })
 export class SigninComponent implements OnInit {
-  public loginForm!: FormGroup;
+  public signinForm!: FormGroup;
   public isLoading = false;
   public errorMessage: string | null = null;
 
@@ -76,7 +76,7 @@ export class SigninComponent implements OnInit {
 
   // create the signin form with email and password fields
   private initializeForm(): void {
-    this.loginForm = this.formBuilder.group({
+    this.signinForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]], // Example: Minimum password length
     });
@@ -85,12 +85,12 @@ export class SigninComponent implements OnInit {
   // sign in with email and password, if successfull, navigate authenicated user to the home page
   public onSubmitSignIn(): void {
     this.errorMessage = null;
-    if (this.loginForm.invalid) {
+    if (this.signinForm.invalid) {
       return;
     }
 
     this.isLoading = true;
-    const { email, password } = this.loginForm.value;
+    const { email, password } = this.signinForm.value;
 
     this.authService
       .signInWithEmailAndPassword(email, password)
@@ -115,16 +115,12 @@ export class SigninComponent implements OnInit {
           if (user) {
             this.router.navigateByUrl('/');
           } else {
-            this.snackbar.open(this.errorMessage!, 'CLOSE', {
-              duration: 3000,
-            });
+            this.snackbar.open(this.errorMessage!, 'CLOSE');
           }
         },
         error: () => {
           this.isLoading = false;
-          this.snackbar.open(ERROR_MESSAGES.UNKNOWN_ERROR, 'CLOSE', {
-            duration: 3000,
-          });
+          this.snackbar.open(ERROR_MESSAGES.UNKNOWN_ERROR, 'CLOSE');
         },
       });
   }
@@ -132,6 +128,6 @@ export class SigninComponent implements OnInit {
   // Getter for easy access to form controls in the template
   // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
   get formControls(): { [key: string]: AbstractControl } {
-    return this.loginForm.controls;
+    return this.signinForm.controls;
   }
 }

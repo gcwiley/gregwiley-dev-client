@@ -18,6 +18,8 @@ export class AuthService {
   // injects the auth object
   private readonly auth = inject(Auth);
 
+  // comment here!
+
   // creates a new user account associated with the specified email address and password
   public createUserWithEmailAndPassword(
     email: string,
@@ -44,13 +46,11 @@ export class AuthService {
 
   // Asynchronously signs in as an anonymous user.
   public signInAnonymously(): Observable<UserCredential> {
-    return from(signInAnonymously(this.auth)).pipe(
-      catchError(this.handleError)
-    )
+    return from(signInAnonymously(this.auth)).pipe(catchError(this.handleError));
   }
 
   // signs out the current user. - does not return any specific user data.
-  public signOut(): Observable<void> {
+  public signOutUser(): Observable<void> {
     return from(signOut(this.auth)).pipe(catchError(this.handleError));
   }
 

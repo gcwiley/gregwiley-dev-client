@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-// import angular fire auth
-import { Auth, onAuthStateChanged, User } from '@angular/fire/auth';
-
 // import angular material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+
+// import auth service
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   standalone: true,

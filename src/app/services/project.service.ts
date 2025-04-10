@@ -65,13 +65,13 @@ export class ProjectService {
       .pipe(catchError(this.handleError));
   }
 
-  // DELETE a project by ID from the server - DELETE PROJECT
+  // DELETE a project by ID from the server - DELETE PROJECT BY ID
   public deleteProjectById(id: string): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
     return this.http.delete<Project>(url, { headers: headers }).pipe(catchError(this.handleError));
   }
 
-  // PATCH: update the project in the database - UPDATE PROJECT
+  // PATCH: update the project in the database - UPDATE PROJECT BY ID
   public updateProjectById(id: string, body: Partial<Project>): Observable<object> {
     const url = `${this.projectsUrl}/${id}`;
     return this.http.patch(url, body, { headers: headers }).pipe(catchError(this.handleError));
