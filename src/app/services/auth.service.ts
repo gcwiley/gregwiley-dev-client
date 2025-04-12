@@ -1,14 +1,14 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, catchError, from, throwError } from 'rxjs';
+import { Observable, catchError, from, throwError, map } from 'rxjs';
 import {
   Auth,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
   UserCredential,
-  signInAnonymously,
+  user,
+  User,
 } from '@angular/fire/auth';
 
 @Injectable({
@@ -18,17 +18,13 @@ export class AuthService {
   // injects the auth object
   private readonly auth = inject(Auth);
 
-  // comment here!
+  // observable for the current user state (emits User object or null)
+  public readonly user: Observable<User | null> = user(this.auth);
 
-  // creates a new user account associated with the specified email address and password
-  public createUserWithEmailAndPassword(
-    email: string,
-    password: string
-  ): Observable<UserCredential> {
-    return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
-      catchError(this.handleError)
-    );
-  }
+  // observable for the authentication status (emits true if logged in, false otherwise)
+  public readonly isAuthenticated: Observable<boolean> = this.user.pipe(
+    map((user) => !!user) // User|null to boolean
+  )
 
   // asynchronously signs in using an email and password
   public signInWithEmailAndPassword(email: string, password: string): Observable<UserCredential> {
@@ -42,11 +38,6 @@ export class AuthService {
     return from(signInWithPopup(this.auth, new GoogleAuthProvider())).pipe(
       catchError(this.handleError)
     );
-  }
-
-  // Asynchronously signs in as an anonymous user.
-  public signInAnonymously(): Observable<UserCredential> {
-    return from(signInAnonymously(this.auth)).pipe(catchError(this.handleError));
   }
 
   // signs out the current user. - does not return any specific user data.

@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
-import { CanDeactivateGuardService } from './guards/can-deactivate.guard';
 
 export const routes: Routes = [
   {
@@ -41,9 +40,8 @@ export const routes: Routes = [
   },
   // create project page
   {
-    path: 'create',
+    path: 'create-project',
     title: 'Create Project',
-    canDeactivate: [CanDeactivateGuardService],
     canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/project-pages/project-create-page/project-create-page.component').then(

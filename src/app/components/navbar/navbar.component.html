@@ -1,11 +1,15 @@
-<mat-toolbar>
+<mat-toolbar class="navbar">
+
+  <a mat-icon-button routerLink="/" aria-label="Home menu icon">
+    <mat-icon>local_fire_department</mat-icon>
+  </a>
+
   <span>gregwiley.dev</span>
 
   <span class="flex-spacer"></span>
 
-  <button mat-flat-button (click)="onClickSignOut()">Sign Out</button>
 
-  <a mat-stroked-button routerLink="/projects">My Projects</a>
-  <a mat-stroked-button routerLink="/create">Add Project</a>
-  <a mat-stroked-button routerLink="/signin">Sign In</a>
+  <button mat-icon-button aria-label="Admin Menu">
+    <mat-icon>settings</mat-icon>
+  </button>
 </mat-toolbar>

@@ -23,7 +23,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   NavbarComponent,
   AnnouncementBannerComponent,
-  AuthStatusComponent,
   FooterComponent,
 } from '../../components';
 
@@ -53,7 +52,6 @@ const ERROR_MESSAGES = {
     MatIconModule,
     NavbarComponent,
     AnnouncementBannerComponent,
-    AuthStatusComponent,
     FooterComponent,
     FormsModule,
   ],

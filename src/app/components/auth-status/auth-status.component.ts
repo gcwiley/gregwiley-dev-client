@@ -1,12 +1,15 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { RouterModule, Router } from '@angular/router';
+import { CommonModule } from '@angular/common'; // used for async pipe
+import { Observable } from 'rxjs';
+import { map } from 'rxjs';
+
+// import auth service
+import { AuthService } from '../../services/auth.service';
 
 // import angular material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-
-// import auth service
-import { AuthService } from '../../services/auth.service';
 
 @Component({
   standalone: true,
@@ -14,25 +17,26 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './auth-status.component.html',
   styleUrl: './auth-status.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule, MatToolbarModule, MatButtonModule],
+  imports: [CommonModule, RouterModule, MatToolbarModule, MatButtonModule],
 })
-export class AuthStatusComponent implements OnInit, OnDestroy {
-  public isLoggedIn = false;
-  public userEmail: string | null = null;
-  private unsubscribeAuthListener: (() => void) | undefined;
-  private auth: Auth = inject(Auth);
+export class AuthStatusComponent {
+  private authService = inject(AuthService);
 
-  ngOnInit(): void {
-    this.unsubscribeAuthListener = onAuthStateChanged(this.auth, (user: User | null) => {
-      this.isLoggedIn = !!user;
-      this.userEmail = user?.displayName ?? null;
+  constructor(private router: Router) {}
+
+  // expose the isAuthenicated observable from thier service
+  public isLoggedIn: Observable<boolean> = this.authService.isAuthenticated;
+
+  // expose user email
+  public userEmail: Observable<string | null> = this.authService.user.pipe(
+    map((user) => user?.email ?? null)
+  );
+
+  // signs out current user
+  public onClickSignOut(): void {
+    this.authService.signOutUser().subscribe(() => {
+      // redirects user to signin page
+      this.router.navigateByUrl('/signin');
     });
-  }
-
-  ngOnDestroy(): void {
-    // the 'unsubscribeAuthListener' function is called to remove the listener
-    if (this.unsubscribeAuthListener) {
-      this.unsubscribeAuthListener();
-    }
   }
 }

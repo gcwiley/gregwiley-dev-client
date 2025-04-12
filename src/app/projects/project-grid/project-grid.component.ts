@@ -1,18 +1,16 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
 
-// import the angular material modules
+// material modules
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
-// import the project service
+// service and interface
 import { ProjectService } from '../../services/project.service';
-
-// import the project interface
 import { Project } from '../../types/project.interface';
 
 @Component({
@@ -24,6 +22,9 @@ import { Project } from '../../types/project.interface';
    imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule],
 })
 export class ProjectGridComponent implements OnInit {
+   // inject services using inject() function (alternative to constructur injection)
+   private projectService = inject()
+
    // create the member variables
    projects: Project[] = [];
 
@@ -33,8 +34,8 @@ export class ProjectGridComponent implements OnInit {
    gutterSize = '0px';
 
    // set up the grid list dimensions
-   colspan = 1; // fix this!
-   rowspan = 1; // fix this!
+   colspan = 1; 
+   rowspan = 1; 
 
    constructor(private projectService: ProjectService, private breakpointObserver: BreakpointObserver) {}
 
@@ -65,6 +66,7 @@ export class ProjectGridComponent implements OnInit {
 
    public getProjects(): void {
       this.projectService.getProjects().subscribe((projects) => {
+         console.log('PROJECTS', projects)
          this.projects = projects;
       });
    }
