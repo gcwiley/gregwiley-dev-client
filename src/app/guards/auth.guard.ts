@@ -5,14 +5,15 @@ import { map, take } from 'rxjs/operators';
 import { Auth, authState } from '@angular/fire/auth';
 
 export const authGuard: CanActivateFn = (): Observable<boolean | UrlTree> => {
-  // inject the auth
+  // inject the auth and router
   const auth = inject(Auth);
-  // inject router
   const router = inject(Router);
 
+  // guard correctly checks whether a user is authenticated by observing 'authState'
   return authState(auth).pipe(
     take(1),
     map((user) => {
+      // if user is not authenticated, it redirects them to '/signin'
       return !!user || router.createUrlTree(['/signin']);
     })
   );

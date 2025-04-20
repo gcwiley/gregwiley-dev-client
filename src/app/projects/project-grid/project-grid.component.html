@@ -1,24 +1,30 @@
-<mat-grid-list [cols]="cols" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
-   @for (project of projects; track project) {
-   <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
-      <mat-card class="project-card" appearance="outlined">
-         <mat-card-header>
-            <mat-card-title>{{ project.title }}</mat-card-title>
-            <mat-card-subtitle>{{ project.category | titlecase }}</mat-card-subtitle>
-         </mat-card-header>
-
-         <span class="spacer"></span>
-
-         <mat-card-actions>
-            <a mat-flat-button routerLink="/projects/{{ project._id }}">OPEN</a>
-         </mat-card-actions>
-      </mat-card>
-   </mat-grid-tile>
-   } @empty {
-   <mat-card>
+<mat-grid-list [cols]="cols | async" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+  <!-- Use async pipe for projects and add trackBy -->
+  <mat-grid-tile
+    *ngFor="let project of projects | async; trackBy: trackByProjectId"
+    [colspan]="colspan"
+    [rowspan]="rowspan">
+    <mat-card appearance="outlined" class="project-card">
+      <mat-card-header>
+        <mat-card-title>{{ project.title }}</mat-card-title>
+      </mat-card-header>
       <mat-card-content>
-         <p>No Projects Found.</p>
+        <p>{{ project.description }}</p>
       </mat-card-content>
-   </mat-card>
-   }
+      <mat-card-actions>
+        <!-- Example actions -->
+        <button mat-button>LEARN MORE</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
 </mat-grid-list>
+
+<!-- Handle loading/empty states (optional but recommended) -->
+<ng-container *ngIf="(projects | async) === null">
+  <p>Loading projects...</p>
+  <!-- Or use a spinner -->
+</ng-container>
+
+<ng-container *ngIf="(projects | async)?.length === 0">
+  <p>No projects found.</p>
+</ng-container>

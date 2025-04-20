@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule, AsyncPipe } from '@angular/common';
+import { Breakpoints, BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 
 // material modules
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -14,60 +16,79 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
-   standalone: true,
-   selector: 'app-project-grid',
-   templateUrl: './project-grid.component.html',
-   styleUrls: ['./project-grid.component.scss'],
-   changeDetection: ChangeDetectionStrategy.OnPush,
-   imports: [CommonModule, RouterModule, MatGridListModule, MatCardModule, MatIconModule, MatButtonModule],
+  standalone: true,
+  selector: 'app-project-grid',
+  templateUrl: './project-grid.component.html',
+  styleUrls: ['./project-grid.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatGridListModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    AsyncPipe,
+  ],
 })
-export class ProjectGridComponent implements OnInit {
-   // inject services using inject() function (alternative to constructur injection)
-   private projectService = inject()
+export class ProjectGridComponent implements OnInit, OnDestroy {
+  // dependencies
+  private projectService = inject(ProjectService);
+  private breakpointObserver = inject(BreakpointObserver);
 
-   // create the member variables
-   projects: Project[] = [];
+  // observables for AsyncPipe
+  public projects!: Observable<Project[]>;
+  // observable for columns based on breakpoints
+  public cols!: Observable<number>;
 
-   // set up the grid list demensions
-   cols = 5; // controls the amount of columns in the grid list.
-   rowHeight = '1:1'; // row height
-   gutterSize = '0px';
+  // static grid properties
+  rowHeight = '1:1';
+  gutterSize = '0px';
+  colspan = 1;
+  rowspan = 1;
 
-   // set up the grid list dimensions
-   colspan = 1; 
-   rowspan = 1; 
+  // lifecycle management - subject to manage subscription cleanup
+  private destroy = new Subject<void>();
 
-   constructor(private projectService: ProjectService, private breakpointObserver: BreakpointObserver) {}
+  ngOnInit(): void {
+    this.projects = this.projectService.getProjects().pipe();
 
-   public ngOnInit(): void {
-      this.getProjects();
-      this.layoutChanges();
-   }
+    this.cols = this.breakpointObserver
+      .observe([
+        // define breakpoints to observe
+        Breakpoints.XSmall,
+        Breakpoints.Small,
+        Breakpoints.Medium,
+        Breakpoints.Large,
+        Breakpoints.XLarge,
+      ])
+      .pipe(
+        takeUntil(this.destroy),
+        map((state: BreakpointState) => {
+          // map breakpoint state to number of columns
+          if (state.breakpoints[Breakpoints.XSmall]) {
+            return 1; // e.g. handset portrait
+          }
+          if (state.breakpoints[Breakpoints.Small]) {
+            return 2; // e.g. handset landscape / tablet portrait
+          }
+          if (state.breakpoints[Breakpoints.Medium]) {
+            return 3; // e.g. tablet landscape
+          }
+          // default for large/x-large of none of the above match
+          return 5;
+        })
+      );
+  }
 
-   // responsive code
-   public layoutChanges(): void {
-      this.breakpointObserver
-         .observe([Breakpoints.TabletPortrait, Breakpoints.TabletLandscape, Breakpoints.HandsetPortrait, Breakpoints.HandsetLandscape])
-         .subscribe((result) => {
-            const breakpoints = result.breakpoints;
+  ngOnDestroy(): void {
+    // signal component destruction
+    this.destroy.next();
+    this.destroy.complete();
+  }
 
-            // check to see if viewport is in table portrait mode
-            if (breakpoints[Breakpoints.TabletPortrait]) {
-               this.cols = 1;
-            } else if (breakpoints[Breakpoints.HandsetPortrait]) {
-               this.cols = 1;
-            } else if (breakpoints[Breakpoints.HandsetLandscape]) {
-               this.cols = 1;
-            } else if (breakpoints[Breakpoints.TabletLandscape]) {
-               this.cols = 2;
-            }
-         });
-   }
-
-   public getProjects(): void {
-      this.projectService.getProjects().subscribe((projects) => {
-         console.log('PROJECTS', projects)
-         this.projects = projects;
-      });
-   }
+  // Optional: If you need to track items for *ngFor performance
+  trackByProjectId(index: number, project: Project): string {
+   return project._id; // Assuming your Project interface has an 'id' property
+}
 }
