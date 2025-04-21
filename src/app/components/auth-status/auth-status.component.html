@@ -1,6 +1,6 @@
 <mat-toolbar>
   <!-- Use *ngIf with the async pipe -->
-  <ng-container *ngIf="isLoggedIn | async as isLoggedIn; else loggedOutContent">
+  <ng-container *ngIf="isLoggedIn$ | async as isLoggedIn; else loggedOutContent">
     <!-- Check if userEmail$ has a value -->
     <p *ngIf="userEmail | async as email; else loggedInNoEmail">
       Logged in - {{ email }}

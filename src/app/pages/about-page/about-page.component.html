@@ -1,14 +1,16 @@
-<app-navbar />
-<app-announcement-banner />
+<header role="navigation">
+  <app-navbar aria-label="Navigation Menu"/>
+  <app-announcement-banner aria-label="Announcment Banner"/>
+</header>
 
 <main class="about-page-container">
-   <article class="main-content">
-      <p>About me text goes here.</p>
-   </article>
+  <article class="main-content">
+    <p>About me text goes here.</p>
+  </article>
 
-   <aside class="side-content">
-      <app-skill-list />
-   </aside>
+  <aside class="side-content">
+    <app-skill-list />
+  </aside>
 </main>
 
-<app-footer />
+<app-footer aria-label="site footer"/>

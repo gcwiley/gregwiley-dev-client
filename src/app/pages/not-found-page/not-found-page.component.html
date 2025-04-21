@@ -1,10 +1,14 @@
-<app-navbar />
+<header role="navigation">
+  <app-announcement-banner aria-label="Announcement Banner" />
+  <app-navbar aria-label="Navigation Menu" />
+</header>
 
 <main class="not-found-page-container">
-   <div class="page-text">
-      <h1>Page Not Found</h1>
-      <p>We're sorry. The page you are looking for cannot be found.</p>
-      <a routerLink="/" mat-raised-button color="primary">Go Home</a>
-   </div>
+  <div class="page-text">
+    <h1>Page Not Found</h1>
+    <p>We're sorry. The page you are looking for cannot be found.</p>
+    <a routerLink="/" mat-raised-button color="primary">Go Home</a>
+  </div>
 </main>
-<app-footer />
+
+<app-footer aria-label="Site Footer" />

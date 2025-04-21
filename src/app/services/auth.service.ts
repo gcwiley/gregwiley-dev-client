@@ -19,10 +19,10 @@ export class AuthService {
   private readonly auth = inject(Auth);
 
   // observable for the current user state (emits User object or null)
-  public readonly user: Observable<User | null> = user(this.auth);
+  public readonly user$: Observable<User | null> = user(this.auth);
 
   // observable for the authentication status (emits true if logged in, false otherwise)
-  public readonly isAuthenticated: Observable<boolean> = this.user.pipe(
+  public readonly isAuthenticated$: Observable<boolean> = this.user$.pipe(
     map((user) => !!user) // User|null to boolean
   )
 

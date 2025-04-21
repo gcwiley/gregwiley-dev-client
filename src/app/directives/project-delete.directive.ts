@@ -2,10 +2,10 @@ import { Directive, EventEmitter, HostListener, Output, input } from '@angular/c
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { filter, first, switchMap } from 'rxjs';
 
-// import the project service
+// project service
 import { ProjectService } from '../services/project.service';
 
-// import the custom dialog
+// custom dialog
 import { CustomConfirmDialog, CustomConfirmDialogService } from '../services/custom-confirm-dialog.service';
 
 @Directive({

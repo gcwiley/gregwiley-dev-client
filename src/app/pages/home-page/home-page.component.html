@@ -1,22 +1,12 @@
-<app-navbar />
-<app-announcement-banner />
-<app-auth-status/>
-
-<header focusOnNavigation class="header-background" aria-label="home-page-header">
-   <!-- header section-->
-   <div class="header-section">
-      <div class="header-headline">
-         <h1>Gregory Wiley</h1>
-         <h2>Web App Developer</h2>
-      </div>
-      <div class="header-start">
-         <a mat-raised-button class="header-button" routerLink="/about">About</a>
-         <a mat-raised-button class="header-button" routerLink="/projects">Projects</a>
-         <a mat-raised-button class="header-button" routerLink="/create-project">Create</a>
-      </div>
-   </div>
+<header role="navigation">
+  <app-announcement-banner aria-label="Announcement Banner" />
+  <app-navbar aria-label="Navigation Menu"/>
 </header>
 
-<main class="home-page-container"></main>
+<app-auth-status />
 
-<app-footer />
+<main class="home-page-container">
+  Fix this!
+</main>
+
+<app-footer aria-label="site footer"/>

@@ -25,10 +25,10 @@ export class AuthStatusComponent {
   constructor(private router: Router) {}
 
   // expose the isAuthenicated observable from thier service
-  public isLoggedIn: Observable<boolean> = this.authService.isAuthenticated;
+  public isLoggedIn$: Observable<boolean> = this.authService.isAuthenticated$;
 
   // expose user email
-  public userEmail: Observable<string | null> = this.authService.user.pipe(
+  public userEmail: Observable<string | null> = this.authService.user$.pipe(
     map((user) => user?.email ?? null)
   );
 

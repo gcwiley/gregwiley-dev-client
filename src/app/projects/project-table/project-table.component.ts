@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 
 import { SelectionModel } from '@angular/cdk/collections';
 
-// import the angular material modules
+// angular material
 import { MatRippleModule } from '@angular/material/core';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,15 +17,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
-// import mat paginator and mat sort
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-// import the project service
+// project service
 import { ProjectService } from '../../services/project.service';
-
-// import the project type
 import { Project } from '../../types/project.interface';
 
 @Component({

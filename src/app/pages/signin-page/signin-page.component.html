@@ -1,5 +1,7 @@
-<app-navbar />
-<app-announcement-banner />
+<header>
+  <app-navbar />
+  <app-announcement-banner />
+</header>
 
 <main class="signin-page-container">
   <mat-card class="signin-form" appearance="outlined">
@@ -11,7 +13,12 @@
         <!-- EMAIL (email) -->
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Email</mat-label>
-          <input matInput type="email" formControlName="email" placeholder="name@example.com" autocomplete="username"/>
+          <input
+            matInput
+            type="email"
+            formControlName="email"
+            placeholder="name@example.com"
+            autocomplete="username" />
           @if (formControls['email'].hasError('required')) {
           <mat-error>Email is required.</mat-error>
           } @if (formControls['email'].hasError('email')) {
@@ -22,7 +29,12 @@
         <!-- PASSWORD (password) -->
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password" placeholder="Password" autocomplete="current-password"/>
+          <input
+            matInput
+            type="password"
+            formControlName="password"
+            placeholder="Password"
+            autocomplete="current-password" />
           @if (formControls['password'].hasError('required')) {
           <mat-error>A password is required</mat-error>
           } @if (formControls['password'].hasError('minlength')) {
