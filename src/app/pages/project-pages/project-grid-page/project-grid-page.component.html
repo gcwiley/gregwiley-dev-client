@@ -1,10 +1,12 @@
-<app-navbar />
-<app-announcement-banner />
+<header>
+  <app-announcement-banner aria-label="Announcement Banner" />
+  <app-navbar aria-label="Navigation Menu" />
+</header>
 
 <main class="project-grid-page-container">
-   <h2>My projects</h2>
-   <p>{{ text }}</p>
-   <app-project-grid />
+  <h2>My projects</h2>
+  <p>{{ text }}</p>
+  <app-project-grid />
 </main>
 
-<app-footer />
+<app-footer aria-label="site footer" />

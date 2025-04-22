@@ -19,11 +19,26 @@
 </mat-grid-list>
 
 <!-- Handle loading/empty states (optional but recommended) -->
+ <!-- delete this! -->
 <ng-container *ngIf="(projects | async) === null">
   <p>Loading projects...</p>
   <!-- Or use a spinner -->
 </ng-container>
 
+@if ((projects | async) === null) {
+  <ng-container>
+    <p>Loading projects...</p>
+    <!-- or use a spinner -->
+  </ng-container>
+}
+
+<!-- delete this! -->
 <ng-container *ngIf="(projects | async)?.length === 0">
   <p>No projects found.</p>
 </ng-container>
+
+@if ((projects | async)?.length === 0) {
+<ng-container>
+  <p>No Projects found.</p>
+</ng-container>
+}

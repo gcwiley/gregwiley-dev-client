@@ -99,7 +99,7 @@ export const routes: Routes = [
         (m) => m.NotFoundPageComponent
       ),
   },
-  // redirect to page not found
+  // redirect to page not found - wildcare route should be last!
   {
     path: '**',
     redirectTo: '/404',

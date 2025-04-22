@@ -18,7 +18,6 @@
 @use '../app/projects/project-form/project-form-theme';
 @use '../app/projects/project-grid/project-grid-theme';
 @use '../app/projects/project-table/project-table-theme';
-@use '../app/projects/project-tags/project-tags-theme';
 @use '../app/projects/recent-projects/recent-projects-theme';
 
 // COMPONENTS THEMES
@@ -50,7 +49,6 @@
    @include project-form-theme.theme($theme);
    @include project-grid-theme.theme($theme);
    @include project-table-theme.theme($theme);
-   @include project-tags-theme.theme($theme);
    @include recent-projects-theme.theme($theme);
    
    // components

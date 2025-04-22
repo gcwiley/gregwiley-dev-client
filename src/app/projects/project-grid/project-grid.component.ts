@@ -44,7 +44,7 @@ export class ProjectGridComponent implements OnInit, OnDestroy {
   // static grid properties
   rowHeight = '1:1';
   gutterSize = '0px';
-  colspan = 1;
+  colspan = 2;
   rowspan = 1;
 
   // lifecycle management - subject to manage subscription cleanup

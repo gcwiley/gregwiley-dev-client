@@ -1,128 +1,108 @@
 <form [formGroup]="projectForm" novalidate (ngSubmit)="onSaveProject()">
-   <!-- PROJECT CARD -->
-   <mat-card class="project-form" appearance="outlined">
-      <!-- CARD HEADER -->
-      <mat-card-header>
-         <mat-card-title>New Project</mat-card-title>
-      </mat-card-header>
+  <!-- PROJECT CARD -->
+  <mat-card class="project-form" appearance="outlined">
+    <!-- CARD HEADER -->
+    <mat-card-header>
+      <mat-card-title>New Project</mat-card-title>
+    </mat-card-header>
 
-      <!-- CARD CONTENT -->
-      <mat-card-content>
-         <!-- PROJECT TITLE (title)-->
-         <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Title</mat-label>
+    <!-- CARD CONTENT -->
+    <mat-card-content>
+      <!-- PROJECT TITLE (title)-->
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" formControlName="title" placeholder="title" />
+        @if (this.projectForm.controls['title'].hasError('required')) {
+        <mat-error>Please enter a project title.</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="row">
+        <div class="col">
+          <!-- PROJECT STATUS (status)-->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status">
+              <mat-option *ngFor="let status of statues" [value]="status.value">
+                {{ status.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <!-- PROJECT CATEGORY (category) -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category">
+              <mat-option *ngFor="let category of categories" [value]="category.value">{{
+                category.viewValue
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <!-- PROJECT START DATE (startDate)-->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Start Date</mat-label>
             <input
-               matInput
-               type="text"
-               formControlName="title"
-               placeholder="title" />
-            @if (this.projectForm.controls['title'].hasError('required')) {
-               <mat-error>Please enter a project title.</mat-error>
-            }
-         </mat-form-field>
+              matInput
+              [matDatepicker]="picker"
+              formControlName="startDate"
+              placeholder="Start Date" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
 
-         <div class="row">
-            <div class="col">
-               <!-- PROJECT STATUS (status)-->
-               <mat-form-field class="full-width" appearance="outline">
-                  <mat-label>Status</mat-label>
-                  <mat-select formControlName="status">
-                     <mat-option
-                        *ngFor="let status of statues"
-                        [value]="status.value">
-                        {{ status.viewValue }}
-                     </mat-option>
-                  </mat-select>
-               </mat-form-field>
-            </div>
+        <div class="col">
+          <!-- PROGRAMMING LANGUAGE (language)-->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Programming Language</mat-label>
+            <mat-select formControlName="language">
+              <mat-option *ngFor="let language of languages" [value]="language.value">{{
+                language.viewValue
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
 
-            <div class="col">
-               <!-- PROJECT CATEGORY (category) -->
-               <mat-form-field class="full-width" appearance="outline">
-                  <mat-label>Category</mat-label>
-                  <mat-select formControlName="category">
-                     <mat-option
-                        *ngFor="let category of categories"
-                        [value]="category.value"
-                        >{{ category.viewValue }}</mat-option
-                     >
-                  </mat-select>
-               </mat-form-field>
-            </div>
-         </div>
+      <div class="row">
+        <div class="col">
+          <!-- GIT URL (gitUrl)-->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>GitHub URL</mat-label>
+            <input matInput type="url" formControlName="gitUrl" placeholder="GitHub Repo" />
+          </mat-form-field>
+        </div>
+      </div>
 
-         <div class="row">
-            <div class="col">
-               <!-- PROJECT START DATE (startDate)-->
-               <mat-form-field class="full-width" appearance="outline">
-                  <mat-label>Start Date</mat-label>
-                  <input
-                     matInput
-                     [matDatepicker]="picker"
-                     formControlName="startDate"
-                     placeholder="Start Date" />
-                  <mat-datepicker-toggle
-                     matSuffix
-                     [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-               </mat-form-field>
-            </div>
+      <div class="row">
+        <div class="col">
+          <!-- DESCRIPTION (description)-->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea
+              matInput
+              rows="6"
+              formControlName="description"
+              title="Description"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
 
-            <div class="col">
-               <!-- PROGRAMMING LANGUAGE (language)-->
-               <mat-form-field class="full-width" appearance="outline">
-                  <mat-label>Programming Language</mat-label>
-                  <mat-select formControlName="language">
-                     <mat-option
-                        *ngFor="let language of languages"
-                        [value]="language.value"
-                        >{{ language.viewValue }}</mat-option
-                     >
-                  </mat-select>
-               </mat-form-field>
-            </div>
-         </div>
-
-         <div class="row">
-            <div class="col">
-               <!-- GIT URL (gitUrl)-->
-               <mat-form-field class="full-width" appearance="outline">
-                  <mat-label>GitHub URL</mat-label>
-                  <input
-                     matInput
-                     type="url"
-                     formControlName="gitUrl"
-                     placeholder="GitHub Repo" />
-               </mat-form-field>
-            </div>
-         </div>
-
-         <div class="row">
-            <div class="col">
-               <!-- DESCRIPTION (description)-->
-               <mat-form-field class="full-width" appearance="outline">
-                  <mat-label>Description</mat-label>
-                  <textarea
-                     matInput
-                     rows="6"
-                     formControlName="description"
-                     title="Description"></textarea>
-               </mat-form-field>
-            </div>
-         </div>
-      </mat-card-content>
-
-      <mat-card-actions class="card-actions">
-         @if (this.mode === 'create') {
-         <button mat-flat-button type="submit" [disabled]="!projectForm.valid">
-            Create
-         </button>
-         } @else {
-         <button mat-flat-button type="submit" [disabled]="!projectForm.valid">
-            Update
-         </button>
-         }
-         <button mat-flat-button type="button">Clear</button>
-      </mat-card-actions>
-   </mat-card>
+    <mat-card-actions class="card-actions">
+      @if (this.mode === 'create') {
+      <button mat-flat-button type="submit" [disabled]="!projectForm.valid">Create</button>
+      } @else {
+      <button mat-flat-button type="submit" [disabled]="!projectForm.valid">Update</button>
+      }
+      <button mat-flat-button type="button">Clear</button>
+    </mat-card-actions>
+  </mat-card>
 </form>

@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
-// import rxjs
+// rxjs
 import { first } from 'rxjs';
 
-// import angular material modules
+// angular material
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,10 +16,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-// import the project service
+// project service and interfaces
 import { ProjectService } from '../../services/project.service';
-
-// import the required project interfaces
 import {
   Project,
   ProjectInput,

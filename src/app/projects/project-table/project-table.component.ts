@@ -1,12 +1,15 @@
+// angular core/common/router
 import {
    AfterViewInit,
    Component,
    ViewChild,
    ChangeDetectionStrategy,
+   OnDestroy,
 } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+// angular cdk
 import { SelectionModel } from '@angular/cdk/collections';
 
 // angular material
@@ -19,6 +22,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+// rxjs
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs';
 
 // project service
 import { ProjectService } from '../../services/project.service';
@@ -43,7 +51,7 @@ import { Project } from '../../types/project.interface';
       RouterModule,
    ],
 })
-export class ProjectTableComponent implements AfterViewInit {
+export class ProjectTableComponent implements AfterViewInit, OnDestroy {
    selection = new SelectionModel<Project>(true, []);
 
    // setup pagination for project table
@@ -71,9 +79,13 @@ export class ProjectTableComponent implements AfterViewInit {
       'openDialog',
    ];
 
+   // subject to manage component destruction
+   private destroy$ = new Subject<void>();
+
    constructor(
       private projectService: ProjectService,
-      private router: Router
+      private router: Router,
+      private snackbar: MatSnackBar,
    ) {}
 
    // a callback method that is invoked immediately after angular has completed initialization of a component's view
@@ -83,13 +95,28 @@ export class ProjectTableComponent implements AfterViewInit {
       this.getProjects();
    }
 
+   // implement ngOnDestory to complete the subject
+   public ngOnDestroy(): void {
+       this.destroy$.next();
+       this.destroy$.complete();
+   }
+
    // gets all projects from the project service
    public getProjects(): void {
-      this.projectService.getProjects().subscribe((projects) => {
-         this.dataSource.data = projects;
-         // sets the loading results to false
-         this.isLoadingResults = false;
-      });
+      this.isLoadingResults = true;
+      this.projectService.getProjects()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+         next: (projects) => {
+            this.dataSource.data = projects;
+            this.isLoadingResults = false;
+         },
+         error: (error) => {
+            console.error('Error fetching projects:', error) // log the error
+            this.isLoadingResults = false; // stop the spinner
+            this.snackbar.open('Error fetching projects:', 'Close')
+         }
+      })
    }
 
    // whether the number of selected projects matches the total number of rows
@@ -109,11 +136,14 @@ export class ProjectTableComponent implements AfterViewInit {
       this.selection.select(...this.dataSource.data);
    }
 
-   // the label for the checkbox on the passed row - fix this later
+   // the label for the checkbox on the passed row
    public checkboxLabel(row?: Project): string {
       if (!row) {
-         return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+         // label for the header checkbox
+         return `${this.isAllSelected() ? 'Deselect' : 'Select'} all projects`;
       }
-      return `${this.selection.isSelected(row) ? 'deselect' : 'select'}`;
+      // label for a rew checkbox
+      // using row.title assumes 'title' is a unique and descriptive property
+      return `${this.selection.isSelected(row) ? 'Deselect' : 'Select'} project ${row.title}`;
    }
 }

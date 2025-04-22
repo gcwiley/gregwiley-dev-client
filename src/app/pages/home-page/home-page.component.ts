@@ -13,7 +13,11 @@ import {
   AnnouncementBannerComponent,
   AuthStatusComponent,
   FooterComponent,
+  HeroComponent,
 } from '../../components';
+
+// project components
+import { ProjectGridComponent } from '../../projects';
 
 @Component({
   standalone: true,
@@ -31,6 +35,8 @@ import {
     AnnouncementBannerComponent,
     AuthStatusComponent,
     FooterComponent,
+    ProjectGridComponent,
+    HeroComponent,
   ],
 })
 export class HomePageComponent {}
