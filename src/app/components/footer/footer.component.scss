@@ -18,6 +18,13 @@
    margin-right: 0.5rem;
 }
 
+.footer-copyright img,
+.footer-logos img {
+   width: 30px;
+   height: 30px;
+   vertical-align: middle; // helps align images with adjacent text
+}
+
 .footer-logos {
    display: flex;
    align-items: center;

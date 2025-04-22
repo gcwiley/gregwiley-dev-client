@@ -1,12 +1,14 @@
-<app-navbar />
-<app-announcement-banner />
+<header>
+  <app-announcement-banner aria-label="Announcement Banner" />
+  <app-navbar aria-label="Navigation Menu" />
+</header>
 
 <main class="error-page-container">
-   <h2>Error</h2>
+  <h2>Error</h2>
 
-   <p>This website is feeling a little under the weather right now but will be back soon.</p>
+  <p>This website is feeling a little under the weather right now but will be back soon.</p>
 
-   <a mat-button href="www.google.com">Google</a>
+  <a mat-button href="www.google.com">Google</a>
 </main>
 
-<app-footer />
+<app-footer aria-label="site footer" />

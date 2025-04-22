@@ -33,7 +33,7 @@ export class AuthService {
     );
   }
 
-  // authenticates a firebase client using a popul-based OAuth authentication flow
+  // authenticates a firebase client using a popup-based OAuth authentication flow
   public signInWithGoogle(): Observable<UserCredential> {
     return from(signInWithPopup(this.auth, new GoogleAuthProvider())).pipe(
       catchError(this.handleError)

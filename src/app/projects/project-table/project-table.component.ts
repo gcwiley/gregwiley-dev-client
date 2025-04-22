@@ -58,7 +58,7 @@ export class ProjectTableComponent implements AfterViewInit {
    dataSource = new MatTableDataSource<Project>();
 
    // columns to display
-   columnsToDisplay = [
+   readonly columnsToDisplay = [
       'select',
       'title',
       'status',
@@ -112,7 +112,7 @@ export class ProjectTableComponent implements AfterViewInit {
    // the label for the checkbox on the passed row - fix this later
    public checkboxLabel(row?: Project): string {
       if (!row) {
-         return `${this.isAllSelected() ? 'deslect' : 'select'} all`;
+         return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
       }
       return `${this.selection.isSelected(row) ? 'deselect' : 'select'}`;
    }
