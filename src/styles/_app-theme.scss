@@ -21,7 +21,7 @@
 @use '../app/projects/recent-projects/recent-projects-theme';
 
 // COMPONENTS THEMES
-@use '../app/components/announcement-banner/announcement-banner-theme';
+@use '../app/components/announcement-banner/announcement-bar-theme';
 @use '../app/components/carousel/carousel-theme';
 @use '../app/components/footer/footer-theme';
 @use '../app/components/header/header-theme';
@@ -51,8 +51,8 @@
    @include project-table-theme.theme($theme);
    @include recent-projects-theme.theme($theme);
    
-   // components
-   @include announcement-banner-theme.theme($theme);
+   // shared components
+   @include announcement-bar-theme.theme($theme);
    @include carousel-theme.theme($theme);
    @include footer-theme.theme($theme);
    @include header-theme.theme($theme);

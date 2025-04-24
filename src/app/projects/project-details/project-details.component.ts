@@ -6,7 +6,6 @@ import { takeUntil } from 'rxjs';
 
 // angular material
 import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
 
 // project service and interface
 import { ProjectService } from '../../services/project.service';
@@ -18,7 +17,7 @@ import { Project } from '../../types/project.interface';
   templateUrl: './project-details.component.html',
   styleUrls: ['./project-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule, CommonModule, MatListModule, MatCardModule],
+  imports: [RouterModule, CommonModule, MatListModule],
 })
 export class ProjectDetailsComponent implements OnInit, OnDestroy {
   project!: Project; // initialize explicitly
@@ -39,7 +38,6 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) {
       console.error('Project ID not found is route parameters');
-      // optionally navigate away or show an error message
       return;
     }
     this.projectService
@@ -50,7 +48,6 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (project) => {
           this.project = project;
-          // may need changeDetectorRef.markForCheck() with OnPush
         },
         error: (error) => {
           console.error('Error fetching project details:', error);

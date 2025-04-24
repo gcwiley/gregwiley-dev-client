@@ -6,5 +6,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './announcement-bar.component.html',
   styleUrls: ['./announcement-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: []
 })
 export class AnnouncementBarComponent {}
