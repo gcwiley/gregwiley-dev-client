@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 // shared components
 import {
    NavbarComponent,
-   AnnouncementBannerComponent,
+   AnnouncementBarComponent,
    FooterComponent,
 } from '../../components/';
 
@@ -18,7 +18,7 @@ import { SkillListComponent } from '../../components';
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
       NavbarComponent,
-      AnnouncementBannerComponent,
+      AnnouncementBarComponent,
       FooterComponent,
       SkillListComponent,
    ],

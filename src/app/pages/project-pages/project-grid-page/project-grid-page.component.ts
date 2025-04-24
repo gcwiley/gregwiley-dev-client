@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-// import the angular material
+// angular material
 import { MatDividerModule } from '@angular/material/divider';
 
-// import the shared components
-import { NavbarComponent, FooterComponent, AnnouncementBannerComponent  } from '../../../components';
+// shared components
+import { NavbarComponent, FooterComponent, AnnouncementBarComponent  } from '../../../components';
 
-// import the project grid component
+// project components
 import { ProjectGridComponent } from '../../../projects';
 
 @Component({
@@ -18,7 +18,7 @@ import { ProjectGridComponent } from '../../../projects';
     imports: [
         MatDividerModule,
         NavbarComponent,
-        AnnouncementBannerComponent,
+        AnnouncementBarComponent,
         FooterComponent,
         ProjectGridComponent,
     ]

@@ -21,7 +21,7 @@ import { Project } from '../../types/project.interface';
   imports: [RouterModule, CommonModule, MatListModule, MatCardModule],
 })
 export class ProjectDetailsComponent implements OnInit, OnDestroy {
-  project: Project | undefined; // initialize explicitly
+  project!: Project; // initialize explicitly
   private destroy$ = new Subject<void>(); // subject to signal destruction
 
   constructor(private route: ActivatedRoute, private projectService: ProjectService) {}
@@ -54,7 +54,6 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
         },
         error: (error) => {
           console.error('Error fetching project details:', error);
-          this.project = undefined; // ensure project is undefined on error
         },
       });
   }

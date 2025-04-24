@@ -22,7 +22,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // import the shared components
 import {
   NavbarComponent,
-  AnnouncementBannerComponent,
+  AnnouncementBarComponent,
   FooterComponent,
 } from '../../components';
 
@@ -51,7 +51,7 @@ const ERROR_MESSAGES = {
     MatButtonModule,
     MatIconModule,
     NavbarComponent,
-    AnnouncementBannerComponent,
+    AnnouncementBarComponent,
     FooterComponent,
     FormsModule,
   ],

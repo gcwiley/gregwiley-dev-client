@@ -18,7 +18,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/admin-page/admin-page.component').then((m) => m.AdminPageComponent),
   },
-  // project page
+  // projects page
   {
     path: 'projects',
     title: 'Projects',
@@ -28,7 +28,7 @@ export const routes: Routes = [
         (m) => m.ProjectGridPageComponent
       ),
   },
-  // idiv project page
+  // individual project page
   {
     path: 'projects/:id',
     title: 'Project Details',
