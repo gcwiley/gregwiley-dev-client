@@ -1,27 +1,2 @@
-<!-- Example: Using *ngIf with async pipe -->
-<div *ngIf="recentProjects$ | async as projects; else loadingOrError">
-   <mat-list *ngIf="projects.length > 0; else noProjects">
-     <mat-list-item *ngFor="let project of projects">
-       <!-- Display project details -->
-       <mat-icon matListItemIcon>folder</mat-icon>
-       <div matListItemTitle>{{ project.title }}</div>
-       <!-- Add more project info or links as needed -->
-     </mat-list-item>
-   </mat-list>
-   <ng-template #noProjects>
-     <p>No recent projects found.</p>
-   </ng-template>
- </div>
- 
- <ng-template #loadingOrError>
-   <!-- Show loading indicator or error message -->
-   <div *ngIf="errorLoadingProjects; else loading">
-      <p>Could not load recent projects.</p>
-      <!-- Optionally add a retry button -->
-   </div>
-   <ng-template #loading>
-      <p>Loading recent projects...</p>
-      <!-- Or use a spinner component -->
-   </ng-template>
- </ng-template>
+
  

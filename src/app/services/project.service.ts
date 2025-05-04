@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
 
-// import the project interface
+// project interface
 import { Project, ProjectInput } from '../types/project.interface';
 
 // set up headers

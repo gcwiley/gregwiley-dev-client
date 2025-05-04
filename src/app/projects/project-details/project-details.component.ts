@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs';
 
@@ -17,11 +16,13 @@ import { Project } from '../../types/project.interface';
   templateUrl: './project-details.component.html',
   styleUrls: ['./project-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule, CommonModule, MatListModule],
+  imports: [RouterModule, MatListModule],
 })
 export class ProjectDetailsComponent implements OnInit, OnDestroy {
   project!: Project; // initialize explicitly
   private destroy$ = new Subject<void>(); // subject to signal destruction
+  public hasError = false;
+  public isLoading = false;
 
   constructor(private route: ActivatedRoute, private projectService: ProjectService) {}
 
@@ -37,7 +38,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   public getProjectById(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) {
-      console.error('Project ID not found is route parameters');
+      console.error('Project ID not found in route parameters.');
       return;
     }
     this.projectService

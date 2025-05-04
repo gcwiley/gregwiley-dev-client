@@ -1,4 +1,3 @@
-// angular core/common/router
 import {
    AfterViewInit,
    Component,
@@ -28,7 +27,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs';
 
-// project service
+// project service and interface
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
