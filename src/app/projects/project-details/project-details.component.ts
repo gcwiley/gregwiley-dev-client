@@ -44,7 +44,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     this.projectService
       .getProjectById(id)
       .pipe(
-        takeUntil(this.destroy$) // unsubscribe when component is destroyed
+        takeUntil(this.destroy$)
       )
       .subscribe({
         next: (project) => {
