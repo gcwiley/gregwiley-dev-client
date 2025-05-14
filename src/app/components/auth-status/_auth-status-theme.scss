@@ -1,17 +1,17 @@
-@use 'sass:map';
 @use '@angular/material' as mat;
 
 // color mixin
 @mixin color($theme) {
-   .carousel {
-      color: mat.get-theme-color($theme, primary, 50);
-      background-color: mat.get-theme-color($theme, primary, 30);
+   .auth-status {
+      color: mat.get-theme-color($theme, error, 100);
+      background-color: mat.get-theme-color($theme, error, 35);
    }
 }
 // typography mixin
 @mixin typography($theme) {
-   .carousel {
+   .auth-status {
       font: mat.get-theme-typography($theme, body-medium);
+      font-weight: 300
    }
 }
 

@@ -27,6 +27,9 @@
                 {{ status.viewValue }}
               </mat-option>
             </mat-select>
+            @if (this.projectForm.controls['status'].hasError('required')) {
+            <mat-error>Please enter a project status.</mat-error>
+            }
           </mat-form-field>
         </div>
 
@@ -39,6 +42,9 @@
                 category.viewValue
               }}</mat-option>
             </mat-select>
+            @if (this.projectForm.controls['category'].hasError('required')) {
+            <mat-error>Please enter a project category.</mat-error>
+            }
           </mat-form-field>
         </div>
       </div>

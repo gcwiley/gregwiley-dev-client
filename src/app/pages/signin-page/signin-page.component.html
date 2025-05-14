@@ -4,9 +4,11 @@
 
 <main class="signin-page-container">
   <mat-card class="signin-form" appearance="outlined">
-    <mat-card-header>
-      <mat-card-title>Admin Sign In</mat-card-title>
-    </mat-card-header>
+    <!-- title text -->
+    <div class="title-text">
+      <h3 class="mat-headline-4">Sign In</h3>
+      <h4 class="mat-body-2">Please sign in to your account.</h4>
+    </div>
     <mat-card-content>
       <form [formGroup]="signinForm" (ngSubmit)="onSubmitSignIn()">
         <!-- EMAIL (email) -->

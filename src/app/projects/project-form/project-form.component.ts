@@ -106,7 +106,7 @@ export class ProjectFormComponent implements OnInit {
     });
   }
 
-  // save a new project
+  // saves a new project
   public onSaveProject(): void {
     if (this.mode === 'create') {
       this.projectService
@@ -114,7 +114,7 @@ export class ProjectFormComponent implements OnInit {
         .pipe(first())
         .subscribe({
           next: (project) => {
-            // reset the form
+            // reset the project form
             this.projectForm.reset(project);
             // display a success message
             this.snackBar.open('Project created', 'CLOSE', {
@@ -135,14 +135,14 @@ export class ProjectFormComponent implements OnInit {
           // reset the form
           this.projectForm.reset(project);
           // display a success message
-          this.snackBar.open('Project updated', 'CLOSE', {
+          this.snackBar.open('Project updated.', 'CLOSE', {
             duration: 3000,
           });
           // navigates user back to homepage
           this.router.navigateByUrl('/');
         },
         error: () => {
-          this.snackBar.open('Error updating project', 'CLOSE', {
+          this.snackBar.open('Error updating project.', 'CLOSE', {
             duration: 3000,
           });
         },

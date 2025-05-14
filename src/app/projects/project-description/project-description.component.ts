@@ -52,7 +52,7 @@ export class ProjectDescriptionComponent implements OnInit, OnDestroy {
         },
         error: (error) => {
           this.hasError = true;
-          console.error('Error fetching project details:', error);
+          console.error('Error fetching project description:', error);
         },
       });
   }

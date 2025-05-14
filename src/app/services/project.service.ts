@@ -79,11 +79,7 @@ export class ProjectService {
 
   // private method that centralizes error handling - HANDLE ERROR
   private handleError(error: Error): Observable<never> {
-    // NOTE: use a logging service instead of console.error
-    // replace this with a more robust logging mechcanism - a dedicated logging service
-    // logs error to console
     console.error('There was an error', error);
-    // throws the error again, so the subscriber can catch it and handle the error
     return throwError(() => error);
   }
 }

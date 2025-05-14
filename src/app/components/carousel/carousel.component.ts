@@ -22,7 +22,7 @@ import { LEFT_ARROW, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
 // import animation module
 import { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';
 
-// import the angular material modules
+// angular material
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 

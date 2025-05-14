@@ -20,15 +20,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 // shared components
-import {
-  AnnouncementBarComponent,
-  FooterComponent,
-} from '../../components';
+import { AnnouncementBarComponent, FooterComponent } from '../../components';
 
 // auth service
 import { AuthService } from '../../services/auth.service';
 
-// Define constants for error messages
+// define constants for error messages
 const ERROR_MESSAGES = {
   INVALID_CREDENTIALS: 'Invalid email or password.',
   NETWORK_ERROR: 'A network error occurred. Please try again later.',
@@ -93,10 +90,7 @@ export class SigninComponent implements OnInit {
       .pipe(
         catchError((error) => {
           let message = ERROR_MESSAGES.UNKNOWN_ERROR;
-          if (
-            error.code === 'auth/user-not-found' ||
-            error.code === 'auth/wrong-password'
-          ) {
+          if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
             message = ERROR_MESSAGES.INVALID_CREDENTIALS;
           } else if (error.code === 'auth/network-request-failed') {
             message = ERROR_MESSAGES.NETWORK_ERROR;
