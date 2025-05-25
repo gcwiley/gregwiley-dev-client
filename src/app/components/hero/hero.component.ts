@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-// import angular material modules
+// angular material
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -14,6 +14,5 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class HeroComponent {
    title = 'Gregory Wiley';
-
    subtitle = 'Full Stack Web Developer';
 }

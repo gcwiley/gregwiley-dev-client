@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
 
 // project interface
@@ -26,7 +26,7 @@ export class ProjectService {
     return this.http.get<Project>(url).pipe(catchError(this.handleError));
   }
 
-  // GET projects whose name contains search term - SEARCH PROJECTS
+  // GET: projects whose name contains search term - SEARCH PROJECTS
   public searchProjects(term: string): Observable<Project[]> {
     if (!term.trim()) {
       // if no search term, return an empty project arrary
@@ -41,17 +41,17 @@ export class ProjectService {
 
   // GET: project the count from database - PROJECT COUNT
   public getProjectCount(): Observable<number> {
-    return this.http.get<number>('/api/project-count').pipe(catchError(this.handleError));
+    return this.http.get<number>('/api/projects/count').pipe(catchError(this.handleError));
   }
 
   // GET: recently created projects added to database _ RECENTLY CREATED
   public getRecentlyCreatedProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>('/api/recent-projects').pipe(catchError(this.handleError));
+    return this.http.get<Project[]>('/api/projects/recent').pipe(catchError(this.handleError));
   }
 
   // GET: featured projects for carousel - FEATURED PROJECTS
   public getFeaturedProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>('/api/favorite-projects').pipe(catchError(this.handleError));
+    return this.http.get<Project[]>('/api/projects/favorites').pipe(catchError(this.handleError));
   }
 
   // SAVE METHODS //
@@ -65,7 +65,7 @@ export class ProjectService {
       .pipe(catchError(this.handleError));
   }
 
-  // DELETE a project by ID from the server - DELETE PROJECT BY ID
+  // DELETE: a project by ID from the server - DELETE PROJECT BY ID
   public deleteProjectById(id: string): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
     return this.http.delete<Project>(url, { headers: headers }).pipe(catchError(this.handleError));
@@ -77,9 +77,17 @@ export class ProjectService {
     return this.http.patch(url, body, { headers: headers }).pipe(catchError(this.handleError));
   }
 
-  // private method that centralizes error handling - HANDLE ERROR
-  private handleError(error: Error): Observable<never> {
-    console.error('There was an error', error);
-    return throwError(() => error);
+  // enhanced error handler that centralized error handling - HANDLE ERROR
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    let errorMessage = 'An unknown error occurred!';
+    if (error.error instanceof ErrorEvent) {
+      // client-side/network error
+      errorMessage = `A client-side error occurred: ${error.error.message}`;
+    } else {
+      // backend error
+      errorMessage = `Backend returned code ${error.status}, body was ${JSON.stringify(error.error)}`
+    }
+    console.error('There was an error:', errorMessage);
+    return throwError(() => new Error(errorMessage))
   }
 }

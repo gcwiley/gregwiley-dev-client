@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
-import { CommonModule } from '@angular/common'; // used for async pipe
+import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs';
 
@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './auth-status.component.html',
   styleUrl: './auth-status.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterModule, MatToolbarModule, MatButtonModule],
+  imports: [AsyncPipe, RouterModule, MatToolbarModule, MatButtonModule],
 })
 export class AuthStatusComponent {
   private authService = inject(AuthService);
@@ -25,10 +25,10 @@ export class AuthStatusComponent {
   constructor(private router: Router) {}
 
   // expose the isAuthenicated observable from thier service
-  public isLoggedIn$: Observable<boolean> = this.authService.isAuthenticated$;
+  public isUserLoggedIn$: Observable<boolean> = this.authService.isAuthenticated$;
 
   // expose user email
-  public userEmail: Observable<string | null> = this.authService.user$.pipe(
+  public userEmail$: Observable<string | null> = this.authService.user$.pipe(
     map((user) => user?.email ?? null)
   );
 

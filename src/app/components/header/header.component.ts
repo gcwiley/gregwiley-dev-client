@@ -4,7 +4,7 @@ import { RouterModule, Router } from '@angular/router';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-// import angular material modules
+// angular material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';

@@ -1,23 +1,18 @@
-<mat-toolbar>
-  <!-- Use *ngIf with the async pipe -->
-  <ng-container *ngIf="isLoggedIn$ | async as isLoggedIn; else loggedOutContent">
-    <!-- Check if userEmail$ has a value -->
-    <p *ngIf="userEmail | async as email; else loggedInNoEmail">
-      Logged in - {{ email }}
-    </p>
-    <ng-template #loggedInNoEmail>
-      <p>Logged in</p>
-    </ng-template>
+<div class="auth-status" aria-label="Auth Status Toolbar">
+  @if (isUserLoggedIn$ | async) {
+  <!-- user is logged in -->
+  @if (userEmail$ | async; as email) {
+  <p>Logged in - {{ email }}</p>
+  } @else {
+  <p>Logged in</p>
+  <!-- -->
+  }
+  <!-- sign out button-->
+  <button mat-flat-button (click)="onClickSignOut()">Sign Out</button>
+  } @else {
+  <!-- user is currently logged out -->
+  <p>Logged Out</p>
+  <a mat-flat-button routerLink="/signin">Sign In</a>
+  }
+</div>
 
-    <span class="spacer"></span>
-
-    <!-- Add Sign Out button maybe? Or handle in navbar -->
-    <button mat-flat-button (click)="onClickSignOut()">Sign Out</button>
-  </ng-container>
-
-  <ng-template #loggedOutContent>
-    <p>Logged Out</p>
-    <!-- Link to Sign In page -->
-    <a mat-flat-button routerLink="/signin">Sign In</a>
-  </ng-template>
-</mat-toolbar>

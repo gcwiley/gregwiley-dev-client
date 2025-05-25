@@ -11,7 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
-// service and interface
+// project service and interface
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
@@ -50,7 +50,7 @@ export class ProjectGridComponent implements OnInit, OnDestroy {
   // lifecycle management - subject to manage subscription cleanup
   private destroy = new Subject<void>();
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.projects = this.projectService.getProjects().pipe();
 
     this.cols = this.breakpointObserver
@@ -81,14 +81,14 @@ export class ProjectGridComponent implements OnInit, OnDestroy {
       );
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     // signal component destruction
     this.destroy.next();
     this.destroy.complete();
   }
 
   // Optional: If you need to track items for *ngFor performance
-  trackByProjectId(index: number, project: Project): string {
+  public trackByProjectId(index: number, project: Project): string {
    return project._id; // Assuming your Project interface has an 'id' property
 }
 }
