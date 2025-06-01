@@ -75,7 +75,7 @@ export class ProjectGridComponent implements OnInit, OnDestroy {
           if (state.breakpoints[Breakpoints.Medium]) {
             return 3; // e.g. tablet landscape
           }
-          // default for large/x-large of none of the above match
+          // default for large/x-large or none of the above match
           return 5;
         })
       );

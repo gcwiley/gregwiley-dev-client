@@ -1,16 +1,35 @@
 <header>
-  <app-announcement-bar />
-  <app-navbar />
+  <app-navbar></app-navbar>
 </header>
 
-<main class="about-page-container">
+<main class="about-page-container" aria-label="About Me">
   <article class="main-content">
-    <p>About me text goes here.</p>
+    <section>
+      <h1>About Me</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu
+        consectetur cursus, nisl erat dictum urna, nec dictum massa enim nec dui. Suspendisse
+        potenti. Etiam ac mauris vitae urna fermentum tincidunt. Vivamus euismod, justo nec
+        facilisis cursus, enim erat dictum enim, nec dictum massa enim nec dui.
+      </p>
+    </section>
   </article>
 
-  <aside class="side-content">
-    <app-skill-list />
+  <aside class="side-content" aria-labelledby="more-about-me-heading">
+    <h2 id="more-about-me-heading">More About Me</h2>
+    <section>
+      <p>
+        Quisque euismod, justo nec facilisis cursus, enim erat dictum enim, nec dictum massa enim
+        nec dui. Pellentesque euismod, nisi eu consectetur cursus, nisl erat dictum urna, nec dictum
+        massa enim nec dui.
+      </p>
+      <ul>
+        <li>Hobby: Photography</li>
+        <li>Favorite Food: Sushi</li>
+        <li>Dream Destination: Iceland</li>
+      </ul>
+    </section>
   </aside>
 </main>
 
-<app-footer />
+<app-footer></app-footer>

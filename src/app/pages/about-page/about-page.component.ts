@@ -3,12 +3,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 // shared components
 import {
    NavbarComponent,
-   AnnouncementBarComponent,
    FooterComponent,
 } from '../../components/';
-
-// about component
-import { SkillListComponent } from '../../components';
 
 @Component({
    standalone: true,
@@ -18,9 +14,7 @@ import { SkillListComponent } from '../../components';
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
       NavbarComponent,
-      AnnouncementBarComponent,
       FooterComponent,
-      SkillListComponent,
    ],
 })
 export class AboutPageComponent {}

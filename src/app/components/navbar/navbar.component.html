@@ -1,18 +1,20 @@
-<mat-toolbar class="navbar" role="navigation" aria-label="Navigation Menu">
-  <a mat-icon-button routerLink="/" aria-label="Home menu icon">
-    <mat-icon>local_fire_department</mat-icon>
-  </a>
+<nav class="navbar" role="navigation" aria-label="Main Navigation">
+  <div>
+    <a mat-icon-button routerLink="/" aria-label="Home menu icon">
+      <mat-icon>local_fire_department</mat-icon>
+    </a>
 
-  <h2>gregwiley.dev</h2>
+    <span class="title">gregwiley.dev</span>
 
-  <span class="flex-spacer"></span>
+    <span class="flex-spacer"></span>
 
-  <button mat-icon-button [matMenuTriggerFor]="adminMenu" aria-label="Admin Menu">
-    <mat-icon>settings</mat-icon>
-  </button>
+    <button mat-icon-button [matMenuTriggerFor]="adminMenu" aria-label="Admin Menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
 
-  <mat-menu #adminMenu="matMenu">
-    <button mat-menu-item routerLink="/admin">Dashboard</button>
-    <button mat-menu-item routerLink="/setting">Settings</button>
-  </mat-menu>
-</mat-toolbar>
+    <mat-menu #adminMenu="matMenu">
+      <button mat-menu-item routerLink="/admin">Dashboard</button>
+      <button mat-menu-item routerLink="/setting">Settings</button>
+    </mat-menu>
+  </div>
+</nav>

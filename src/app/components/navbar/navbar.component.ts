@@ -22,7 +22,7 @@ import { AuthService } from '../../services/auth.service';
 export class NavbarComponent {
    constructor(public authService: AuthService, private router: Router) {}
 
-   // signs out current user
+   // signs out current user - Fix this!
    public onClickSignOut(): void {
       this.authService.signOutUser().subscribe(() => {
          // redirects user to sign in page

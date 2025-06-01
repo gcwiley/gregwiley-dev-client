@@ -26,7 +26,7 @@ import {
   ProjectLanguage,
 } from '../../types/project.interface';
 
-// import the project data values
+// project data values
 import {
   PROJECT_STATUS,
   PROJECT_LANGUAGE,
@@ -118,39 +118,39 @@ export class ProjectFormComponent implements OnInit {
             this.projectForm.reset(project);
             // display a success message
             this.snackBar.open('Project created', 'CLOSE', {
-              duration: 3000,
+              duration: 5000,
             });
             // navigates user back to homepage
             this.router.navigateByUrl('/');
           },
           error: () => {
             this.snackBar.open('Error creating project', 'CLOSE', {
-              duration: 3000,
+              duration: 5000,
             });
           },
         });
     } else {
       this.projectService.updateProjectById(this.id!, this.projectForm.value as Project).subscribe({
         next: (project) => {
-          // reset the form
+          // reset the project form
           this.projectForm.reset(project);
           // display a success message
           this.snackBar.open('Project updated.', 'CLOSE', {
-            duration: 3000,
+            duration: 5000,
           });
           // navigates user back to homepage
           this.router.navigateByUrl('/');
         },
         error: () => {
           this.snackBar.open('Error updating project.', 'CLOSE', {
-            duration: 3000,
+            duration: 5000,
           });
         },
       });
     }
   }
 
-  // reset the form
+  // reset the project form
   public onReset(event: Event): void {
     event.preventDefault();
     this.projectForm.reset();
