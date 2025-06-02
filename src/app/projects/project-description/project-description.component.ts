@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs';
 
@@ -14,7 +14,7 @@ import { Project } from '../../types/project.interface';
   templateUrl: './project-description.component.html',
   styleUrls: ['./project-description.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule],
 })
 export class ProjectDescriptionComponent implements OnInit, OnDestroy {
   project!: Project; // initialize explicitly

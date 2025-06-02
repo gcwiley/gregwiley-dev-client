@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 // angular material
 import { MatCardModule } from '@angular/material/card';
@@ -17,7 +17,7 @@ export interface Skill {
    templateUrl: './skill-list.component.html',
    styleUrls: ['./skill-list.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush,
-   imports: [CommonModule, MatCardModule, MatListModule, MatDividerModule],
+   imports: [MatCardModule, MatListModule, MatDividerModule],
 })
 export class SkillListComponent {
    skills: Skill[] = [

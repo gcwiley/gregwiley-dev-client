@@ -1,18 +1,24 @@
-<div class="auth-status" aria-label="Auth Status Toolbar">
-  @if (isUserLoggedIn$ | async) {
-  <!-- user is logged in -->
-  @if (userEmail$ | async; as email) {
-  <p>Logged in - {{ email }}</p>
-  } @else {
-  <p>Logged in</p>
-  <!-- -->
-  }
-  <!-- sign out button-->
-  <button mat-flat-button (click)="onClickSignOut()">Sign Out</button>
-  } @else {
-  <!-- user is currently logged out -->
-  <p>Logged Out</p>
-  <a mat-flat-button routerLink="/signin">Sign In</a>
-  }
-</div>
+<div class="auth-status-banner" aria-label="Auth Status Banner">
+  <div class="auth-status-banner-content">
+    @if (isUserLoggedIn$ | async) {
+    <!-- user is logged in -->
+    @if (userEmail$ | async; as email) {
+    <p>Logged in - {{ email }}</p>
+    } @else {
+    <p>Logged in</p>
+    }
 
+    <span class="flex-spacer"></span>
+
+    <!-- sign out button-->
+    <button mat-flat-button (click)="onClickSignOut()">Sign Out</button>
+    } @else {
+    <!-- user is currently logged out -->
+    <p>Logged Out</p>
+
+    <span class="flex-spacer"></span>
+    <!-- sign in button -->
+    <a mat-flat-button routerLink="/signin">Sign In</a>
+    }
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <mat-toolbar class="header" role="navigation">
-  
+
   <a mat-icon-button routerLink="/" aria-label="code icon">
     <mat-icon>code</mat-icon>
   </a>
@@ -26,27 +26,24 @@
 
   <mat-menu #menu="matMenu">
     <!-- If user is signed in -->
-    <ng-container *ngIf="auth.user | async as user; else showSignIn">
-
+    @if (auth.user | async; as user) {
       <!-- admin dashbord -->
       <a mat-menu-item routerLink="/admin">
         <mat-icon>admin_panel_settings</mat-icon>
         <span>Admin Dashboard</span>
       </a>
-
       <!-- sign out button -->
       <button mat-menu-item (click)="onClickSignOut()">
         <mat-icon>logout</mat-icon>
         <span>Sign Out</span>
       </button>
-    </ng-container>
-
-    <!-- if user is NOT signed in -->
-    <ng-template #showSignIn>
+    } @else {
       <a mat-menu-item routerLink="/signin">
         <mat-icon>login</mat-icon>
         <span>Sign In</span>
       </a>
-    </ng-template>
+    }
+
+    <!-- if user is NOT signed in -->
   </mat-menu>
 </mat-toolbar>

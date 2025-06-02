@@ -2,14 +2,14 @@
 
 // color mixin
 @mixin color($theme) {
-   .auth-status {
+   .auth-status-banner {
       color: mat.get-theme-color($theme, error, 100);
       background-color: mat.get-theme-color($theme, error, 35);
    }
 }
 // typography mixin
 @mixin typography($theme) {
-   .auth-status {
+   .auth-status-banner {
       font: mat.get-theme-typography($theme, body-medium);
       font-weight: 300
    }

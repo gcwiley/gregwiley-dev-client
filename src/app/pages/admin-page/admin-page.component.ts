@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 
 // angular material
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -22,18 +22,17 @@ import { ProjectTableComponent } from '../../projects';
    styleUrls: ['./admin-page.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
-      CommonModule,
-      MatSidenavModule,
-      MatListModule,
-      MatToolbarModule,
-      MatIconModule,
-      MatMenuModule,
-      MatButtonModule,
-      MatTabsModule,
-      MatTooltip,
-      ProjectTableComponent,
-      RouterModule,
-   ],
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatTooltip,
+    ProjectTableComponent,
+    RouterModule
+],
 })
 export class AdminPageComponent {
    events: string[] = [];

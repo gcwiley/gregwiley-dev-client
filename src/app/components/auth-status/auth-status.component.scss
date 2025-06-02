@@ -1,3 +1,14 @@
-.spacer {
-    flex: 1 1 auto
+@use '../../../styles/helpers/constants';
+
+.auth-status-banner-content {
+  max-width: constants.$max-width;
+  margin: auto;
+  // padding: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+// sets up space between items within auth status banner
+.flex-spacer {
+  flex: 1 1 auto;
 }

@@ -27,7 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 // import NgIf - find out what this does.
-import { NgIf } from '@angular/common';
+
 
 // decorator that marks a class as an angular directive
 @Directive({
@@ -54,7 +54,7 @@ export class CarouselItemDirective implements FocusableOption {
    templateUrl: './carousel.component.html',
    styleUrls: ['./carousel.component.scss'],
    encapsulation: ViewEncapsulation.None,
-   imports: [NgIf, MatButtonModule, MatIconModule],
+   imports: [MatButtonModule, MatIconModule],
 })
 export class CarouselComponent implements AfterContentInit {
    // find out what this does

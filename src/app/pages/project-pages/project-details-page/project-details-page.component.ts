@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // shared components
-import { NavbarComponent, AnnouncementBarComponent, FooterComponent } from '../../../components';
+import { NavbarComponent, FooterComponent } from '../../../components';
 
 // project components
 import { ProjectDetailsComponent, ProjectDescriptionComponent } from '../../../projects';
@@ -14,7 +14,6 @@ import { ProjectDetailsComponent, ProjectDescriptionComponent } from '../../../p
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     NavbarComponent,
-    AnnouncementBarComponent,
     FooterComponent,
     ProjectDetailsComponent,
     ProjectDescriptionComponent,

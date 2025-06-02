@@ -2,9 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // shared components
 import {
-  AnnouncementBarComponent,
   NavbarComponent,
-  AuthStatusComponent,
   FooterComponent,
 } from '../../../components';
 
@@ -21,8 +19,6 @@ import { ProjectFormComponent, RecentProjectsComponent } from '../../../projects
     FooterComponent,
     ProjectFormComponent,
     RecentProjectsComponent,
-    AnnouncementBarComponent,
-    AuthStatusComponent,
     NavbarComponent,
   ],
 })
