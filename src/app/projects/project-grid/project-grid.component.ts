@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@
 import { CommonModule, AsyncPipe } from '@angular/common';
 import { Breakpoints, BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { Observable, Subject, of } from 'rxjs';
+import { catchError, map, takeUntil } from 'rxjs/operators';
 
 // angular material
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -32,7 +32,7 @@ import { Project } from '../../types/project.interface';
   ],
 })
 export class ProjectGridComponent implements OnInit, OnDestroy {
-  // dependencies
+  // inject dependencies
   private projectService = inject(ProjectService);
   private breakpointObserver = inject(BreakpointObserver);
 
@@ -50,8 +50,13 @@ export class ProjectGridComponent implements OnInit, OnDestroy {
   // lifecycle management - subject to manage subscription cleanup
   private destroy = new Subject<void>();
 
-  public ngOnInit(): void {
-    this.projects = this.projectService.getProjects().pipe();
+  public ngOnInit(): void { // fix this!
+    this.projects = this.projectService.getProjects().pipe(
+      catchError(() => {
+        // optionally, set the error flag or return an empty array
+        return of([])
+      })
+    );
 
     this.cols = this.breakpointObserver
       .observe([

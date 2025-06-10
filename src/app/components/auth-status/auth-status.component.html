@@ -1,9 +1,11 @@
-<div class="auth-status-banner" aria-label="Auth Status Banner">
+<div class="auth-status-banner" aria-label="Authentication Status" aria-live="polite">
   <div class="auth-status-banner-content">
     @if (isUserLoggedIn$ | async) {
     <!-- user is logged in -->
     @if (userEmail$ | async; as email) {
-    <p>Logged in - {{ email }}</p>
+    <p>
+      Logged in as <span>{{ email }}</span>
+    </p>
     } @else {
     <p>Logged in</p>
     }
@@ -11,14 +13,15 @@
     <span class="flex-spacer"></span>
 
     <!-- sign out button-->
-    <button mat-flat-button (click)="onClickSignOut()">Sign Out</button>
+    <button mat-flat-button type="button" (click)="onClickSignOut()" aria-label="Sign out">
+      Sign Out
+    </button>
     } @else {
     <!-- user is currently logged out -->
     <p>Logged Out</p>
 
     <span class="flex-spacer"></span>
-    <!-- sign in button -->
-    <a mat-flat-button routerLink="/signin">Sign In</a>
+    <a mat-flat-button routerLink="/signin" aria-label="Sign in">Sign In</a>
     }
   </div>
 </div>

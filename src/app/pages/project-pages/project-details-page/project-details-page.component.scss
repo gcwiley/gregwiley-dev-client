@@ -3,17 +3,19 @@
 .project-details-page-container {
    max-width: constants.$max-width;
    margin: auto;
-   min-height: 100vh;
    display: flex;
    flex-direction: row;
+   min-height: 100vh;
 }
 
-.project-description-container {
+.project-description {
    flex-basis: 70%;
    max-width: 70%;
+   padding: 2rem;
 }
 
-.project-details-container {
+.project-details {
    flex-basis: 30%;
    max-width: 30%;
+   padding: 2rem;
 }

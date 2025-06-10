@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { catchError, Observable, of, throwError } from 'rxjs';
+import { catchError, Observable, of, throwError, map } from 'rxjs';
 
-// project interface
+// project interfaces
 import { Project, ProjectInput } from '../types/project.interface';
 
 // set up headers
@@ -17,41 +17,54 @@ export class ProjectService {
 
   // GET: all projects from the server - GET PROJECTS
   public getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.projectsUrl).pipe(catchError(this.handleError));
+    return this.http.get<{ data: Project[] }>(this.projectsUrl).pipe(
+      map((res) => res.data), // extract the array
+      catchError(this.handleError)
+    );
   }
 
-  // GET: a individual project by ID. Will 404 error if the ID is not found - GET PROJECT BY ID
+  // GET: a individual project by ID - GET PROJECT BY ID
   public getProjectById(id: string): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
-    return this.http.get<Project>(url).pipe(catchError(this.handleError));
+    return this.http.get<{ data: Project }>(url).pipe(
+      map((res) => res.data), // extract the array
+      catchError(this.handleError)
+    );
   }
 
   // GET: projects whose name contains search term - SEARCH PROJECTS
   public searchProjects(term: string): Observable<Project[]> {
     if (!term.trim()) {
-      // if no search term, return an empty project arrary
+      // if no search term, return an empty project array
       return of([]);
     }
 
     const params = new HttpParams().set('name', term);
-    return this.http
-      .get<Project[]>(this.projectsUrl, { params })
-      .pipe(catchError(this.handleError));
+    return this.http.get<{ data: Project[] }>(this.projectsUrl, { params }).pipe(
+      map((res) => res.data),
+      catchError(this.handleError)
+    );
   }
 
   // GET: project the count from database - PROJECT COUNT
   public getProjectCount(): Observable<number> {
-    return this.http.get<number>('/api/projects/count').pipe(catchError(this.handleError));
+    return this.http.get<{ data: number }>('/api/projects/count').pipe(
+      map((res) => res.data), // extract the array
+      catchError(this.handleError)
+    );
   }
 
-  // GET: recently created projects added to database _ RECENTLY CREATED
+  // GET: recently created projects added to database - RECENTLY CREATED
   public getRecentlyCreatedProjects(): Observable<Project[]> {
     return this.http.get<Project[]>('/api/projects/recent').pipe(catchError(this.handleError));
   }
 
   // GET: featured projects for carousel - FEATURED PROJECTS
   public getFeaturedProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>('/api/projects/favorites').pipe(catchError(this.handleError));
+    return this.http.get<{ data: Project[] }>('/api/projects/favorites').pipe(
+      map((res) => res.data), // extract the array.
+      catchError(this.handleError)
+    );
   }
 
   // SAVE METHODS //
@@ -85,9 +98,11 @@ export class ProjectService {
       errorMessage = `A client-side error occurred: ${error.error.message}`;
     } else {
       // backend error
-      errorMessage = `Backend returned code ${error.status}, body was ${JSON.stringify(error.error)}`
+      errorMessage = `Backend returned code ${error.status}, body was ${JSON.stringify(
+        error.error
+      )}`;
     }
     console.error('There was an error:', errorMessage);
-    return throwError(() => new Error(errorMessage))
+    return throwError(() => new Error(errorMessage));
   }
 }

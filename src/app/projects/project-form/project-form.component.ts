@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
@@ -89,7 +88,6 @@ export class ProjectFormComponent implements OnInit {
           this.project = project;
           // overrides values of initial form controls
           this.projectForm.setValue({
-            // set value for every form control
             title: this.project.title,
             status: this.project.status,
             category: this.project.category,
