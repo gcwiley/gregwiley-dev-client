@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs';
 
 // angular material
 import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 // project service and interface
 import { ProjectService } from '../../services/project.service';
@@ -16,14 +17,12 @@ import { Project } from '../../types/project.interface';
   templateUrl: './project-details.component.html',
   styleUrls: ['./project-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule, MatListModule],
+  imports: [RouterModule, MatListModule, MatIconModule],
 })
 export class ProjectDetailsComponent implements OnInit, OnDestroy {
   project!: Project; // initialize explicitly
   private destroy$ = new Subject<void>(); // subject to signal destruction
-  public hasError = false;
-  public isLoading = false;
-
+  
   constructor(private route: ActivatedRoute, private projectService: ProjectService) {}
 
   public ngOnInit(): void {

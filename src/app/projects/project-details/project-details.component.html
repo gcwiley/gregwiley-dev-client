@@ -2,21 +2,25 @@
   <span mat-subheader>Project Details</span>
   <!-- status -->
   <mat-list-item lines="2" role="listitem">
+    <mat-icon matListItemIcon>status</mat-icon>
     <span matListItemTitle>Status</span>
     <span matListItemLine>{{ project.status }}</span>
   </mat-list-item>
   <!-- category -->
   <mat-list-item lines="2" role="listitem">
+    <mat-icon matListItemIcon>category</mat-icon>
     <span matListItemTitle>Category</span>
     <span matListItemLine>{{ project.category }}</span>
   </mat-list-item>
   <!-- language used -->
   <mat-list-item lines="2" role="listitem">
+    <mat-icon matListItemIcon>code</mat-icon>
     <span matListItemTitle>Language Used</span>
     <span matListItemLine>{{ project.language }}</span>
   </mat-list-item>
   <!-- gitUrl -->
   <mat-list-item lines="2" role="listitem">
+    <mat-icon matListItemIcon>link</mat-icon>
     <span matListItemTitle>Git Repo</span>
     <a href="{{ project.gitUrl }}" target="_blank" rel="noopener noreferrer">Git Hub Repo</a>
   </mat-list-item>

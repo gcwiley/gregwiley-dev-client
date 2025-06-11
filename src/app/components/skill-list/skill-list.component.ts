@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-
 // angular material
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
