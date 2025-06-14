@@ -1,12 +1,20 @@
 $margin: 2rem;
 $padding: 1rem;
 
-// max width of entire web application (except for the admin page)
+// max width of the entire web application
 $max-width: 1300px;
+
+// max width of main content
+$main-content-flex-basis: 70%;
+$main-content-max-width: 70%;
+
+// max width of side content
+$side-content-flex-basis: 30%;
+$side-content-max-width: 30%;
 
 // border styles
 $border-style: solid;
-$border-width: 0.5px;
-$border-radius: 1rem;
+$border-width: .5px;
+$border-radius: .5rem;
 
 // add content from material website github site

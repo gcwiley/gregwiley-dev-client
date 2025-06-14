@@ -7,7 +7,7 @@
     </div>
     <mat-card-content>
       <form [formGroup]="signinForm" (ngSubmit)="onSubmitSignIn()">
-        <!-- EMAIL (email) -->
+        <!-- email -->
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Email</mat-label>
           <input
@@ -17,13 +17,13 @@
             placeholder="name@example.com"
             autocomplete="username" />
           @if (formControls['email'].hasError('required')) {
-          <mat-error>Email is required.</mat-error>
+          <mat-error>Please enter your email address.</mat-error>
           } @if (formControls['email'].hasError('email')) {
           <mat-error>Invalid email format.</mat-error>
           }
         </mat-form-field>
 
-        <!-- PASSWORD (password) -->
+        <!-- password -->
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Password</mat-label>
           <input
@@ -33,7 +33,7 @@
             placeholder="Password"
             autocomplete="current-password" />
           @if (formControls['password'].hasError('required')) {
-          <mat-error>A password is required</mat-error>
+          <mat-error>Please enter your password.</mat-error>
           } @if (formControls['password'].hasError('minlength')) {
           <mat-error>Your password must be at least 6 characters.</mat-error>
           }

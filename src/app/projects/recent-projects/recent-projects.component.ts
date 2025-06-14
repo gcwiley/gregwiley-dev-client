@@ -21,6 +21,7 @@ import { Project } from '../../types/project.interface';
 export class RecentProjectsComponent implements OnInit {
   public recentProjects$!: Observable<Project[]>;
 
+  // eslint-disable-next-line @angular-eslint/prefer-inject
   constructor(private projectService: ProjectService) {}
 
   public ngOnInit(): void {

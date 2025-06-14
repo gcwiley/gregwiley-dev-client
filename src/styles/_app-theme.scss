@@ -1,5 +1,18 @@
 @use '@angular/material' as mat;
 
+// SHARED COMPONENTS THEMES
+@use '../app/components/announcement-bar/announcement-bar-theme';
+@use '../app/components/auth-status/auth-status-theme';
+@use '../app/components/carousel/carousel-theme';
+@use '../app/components/carousel-container/carousel-container-theme';
+@use '../app/components/confirm-dialog/confirm-dialog-theme';
+@use '../app/components/footer/footer-theme';
+@use '../app/components/hero/hero-component-theme';
+@use '../app/components/logo/logo-theme';
+@use '../app/components/navbar/navbar-theme';
+@use '../app/components/search-bar/search-bar-theme';
+@use '../app/components/skill-list/skill-list-theme';
+
 // PAGE THEMES
 @use '../app/pages/about-page/about-page-theme';
 @use '../app/pages/admin-page/admin-page-theme';
@@ -20,17 +33,7 @@
 @use '../app/projects/project-table/project-table-theme';
 @use '../app/projects/recent-projects/recent-projects-theme';
 
-// COMPONENTS THEMES
-@use '../app/components/announcement-bar/announcement-bar-theme';
-@use '../app/components/carousel/carousel-theme';
-@use '../app/components/footer/footer-theme';
-@use '../app/components/header/header-theme';
-@use '../app/components/hero/hero-component-theme';
-@use '../app/components/logo/logo-theme';
-@use '../app/components/navbar/navbar-theme';
-@use '../app/components/skill-list/skill-list-theme';
-
-
+// fix this
 @use '../styles/helpers/constants';
 
 // Styles for the app that are based on the current theme.
@@ -55,7 +58,6 @@
    @include announcement-bar-theme.theme($theme);
    @include carousel-theme.theme($theme);
    @include footer-theme.theme($theme);
-   @include header-theme.theme($theme);
    @include hero-component-theme.theme($theme);
    @include logo-theme.theme($theme);
    @include navbar-theme.theme($theme);

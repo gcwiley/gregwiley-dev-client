@@ -1,9 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-// shared components
-import { NavbarComponent, FooterComponent } from '../../components';
-
 // angular material
 import { MatButtonModule } from '@angular/material/button';
 
@@ -13,6 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './not-found-page.component.html',
   styleUrls: ['./not-found-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule, NavbarComponent, FooterComponent, MatButtonModule],
+  imports: [RouterModule, MatButtonModule],
 })
 export class NotFoundPageComponent {}

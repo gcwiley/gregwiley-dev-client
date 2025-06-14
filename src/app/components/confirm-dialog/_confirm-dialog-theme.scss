@@ -1,16 +1,15 @@
-@use 'sass:map';
 @use '@angular/material' as mat;
 
 // color mixin
 @mixin color($theme) {
-   .header {
-      color: mat.get-theme-color($theme, primary, 10);
+   .confirm-dialog {
+      color: mat.get-theme-color($theme, primary, 50);
+      background-color: mat.get-theme-color($theme, primary, 30);
    }
 }
-
 // typography mixin
 @mixin typography($theme) {
-   .header {
+   .confirm-dialog {
       font: mat.get-theme-typography($theme, body-medium);
    }
 }
