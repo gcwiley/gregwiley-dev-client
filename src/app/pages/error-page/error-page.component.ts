@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-// shared components
-import { NavbarComponent, FooterComponent } from '../../components';
+// angular material
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   standalone: true,
@@ -9,6 +9,6 @@ import { NavbarComponent, FooterComponent } from '../../components';
   templateUrl: './error-page.component.html',
   styleUrl: './error-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NavbarComponent, FooterComponent],
+  imports: [MatButtonModule],
 })
 export class ErrorPageComponent {}
