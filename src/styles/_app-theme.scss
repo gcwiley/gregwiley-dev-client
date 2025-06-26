@@ -13,7 +13,7 @@
 @use '../app/components/search-bar/search-bar-theme';
 @use '../app/components/skill-list/skill-list-theme';
 
-// PAGE THEMES
+// PAGE COMPONENT THEMES
 @use '../app/pages/about-page/about-page-theme';
 @use '../app/pages/admin-page/admin-page-theme';
 @use '../app/pages/error-page/error-page-theme';
@@ -38,28 +38,29 @@
 
 // Styles for the app that are based on the current theme.
 @mixin theme($theme) {
-   
-   // pages
-   @include about-page-theme.theme($theme);
-   @include home-page-theme.theme($theme);
-   @include signin-page-theme.theme($theme);
-   @include not-found-page-theme.theme($theme);
-   @include admin-page-theme.theme($theme);
+  // shared components
+  @include announcement-bar-theme.theme($theme);
+  @include auth-status-theme.theme($theme);
+  @include carousel-theme.theme($theme);
+  @include footer-theme.theme($theme);
+  @include hero-component-theme.theme($theme);
+  @include logo-theme.theme($theme);
+  @include navbar-theme.theme($theme);
+  @include skill-list-theme.theme($theme);
 
-   // project component themes
-   @include project-description-theme.theme($theme);
-   @include project-details-theme.theme($theme);
-   @include project-form-theme.theme($theme);
-   @include project-grid-theme.theme($theme);
-   @include project-table-theme.theme($theme);
-   @include recent-projects-theme.theme($theme);
-   
-   // shared components
-   @include announcement-bar-theme.theme($theme);
-   @include carousel-theme.theme($theme);
-   @include footer-theme.theme($theme);
-   @include hero-component-theme.theme($theme);
-   @include logo-theme.theme($theme);
-   @include navbar-theme.theme($theme);
-   @include skill-list-theme.theme($theme);
+  // pages components - fix this!
+  @include about-page-theme.theme($theme);
+
+  @include home-page-theme.theme($theme);
+  @include signin-page-theme.theme($theme);
+  @include not-found-page-theme.theme($theme);
+  @include admin-page-theme.theme($theme);
+
+  // project component themes
+  @include project-description-theme.theme($theme);
+  @include project-details-theme.theme($theme);
+  @include project-form-theme.theme($theme);
+  @include project-grid-theme.theme($theme);
+  @include project-table-theme.theme($theme);
+  @include recent-projects-theme.theme($theme);
 }

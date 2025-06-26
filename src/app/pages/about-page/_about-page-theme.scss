@@ -3,8 +3,8 @@
 // color mixin
 @mixin color($theme) {
    .about-page-container {
-      color: mat.get-theme-color($theme, primary, 10);
-      background-color: mat.get-theme-color($theme, primary, 20);
+      color: mat.get-theme-color($theme, primary, 0);
+      // background-color: mat.get-theme-color($theme, primary, 20);
    }
    .main-content {
       background-color: mat.get-theme-color($theme, primary, 90);

@@ -11,9 +11,11 @@
 .main-content {
    flex-basis: constants.$main-content-flex-basis;
    max-width: constants.$main-content-max-width;
+   padding: 2rem;
 }
 
 .side-content {
    flex-basis: constants.$side-content-flex-basis;
    max-width: constants.$side-content-max-width;
+   padding: 2rem;
 }
