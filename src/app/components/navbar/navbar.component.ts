@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 
 // angular material
@@ -19,7 +19,9 @@ import { AuthService } from '../../services/auth.service';
    imports: [RouterModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule],
 })
 export class NavbarComponent {
-   constructor(public authService: AuthService, private router: Router) {}
+   // inject dependencies
+   public authService = inject(AuthService);
+   public router = inject(Router);
 
    // signs out current user - Fix this!
    public onClickSignOut(): void {

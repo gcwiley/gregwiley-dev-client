@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import {
   FormBuilder,
   FormsModule,
@@ -51,14 +51,13 @@ export class SigninComponent implements OnInit {
   public isLoading = false;
   public errorMessage: string | null = null;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private router: Router,
-    private snackbar: MatSnackBar
-  ) {}
+  // inject dependencies
+  private formBuilder = inject(FormBuilder);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private snackBar = inject(MatSnackBar);
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initializeForm();
   }
 
@@ -100,12 +99,12 @@ export class SigninComponent implements OnInit {
           if (user) {
             this.router.navigateByUrl('/');
           } else {
-            this.snackbar.open(this.errorMessage!, 'CLOSE');
+            this.snackBar.open(this.errorMessage!, 'CLOSE');
           }
         },
         error: () => {
           this.isLoading = false;
-          this.snackbar.open(ERROR_MESSAGES.UNKNOWN_ERROR, 'CLOSE');
+          this.snackBar.open(ERROR_MESSAGES.UNKNOWN_ERROR, 'CLOSE');
         },
       });
   }

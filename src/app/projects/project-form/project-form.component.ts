@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
@@ -59,6 +59,13 @@ export class ProjectFormComponent implements OnInit {
   categories: ProjectCategory[] = PROJECT_CATAGORIES;
   languages: ProjectLanguage[] = PROJECT_LANGUAGE;
 
+  // inject dependencies
+  private formBuilder = inject(FormBuilder);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private projectService = inject(ProjectService);
+  private snackBar = inject(MatSnackBar);
+
   // create the project form
   projectForm = this.formBuilder.group({
     title: ['', Validators.required],
@@ -69,14 +76,6 @@ export class ProjectFormComponent implements OnInit {
     gitUrl: ['', Validators.required],
     description: ['', Validators.required],
   });
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    public route: ActivatedRoute,
-    private projectService: ProjectService,
-    private snackBar: MatSnackBar
-  ) {}
 
   public ngOnInit(): void {
     // find out if we have an "id" or not

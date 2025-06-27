@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, HostListener, Output, input } from '@angular/core';
+import { Directive, EventEmitter, HostListener, Output, input, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { filter, first, switchMap } from 'rxjs';
 
@@ -19,7 +19,9 @@ export class ProjectDeleteDirective {
    @Output() public deleted = new EventEmitter<string>();
 
    // constructor initialized the directive dependencies
-   constructor(private projectService: ProjectService, private confirm: CustomConfirmDialogService, private snackbar: MatSnackBar) {}
+   private projectService = inject(ProjectService);
+   private confirm = inject(CustomConfirmDialogService);
+   private snackBar = inject(MatSnackBar);
 
    @HostListener('click')
 
@@ -37,10 +39,10 @@ export class ProjectDeleteDirective {
                // when data is emitted, it emits the deleted event
                this.deleted.emit(this.id());
                // opens a success snackbar
-               this.snackbar.open('Project Deleted', 'Close');
+               this.snackBar.open('Project Deleted', 'Close');
             },
             error: () => {
-               this.snackbar.open('Failed', 'Close');
+               this.snackBar.open('Failed', 'Close');
             },
          });
    }

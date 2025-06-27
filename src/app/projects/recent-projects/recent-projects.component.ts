@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable, catchError, of } from 'rxjs';
 
@@ -21,8 +21,8 @@ import { Project } from '../../types/project.interface';
 export class RecentProjectsComponent implements OnInit {
   public recentProjects$!: Observable<Project[]>;
 
-  // eslint-disable-next-line @angular-eslint/prefer-inject
-  constructor(private projectService: ProjectService) {}
+  // inject dependencies
+  private projectService = inject(ProjectService);
 
   public ngOnInit(): void {
     // get the observable stream of recently added projects

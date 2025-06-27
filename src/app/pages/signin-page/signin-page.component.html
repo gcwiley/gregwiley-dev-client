@@ -15,11 +15,13 @@
             type="email"
             formControlName="email"
             placeholder="name@example.com"
-            autocomplete="username" />
+            autocomplete="username" 
+            aria-describedby="email-errors"
+            />
           @if (formControls['email'].hasError('required')) {
-          <mat-error>Please enter your email address.</mat-error>
+          <mat-error id="email-required">Please enter your email address.</mat-error>
           } @if (formControls['email'].hasError('email')) {
-          <mat-error>Invalid email format.</mat-error>
+          <mat-error id="email-invalid">Invalid email format.</mat-error>
           }
         </mat-form-field>
 
@@ -31,17 +33,19 @@
             type="password"
             formControlName="password"
             placeholder="Password"
-            autocomplete="current-password" />
+            autocomplete="current-password" 
+            aria-describedby="password-errors"
+            />
           @if (formControls['password'].hasError('required')) {
-          <mat-error>Please enter your password.</mat-error>
+          <mat-error id="password-required">Please enter your password.</mat-error>
           } @if (formControls['password'].hasError('minlength')) {
-          <mat-error>Your password must be at least 6 characters.</mat-error>
+          <mat-error id="password-invalid">Your password must be at least 6 characters.</mat-error>
           }
         </mat-form-field>
 
         <!-- BUTTONS -->
-        <button mat-flat-button type="submit" [disabled]="signinForm.invalid || isLoading">
-          Sign In
+        <button mat-flat-button class="sign-in-button" type="submit" [disabled]="signinForm.invalid || isLoading">
+          SIGN IN
         </button>
       </form>
     </mat-card-content>

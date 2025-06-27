@@ -4,6 +4,7 @@ import {
    ViewChild,
    ChangeDetectionStrategy,
    OnDestroy,
+   inject
 } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -24,8 +25,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 // rxjs
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 // project service and interface
 import { ProjectService } from '../../services/project.service';
@@ -81,12 +81,11 @@ export class ProjectTableComponent implements AfterViewInit, OnDestroy {
    // subject to manage component destruction
    private destroy$ = new Subject<void>();
 
-   constructor(
-      private projectService: ProjectService,
-      private router: Router,
-      private snackbar: MatSnackBar,
-   ) {}
-
+   // inject dependencies
+   private projectService = inject(ProjectService);
+   private router = inject(Router);
+   private snackBar = inject(MatSnackBar);
+   
    // a callback method that is invoked immediately after angular has completed initialization of a component's view
    public ngAfterViewInit(): void {
       this.dataSource.sort = this.sort;
@@ -113,7 +112,7 @@ export class ProjectTableComponent implements AfterViewInit, OnDestroy {
          error: (error) => {
             console.error('Error fetching projects:', error) // log the error
             this.isLoadingResults = false; // stop the spinner
-            this.snackbar.open('Error fetching projects:', 'Close')
+            this.snackBar.open('Error fetching projects:', 'Close')
          }
       })
    }

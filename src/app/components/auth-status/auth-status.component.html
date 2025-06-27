@@ -3,11 +3,15 @@
     @if (isUserLoggedIn$ | async) {
     <!-- user is logged in -->
     @if (userEmail$ | async; as email) {
-    <p>
-      Logged in as <span>{{ email }}</span>
-    </p>
+    <mat-chip-set>
+      <mat-chip
+        >Logged in as <span>{{ email }}</span></mat-chip
+      >
+    </mat-chip-set>
     } @else {
-    <p>Logged in</p>
+    <mat-chip-set>
+      <mat-chip>Logged in</mat-chip>
+    </mat-chip-set>
     }
 
     <span class="flex-spacer"></span>
@@ -18,7 +22,9 @@
     </button>
     } @else {
     <!-- user is currently logged out -->
-    <p>Logged Out</p>
+    <mat-chip-set>
+      <mat-chip>Logged Out</mat-chip>
+    </mat-chip-set>
 
     <span class="flex-spacer"></span>
     <a mat-flat-button routerLink="/signin" aria-label="Sign in">Sign In</a>

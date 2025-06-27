@@ -1,7 +1,7 @@
 @use '../../../styles/helpers/constants';
 
 .resources-page-container {
-  max-width: 1400px;
+  max-width: constants.$max-width;
   margin: auto;
   display: flex;
   flex-direction: row;

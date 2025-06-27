@@ -1,3 +1,4 @@
+<!-- fix this! -->
 <nav class="navbar" role="navigation" aria-label="Main Navigation">
   <div>
     <a mat-icon-button routerLink="/" aria-label="Home menu icon">
@@ -13,8 +14,9 @@
     </button>
 
     <mat-menu #adminMenu="matMenu">
-      <button mat-menu-item routerLink="/admin">Dashboard</button>
-      <button mat-menu-item routerLink="/setting">Settings</button>
+      <button mat-menu-item routerLink="/admin">
+        <mat-icon> home </mat-icon><span>Admin Dashboard</span>
+      </button>
     </mat-menu>
   </div>
 </nav>

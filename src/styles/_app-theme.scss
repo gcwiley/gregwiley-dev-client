@@ -1,5 +1,3 @@
-@use '@angular/material' as mat;
-
 // SHARED COMPONENTS THEMES
 @use '../app/components/announcement-bar/announcement-bar-theme';
 @use '../app/components/auth-status/auth-status-theme';
@@ -33,29 +31,33 @@
 @use '../app/projects/project-table/project-table-theme';
 @use '../app/projects/recent-projects/recent-projects-theme';
 
-// fix this
-@use '../styles/helpers/constants';
-
 // Styles for the app that are based on the current theme.
 @mixin theme($theme) {
-  // shared components
+  // shared components themes
   @include announcement-bar-theme.theme($theme);
   @include auth-status-theme.theme($theme);
   @include carousel-theme.theme($theme);
+  @include carousel-container-theme.theme($theme);
+  @include confirm-dialog-theme.theme($theme);
   @include footer-theme.theme($theme);
   @include hero-component-theme.theme($theme);
   @include logo-theme.theme($theme);
   @include navbar-theme.theme($theme);
+  @include search-bar-theme.theme($theme);
   @include skill-list-theme.theme($theme);
 
-  // pages components - fix this!
+  // pages components themes
   @include about-page-theme.theme($theme);
-
-  @include home-page-theme.theme($theme);
-  @include signin-page-theme.theme($theme);
-  @include not-found-page-theme.theme($theme);
   @include admin-page-theme.theme($theme);
-
+  @include error-page-theme.theme($theme);
+  @include home-page-theme.theme($theme);
+  @include not-found-page-theme.theme($theme);
+  @include project-create-page-theme.theme($theme);
+  @include project-details-page-theme.theme($theme);
+  @include project-grid-page-theme.theme($theme);
+  @include resources-page-theme.theme($theme);
+  @include signin-page-theme.theme($theme);
+  
   // project component themes
   @include project-description-theme.theme($theme);
   @include project-details-theme.theme($theme);

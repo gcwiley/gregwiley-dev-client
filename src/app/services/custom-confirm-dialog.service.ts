@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { first, map, Observable } from 'rxjs';
 import { ConfirmDialogService } from './confirm-dialog.service';
 
@@ -11,8 +11,9 @@ export enum CustomConfirmDialog {
    providedIn: 'root',
 })
 export class CustomConfirmDialogService {
-   constructor(private confirm: ConfirmDialogService) {}
-
+   // inject dependencies
+   private confirm = inject(ConfirmDialogService);
+   
    public openCustomConfirmDialog(type: CustomConfirmDialog): Observable<boolean> {
       const title = this.getTitle(type);
       const content = this.getContent(type);

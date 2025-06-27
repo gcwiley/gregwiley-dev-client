@@ -10,6 +10,7 @@ import { AuthService } from '../../services/auth.service';
 // angular material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
   standalone: true,
@@ -17,12 +18,12 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './auth-status.component.html',
   styleUrl: './auth-status.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AsyncPipe, RouterModule, MatToolbarModule, MatButtonModule],
+  imports: [AsyncPipe, RouterModule, MatToolbarModule, MatButtonModule, MatChipsModule],
 })
 export class AuthStatusComponent {
+  // inject dependencies
   private authService = inject(AuthService);
-
-  constructor(private router: Router) {}
+  private router = inject(Router);
 
   // expose the isAuthenicated observable from thier service
   public isUserLoggedIn$: Observable<boolean> = this.authService.isAuthenticated$;

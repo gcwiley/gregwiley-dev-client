@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, Observable, of, throwError, map } from 'rxjs';
 
@@ -13,7 +13,7 @@ export class ProjectService {
   private projectsUrl = '/api/projects'; // URL to web api
 
   // inject "HttpClient" into the project service
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   // GET: all projects from the server - GET PROJECTS
   public getProjects(): Observable<Project[]> {
