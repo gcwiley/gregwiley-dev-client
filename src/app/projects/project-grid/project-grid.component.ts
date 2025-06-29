@@ -44,7 +44,7 @@ export class ProjectGridComponent implements OnInit, OnDestroy {
   // static grid properties
   rowHeight = '1:1';
   gutterSize = '0px';
-  colspan = 1.5;
+  colspan = 1;
   rowspan = 1;
 
   // lifecycle management - subject to manage subscription cleanup
@@ -81,7 +81,7 @@ export class ProjectGridComponent implements OnInit, OnDestroy {
             return 3; // e.g. tablet landscape
           }
           // default for large/x-large or none of the above match
-          return 5;
+          return 4;
         })
       );
   }

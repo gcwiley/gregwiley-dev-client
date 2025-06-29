@@ -56,7 +56,10 @@ export class ProjectService {
 
   // GET: recently created projects added to database - RECENTLY CREATED
   public getRecentlyCreatedProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>('/api/projects/recent').pipe(catchError(this.handleError));
+    return this.http.get<{ data: Project[] }>('/api/projects/recent').pipe(
+      map((res) => res.data), // extract the array
+      catchError(this.handleError)
+    );
   }
 
   // GET: featured projects for carousel - FEATURED PROJECTS

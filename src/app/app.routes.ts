@@ -31,7 +31,7 @@ export const routes: Routes = [
   // individual project page
   {
     path: 'projects/:id',
-    title: 'Project Details',
+    // title: 'Project Details',
     canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/project-pages/project-details-page/project-details-page.component').then(

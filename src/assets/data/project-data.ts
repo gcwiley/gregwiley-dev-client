@@ -6,6 +6,7 @@ export const PROJECT_STATUS: ProjectStatus[] = [
   { value: 'not-started', viewValue: 'Not Started' },
   { value: 'in-development', viewValue: 'In Development' },
   { value: 'completed', viewValue: 'Completed' },
+  { value: 'archived', viewValue: 'Archived' },
 ];
 
 // define the data values for project language

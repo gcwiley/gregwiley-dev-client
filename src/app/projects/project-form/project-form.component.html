@@ -12,7 +12,7 @@
           matInput
           type="text"
           formControlName="title"
-          placeholder="title"
+          placeholder="Project Title"
           aria-describedby="title-error" />
         @if (this.projectForm.controls['title'].hasError('required')) {
         <mat-error id="title-error">Please provide a project title.</mat-error>
@@ -115,7 +115,7 @@
               rows="6"
               formControlName="description"
               title="Description"
-              placeholder="Please provide a short description of the project"
+              placeholder="Please provide a short description of the project."
               aria-describedby="description-error"></textarea>
             @if (this.projectForm.controls['description'].hasError('required')) {
             <mat-error id="description-error">Please provide a project description.</mat-error>
@@ -127,11 +127,11 @@
 
     <mat-card-actions class="card-actions">
       @if (this.mode === 'create') {
-      <button mat-flat-button type="submit" [disabled]="!projectForm.valid">Create</button>
+      <button matButton="elevated" type="submit" [disabled]="!projectForm.valid">Create</button>
       } @else {
-      <button mat-flat-button type="submit" [disabled]="!projectForm.valid">Update</button>
+      <button matButton="elevated" type="submit" [disabled]="!projectForm.valid">Update</button>
       }
-      <button mat-flat-button type="button" (click)="projectForm.reset()">Clear</button>
+      <button matButton="outlined" type="button" (click)="projectForm.reset()">Clear Form</button>
     </mat-card-actions>
   </mat-card>
 </form>

@@ -3,12 +3,12 @@
 // color mixin
 @mixin color($theme) {
    .sidenav {
-      color: mat.get-theme-color($theme, primary, 0);
-      background-color: mat.get-theme-color($theme, primary, 10);
+      color: mat.get-theme-color($theme, primary, 100);
+      background-color: mat.get-theme-color($theme, primary, 100);
    }
 
    .toolbar {
-      background-color: mat.get-theme-color($theme, primary, 80);
+      background-color: mat.get-theme-color($theme, primary, 70);
    }
 }
 
