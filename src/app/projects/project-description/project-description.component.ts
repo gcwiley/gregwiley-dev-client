@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-
-// rxjs
 import { Subject, takeUntil } from 'rxjs';
 
 // project service and interface

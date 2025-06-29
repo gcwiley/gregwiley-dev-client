@@ -7,6 +7,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 
+// shared components
+import { LogoComponent } from '../logo/logo.component';
+
 // auth service
 import { AuthService } from '../../services/auth.service';
 
@@ -16,7 +19,7 @@ import { AuthService } from '../../services/auth.service';
    templateUrl: './navbar.component.html',
    styleUrls: ['./navbar.component.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush,
-   imports: [RouterModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule],
+   imports: [RouterModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, LogoComponent],
 })
 export class NavbarComponent {
    // inject dependencies

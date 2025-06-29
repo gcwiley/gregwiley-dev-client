@@ -1,5 +1,5 @@
 <main class="signin-page-container" aria-label="Sign In Page">
-  <mat-card class="signin-form" appearance="outlined">
+  <mat-card class="signin-form" appearance="raised">
     <!-- title text -->
     <div class="title-text">
       <h3 class="mat-headline-4">Sign In</h3>
@@ -15,9 +15,8 @@
             type="email"
             formControlName="email"
             placeholder="name@example.com"
-            autocomplete="username" 
-            aria-describedby="email-errors"
-            />
+            autocomplete="username"
+            aria-describedby="email-errors" />
           @if (formControls['email'].hasError('required')) {
           <mat-error id="email-required">Please enter your email address.</mat-error>
           } @if (formControls['email'].hasError('email')) {
@@ -33,9 +32,8 @@
             type="password"
             formControlName="password"
             placeholder="Password"
-            autocomplete="current-password" 
-            aria-describedby="password-errors"
-            />
+            autocomplete="current-password"
+            aria-describedby="password-errors" />
           @if (formControls['password'].hasError('required')) {
           <mat-error id="password-required">Please enter your password.</mat-error>
           } @if (formControls['password'].hasError('minlength')) {
@@ -43,10 +41,15 @@
           }
         </mat-form-field>
 
-        <!-- BUTTONS -->
-        <button mat-flat-button class="sign-in-button" type="submit" [disabled]="signinForm.invalid || isLoading">
-          SIGN IN
-        </button>
+        <mat-card-actions>
+          <button
+            mat-flat-button
+            class="sign-in-button"
+            type="submit"
+            [disabled]="signinForm.invalid || isLoading">
+            SIGN IN
+          </button>
+        </mat-card-actions>
       </form>
     </mat-card-content>
   </mat-card>

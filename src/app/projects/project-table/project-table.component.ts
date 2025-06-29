@@ -74,8 +74,6 @@ export class ProjectTableComponent implements AfterViewInit, OnDestroy {
       'startDate',
       'openProject',
       'editProject',
-      'deleteProject',
-      'openDialog',
    ];
 
    // subject to manage component destruction

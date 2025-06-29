@@ -8,9 +8,14 @@
       <!-- title -->
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Project Title</mat-label>
-        <input matInput type="text" formControlName="title" placeholder="title" />
+        <input
+          matInput
+          type="text"
+          formControlName="title"
+          placeholder="title"
+          aria-describedby="title-error" />
         @if (this.projectForm.controls['title'].hasError('required')) {
-          <mat-error>Please provide a project title.</mat-error>
+        <mat-error id="title-error">Please provide a project title.</mat-error>
         }
       </mat-form-field>
 
@@ -21,13 +26,13 @@
             <mat-label>Project Status</mat-label>
             <mat-select formControlName="status">
               @for (status of statues; track status) {
-                <mat-option [value]="status.value">
-                  {{ status.viewValue }}
-                </mat-option>
+              <mat-option [value]="status.value">
+                {{ status.viewValue }}
+              </mat-option>
               }
             </mat-select>
             @if (this.projectForm.controls['status'].hasError('required')) {
-              <mat-error>Please select a project status.</mat-error>
+            <mat-error>Please select a project status.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -38,13 +43,11 @@
             <mat-label>Category</mat-label>
             <mat-select formControlName="category">
               @for (category of categories; track category) {
-                <mat-option [value]="category.value">{{
-                  category.viewValue
-                }}</mat-option>
+              <mat-option [value]="category.value">{{ category.viewValue }}</mat-option>
               }
             </mat-select>
             @if (this.projectForm.controls['category'].hasError('required')) {
-              <mat-error>Please provide a project category.</mat-error>
+            <mat-error>Please provide a project category.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -63,7 +66,7 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             @if (this.projectForm.controls['startDate'].hasError('required')) {
-              <mat-error>Please provide a project start date.</mat-error>
+            <mat-error>Please provide a project start date.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -74,13 +77,11 @@
             <mat-label>Programming Language</mat-label>
             <mat-select formControlName="language">
               @for (language of languages; track language) {
-                <mat-option [value]="language.value">{{
-                  language.viewValue
-                }}</mat-option>
+              <mat-option [value]="language.value">{{ language.viewValue }}</mat-option>
               }
             </mat-select>
             @if (this.projectForm.controls['language'].hasError('required')) {
-              <mat-error>Please select a programming language.</mat-error>
+            <mat-error>Please select a programming language.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -91,9 +92,14 @@
           <!-- github url -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>GitHub URL</mat-label>
-            <input matInput type="url" formControlName="gitUrl" placeholder="GitHub Repo" />
+            <input
+              matInput
+              type="url"
+              formControlName="gitUrl"
+              placeholder="GitHub Repo"
+              aria-describedby="github-url-error" />
             @if (this.projectForm.controls['category'].hasError('required')) {
-              <mat-error>Please enter a project category.</mat-error>
+            <mat-error id="github-url-error">Please enter a project category.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -108,9 +114,11 @@
               matInput
               rows="6"
               formControlName="description"
-            title="Description"></textarea>
+              title="Description"
+              placeholder="Please provide a short description of the project"
+              aria-describedby="description-error"></textarea>
             @if (this.projectForm.controls['description'].hasError('required')) {
-              <mat-error>Please provide a project description.</mat-error>
+            <mat-error id="description-error">Please provide a project description.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -119,12 +127,11 @@
 
     <mat-card-actions class="card-actions">
       @if (this.mode === 'create') {
-        <button mat-flat-button type="submit" [disabled]="!projectForm.valid">Create</button>
+      <button mat-flat-button type="submit" [disabled]="!projectForm.valid">Create</button>
       } @else {
-        <button mat-flat-button type="submit" [disabled]="!projectForm.valid">Update</button>
+      <button mat-flat-button type="submit" [disabled]="!projectForm.valid">Update</button>
       }
-      <!-- fix this - add clear method -->
-      <button mat-flat-button type="button">Clear</button>
+      <button mat-flat-button type="button" (click)="projectForm.reset()">Clear</button>
     </mat-card-actions>
   </mat-card>
 </form>

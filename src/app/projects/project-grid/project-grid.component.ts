@@ -44,13 +44,13 @@ export class ProjectGridComponent implements OnInit, OnDestroy {
   // static grid properties
   rowHeight = '1:1';
   gutterSize = '0px';
-  colspan = 2;
+  colspan = 1.5;
   rowspan = 1;
 
   // lifecycle management - subject to manage subscription cleanup
   private destroy = new Subject<void>();
 
-  public ngOnInit(): void { // fix this!
+  public ngOnInit(): void {
     this.projects = this.projectService.getProjects().pipe(
       catchError(() => {
         // optionally, set the error flag or return an empty array

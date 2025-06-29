@@ -1,12 +1,13 @@
 .project-card {
-   position: absolute;
-   top: 1rem;
-   left: 1rem;
-   right: 1rem;
-   bottom: 1rem;
-   padding: 0.5rem;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 0.5rem;
 }
 
-.spacer {
-   flex: 1 1 auto;
+// sets up space
+.flex-spacer {
+  flex: 1 1 auto;
 }

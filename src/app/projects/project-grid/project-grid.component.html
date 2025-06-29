@@ -8,11 +8,15 @@
         <mat-card-header>
           <mat-card-title>{{ project.title }}</mat-card-title>
         </mat-card-header>
+        
         <mat-card-content>
           <p>{{ project.description }}</p>
         </mat-card-content>
+
+        <span class="flex-spacer"></span>
+  
         <mat-card-actions>
-          <button mat-flat-button>OPEN</button>
+          <button mat-flat-button routerLink="/projects/{{ project._id }}">OPEN</button>
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>
@@ -22,7 +26,7 @@
 <!-- Handle loading/empty states (optional but recommended) -->
 @if ((projects | async) === null) {
   <ng-container>
-    <p>Loading projects...</p>
+    <!-- fix this -->
     <!-- add angular material spinner -->
   </ng-container>
   } @if ((projects | async)?.length === 0) {

@@ -3,8 +3,8 @@
 // color mixin
 @mixin color($theme) {
    .auth-status-banner {
-      color: mat.get-theme-color($theme, error, 100);
-      background-color: mat.get-theme-color($theme, primary, 70);
+      color: mat.get-theme-color($theme, primary, 100);
+      background-color: mat.get-theme-color($theme, primary, 20);
    }
 }
 // typography mixin
