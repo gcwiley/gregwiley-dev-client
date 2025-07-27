@@ -1,4 +1,6 @@
 .hero-container {
+	background: var(--mat-sys-primary);
+	color: var(--mat-sys-on-primary);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -8,32 +10,13 @@
 	background-image: url(../../../assets/images/banner_image.jpg);
 	background-size: cover;
 	background-position: center;
-	height: 320px;
+	height: 300px;
 }
 
-.hero-content {
-	// border: 1px solid red;
-	color: white;
+.title {
+	font: var(--mat-sys-headline-large);
 }
 
 .subtitle {
-	margin-top: 1.5rem;
-	margin-bottom: 1.5rem;
-}
-
-.hero-image {
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
-	margin-bottom: 1.2rem;
-}
-
-.hero-actions {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-}
-
-.hero-actions a {
-	margin: .5rem;
+	font: var(--mat-sys-headline-small)
 }

@@ -8,6 +8,8 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+
+// rxjs
 import { catchError, of } from 'rxjs';
 
 // angular material
@@ -50,6 +52,7 @@ export class SigninComponent implements OnInit {
   public signinForm!: FormGroup;
   public isLoading = false;
   public errorMessage: string | null = null;
+  public showPassword = false; // to toggle password on/off
 
   // inject dependencies
   private formBuilder = inject(FormBuilder);
@@ -67,6 +70,10 @@ export class SigninComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]], // Example: Minimum password length
     });
+  }
+
+  public toggleShowPassword(): void {
+    this.showPassword = !this.showPassword;
   }
 
   // sign in with email and password, if successfull, navigate authenicated user to the home page

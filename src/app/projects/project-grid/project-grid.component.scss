@@ -11,3 +11,30 @@
 .flex-spacer {
   flex: 1 1 auto;
 }
+
+mat-card-title {
+  color: var(--mat-sys-primary);
+}
+
+mat-card-content p {
+  font: var(--mat-sys-body-medium);
+}
+
+// during loading of projects
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh; // adjust as needed
+  width: 100%;
+}
+
+// when no projects are found
+.empty-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh; // adjust as needed
+  width: 100%;
+  text-align: center;
+}

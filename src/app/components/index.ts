@@ -4,6 +4,7 @@ export { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 export { FooterComponent } from './footer/footer.component';
 export { HeroComponent } from './hero/hero.component';
 export { LogoComponent } from './logo/logo.component';
+export { MenuComponent } from './menu/menu.component';
 export { NavbarComponent } from './navbar/navbar.component';
 export { SearchBarComponent } from './search-bar/search-bar.component';
 export { SkillListComponent } from './skill-list/skill-list.component';

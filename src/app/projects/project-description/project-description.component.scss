@@ -1,9 +1,10 @@
 @use '../../../styles/helpers/constants';
 
+.project-title {
+  color: var(--mat-sys-primary);
+  font: var(--mat-sys-headline-medium);
+}
+
 .project-description {
-  margin: constants.$margin;
-  padding: constants.$padding;
-  border-style: constants.$border-style;
-  border-width: constants.$border-width;
-  border-radius: constants.$border-radius;
+  font: var(--mat-sys-body-large);
 }

@@ -1,7 +1,10 @@
 .announcement-bar {
+  background: var(--mat-sys-error-container);
+  color: var(--mat-sys-on-error-container);
+  font: var(--mat-sys-label-large);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2.5rem;
+  height: 3rem;
   margin: 0;
 }

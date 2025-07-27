@@ -1,11 +1,21 @@
 @use '../../../styles/helpers/constants';
 
+.navbar-container {
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  font: var(--mat-sys-headline-small);
+}
+
 .navbar-content {
   max-width: constants.$max-width;
   margin: auto;
   padding: 0.8rem;
   display: flex;
   align-items: center;
+}
+
+button {
+  color: var(--mat-sys-on-primary)
 }
 
 // sets up space between items within nav bar

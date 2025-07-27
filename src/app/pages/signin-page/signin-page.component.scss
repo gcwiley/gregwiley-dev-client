@@ -1,4 +1,6 @@
 .signin-page-container {
+   background: var(--mat-sys-primary-container);
+   color: var(--mat-sys-on-primary-container);
    display: flex;
    justify-content: center;
    align-items: center;
@@ -26,8 +28,6 @@
 
 .title-text {
    text-align: center;
+   font: var(--mat-sys-label-large)
 }
 
-.copyright-text {
-   text-align: center;
-}

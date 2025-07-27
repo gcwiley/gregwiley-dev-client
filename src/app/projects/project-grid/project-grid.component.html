@@ -16,21 +16,20 @@
         <span class="flex-spacer"></span>
   
         <mat-card-actions>
-          <button matButton routerLink="/projects/{{ project._id }}">View Project</button>
+          <button matButton routerLink="/projects/{{ project._id }}">View</button>
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>
   }
 </mat-grid-list>
 
-<!-- Handle loading/empty states (optional but recommended) -->
+<!-- Handle loading/empty states -->
 @if ((projects | async) === null) {
-  <ng-container>
-    <!-- fix this -->
-    <!-- add angular material spinner -->
-  </ng-container>
+    <div class="spinner-container">
+      <mat-spinner></mat-spinner>
+    </div>
   } @if ((projects | async)?.length === 0) {
-  <ng-container>
+  <div class="empty-message">
     <p>No Projects found.</p>
-  </ng-container>
+  </div>
 }

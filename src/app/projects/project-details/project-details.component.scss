@@ -1,9 +1,8 @@
 @use '../../../styles/helpers/constants';
 
 .project-details {
-  margin: constants.$margin;
-  padding: 1.5rem;
-  // border-style: constants.$border-style;
-  border-width: constants.$border-width;
-  border-radius: constants.$border-radius;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  margin: 2rem;
+  padding: 1rem;
 }

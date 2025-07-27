@@ -113,14 +113,15 @@ export class ProjectFormComponent implements OnInit {
             // reset the project form
             this.projectForm.reset(project);
             // display a success message
-            this.snackBar.open('Project created', 'CLOSE', {
+            this.snackBar.open('Project created', 'Close', {
               duration: 5000,
             });
-            // navigates user back to homepage - fix this!
-            this.router.navigateByUrl('/');
+            // navigates user back to admin dashboard
+            this.router.navigateByUrl('/admin');
           },
-          error: () => {
-            this.snackBar.open('Error creating project', 'CLOSE', {
+          error: (error) => {
+            console.error(error)
+            this.snackBar.open('Error creating project', 'Close', {
               duration: 5000,
             });
           },
@@ -131,14 +132,15 @@ export class ProjectFormComponent implements OnInit {
           // reset the project form
           this.projectForm.reset(project);
           // display a success message
-          this.snackBar.open('Project updated.', 'CLOSE', {
+          this.snackBar.open('Project updated.', 'Close', {
             duration: 5000,
           });
           // navigates user back to homepage
           this.router.navigateByUrl('/');
         },
-        error: () => {
-          this.snackBar.open('Error updating project.', 'CLOSE', {
+        error: (error) => {
+          console.error(error)
+          this.snackBar.open('Error updating project.', 'Close', {
             duration: 5000,
           });
         },

@@ -1,36 +1,44 @@
+@use '../../../styles/helpers/constants';
+
+.footer {
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  font: var(--mat-sys-title-medium);
+}
+
 .footer-content {
-   max-width: 1340px;
-   margin: auto;
-   // flex properties
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   height: 6rem;
+  max-width: constants.$max-width;
+  margin: auto;
+  // flex properties
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 6rem;
 }
 
 .footer-copyright {
-   display: flex;
-   align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .footer-copyright a {
-   text-decoration: none;
-   margin-right: 0.5rem;
+  text-decoration: none;
+  margin-right: 0.5rem;
 }
 
 .footer-copyright img,
 .footer-logos img {
-   width: 30px;
-   height: 30px;
-   vertical-align: middle; // helps align images with adjacent text
+  width: 30px;
+  height: 30px;
+  vertical-align: middle; // helps align images with adjacent text
 }
 
 .footer-logos {
-   display: flex;
-   align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .footer-logos a {
-   margin-right: .5rem;
-   margin-left: .5rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }

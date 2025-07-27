@@ -1,8 +1,14 @@
 @use '../../../styles/helpers/constants';
 
 .home-page-container {
-   max-width: constants.$max-width; 
-   min-height: 100vh;
-   margin: auto;
+  max-width: constants.$max-width;
+  min-height: 100vh;
+  margin: auto;
+  padding: 2rem 1rem;
+  gap: 2rem;
 }
 
+.title {
+  font: var(--mat-sys-headline-small);
+  color: var(--mat-sys-primary);
+}

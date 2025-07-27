@@ -1,5 +1,10 @@
 @use '../../../styles/helpers/constants';
 
+.auth-status-banner {
+  background: var(--mat-sys-secondary-fixed-dim);
+  color: var(--mat-sys-on-secondary-fixed-dim);
+}
+
 .auth-status-banner-content {
   max-width: constants.$max-width;
   margin: auto;

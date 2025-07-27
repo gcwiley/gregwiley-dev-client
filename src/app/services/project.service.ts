@@ -15,7 +15,7 @@ export class ProjectService {
   // inject "HttpClient" into the project service
   private http = inject(HttpClient);
 
-  // GET: all projects from the server - GET PROJECTS
+  // GET: all projects from the server - GET ALL PROJECTS
   public getProjects(): Observable<Project[]> {
     return this.http.get<{ data: Project[] }>(this.projectsUrl).pipe(
       map((res) => res.data), // extract the array
@@ -39,7 +39,7 @@ export class ProjectService {
       return of([]);
     }
 
-    const params = new HttpParams().set('name', term);
+    const params = new HttpParams().set('query', term);
     return this.http.get<{ data: Project[] }>(this.projectsUrl, { params }).pipe(
       map((res) => res.data),
       catchError(this.handleError)
@@ -88,9 +88,21 @@ export class ProjectService {
   }
 
   // PATCH: update the project in the database - UPDATE PROJECT BY ID
-  public updateProjectById(id: string, body: Partial<Project>): Observable<object> {
+  public updateProjectById(id: string, body: Partial<Project>): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
-    return this.http.patch(url, body, { headers: headers }).pipe(catchError(this.handleError));
+    return this.http.patch<{ data: Project }>(url, body, { headers: headers }).pipe(
+      map((res) => res.data),
+      catchError(this.handleError)
+    );
+  }
+
+  // PATCH: set a project as a favorite or not - FAVORITE PROJECT
+  public setProjectFavorite(id: string, favorite: boolean): Observable<Project> {
+    const url = `${this.projectsUrl}/${id}`;
+    return this.http.patch<{ data: Project }>(url, { favorite }, { headers }).pipe(
+      map((res) => res.data),
+      catchError(this.handleError)
+    );
   }
 
   // enhanced error handler that centralized error handling - HANDLE ERROR
