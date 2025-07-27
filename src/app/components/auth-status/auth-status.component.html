@@ -5,12 +5,12 @@
     @if (userEmail$ | async; as email) {
     <mat-chip-set>
       <mat-chip
-        >Logged in as <span>{{ email }}</span></mat-chip
+        >Signed in as <span>{{ email }}</span></mat-chip
       >
     </mat-chip-set>
     } @else {
     <mat-chip-set>
-      <mat-chip>Logged in</mat-chip>
+      <mat-chip>Signed in</mat-chip>
     </mat-chip-set>
     }
 
@@ -23,7 +23,7 @@
     } @else {
     <!-- user is currently logged out -->
     <mat-chip-set>
-      <mat-chip>Logged Out</mat-chip>
+      <mat-chip>Siged Out</mat-chip>
     </mat-chip-set>
 
     <span class="flex-spacer"></span>

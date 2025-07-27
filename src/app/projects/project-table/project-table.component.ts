@@ -81,7 +81,7 @@ export class ProjectTableComponent implements AfterViewInit, OnDestroy {
 
    // inject dependencies
    private projectService = inject(ProjectService);
-   private router = inject(Router);
+   private router = inject(Router); // fix this!
    private snackBar = inject(MatSnackBar);
    
    // a callback method that is invoked immediately after angular has completed initialization of a component's view
@@ -108,7 +108,7 @@ export class ProjectTableComponent implements AfterViewInit, OnDestroy {
             this.isLoadingResults = false;
          },
          error: (error) => {
-            console.error('Error fetching projects:', error) // log the error
+            console.error('Error fetching projects:', error)
             this.isLoadingResults = false; // stop the spinner
             this.snackBar.open('Error fetching projects:', 'Close')
          }
