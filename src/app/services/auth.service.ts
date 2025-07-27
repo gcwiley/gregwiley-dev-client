@@ -1,5 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, from, throwError, map } from 'rxjs';
+
+// firebase auth
 import {
   Auth,
   signInWithEmailAndPassword,

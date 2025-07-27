@@ -116,7 +116,7 @@ export class ProjectFormComponent implements OnInit {
             this.snackBar.open('Project created', 'CLOSE', {
               duration: 5000,
             });
-            // navigates user back to homepage
+            // navigates user back to homepage - fix this!
             this.router.navigateByUrl('/');
           },
           error: () => {
