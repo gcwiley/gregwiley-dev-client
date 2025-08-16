@@ -6,14 +6,13 @@ import {
    OnDestroy,
    inject
 } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 // angular cdk
 import { SelectionModel } from '@angular/cdk/collections';
 
 // angular material
-import { MatRippleModule } from '@angular/material/core';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -39,7 +38,6 @@ import { Project } from '../../types/project.interface';
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
       CommonModule,
-      MatRippleModule,
       MatTableModule,
       MatCheckboxModule,
       MatIconModule,
@@ -81,23 +79,20 @@ export class ProjectTableComponent implements AfterViewInit, OnDestroy {
 
    // inject dependencies
    private projectService = inject(ProjectService);
-   private router = inject(Router); // fix this!
    private snackBar = inject(MatSnackBar);
    
-   // a callback method that is invoked immediately after angular has completed initialization of a component's view
    public ngAfterViewInit(): void {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.getProjects();
    }
 
-   // implement ngOnDestory to complete the subject
    public ngOnDestroy(): void {
        this.destroy$.next();
        this.destroy$.complete();
    }
 
-   // gets all projects from the project service
+   // get all projects from project service
    public getProjects(): void {
       this.isLoadingResults = true;
       this.projectService.getProjects()
@@ -110,7 +105,9 @@ export class ProjectTableComponent implements AfterViewInit, OnDestroy {
          error: (error) => {
             console.error('Error fetching projects:', error)
             this.isLoadingResults = false; // stop the spinner
-            this.snackBar.open('Error fetching projects:', 'Close')
+            this.snackBar.open('Error fetching projects:', 'Close', {
+               duration: 5000
+            })
          }
       })
    }

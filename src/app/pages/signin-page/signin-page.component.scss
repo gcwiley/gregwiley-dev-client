@@ -1,5 +1,8 @@
 .signin-page-container {
    background: var(--mat-sys-primary-container);
+   background-image: url(../../../assets/images/sign_in_graphic.jpg);
+   background-size: cover;
+   background-position: center;
    color: var(--mat-sys-on-primary-container);
    display: flex;
    justify-content: center;

@@ -11,5 +11,5 @@ import { AuthStatusComponent, AnnouncementBarComponent } from './components';
   imports: [RouterOutlet, AuthStatusComponent, AnnouncementBarComponent],
 })
 export class AppComponent {
-  title = 'gregwiley-dev-client';
+  title = 'gregwiley.dev';
 }

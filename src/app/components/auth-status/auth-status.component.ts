@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs';
+
+// rxjs
+import { Observable, map } from 'rxjs';
 
 // auth service
 import { AuthService } from '../../services/auth.service';

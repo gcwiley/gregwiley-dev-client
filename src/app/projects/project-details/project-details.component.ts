@@ -19,7 +19,7 @@ import { Project } from '../../types/project.interface';
   imports: [RouterModule, MatListModule, MatIconModule],
 })
 export class ProjectDetailsComponent implements OnInit, OnDestroy {
-  project!: Project; // initialize explicitly
+  project!: Project | undefined;
   private destroy$ = new Subject<void>(); // subject to signal destruction
   
   // inject dependencies

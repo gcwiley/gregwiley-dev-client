@@ -1,5 +1,9 @@
 import { Injectable, inject } from '@angular/core';
+
+// rxjs
 import { first, map, Observable } from 'rxjs';
+
+// confirm dialog service
 import { ConfirmDialogService } from './confirm-dialog.service';
 
 export enum CustomConfirmDialog {
@@ -23,7 +27,8 @@ export class CustomConfirmDialogService {
    private getTitle(type: CustomConfirmDialog) {
       switch (type) {
          case CustomConfirmDialog.Delete:
-            return 'custom-confirm-dialog.delete-post.content - fix this';
+            // fix this
+            return 'custom-confirm-dialog.delete-post.content';
          case CustomConfirmDialog.UnsavedWork:
             return 'fix-this!';
          default:

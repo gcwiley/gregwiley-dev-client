@@ -1,5 +1,5 @@
 <main class="signin-page-container" aria-label="Sign In Page">
-  <mat-card class="signin-form" appearance="outlined">
+  <mat-card class="signin-form" appearance="raised">
     <!-- title text -->
     <div class="title-text">
       <h3>Sign In</h3>
@@ -53,7 +53,7 @@
 
         <mat-card-actions>
           <button
-            mat-flat-button
+            matButton="filled"
             class="sign-in-button"
             type="submit"
             [disabled]="signinForm.invalid || isLoading">
