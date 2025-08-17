@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   AbstractControl,
 } from '@angular/forms';
+// router
 import { Router } from '@angular/router';
 
 // rxjs
@@ -52,7 +53,7 @@ export class SigninComponent implements OnInit {
   public signinForm!: FormGroup;
   public isLoading = false;
   public errorMessage: string | null = null;
-  public showPassword = false; // to toggle password on/off
+  public showPassword = false; // for toggle password on/off
 
   // inject dependencies
   private formBuilder = inject(FormBuilder);
@@ -117,7 +118,6 @@ export class SigninComponent implements OnInit {
   }
 
   // Getter for easy access to form controls in the template
-  // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
   get formControls(): { [key: string]: AbstractControl } {
     return this.signinForm.controls;
   }

@@ -1,5 +1,9 @@
 import { Directive, EventEmitter, HostListener, Output, input, inject } from '@angular/core';
+
+// angular material
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+// rxjs
 import { filter, first, switchMap } from 'rxjs';
 
 // project service
@@ -9,11 +13,10 @@ import { ProjectService } from '../services/project.service';
 import { CustomConfirmDialog, CustomConfirmDialogService } from '../services/custom-confirm-dialog.service';
 
 @Directive({
-   selector: '[appProjectDelete]',
    standalone: true,
+   selector: '[appProjectDelete]',
 })
 export class ProjectDeleteDirective {
-   
    public id = input.required<string>({ alias: 'appProjectDelete' });
    
    @Output() public deleted = new EventEmitter<string>();
@@ -24,7 +27,6 @@ export class ProjectDeleteDirective {
    private snackBar = inject(MatSnackBar);
 
    @HostListener('click')
-
    public onClick(): void {
       // opens a custom confirmation dialog of type Delete
       this.confirm
@@ -41,7 +43,8 @@ export class ProjectDeleteDirective {
                // opens a success snackbar
                this.snackBar.open('Project Deleted', 'Close');
             },
-            error: () => {
+            error: (error) => {
+               console.error(error)
                this.snackBar.open('Failed', 'Close');
             },
          });
