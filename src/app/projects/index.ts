@@ -1,3 +1,4 @@
+export { ProjectCarouselComponent } from './project-carousel/project-carousel.component';
 export { ProjectDescriptionComponent } from './project-description/project-description.component';
 export { ProjectDetailsComponent } from './project-details/project-details.component';
 export { ProjectFormComponent } from './project-form/project-form.component';

@@ -10,10 +10,6 @@
 
     <span class="flex-spacer"></span>
 
-    <button mat-icon-button disabled>
-      <mat-icon>brightness_2</mat-icon>
-    </button>
-
     <button mat-icon-button [matMenuTriggerFor]="adminMenu" aria-label="Admin Menu">
       <mat-icon>account_circle</mat-icon>
     </button>
@@ -23,7 +19,7 @@
         <mat-icon> dashboard </mat-icon>
         <span>Admin Dashboard</span>
       </button>
-      <button mat-menu-item (click)="onClickSignOut()" [disabled]="isSigningOut">
+      <button mat-menu-item (click)="onClickSignOut()">
         <mat-icon> logout </mat-icon>
         <span>Sign Out</span>
       </button>

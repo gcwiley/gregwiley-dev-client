@@ -5,6 +5,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 3rem;
+  min-height: 3rem;
   margin: 0;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .announcement-bar {
+    flex-direction: column; // stack content vertically on small screens
+    justify-content: center; // center content vertically when stacked
+    padding: 1rem; // increase padding on very small screens
+  }
 }

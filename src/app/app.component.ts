@@ -5,6 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { AnnouncementBarComponent } from './components';
 
 @Component({
+  standalone: true,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

@@ -1,5 +1,6 @@
 <form [formGroup]="projectForm" novalidate (ngSubmit)="onSaveProject()" aria-label="Project Form">
   <mat-card class="project-form" appearance="outlined">
+    <!-- fix this! -->
     <mat-card-header>
       <mat-card-title>New Project</mat-card-title>
     </mat-card-header>
@@ -127,11 +128,25 @@
 
     <mat-card-actions class="card-actions">
       @if (this.mode === 'create') {
-      <button matButton="elevated" type="submit" [disabled]="!projectForm.valid">Create</button>
+      <button
+        matButton="elevated"
+        type="submit"
+        [disabled]="!projectForm.valid"
+        aria-label="Create">
+        Create
+      </button>
       } @else {
-      <button matButton="elevated" type="submit" [disabled]="!projectForm.valid">Update</button>
+      <button
+        matButton="elevated"
+        type="submit"
+        [disabled]="!projectForm.valid"
+        aria-label="Update">
+        Update
+      </button>
       }
-      <button matButton="outlined" type="button" (click)="projectForm.reset()">Clear Form</button>
+      <button matButton="outlined" type="button" (click)="projectForm.reset()" aria-label="Clear">
+        Clear
+      </button>
     </mat-card-actions>
   </mat-card>
 </form>
