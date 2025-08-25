@@ -1,10 +1,8 @@
 <form [formGroup]="projectForm" novalidate (ngSubmit)="onSaveProject()" aria-label="Project Form">
   <mat-card class="project-form" appearance="outlined">
-    <!-- fix this! -->
     <mat-card-header>
-      <mat-card-title>New Project</mat-card-title>
+      <mat-card-title>{{ mode === 'create' ? 'New Project' : 'Edit Project' }}</mat-card-title>
     </mat-card-header>
-
     <mat-card-content>
       <!-- title -->
       <mat-form-field class="full-width" appearance="outline">
@@ -19,7 +17,6 @@
         <mat-error id="title-error">Please provide a project title.</mat-error>
         }
       </mat-form-field>
-
       <div class="row">
         <div class="col">
           <!-- project status -->
@@ -37,7 +34,6 @@
             }
           </mat-form-field>
         </div>
-
         <div class="col">
           <!-- project category -->
           <mat-form-field class="full-width" appearance="outline">
@@ -53,7 +49,6 @@
           </mat-form-field>
         </div>
       </div>
-
       <div class="row">
         <div class="col">
           <!-- startDate -->
@@ -71,7 +66,6 @@
             }
           </mat-form-field>
         </div>
-
         <div class="col">
           <!-- programming language -->
           <mat-form-field class="full-width" appearance="outline">
@@ -87,7 +81,6 @@
           </mat-form-field>
         </div>
       </div>
-
       <div class="row">
         <div class="col">
           <!-- github url -->
@@ -105,7 +98,6 @@
           </mat-form-field>
         </div>
       </div>
-
       <div class="row">
         <div class="col">
           <!-- description -->
@@ -125,7 +117,6 @@
         </div>
       </div>
     </mat-card-content>
-
     <mat-card-actions class="card-actions">
       @if (this.mode === 'create') {
       <button
