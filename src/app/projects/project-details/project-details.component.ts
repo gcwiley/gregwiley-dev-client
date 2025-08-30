@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+
+// rxjs
 import { Subject, takeUntil } from 'rxjs';
 
 // angular material
@@ -19,8 +21,8 @@ import { Project } from '../../types/project.interface';
   imports: [RouterModule, MatListModule, MatIconModule],
 })
 export class ProjectDetailsComponent implements OnInit, OnDestroy {
-  project!: Project | undefined;
-  private destroy$ = new Subject<void>(); // subject to signal destruction
+  project: Project | undefined = undefined;
+  private destroy$ = new Subject<void>();
   
   // inject dependencies
   private route = inject(ActivatedRoute);

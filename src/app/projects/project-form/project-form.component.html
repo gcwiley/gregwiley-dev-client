@@ -1,6 +1,5 @@
 <form [formGroup]="projectForm" novalidate (ngSubmit)="onSaveProject()" aria-label="Project Form">
   <mat-card class="project-form" appearance="outlined">
-    <!-- fix this! -->
     <mat-card-header>
       <mat-card-title>New Project</mat-card-title>
     </mat-card-header>
@@ -76,12 +75,12 @@
           <!-- programming language -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Programming Language</mat-label>
-            <mat-select formControlName="language">
+            <mat-select formControlName="programmingLanguage">
               @for (language of languages; track language) {
               <mat-option [value]="language.value">{{ language.viewValue }}</mat-option>
               }
             </mat-select>
-            @if (this.projectForm.controls['language'].hasError('required')) {
+            @if (this.projectForm.controls['programmingLanguage'].hasError('required')) {
             <mat-error>Please select a programming language.</mat-error>
             }
           </mat-form-field>

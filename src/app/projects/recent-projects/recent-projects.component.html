@@ -1,11 +1,17 @@
 <mat-list class="recent-projects" aria-label="Recent Projects">
-  <span mat-subheader>Recent Heroes</span>
-  @if (recentProjects$ | async; as projects) {
+  <span mat-subheader>Recent Projects</span>
+  @if (isLoading) {
+  <mat-list-item>
+    <mat-spinner diameter="24"></mat-spinner>
+  </mat-list-item>
+  } @if (recentProjects$ | async; as projects) {
   <!-- use the @for loop to iterate over this array -->
   @for (project of projects; track project._id) {
   <mat-list-item lines="2">
     <span matListItemTitle>{{ project.title }}</span>
-    <span matListItemLine>Added: {{ project.createdAt | date }}</span>
+    <span matListItemLine
+      >Added: {{ project.createdAt | date : 'mediumDate' }}</span
+    >
   </mat-list-item>
   } } @else {
   <mat-list-item lines="1">

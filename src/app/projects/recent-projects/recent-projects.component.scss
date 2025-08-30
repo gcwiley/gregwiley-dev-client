@@ -1,8 +1,13 @@
 @use '../../../styles/helpers/constants';
 
 .recent-projects {
-   background: var(--mat-sys-primary-container);
-   color: var(--mat-sys-on-primary-container);
-   margin-top: 2rem;
-   padding: 1rem;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  font: var(--mat-sys-body-medium);
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.recent-projects mat-list-item {
+  margin-bottom: 0.5rem;
 }

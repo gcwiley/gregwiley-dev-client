@@ -2,8 +2,8 @@
   <mat-card class="signin-form" appearance="raised">
     <!-- title text -->
     <div class="title-text">
-      <h3>Sign In</h3>
-      <h4>Please sign in to your account.</h4>
+      <h1>Sign In</h1>
+      <h2>Please sign in to your account.</h2>
     </div>
     <mat-card-content>
       <form [formGroup]="signinForm" (ngSubmit)="onSubmitSignIn()">
@@ -18,9 +18,13 @@
             autocomplete="username"
             aria-describedby="email-errors" />
           @if (formControls['email'].hasError('required')) {
-          <mat-error id="email-required">Please enter your email address.</mat-error>
+          <mat-error id="email-required" aria-live="polite"
+            >Please enter your email address.</mat-error
+          >
           } @if (formControls['email'].hasError('email')) {
-          <mat-error id="email-invalid">Invalid email format.</mat-error>
+          <mat-error id="email-invalid" aria-live="polite"
+            >Invalid email format.</mat-error
+          >
           }
         </mat-form-field>
 
@@ -39,15 +43,21 @@
             matSuffix
             type="button"
             (click)="toggleShowPassword()"
-            [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
+            [attr.aria-label]="
+              showPassword ? 'Hide password' : 'Show password'
+            ">
             <mat-icon>
               {{ showPassword ? 'visibility_off' : 'visibility' }}
             </mat-icon>
           </button>
           @if (formControls['password'].hasError('required')) {
-          <mat-error id="password-required">Please enter your password.</mat-error>
+          <mat-error id="password-required" aria-live="polite"
+            >Please enter your password.</mat-error
+          >
           } @if (formControls['password'].hasError('minlength')) {
-          <mat-error id="password-invalid">Your password must be at least 6 characters.</mat-error>
+          <mat-error id="password-invalid" aria-live="polite"
+            >Your password must be at least 6 characters.</mat-error
+          >
           }
         </mat-form-field>
 

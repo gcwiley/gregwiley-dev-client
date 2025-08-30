@@ -3,11 +3,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 // shared components
 import {
   NavbarComponent,
+  MenuComponent,
   FooterComponent,
 } from '../../../components';
 
 // project components
-import { ProjectFormComponent, RecentProjectsComponent } from '../../../projects';
+import {
+  ProjectFormComponent,
+  RecentProjectsComponent,
+} from '../../../projects';
 
 @Component({
   standalone: true,
@@ -16,10 +20,11 @@ import { ProjectFormComponent, RecentProjectsComponent } from '../../../projects
   styleUrls: ['./project-create-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    NavbarComponent,
+    MenuComponent,
     FooterComponent,
     ProjectFormComponent,
     RecentProjectsComponent,
-    NavbarComponent,
   ],
 })
 export class ProjectCreatePageComponent {}

@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+
+// rxjs
 import { Subject, takeUntil } from 'rxjs';
 
 // project service and interface
@@ -15,7 +17,7 @@ import { Project } from '../../types/project.interface';
   imports: [RouterModule],
 })
 export class ProjectDescriptionComponent implements OnInit, OnDestroy {
-  project!: Project; // initialize explicitly
+  project: Project | undefined = undefined;
   private destroy$ = new Subject<void>(); // subject to signal destruction
   
   // inject dependencies
@@ -33,6 +35,7 @@ export class ProjectDescriptionComponent implements OnInit, OnDestroy {
 
   public getProjectById(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    // error checking
     if (!id) {
       console.error('Project ID not found in route parameters.');
       return;
@@ -40,7 +43,7 @@ export class ProjectDescriptionComponent implements OnInit, OnDestroy {
     this.projectService
       .getProjectById(id)
       .pipe(
-        takeUntil(this.destroy$) // unsubscribe when component is destroyed
+        takeUntil(this.destroy$)
       )
       .subscribe({
         next: (project) => {

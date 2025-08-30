@@ -1,35 +1,43 @@
 .signin-page-container {
-   background: var(--mat-sys-primary-container);
-   background-image: url(../../../assets/images/sign_in_graphic.jpg);
-   background-size: cover;
-   background-position: center;
-   color: var(--mat-sys-on-primary-container);
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100vh;
+  background: var(--mat-sys-primary-container);
+  background-image: url(../../../assets/images/sign_in_graphic.jpg);
+  background-size: cover;
+  background-position: center;
+  color: var(--mat-sys-on-primary-container);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .signin-form {
-   width: 400px;
-   padding: 2rem;
+  max-width: 90%;
+  width: 400px;
+  padding: 1.5rem;
 }
 
 .full-width {
-   width: 100%;
-   margin: 0.4rem 0;
+  width: 100%;
+  margin: 0.4rem 0;
 }
 
 .sign-in-button {
-   width: 100%;
+  width: 100%;
 }
 
 .spacer {
-   flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .title-text {
-   text-align: center;
-   font: var(--mat-sys-label-large)
+  text-align: center;
+  font: var(--mat-sys-label-large, 'Arial', sans-serif);
 }
 
+// reduces padding on smaller screens for better mobile usability
+@media (max-width: 500px) {
+  .signin-form {
+    padding: 1rem;
+    width: 100%;
+  }
+}

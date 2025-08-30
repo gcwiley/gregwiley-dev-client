@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 // angular material
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from "../../../../node_modules/@angular/router/router_module.d";
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   standalone: true,
@@ -10,6 +11,6 @@ import { RouterLink } from "../../../../node_modules/@angular/router/router_modu
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButtonModule, RouterLink],
+  imports: [RouterModule, MatButtonModule, MatIconModule],
 })
 export class MenuComponent {}

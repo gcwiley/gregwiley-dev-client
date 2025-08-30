@@ -1,5 +1,11 @@
 <div class="menu-container">
-    <button matButton="elevated" routerLink="/">Home</button>
+  <div class="menu-content">
+    <button matIconButton routerLink="/home">
+      <mat-icon>home</mat-icon>
+    </button>
 
-    <button matButton="elevated" routerLink="/create">Create Project</button>
+    <span class="flex-spacer"></span>
+
+    <button matButton="filled" routerLink="/create">Create Project</button>
+  </div>
 </div>

@@ -47,13 +47,14 @@ import {
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
-],
+    MatNativeDateModule,
+  ],
 })
 export class ProjectFormComponent implements OnInit {
   public mode = 'create';
   private id!: string;
   private project!: Project;
+  private readonly snackBarDuration = 5000;
 
   statues: ProjectStatus[] = PROJECT_STATUS;
   categories: ProjectCategory[] = PROJECT_CATAGORIES;
@@ -71,7 +72,7 @@ export class ProjectFormComponent implements OnInit {
     title: ['', Validators.required],
     status: ['', Validators.required],
     category: ['', Validators.required],
-    language: ['', Validators.required],
+    programmingLanguage: ['', Validators.required],
     startDate: ['', Validators.required],
     gitUrl: ['', Validators.required],
     description: ['', Validators.required],
@@ -90,7 +91,7 @@ export class ProjectFormComponent implements OnInit {
             title: this.project.title,
             status: this.project.status,
             category: this.project.category,
-            language: this.project.language,
+            programmingLanguage: this.project.programmingLanguage,
             startDate: this.project.startDate,
             gitUrl: this.project.gitUrl,
             description: this.project.description,
@@ -109,39 +110,35 @@ export class ProjectFormComponent implements OnInit {
         .addProject(this.projectForm.value as ProjectInput)
         .pipe(first())
         .subscribe({
-          next: (project) => {
-            // reset the project form
-            this.projectForm.reset(project);
+          next: () => {
             // display a success message
-            this.snackBar.open('Project created', 'Close', {
-              duration: 5000,
+            this.snackBar.open('Project created.', 'Close', {
+              duration: this.snackBarDuration,
             });
             // navigates user back to admin dashboard
             this.router.navigateByUrl('/admin');
           },
           error: (error) => {
-            console.error(error)
-            this.snackBar.open('Error creating project', 'Close', {
-              duration: 5000,
+            console.error(error);
+            this.snackBar.open('Error creating project.', 'Close', {
+              duration: this.snackBarDuration,
             });
           },
         });
     } else {
       this.projectService.updateProjectById(this.id!, this.projectForm.value as Project).subscribe({
-        next: (project) => {
-          // reset the project form
-          this.projectForm.reset(project);
+        next: () => {
           // display a success message
           this.snackBar.open('Project updated.', 'Close', {
-            duration: 5000,
+            duration: this.snackBarDuration,
           });
           // navigates user back to homepage
           this.router.navigateByUrl('/');
         },
         error: (error) => {
-          console.error(error)
+          console.error(error);
           this.snackBar.open('Error updating project.', 'Close', {
-            duration: 5000,
+            duration: this.snackBarDuration,
           });
         },
       });

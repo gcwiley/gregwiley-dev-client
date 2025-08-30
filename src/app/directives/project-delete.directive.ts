@@ -21,14 +21,14 @@ import {
 })
 export class ProjectDeleteDirective {
   public id = input.required<string>({ alias: 'appProjectDelete' });
+  private readonly snackBarDuration = 5000;
+
   @Output() public deleted = new EventEmitter<string>();
 
   //initialize the directive dependencies
   private projectService = inject(ProjectService);
   private confirm = inject(CustomConfirmDialogService);
   private snackBar = inject(MatSnackBar);
-
-  // see film-manager duration - fix this!
 
   @HostListener('click')
   public onClick(): void {
@@ -40,9 +40,8 @@ export class ProjectDeleteDirective {
         filter((confirmed) => !!confirmed),
         switchMap(() => this.projectService.deleteProjectById(this.id())),
         catchError((error) => {
-          // error checking code
           console.error('Error deleting project:', error); // log the error
-          this.snackBar.open('Unable to delete project.', 'Close', { duration: 5000 }); // show error snackbar
+          this.snackBar.open('Unable to delete project.', 'Close', { duration: this.snackBarDuration }); // show error snackbar
           return throwError(() => new Error('Project deletion failed.')); // re-throw a new error
         })
       )
@@ -50,7 +49,7 @@ export class ProjectDeleteDirective {
         next: () => {
           this.deleted.emit(this.id());
           // opens a success snackbar
-          this.snackBar.open('Project successfully deleted', 'Close', { duration: 5000 });
+          this.snackBar.open('Project successfully deleted.', 'Close', { duration: this.snackBarDuration});
         },
       });
   }

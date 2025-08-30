@@ -1,35 +1,36 @@
-<mat-grid-list [cols]="cols | async" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+<mat-grid-list
+  [cols]="cols | async"
+  [rowHeight]="rowHeight"
+  [gutterSize]="gutterSize">
   <!-- Use async pipe for projects and add trackBy -->
   @for (project of projects | async; track trackByProjectId($index, project)) {
-    <mat-grid-tile
-      [colspan]="colspan"
-      [rowspan]="rowspan">
-      <mat-card appearance="outlined" class="project-card">
-        <mat-card-header>
-          <mat-card-title>{{ project.title }}</mat-card-title>
-        </mat-card-header>
-        
-        <mat-card-content>
-          <p>{{ project.description }}</p>
-        </mat-card-content>
+  <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
+    <mat-card appearance="outlined" class="project-card">
+      <mat-card-header>
+        <mat-card-title>{{ project.title }}</mat-card-title>
+      </mat-card-header>
 
-        <span class="flex-spacer"></span>
-  
-        <mat-card-actions>
-          <button matButton routerLink="/projects/{{ project._id }}">OPEN</button>
-        </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
+      <mat-card-content>
+        <p>{{ project.description }}</p>
+      </mat-card-content>
+
+      <span class="flex-spacer"></span>
+
+      <mat-card-actions>
+        <button matButton routerLink="/projects/{{ project._id }}">OPEN</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
   }
 </mat-grid-list>
 
 <!-- Handle loading/empty states -->
 @if ((projects | async) === null) {
-    <div class="spinner-container">
-      <mat-spinner></mat-spinner>
-    </div>
-  } @if ((projects | async)?.length === 0) {
-  <div class="empty-message">
-    <p>No Projects found.</p>
-  </div>
+<div class="spinner-container">
+  <mat-spinner></mat-spinner>
+</div>
+} @if ((projects | async)?.length === 0) {
+<div class="empty-message">
+  <p>No Projects found.</p>
+</div>
 }

@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
 import {
   FormBuilder,
   FormsModule,
@@ -92,7 +97,10 @@ export class SigninComponent implements OnInit {
       .pipe(
         catchError((error) => {
           let message = ERROR_MESSAGES.UNKNOWN_ERROR;
-          if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+          if (
+            error.code === 'auth/user-not-found' ||
+            error.code === 'auth/wrong-password'
+          ) {
             message = ERROR_MESSAGES.INVALID_CREDENTIALS;
           } else if (error.code === 'auth/network-request-failed') {
             message = ERROR_MESSAGES.NETWORK_ERROR;
@@ -107,18 +115,18 @@ export class SigninComponent implements OnInit {
           if (user) {
             this.router.navigateByUrl('/');
           } else {
-            this.snackBar.open(this.errorMessage!, 'CLOSE');
+            this.snackBar.open(this.errorMessage!, 'Close');
           }
         },
         error: () => {
           this.isLoading = false;
-          this.snackBar.open(ERROR_MESSAGES.UNKNOWN_ERROR, 'CLOSE');
+          this.snackBar.open(ERROR_MESSAGES.UNKNOWN_ERROR, 'Close');
         },
       });
   }
 
   // Getter for easy access to form controls in the template
-  get formControls(): { [key: string]: AbstractControl } {
+  get formControls(): Record<string, AbstractControl> {
     return this.signinForm.controls;
   }
 }

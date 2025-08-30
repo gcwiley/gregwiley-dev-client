@@ -10,12 +10,13 @@ import { MatIconModule } from '@angular/material/icon';
 // shared components
 import {
   NavbarComponent,
+  MenuComponent,
   FooterComponent,
   HeroComponent,
 } from '../../components';
 
 // project components
-import { ProjectGridComponent } from '../../projects';
+import { ProjectCarouselComponent } from '../../projects';
 
 @Component({
   standalone: true,
@@ -30,8 +31,9 @@ import { ProjectGridComponent } from '../../projects';
     MatDividerModule,
     MatIconModule,
     NavbarComponent,
+    MenuComponent,
     FooterComponent,
-    ProjectGridComponent,
+    ProjectCarouselComponent,
     HeroComponent,
   ],
 })

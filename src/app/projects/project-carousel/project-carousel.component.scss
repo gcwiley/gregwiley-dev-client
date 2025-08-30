@@ -1,0 +1,40 @@
+.project-carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-carousel-wrapper {
+  overflow-x: auto;
+  scrollbar-width: none; // hide scollbar for firefox
+  -ms-overflow-style: none; // hide scollbar for internet explorer and edge
+  scroll-behavior: smooth; // smooth scrolling for navigation
+}
+
+.project-carousel-wrapper::-webkit-scrollbar {
+  display: none; // hidesrollbar for Chrome, Safarim and Opera
+}
+
+.project-carousel-items {
+  display: flex;
+}
+
+.project-carousel-item {
+  flex: 0 0 auto; // prevent shrinking and growing
+  width: 250px; // adjust item width as needed
+  margin-right: 16px; // space between items
+}
+
+.carousel-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}

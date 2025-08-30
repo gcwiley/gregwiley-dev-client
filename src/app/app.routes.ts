@@ -40,7 +40,7 @@ export const routes: Routes = [
   },
   // create project page
   {
-    path: 'create-project',
+    path: 'create',
     title: 'Create Project',
     canActivate: [authGuard],
     loadComponent: () =>
@@ -50,7 +50,7 @@ export const routes: Routes = [
   },
   // edit project page
   {
-    path: 'edit-project/:id',
+    path: 'project/:id',
     title: 'Edit Project',
     canActivate: [authGuard],
     loadComponent: () =>

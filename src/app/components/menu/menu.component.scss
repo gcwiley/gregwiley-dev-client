@@ -1,0 +1,18 @@
+@use '../../../styles/helpers/constants';
+
+.menu-container {
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+}
+
+.menu-content {
+  max-width: constants.$max-width;
+  margin: auto;
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.flex-spacer {
+  flex: 1 1 auto;
+}

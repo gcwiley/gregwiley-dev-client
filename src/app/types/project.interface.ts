@@ -3,10 +3,10 @@ export interface Project {
   _id: string;
   title: string;
   status: string;
-  category: string[];
-  programingLanguage: string[];
-  keywords: string[];
-  startDate: Date;
+  category: string;
+  programmingLanguage: string;
+  keywords: string;
+  startDate: string;
   favoriteProject: boolean;
   gitUrl: string;
   description: string;
