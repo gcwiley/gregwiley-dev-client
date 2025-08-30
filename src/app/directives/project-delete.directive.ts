@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // project service
 import { ProjectService } from '../services/project.service';
 
-// custom dialog
+// custom dialog service
 import {
   CustomConfirmDialog,
   CustomConfirmDialogService,

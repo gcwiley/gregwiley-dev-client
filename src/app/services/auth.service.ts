@@ -19,7 +19,7 @@ import {
   providedIn: 'root',
 })
 export class AuthService {
-  // injects the auth object
+  // inject the auth object
   private readonly auth = inject(Auth);
 
   // observable for the current user state (emits User object or null)
@@ -27,7 +27,7 @@ export class AuthService {
 
   // observable for the authentication status (emits true if logged in, false otherwise)
   public readonly isAuthenticated$: Observable<boolean> = this.user$.pipe(
-    map((user) => !!user) // User|null to boolean
+    map((user) => !!user) // User | null to boolean
   );
 
   // asynchronously signs in using an email and password
@@ -70,12 +70,9 @@ export class AuthService {
     }
   }
 
-  // private method that centralizes error handling
+  // private method that centralizes error handling - HANDLE ERROR
   private handleError(error: Error): Observable<never> {
-    // use a logging service instead of console.error
-    // replace this with a more robust logging mechanism - a dedicated logging service
-    // logs error to console
-    console.error('There was an error', error);
+    console.error('There was an error:', error);
     // throws the error again, so the subscriber can catch it and handle it.
     return throwError(() => error);
   }
