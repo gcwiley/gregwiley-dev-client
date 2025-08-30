@@ -3,7 +3,7 @@
   background-image: url(../../../assets/images/sign_in_graphic.jpg);
   background-size: cover;
   background-position: center;
-  color: var(--mat-sys-on-primary-container);
+  color: var(--mat-sys-primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,9 @@
 .signin-form {
   max-width: 90%;
   width: 400px;
-  padding: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.85); // white with 85% opacity
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15); // optional for depth
 }
 
 .full-width {
@@ -32,6 +34,16 @@
 .title-text {
   text-align: center;
   font: var(--mat-sys-label-large, 'Arial', sans-serif);
+}
+
+.forgot-password {
+  font: var(--mat-sys-label-large);
+  color: var(--mat-sys-primary);
+  text-align: center;
+  margin-bottom: 1rem;
+  a {
+    text-decoration: none;
+  }
 }
 
 // reduces padding on smaller screens for better mobile usability

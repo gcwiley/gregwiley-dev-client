@@ -56,7 +56,7 @@ export class ProjectFormComponent implements OnInit {
   private project!: Project;
   private readonly snackBarDuration = 5000;
 
-  statues: ProjectStatus[] = PROJECT_STATUS;
+  statuses: ProjectStatus[] = PROJECT_STATUS;
   categories: ProjectCategory[] = PROJECT_CATAGORIES;
   languages: ProjectLanguage[] = PROJECT_LANGUAGE;
 
@@ -74,7 +74,7 @@ export class ProjectFormComponent implements OnInit {
     category: ['', Validators.required],
     programmingLanguage: ['', Validators.required],
     startDate: ['', Validators.required],
-    gitUrl: ['', Validators.required],
+    gitUrl: ['', Validators.required, Validators.pattern('https?://.+')],
     description: ['', Validators.required],
   });
 

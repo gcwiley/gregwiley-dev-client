@@ -13,7 +13,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 // router
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 // rxjs
 import { catchError, of } from 'rxjs';
@@ -52,7 +52,8 @@ const ERROR_MESSAGES = {
     MatButtonModule,
     MatIconModule,
     FormsModule,
-  ],
+    RouterModule
+],
 })
 export class SigninComponent implements OnInit {
   public signinForm!: FormGroup;

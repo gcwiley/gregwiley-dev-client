@@ -1,8 +1,4 @@
-<form
-  [formGroup]="projectForm"
-  novalidate
-  (ngSubmit)="onSaveProject()"
-  aria-label="Project Form">
+<form [formGroup]="projectForm" novalidate (ngSubmit)="onSaveProject()" aria-label="Project Form">
   <mat-card class="project-form" appearance="outlined">
     <mat-card-header>
       <mat-card-title>{{ mode === 'create' ? 'New Project' : 'Edit Project' }}</mat-card-title>
@@ -18,7 +14,7 @@
           placeholder="Project Title"
           aria-describedby="title-error" />
         @if (this.projectForm.controls['title'].hasError('required')) {
-        <mat-error id="title-error">Please provide a project title.</mat-error>
+        <mat-error id="title-error" aria-live="polite">Please provide a project title.</mat-error>
         }
       </mat-form-field>
       <div class="row">
@@ -27,14 +23,14 @@
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Project Status</mat-label>
             <mat-select formControlName="status">
-              @for (status of statues; track status) {
+              @for (status of statuses; track status) {
               <mat-option [value]="status.value">
                 {{ status.viewValue }}
               </mat-option>
               }
             </mat-select>
             @if (this.projectForm.controls['status'].hasError('required')) {
-            <mat-error>Please select a project status.</mat-error>
+            <mat-error aria-live="polite">Please select a project status.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -44,13 +40,11 @@
             <mat-label>Category</mat-label>
             <mat-select formControlName="category">
               @for (category of categories; track category) {
-              <mat-option [value]="category.value">{{
-                category.viewValue
-              }}</mat-option>
+              <mat-option [value]="category.value">{{ category.viewValue }}</mat-option>
               }
             </mat-select>
             @if (this.projectForm.controls['category'].hasError('required')) {
-            <mat-error>Please provide a project category.</mat-error>
+            <mat-error aria-live="polite">Please provide a project category.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -65,12 +59,10 @@
               [matDatepicker]="picker"
               formControlName="startDate"
               placeholder="Start Date" />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             @if (this.projectForm.controls['startDate'].hasError('required')) {
-            <mat-error>Please provide a project start date.</mat-error>
+            <mat-error aria-live="polite">Please provide a project start date.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -80,15 +72,11 @@
             <mat-label>Programming Language</mat-label>
             <mat-select formControlName="programmingLanguage">
               @for (language of languages; track language) {
-              <mat-option [value]="language.value">{{
-                language.viewValue
-              }}</mat-option>
+              <mat-option [value]="language.value">{{ language.viewValue }}</mat-option>
               }
             </mat-select>
-            @if
-            (this.projectForm.controls['programmingLanguage'].hasError('required'))
-            {
-            <mat-error>Please select a programming language.</mat-error>
+            @if (this.projectForm.controls['programmingLanguage'].hasError('required')) {
+            <mat-error aria-live="polite">Please select a programming language.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -104,10 +92,8 @@
               formControlName="gitUrl"
               placeholder="GitHub Repo"
               aria-describedby="github-url-error" />
-            @if (this.projectForm.controls['category'].hasError('required')) {
-            <mat-error id="github-url-error"
-              >Please enter a project category.</mat-error
-            >
+            @if (this.projectForm.controls['gitUrl'].hasError('required')) {
+            <mat-error id="github-url-error" aria-live="polite">Please enter a project category.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -124,11 +110,8 @@
               title="Description"
               placeholder="Please provide a short description of the project."
               aria-describedby="description-error"></textarea>
-            @if (this.projectForm.controls['description'].hasError('required'))
-            {
-            <mat-error id="description-error"
-              >Please provide a project description.</mat-error
-            >
+            @if (this.projectForm.controls['description'].hasError('required')) {
+            <mat-error id="description-error" aria-live="polite">Please provide a project description.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -144,19 +127,11 @@
         Create
       </button>
       } @else {
-      <button
-        matButton="elevated"
-        type="submit"
-        [disabled]="!projectForm.valid"
-        aria-label="Update">
+      <button matButton="filled" type="submit" [disabled]="!projectForm.valid" aria-label="Update">
         Update
       </button>
       }
-      <button
-        matButton="outlined"
-        type="button"
-        (click)="projectForm.reset()"
-        aria-label="Clear">
+      <button matButton="outlined" type="button" (click)="onReset($event)" aria-label="Clear">
         Clear
       </button>
     </mat-card-actions>

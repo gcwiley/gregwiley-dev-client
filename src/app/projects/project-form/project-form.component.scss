@@ -1,27 +1,38 @@
 .project-form {
-   margin: 2rem;
-   padding: 1rem;
+  margin: 2rem;
+  padding: 1rem;
 }
 
 .full-width {
-   width: 100%;
+  width: 100%;
 }
 
 /* FLEX PROPERTIES */
 .row {
-   display: flex;
-   flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .col {
-   flex: 1;
-   margin-right: 20px;
+  flex: 1;
+  margin-right: 20px;
 }
 
 .col:last-child {
-   margin-right: 0;
+  margin-right: 0;
 }
 
 .card-actions button {
-   margin: 0.5rem;
+  margin: 0.5rem;
+}
+
+// responsive design for small screens
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+  .col {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
 }

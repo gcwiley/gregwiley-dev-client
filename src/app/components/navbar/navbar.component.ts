@@ -52,7 +52,7 @@ export class NavbarComponent {
   public onClickSignOut(): void {
     this.authService.signOutUser().subscribe({
       next: () => {
-        this.snackBar.open('Successfully signed out', 'Close', { duration: 5000 }); // success feedback
+        this.snackBar.open('Successfully signed out.', 'Close', { duration: 5000 }); // success feedback
         this.router.navigateByUrl('/signin'); // redirects user to signin page
       },
       error: (error) => {

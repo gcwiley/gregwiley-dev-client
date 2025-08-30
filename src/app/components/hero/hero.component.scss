@@ -1,22 +1,54 @@
 .hero-container {
-	background: var(--mat-sys-primary);
-	color: var(--mat-sys-on-primary);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-	text-align: center;
-	background-image: url(../../../assets/images/sign_in_graphic.jpg);
-	background-size: cover;
-	background-position: top;
-	height: 300px;
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  background-image: url(../../../assets/images/sign_in_graphic.jpg);
+  background-size: cover;
+  background-position: top;
+  height: 300px;
 }
 
 .title {
-	font: var(--mat-sys-headline-large);
+  font: var(--mat-sys-headline-large);
 }
 
 .subtitle {
-	font: var(--mat-sys-headline-small)
+  font: var(--mat-sys-headline-small);
+}
+
+// action container spacing
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+// text contrast - ensure text is readable over the background image
+// .hero-container::before {
+//   content: '';
+//   position: absolute;
+//   inset: 0;
+//   background: rgba(0, 0, 0, 0.3);
+//   z-index: 0;
+// }
+// .hero-content {
+//   position: relative;
+//   z-index: 0;
+// }
+
+@media (max-width: 600px) {
+  .hero-container {
+    height: auto;
+    padding: 1rem 0.5rem;
+  }
+  .hero-image {
+    width: 48px;
+    height: 38px;
+  }
 }

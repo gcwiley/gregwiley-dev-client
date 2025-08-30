@@ -1,7 +1,4 @@
-<mat-grid-list
-  [cols]="cols | async"
-  [rowHeight]="rowHeight"
-  [gutterSize]="gutterSize">
+<mat-grid-list [cols]="cols | async" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
   <!-- Use async pipe for projects and add trackBy -->
   @for (project of projects | async; track trackByProjectId($index, project)) {
   <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
@@ -17,7 +14,7 @@
       <span class="flex-spacer"></span>
 
       <mat-card-actions>
-        <button matButton routerLink="/projects/{{ project._id }}">OPEN</button>
+        <button matButton [routerLink]="['/projects', project._id]">OPEN</button>
       </mat-card-actions>
     </mat-card>
   </mat-grid-tile>

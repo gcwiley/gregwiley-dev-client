@@ -5,9 +5,14 @@
 
 .project-carousel-wrapper {
   overflow-x: auto;
-  scrollbar-width: none; // hide scollbar for firefox
-  -ms-overflow-style: none; // hide scollbar for internet explorer and edge
+  scrollbar-width: none; // hide scrollbar for Firefox
+  -ms-overflow-style: none; // hide scrollbar for Internet Explorer and Edge
   scroll-behavior: smooth; // smooth scrolling for navigation
+
+  // Hide scrollbar for Chrome, Safari, Opera, and Edge (Webkit browsers)
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .project-carousel-wrapper::-webkit-scrollbar {
@@ -20,7 +25,7 @@
 
 .project-carousel-item {
   flex: 0 0 auto; // prevent shrinking and growing
-  width: 250px; // adjust item width as needed
+  width: 350px; // adjust item width as needed
   margin-right: 16px; // space between items
 }
 
