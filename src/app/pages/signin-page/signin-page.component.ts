@@ -55,7 +55,7 @@ const ERROR_MESSAGES = {
     RouterModule
 ],
 })
-export class SigninComponent implements OnInit {
+export class SigninPageComponent implements OnInit {
   public signinForm!: FormGroup;
   public isLoading = false;
   public errorMessage: string | null = null;

@@ -1,11 +1,12 @@
-<div class="menu-container">
+<nav class="menu-container" aria-label="Main navigation">
   <div class="menu-content">
     <button matIconButton routerLink="/">
-      <mat-icon>home</mat-icon>
+      <mat-icon aria-label="Home Page">home</mat-icon>
     </button>
 
     <span class="flex-spacer"></span>
 
-    <button matButton="filled" routerLink="/create">Create Project</button>
+    <button matButton="filled" routerLink="/create">Create</button>
+    <button matButton="filled" routerLink="/projects">Projects</button>
   </div>
-</div>
+</nav>

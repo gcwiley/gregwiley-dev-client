@@ -63,7 +63,7 @@ export const routes: Routes = [
     path: 'signin',
     title: 'Sign In',
     loadComponent: () =>
-      import('./pages/signin-page/signin-page.component').then((m) => m.SigninComponent),
+      import('./pages/signin-page/signin-page.component').then((m) => m.SigninPageComponent),
   },
   // about page
   {

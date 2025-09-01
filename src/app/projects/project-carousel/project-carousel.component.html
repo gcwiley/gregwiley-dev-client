@@ -13,6 +13,16 @@
       }
     </div>
   </div>
-</div>
+  <!-- navigation buttons -->
+  <button
+    mat-icon-button
+    class="carousel-nav-button prev"
+    (click)="previousSlide()"
+    title="Previous Slide">
+    <mat-icon aria-hidden="true">chevron_left</mat-icon>
+  </button>
 
-<!-- add nav buttons - fix this! -->
+  <button mat-icon-button class="carousel-nav-button next" (click)="nextSlide()" title="Next Slide">
+    <mat-icon aria-hidden="true">chevron_right</mat-icon>
+  </button>
+</div>

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 // rxjs
-import { first } from 'rxjs';
+import { of } from 'rxjs';
+import { first, switchMap } from 'rxjs';
 
 // angular material
 import { MatCardModule } from '@angular/material/card';
@@ -17,8 +18,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 // project service and interfaces
 import { ProjectService } from '../../services/project.service';
+
 import {
-  Project,
   ProjectInput,
   ProjectStatus,
   ProjectCategory,
@@ -39,7 +40,6 @@ import {
   styleUrls: ['./project-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    FormsModule,
     ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
@@ -51,9 +51,8 @@ import {
   ],
 })
 export class ProjectFormComponent implements OnInit {
-  public mode = 'create';
-  private id!: string;
-  private project!: Project;
+  public mode: 'create' | 'edit' = 'create';
+  private id!: string | null;
   private readonly snackBarDuration = 5000;
 
   statuses: ProjectStatus[] = PROJECT_STATUS;
@@ -79,75 +78,77 @@ export class ProjectFormComponent implements OnInit {
   });
 
   public ngOnInit(): void {
-    // find out if we have an "id" or not
-    this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('id')) {
-        this.mode = 'edit';
-        this.id = paramMap.get('id')!;
-        this.projectService.getProjectById(this.id!).subscribe((project) => {
-          this.project = project;
-          // overrides values of initial form controls
-          this.projectForm.setValue({
-            title: this.project.title,
-            status: this.project.status,
-            category: this.project.category,
-            programmingLanguage: this.project.programmingLanguage,
-            startDate: this.project.startDate,
-            gitUrl: this.project.gitUrl,
-            description: this.project.description,
+    this.route.paramMap
+      .pipe(
+        first(),
+        switchMap((paramMap: ParamMap) => {
+          if (paramMap.has('id')) {
+            this.mode = 'edit';
+            this.id = paramMap.get('id');
+            return this.projectService.getProjectById(this.id!);
+          } else {
+            this.mode = 'create';
+            return of(undefined);
+          }
+        })
+      )
+      .subscribe((project) => {
+        if (project) {
+          // use patchValue for satety, and map the data correctly
+          this.projectForm.patchValue({
+            ...project,
+            startDate: project.startDate ? new Date(project.startDate).toISOString() : '',
           });
-        });
-      } else {
-        this.mode = 'create';
-      }
-    });
+        }
+      });
   }
 
   // saves a new project
   public onSaveProject(): void {
+    if (!this.projectForm.valid) {
+      return;
+    }
+
+    const formValue = this.projectForm.value as ProjectInput;
+
     if (this.mode === 'create') {
       this.projectService
-        .addProject(this.projectForm.value as ProjectInput)
+        .addProject(formValue)
         .pipe(first())
         .subscribe({
           next: () => {
-            // display a success message
-            this.snackBar.open('Project created.', 'Close', {
-              duration: this.snackBarDuration,
-            });
-            // navigates user back to admin dashboard
-            this.router.navigateByUrl('/admin');
+            this.snackBar.open('Project added', 'Close', { duration: this.snackBarDuration });
+            this.router.navigateByUrl('/');
           },
           error: (error) => {
             console.error(error);
-            this.snackBar.open('Error creating project.', 'Close', {
+            this.snackBar.open('Error adding project', 'Close', {
               duration: this.snackBarDuration,
             });
           },
         });
     } else {
-      this.projectService.updateProjectById(this.id!, this.projectForm.value as Project).subscribe({
-        next: () => {
-          // display a success message
-          this.snackBar.open('Project updated.', 'Close', {
-            duration: this.snackBarDuration,
-          });
-          // navigates user back to homepage
-          this.router.navigateByUrl('/');
-        },
-        error: (error) => {
-          console.error(error);
-          this.snackBar.open('Error updating project.', 'Close', {
-            duration: this.snackBarDuration,
-          });
-        },
-      });
+      this.projectService
+        .updateProjectById(this.id!, formValue)
+        .pipe(first())
+        .subscribe({
+          next: () => {
+            this.snackBar.open('Project updated successfully', 'Close', {
+              duration: this.snackBarDuration,
+            });
+            this.router.navigate(['/projects', this.id]);
+          },
+          error: (error) => {
+            console.error(error);
+            this.snackBar.open('Error updating project', 'Close', {
+              duration: this.snackBarDuration,
+            });
+          },
+        });
     }
   }
 
-  // reset the project form
-  public onReset(event: Event): void {
-    event.preventDefault();
-    this.projectForm.reset();
+  public onCancel(): void {
+    this.router.navigateByUrl(this.mode === 'edit' ? `/projects/${this.id}` : '/');
   }
 }

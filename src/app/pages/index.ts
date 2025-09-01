@@ -5,4 +5,4 @@ export { HomePageComponent } from './home-page/home-page.component';
 export { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 export { ProjectCreatePageComponent, ProjectDetailsPageComponent, ProjectGridPageComponent } from '../pages/project-pages';
 export { ResourcesPageComponent } from './resources-page/resources-page.component';
-export { SigninComponent } from './signin-page/signin-page.component';
+export { SigninPageComponent } from './signin-page/signin-page.component';
