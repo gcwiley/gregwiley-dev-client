@@ -17,7 +17,7 @@ export const PROJECT_LANGUAGE: ProjectLanguage[] = [
 ];
 
 // define the data values for project category
-export const PROJECT_CATAGORIES: ProjectCategory[] = [
+export const PROJECT_CATEGORIES: ProjectCategory[] = [
   { value: 'tutorial', viewValue: 'Web Tutorial' },
   { value: 'personal-project', viewValue: 'Personal Project' },
   { value: 'arc-gis-project', viewValue: 'ArcGIS Project' },

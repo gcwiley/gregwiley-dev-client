@@ -99,8 +99,12 @@
               aria-describedby="github-url-error" />
             @if (this.projectForm.controls['gitUrl'].hasError('required')) {
             <mat-error id="github-url-error" aria-live="polite"
-              >Please enter a project category.</mat-error
+              >Please enter a GitHub URL.</mat-error
             >
+            } @if (this.projectForm.controls['gitUrl'].hasError('pattern')) {
+            <mat-error id="github-url-error" aria-live="polite">
+              Please enter a valid URL (must start with http:// or https://).
+            </mat-error>
             }
           </mat-form-field>
         </div>
@@ -127,21 +131,9 @@
     </mat-card-content>
     <mat-card-actions class="card-actions">
       @if (this.mode === 'create') {
-      <button
-        matButton="filled"
-        type="submit"
-        (click)="onSaveProject()"
-        aria-label="Create Project">
-        Create
-      </button>
+      <button matButton="filled" type="submit" aria-label="Create Project" [disabled]="!projectForm.valid">Create</button>
       } @else {
-      <button
-        matButton="filled"
-        type="submit"
-        (click)="onSaveProject()"
-        aria-label="Update Project">
-        Update
-      </button>
+      <button matButton="filled" type="submit" aria-label="Update Project" [disabled]="!projectForm.valid">Update</button>
       }
       <button matButton="outlined" type="button" (click)="onCancel()" aria-label="Cancel">
         Cancel

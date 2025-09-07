@@ -1,4 +1,4 @@
-@if (project) {
+@if (project$ | async; as project) {
 <mat-list class="project-details" role="list" aria-label="Project Details">
   <span mat-subheader>Project Details</span>
   <!-- status -->
@@ -23,7 +23,17 @@
   <mat-list-item lines="2" role="listitem">
     <mat-icon matListItemIcon aria-label="link icon">link</mat-icon>
     <span matListItemTitle>Git Repo</span>
-    <a href="{{ project.gitUrl }}" target="_blank" rel="noopener noreferrer">Git Hub Repo</a>
+    <a
+      href="{{ project.gitUrl }}"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open GitHub repository for {{ project.title }}"
+      >Git Hub Repo</a
+    >
   </mat-list-item>
 </mat-list>
+} @else {
+<div class="spinner-container" aria-live="polite">
+  <mat-spinner diameter="36"></mat-spinner>
+</div>
 }

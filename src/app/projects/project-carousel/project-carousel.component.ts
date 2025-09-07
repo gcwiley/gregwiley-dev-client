@@ -35,22 +35,24 @@ import { Project } from '../../types/project.interface';
 export class ProjectCarouselComponent {
   public projects = input<Project[]>([]);
 
-  @ViewChild('projectCarouselWrapper')
-  projectCarouselWrapper!: ElementRef<HTMLDivElement>;
+  @ViewChild('projectCarouselWrapper', { read: ElementRef })
+  projectCarouselWrapper?: ElementRef<HTMLDivElement>;
 
   public nextSlide(): void {
-    const scrollAmount = this.projectCarouselWrapper.nativeElement.offsetWidth;
-    this.projectCarouselWrapper.nativeElement.scrollBy({
-      left: scrollAmount,
-      behavior: 'smooth',
-    });
+    const el = this.projectCarouselWrapper?.nativeElement;
+    if (!el) return;
+    const scrollAmount = el.clientWidth; // scroll by visible width
+    el.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   }
 
   public previousSlide(): void {
-    const scrollAmount = this.projectCarouselWrapper.nativeElement.offsetWidth;
-    this.projectCarouselWrapper.nativeElement.scrollBy({
-      left: -scrollAmount,
-      behavior: 'smooth',
-    });
+    const el = this.projectCarouselWrapper?.nativeElement;
+    if (!el) return;
+    const scrollAmount = el.clientWidth;
+    el.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  }
+
+  public trackById(index: number, item: Project): string {
+    return item._id;
   }
 }

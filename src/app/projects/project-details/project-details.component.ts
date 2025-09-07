@@ -1,12 +1,15 @@
-import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 // rxjs
-import { Subject, takeUntil } from 'rxjs';
+import { map, filter, switchMap, catchError } from 'rxjs/operators';
+import { of, Observable } from 'rxjs';
 
 // angular material
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // project service and interface
 import { ProjectService } from '../../services/project.service';
@@ -18,43 +21,23 @@ import { Project } from '../../types/project.interface';
   templateUrl: './project-details.component.html',
   styleUrls: ['./project-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule, MatListModule, MatIconModule],
+  imports: [CommonModule, RouterModule, MatListModule, MatIconModule, MatProgressSpinnerModule],
 })
-export class ProjectDetailsComponent implements OnInit, OnDestroy {
-  project: Project | undefined;
-  private destroy$ = new Subject<void>();
-
+export class ProjectDetailsComponent {
   // inject dependencies
   private route = inject(ActivatedRoute);
   private projectService = inject(ProjectService);
 
-  public ngOnInit(): void {
-    this.getProjectById();
-  }
-
-  public ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
-  public getProjectById(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-
-    // if id does not exist
-    if (!id) {
-      console.error('Project ID not found in route parameters.');
-      return;
-    }
-    this.projectService
-      .getProjectById(id)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (project) => {
-          this.project = project;
-        },
-        error: (error) => {
-          console.error('Error fetching project details:', error);
-        },
-      });
-  }
+  public project$: Observable<Project | undefined> = this.route.paramMap.pipe(
+    map((pm) => pm.get('id')),
+    filter((id): id is string => !!id),
+    switchMap((id) =>
+      this.projectService.getProjectById(id).pipe(
+        catchError((error) => {
+          console.error('Error fetching project:', error);
+          return of(undefined); // signal not found/error to template
+        })
+      )
+    )
+  );
 }

@@ -30,7 +30,7 @@ import {
 import {
   PROJECT_STATUS,
   PROJECT_LANGUAGE,
-  PROJECT_CATAGORIES,
+  PROJECT_CATEGORIES,
 } from '../../../assets/data/project-data';
 
 @Component({
@@ -56,7 +56,7 @@ export class ProjectFormComponent implements OnInit {
   private readonly snackBarDuration = 5000;
 
   statuses: ProjectStatus[] = PROJECT_STATUS;
-  categories: ProjectCategory[] = PROJECT_CATAGORIES;
+  categories: ProjectCategory[] = PROJECT_CATEGORIES;
   languages: ProjectLanguage[] = PROJECT_LANGUAGE;
 
   // inject dependencies
@@ -73,7 +73,7 @@ export class ProjectFormComponent implements OnInit {
     category: ['', Validators.required],
     programmingLanguage: ['', Validators.required],
     startDate: ['', Validators.required],
-    gitUrl: ['', Validators.required, Validators.pattern('https?://.+')],
+    gitUrl: ['', Validators.required],
     description: ['', Validators.required],
   });
 

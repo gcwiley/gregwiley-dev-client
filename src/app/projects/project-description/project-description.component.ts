@@ -1,12 +1,13 @@
-import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 // rxjs
-import { Subject, takeUntil } from 'rxjs';
+import { map, filter, switchMap, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
-// project service and interface
+// project service
 import { ProjectService } from '../../services/project.service';
-import { Project } from '../../types/project.interface';
 
 @Component({
   standalone: true,
@@ -14,44 +15,23 @@ import { Project } from '../../types/project.interface';
   templateUrl: './project-description.component.html',
   styleUrls: ['./project-description.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterModule],
+  imports: [CommonModule, RouterModule],
 })
-export class ProjectDescriptionComponent implements OnInit, OnDestroy {
-  project: Project | undefined
-  private destroy$ = new Subject<void>();
-  
+export class ProjectDescriptionComponent {
   // inject dependencies
   private route = inject(ActivatedRoute);
   private projectService = inject(ProjectService);
 
-  public ngOnInit(): void {
-    this.getProjectById();
-  }
-
-  public ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
-  public getProjectById(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    // error checking
-    if (!id) {
-      console.error('Project ID not found in route parameters.');
-      return;
-    }
-    this.projectService
-      .getProjectById(id)
-      .pipe(
-        takeUntil(this.destroy$)
+  public project$ = this.route.paramMap.pipe(
+    map((pm) => pm.get('id')),
+    filter((id): id is string => !!id),
+    switchMap((id) =>
+      this.projectService.getProjectById(id).pipe(
+        catchError((error) => {
+          console.error('Error fetching project:', error);
+          return of(undefined); // signal not found/error to template
+        })
       )
-      .subscribe({
-        next: (project) => {
-          this.project = project;
-        },
-        error: (error) => {
-          console.error('Error fetching project description:', error);
-        },
-      });
-  }
+    )
+  );
 }

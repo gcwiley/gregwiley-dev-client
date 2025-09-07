@@ -26,8 +26,8 @@ export class ProjectService {
   // GET: a individual project by ID - GET PROJECT BY ID
   public getProjectById(id: string): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
-    return this.http.get<{ data: Project }>(url).pipe(
-      map((res) => res.data), // extract the array
+    return this.http.get<{ success: boolean; message?: string; data: Project }>(url).pipe(
+      map((res) => res.data), // unwrap the backend wrapper
       catchError(this.handleError)
     );
   }

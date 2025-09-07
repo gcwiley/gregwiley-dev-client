@@ -1,4 +1,6 @@
+@if (project$ | async; as project) {
 <section class="project-description" aria-label="Project Description">
   <h1 class="project-title">{{ project.title }}</h1>
   <p class="project-description">{{ project.description }}</p>
 </section>
+}
