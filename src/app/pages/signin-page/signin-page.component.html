@@ -13,7 +13,7 @@
             matInput
             type="email"
             formControlName="email"
-            placeholder="name@example.com"
+            title="name@example.com"
             autocomplete="username"
             aria-describedby="email-errors" />
           @if (formControls['email'].hasError('required')) {
@@ -32,7 +32,7 @@
             matInput
             [type]="showPassword ? 'text' : 'password'"
             formControlName="password"
-            placeholder="Password"
+            title="Password"
             autocomplete="current-password"
             aria-describedby="password-errors" />
           <button

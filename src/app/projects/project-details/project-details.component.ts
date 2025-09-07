@@ -21,9 +21,9 @@ import { Project } from '../../types/project.interface';
   imports: [RouterModule, MatListModule, MatIconModule],
 })
 export class ProjectDetailsComponent implements OnInit, OnDestroy {
-  project: Project | undefined = undefined;
+  project: Project | undefined;
   private destroy$ = new Subject<void>();
-  
+
   // inject dependencies
   private route = inject(ActivatedRoute);
   private projectService = inject(ProjectService);
@@ -39,15 +39,15 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
 
   public getProjectById(): void {
     const id = this.route.snapshot.paramMap.get('id');
+
+    // if id does not exist
     if (!id) {
       console.error('Project ID not found in route parameters.');
       return;
     }
     this.projectService
       .getProjectById(id)
-      .pipe(
-        takeUntil(this.destroy$)
-      )
+      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (project) => {
           this.project = project;

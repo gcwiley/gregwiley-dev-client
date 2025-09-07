@@ -1,15 +1,17 @@
 <div class="project-carousel-container">
   <div class="project-carousel-wrapper">
-    <div class="project-carousel-item">
+    <div class="project-carousel-items">
       @for (project of projects(); track project._id) {
-      <mat-card appearance="outlined">
-        <mat-card-header>
-          <mat-card-title>{{ project.title }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-actions>
-          <button matButton [routerLink]="['/projects', project._id]">OPEN</button>
-        </mat-card-actions>
-      </mat-card>
+      <div class="project-carousel-item">
+        <mat-card appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>{{ project.title }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-actions>
+            <button matButton [routerLink]="['/projects', project._id]">OPEN</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
       }
     </div>
   </div>

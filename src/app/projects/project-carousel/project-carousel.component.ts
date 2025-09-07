@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 
 // project interface
 import { Project } from '../../types/project.interface';
@@ -28,6 +29,7 @@ import { Project } from '../../types/project.interface';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatDividerModule,
   ],
 })
 export class ProjectCarouselComponent {

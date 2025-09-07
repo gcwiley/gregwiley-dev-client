@@ -17,8 +17,8 @@ import { Project } from '../../types/project.interface';
   imports: [RouterModule],
 })
 export class ProjectDescriptionComponent implements OnInit, OnDestroy {
-  project: Project | undefined = undefined;
-  private destroy$ = new Subject<void>(); // subject to signal destruction
+  project: Project | undefined
+  private destroy$ = new Subject<void>();
   
   // inject dependencies
   private route = inject(ActivatedRoute);
