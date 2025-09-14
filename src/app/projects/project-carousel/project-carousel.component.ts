@@ -39,17 +39,17 @@ export class ProjectCarouselComponent {
   projectCarouselWrapper?: ElementRef<HTMLDivElement>;
 
   public nextSlide(): void {
-    const el = this.projectCarouselWrapper?.nativeElement;
-    if (!el) return;
-    const scrollAmount = el.clientWidth; // scroll by visible width
-    el.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    const element = this.projectCarouselWrapper?.nativeElement;
+    if (!element) return;
+    const scrollAmount = element.clientWidth; // scroll by visible width
+    element.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   }
 
   public previousSlide(): void {
-    const el = this.projectCarouselWrapper?.nativeElement;
-    if (!el) return;
-    const scrollAmount = el.clientWidth;
-    el.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    const element = this.projectCarouselWrapper?.nativeElement;
+    if (!element) return;
+    const scrollAmount = element.clientWidth;
+    element.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
   }
 
   public trackById(index: number, item: Project): string {

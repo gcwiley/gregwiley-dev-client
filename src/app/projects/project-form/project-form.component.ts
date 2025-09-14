@@ -148,7 +148,9 @@ export class ProjectFormComponent implements OnInit {
     }
   }
 
+  // navigates away from the form without saving
   public onCancel(): void {
-    this.router.navigateByUrl(this.mode === 'edit' ? `/projects/${this.id}` : '/');
+    const destination = this.mode === 'edit' ? `/projects/${this.id}` : '/projects';
+    this.router.navigateByUrl(destination);
   }
 }

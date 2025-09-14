@@ -11,15 +11,12 @@
 .row {
   display: flex;
   flex-direction: row;
+  gap: 20px; // use gap for spacing between columns
 }
 
 .col {
   flex: 1;
   margin-right: 20px;
-}
-
-.col:last-child {
-  margin-right: 0;
 }
 
 .card-actions button {

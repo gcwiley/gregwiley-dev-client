@@ -1,5 +1,3 @@
-@use '../../../styles/helpers/constants';
-
 .project-details {
   background: var(--mat-sys-primary-container);
   color: var(--mat-sys-on-primary-container);
@@ -7,11 +5,4 @@
   margin: 2rem;
   padding: 1rem;
   border-radius: 1rem;
-}
-
-.spinner-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 20vh;
 }

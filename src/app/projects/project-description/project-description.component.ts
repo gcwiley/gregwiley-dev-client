@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 
 // rxjs
 import { map, filter, switchMap, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 
-// project service
+// project service and interface
 import { ProjectService } from '../../services/project.service';
+import { Project } from '../../types/project.interface';
 
 @Component({
   standalone: true,
@@ -22,7 +23,7 @@ export class ProjectDescriptionComponent {
   private route = inject(ActivatedRoute);
   private projectService = inject(ProjectService);
 
-  public project$ = this.route.paramMap.pipe(
+  public project$: Observable<Project | undefined> = this.route.paramMap.pipe(
     map((pm) => pm.get('id')),
     filter((id): id is string => !!id),
     switchMap((id) =>
