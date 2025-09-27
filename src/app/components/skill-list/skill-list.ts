@@ -13,12 +13,12 @@ export interface Skill {
 @Component({
    standalone: true,
    selector: 'app-skill-list',
-   templateUrl: './skill-list.component.html',
-   styleUrls: ['./skill-list.component.scss'],
+   templateUrl: './skill-list.html',
+   styleUrls: ['./skill-list.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [MatCardModule, MatListModule, MatDividerModule],
 })
-export class SkillListComponent {
+export class SkillList {
    skills: Skill[] = [
       {
          name: 'JavaScript',

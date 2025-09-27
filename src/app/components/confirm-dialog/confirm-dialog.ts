@@ -12,13 +12,13 @@ export interface ConfirmDialogData {
 @Component({
    standalone: true,
    selector: 'app-confirm-dialog',
-   templateUrl: './confirm-dialog.component.html',
-   styleUrl: './confirm-dialog.component.scss',
+   templateUrl: './confirm-dialog.html',
+   styleUrl: './confirm-dialog.scss',
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [MatDialogModule, MatButtonModule, MatDialogModule],
 })
-export class ConfirmDialogComponent {
+export class ConfirmDialog {
    // inject dependencies
    public data = inject<ConfirmDialogData>(MAT_DIALOG_DATA);
-   public dialogRef = inject<MatDialogRef<ConfirmDialogComponent>>(MatDialogRef);
+   public dialogRef = inject<MatDialogRef<ConfirmDialog>>(MatDialogRef);
 }

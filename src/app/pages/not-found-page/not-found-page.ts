@@ -7,9 +7,9 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   standalone: true,
   selector: 'app-not-found-page',
-  templateUrl: './not-found-page.component.html',
-  styleUrls: ['./not-found-page.component.scss'],
+  templateUrl: './not-found-page.html',
+  styleUrls: ['./not-found-page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterModule, MatButtonModule],
 })
-export class NotFoundPageComponent {}
+export class NotFoundPage {}

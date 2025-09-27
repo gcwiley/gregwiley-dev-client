@@ -4,11 +4,11 @@ import { VERSION } from '@angular/material/core';
 @Component({
    standalone: true,
    selector: 'app-footer',
-   templateUrl: './footer.component.html',
-   styleUrls: ['./footer.component.scss'],
+   templateUrl: './footer.html',
+   styleUrls: ['./footer.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FooterComponent {
+export class Footer {
    version = VERSION.full;
    year = new Date().getFullYear();
 }

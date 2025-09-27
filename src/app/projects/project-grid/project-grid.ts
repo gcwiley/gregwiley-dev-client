@@ -21,8 +21,8 @@ import { Project } from '../../types/project.interface';
 @Component({
   standalone: true,
   selector: 'app-project-grid',
-  templateUrl: './project-grid.component.html',
-  styleUrls: ['./project-grid.component.scss'],
+  templateUrl: './project-grid.html',
+  styleUrls: ['./project-grid.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
@@ -35,7 +35,7 @@ import { Project } from '../../types/project.interface';
     AsyncPipe,
   ],
 })
-export class ProjectGridComponent implements OnInit, OnDestroy {
+export class ProjectGrid implements OnInit, OnDestroy {
   // inject dependencies
   private projectService = inject(ProjectService);
   private breakpointObserver = inject(BreakpointObserver);

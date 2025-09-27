@@ -1,5 +1,3 @@
 {
-    "geminicodeassist.enable": true,
-    "geminicodeassist.codeGenerationPaneViewEnabled": true,
-    "geminicodeassist.chat.collapseCodeBlocksByDefault": true,
+  "explorer.compactFolders": false
 }

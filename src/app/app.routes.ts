@@ -8,7 +8,7 @@ export const routes: Routes = [
     title: 'Home',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./pages/home-page/home-page.component').then((m) => m.HomePageComponent),
+      import('./pages/home-page/home-page').then((m) => m.HomePage),
   },
   // admin page
   {
@@ -16,7 +16,7 @@ export const routes: Routes = [
     title: 'Admin Dashboard',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./pages/admin-page/admin-page.component').then((m) => m.AdminPageComponent),
+      import('./pages/admin-page/admin-page').then((m) => m.AdminPage),
   },
   // projects page
   {
@@ -24,8 +24,8 @@ export const routes: Routes = [
     title: 'Projects',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./pages/project-pages/project-grid-page/project-grid-page.component').then(
-        (m) => m.ProjectGridPageComponent
+      import('./pages/project-pages/project-grid-page/project-grid-page').then(
+        (m) => m.ProjectGridPage
       ),
   },
   // individual project page
@@ -34,8 +34,8 @@ export const routes: Routes = [
     // title: 'Project Details',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./pages/project-pages/project-details-page/project-details-page.component').then(
-        (m) => m.ProjectDetailsPageComponent
+      import('./pages/project-pages/project-details-page/project-details-page').then(
+        (m) => m.ProjectDetailsPage
       ),
   },
   // create project page
@@ -44,8 +44,8 @@ export const routes: Routes = [
     title: 'Create Project',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./pages/project-pages/project-create-page/project-create-page.component').then(
-        (m) => m.ProjectCreatePageComponent
+      import('./pages/project-pages/project-create-page/project-create-page').then(
+        (m) => m.ProjectCreatePage
       ),
   },
   // edit project page
@@ -54,8 +54,8 @@ export const routes: Routes = [
     title: 'Edit Project',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./pages/project-pages/project-create-page/project-create-page.component').then(
-        (m) => m.ProjectCreatePageComponent
+      import('./pages/project-pages/project-create-page/project-create-page').then(
+        (m) => m.ProjectCreatePage
       ),
   },
   // sign in page
@@ -63,7 +63,7 @@ export const routes: Routes = [
     path: 'signin',
     title: 'Sign In',
     loadComponent: () =>
-      import('./pages/signin-page/signin-page.component').then((m) => m.SigninPageComponent),
+      import('./pages/signin-page/signin-page').then((m) => m.SigninPage),
   },
   // about page
   {
@@ -71,7 +71,7 @@ export const routes: Routes = [
     title: 'About',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./pages/about-page/about-page.component').then((m) => m.AboutPageComponent),
+      import('./pages/about-page/about-page').then((m) => m.AboutPage),
   },
   // resources page
   {
@@ -79,8 +79,8 @@ export const routes: Routes = [
     title: 'Resources',
     canActivate: [authGuard],
     loadComponent: () =>
-      import('./pages/resources-page/resources-page.component').then(
-        (m) => m.ResourcesPageComponent
+      import('./pages/resources-page/resources-page').then(
+        (m) => m.ResourcesPage
       ),
   },
   // error page
@@ -88,18 +88,18 @@ export const routes: Routes = [
     path: 'error',
     title: 'Error Page',
     loadComponent: () =>
-      import('./pages/error-page/error-page.component').then((m) => m.ErrorPageComponent),
+      import('./pages/error-page/error-page').then((m) => m.ErrorPage),
   },
   // page not found
   {
     path: '404',
     title: 'Page Not Found',
     loadComponent: () =>
-      import('./pages/not-found-page/not-found-page.component').then(
-        (m) => m.NotFoundPageComponent
+      import('./pages/not-found-page/not-found-page').then(
+        (m) => m.NotFoundPage
       ),
   },
-  // redirect to page not found - wildcare route should be last!
+  // redirect to page not found - wildcard route should be last!
   {
     path: '**',
     redirectTo: '/404',

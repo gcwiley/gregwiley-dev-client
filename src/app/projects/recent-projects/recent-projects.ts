@@ -19,8 +19,8 @@ import { Project } from '../../types/project.interface';
 @Component({
   standalone: true,
   selector: 'app-recent-projects',
-  templateUrl: './recent-projects.component.html',
-  styleUrls: ['./recent-projects.component.scss'],
+  templateUrl: './recent-projects.html',
+  styleUrls: ['./recent-projects.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
@@ -29,7 +29,7 @@ import { Project } from '../../types/project.interface';
     MatProgressSpinnerModule,
   ],
 })
-export class RecentProjectsComponent implements OnInit {
+export class RecentProjects implements OnInit {
   public recentProjects$!: Observable<Project[]>;
   public isLoading = true;
 

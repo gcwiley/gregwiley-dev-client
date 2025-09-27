@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 
 // shared components
-import { LogoComponent } from '../logo/logo.component';
+import { Logo } from '../logo/logo';
 
 // auth service
 import { AuthService } from '../../services/auth.service';
@@ -21,8 +21,8 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   standalone: true,
   selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  templateUrl: './navbar.html',
+  styleUrls: ['./navbar.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
@@ -31,10 +31,10 @@ import { AuthService } from '../../services/auth.service';
     MatButtonModule,
     MatMenuModule,
     MatDividerModule,
-    LogoComponent,
+    Logo,
   ],
 })
-export class NavbarComponent {
+export class Navbar {
   // inject dependencies
   private authService = inject(AuthService);
   private router = inject(Router);
@@ -52,7 +52,7 @@ export class NavbarComponent {
   public onClickSignOut(): void {
     this.authService.signOutUser().subscribe({
       next: () => {
-        this.snackBar.open('Successfully signed out.', 'Close', { duration: 5000 }); // success feedback
+        this.snackBar.open('You have successfully signed out.', 'Close', { duration: 5000 }); // success feedback
         this.router.navigateByUrl('/signin'); // redirects user to signin page
       },
       error: (error) => {

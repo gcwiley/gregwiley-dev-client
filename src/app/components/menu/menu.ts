@@ -8,9 +8,9 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   standalone: true,
   selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrl: './menu.component.scss',
+  templateUrl: './menu.html',
+  styleUrl: './menu.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterModule, MatButtonModule, MatIconModule],
 })
-export class MenuComponent {}
+export class Menu {}

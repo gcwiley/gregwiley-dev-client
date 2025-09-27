@@ -33,8 +33,8 @@ import { Project } from '../../types/project.interface';
 @Component({
    standalone: true,
    selector: 'app-project-table',
-   templateUrl: './project-table.component.html',
-   styleUrls: ['./project-table.component.scss'],
+   templateUrl: './project-table.html',
+   styleUrls: ['./project-table.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
       CommonModule,
@@ -48,7 +48,7 @@ import { Project } from '../../types/project.interface';
       RouterModule,
    ],
 })
-export class ProjectTableComponent implements AfterViewInit, OnDestroy {
+export class ProjectTable implements AfterViewInit, OnDestroy {
    selection = new SelectionModel<Project>(true, []);
 
    // setup pagination for project table

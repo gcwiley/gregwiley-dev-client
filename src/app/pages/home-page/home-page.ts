@@ -12,20 +12,20 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 
 // shared components
-import { NavbarComponent, MenuComponent, FooterComponent, HeroComponent } from '../../components';
+import { Navbar, Menu, Footer, Hero } from '../../components';
 
 // project service and interface
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 // project components
-import { ProjectCarouselComponent } from '../../projects';
+import { ProjectCarousel } from '../../projects';
 
 @Component({
   standalone: true,
   selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss'],
+  templateUrl: './home-page.html',
+  styleUrls: ['./home-page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RouterModule,
@@ -33,15 +33,15 @@ import { ProjectCarouselComponent } from '../../projects';
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
-    NavbarComponent,
-    MenuComponent,
-    FooterComponent,
-    ProjectCarouselComponent,
-    HeroComponent,
+    Navbar,
+    Menu,
+    Footer,
+    ProjectCarousel,
+    Hero,
     AsyncPipe,
   ],
 })
-export class HomePageComponent implements OnInit {
+export class HomePage implements OnInit {
   // inject dependencies
   private projectService = inject(ProjectService);
 

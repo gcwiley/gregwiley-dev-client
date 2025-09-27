@@ -1,3 +1,3 @@
-export { ProjectCreatePageComponent } from "./project-create-page/project-create-page.component";
-export { ProjectDetailsPageComponent } from "./project-details-page/project-details-page.component";
-export { ProjectGridPageComponent } from "./project-grid-page/project-grid-page.component";
+export { ProjectCreatePage } from "./project-create-page/project-create-page";
+export { ProjectDetailsPage } from "./project-details-page/project-details-page";
+export { ProjectGridPage } from "./project-grid-page/project-grid-page";

@@ -1,7 +1,7 @@
-export { ProjectCarouselComponent } from './project-carousel/project-carousel.component';
-export { ProjectDescriptionComponent } from './project-description/project-description.component';
-export { ProjectDetailsComponent } from './project-details/project-details.component';
-export { ProjectFormComponent } from './project-form/project-form.component';
-export { ProjectGridComponent } from './project-grid/project-grid.component';
-export { ProjectTableComponent } from './project-table/project-table.component';
-export { RecentProjectsComponent } from './recent-projects/recent-projects.component';
+export { ProjectCarousel } from './project-carousel/project-carousel';
+export { ProjectDescription } from './project-description/project-description';
+export { ProjectDetails } from './project-details/project-details';
+export { ProjectForm } from './project-form/project-form';
+export { ProjectGrid } from './project-grid/project-grid';
+export { ProjectTable } from './project-table/project-table';
+export { RecentProjects } from './recent-projects/recent-projects';

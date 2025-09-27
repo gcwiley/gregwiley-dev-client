@@ -40,8 +40,8 @@ const ERROR_MESSAGES = {
 @Component({
   standalone: true,
   selector: 'app-signin',
-  templateUrl: './signin-page.component.html',
-  styleUrls: ['./signin-page.component.scss'],
+  templateUrl: './signin-page.html',
+  styleUrls: ['./signin-page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ReactiveFormsModule,
@@ -55,7 +55,7 @@ const ERROR_MESSAGES = {
     RouterModule
 ],
 })
-export class SigninPageComponent implements OnInit {
+export class SigninPage implements OnInit {
   public signinForm!: FormGroup;
   public isLoading = false;
   public errorMessage: string | null = null;

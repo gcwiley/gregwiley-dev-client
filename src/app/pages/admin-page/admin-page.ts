@@ -12,13 +12,13 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltip } from '@angular/material/tooltip';
 
 // project components
-import { ProjectTableComponent } from '../../projects';
+import { ProjectTable } from '../../projects';
 
 @Component({
    standalone: true,
    selector: 'app-admin-page',
-   templateUrl: './admin-page.component.html',
-   styleUrls: ['./admin-page.component.scss'],
+   templateUrl: './admin-page.html',
+   styleUrls: ['./admin-page.scss'],
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
     MatSidenavModule,
@@ -29,11 +29,11 @@ import { ProjectTableComponent } from '../../projects';
     MatButtonModule,
     MatTabsModule,
     MatTooltip,
-    ProjectTableComponent,
+    ProjectTable,
     RouterModule
 ],
 })
-export class AdminPageComponent {
+export class AdminPage {
    events: string[] = [];
    opened!: boolean;
 }

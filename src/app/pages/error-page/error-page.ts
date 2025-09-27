@@ -7,9 +7,9 @@ import { MatCardModule } from '@angular/material/card';
 @Component({
   standalone: true,
   selector: 'app-error-page',
-  templateUrl: './error-page.component.html',
-  styleUrl: './error-page.component.scss',
+  templateUrl: './error-page.html',
+  styleUrl: './error-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatButtonModule, MatCardModule],
 })
-export class ErrorPageComponent {}
+export class ErrorPage {}

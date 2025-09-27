@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   standalone: true,
   selector: 'app-announcement-bar',
-  templateUrl: './announcement-bar.component.html',
-  styleUrls: ['./announcement-bar.component.scss'],
+  templateUrl: './announcement-bar.html',
+  styleUrls: ['./announcement-bar.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AnnouncementBarComponent {}
+export class AnnouncementBar {}
