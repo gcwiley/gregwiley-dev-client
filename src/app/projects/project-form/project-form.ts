@@ -36,8 +36,8 @@ import {
 @Component({
   standalone: true,
   selector: 'app-project-form',
-  templateUrl: './project-form.component.html',
-  styleUrls: ['./project-form.component.scss'],
+  templateUrl: './project-form.html',
+  styleUrls: ['./project-form.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ReactiveFormsModule,
@@ -50,7 +50,7 @@ import {
     MatNativeDateModule,
   ],
 })
-export class ProjectFormComponent implements OnInit {
+export class ProjectForm implements OnInit {
   public mode: 'create' | 'edit' = 'create';
   private id!: string | null;
   private readonly snackBarDuration = 5000;

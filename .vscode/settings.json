@@ -1,5 +1,5 @@
 {
     "geminicodeassist.enable": true,
     "geminicodeassist.codeGenerationPaneViewEnabled": true,
-    "geminicodeassist.chat.collapseCodeBlocksByDefault": true
+    "geminicodeassist.chat.collapseCodeBlocksByDefault": true,
 }

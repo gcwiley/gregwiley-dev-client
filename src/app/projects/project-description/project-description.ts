@@ -3,8 +3,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 // rxjs
-import { map, filter, switchMap, catchError } from 'rxjs/operators';
-import { of, Observable } from 'rxjs';
+import { of, Observable, map, filter, switchMap, catchError } from 'rxjs';
 
 // project service and interface
 import { ProjectService } from '../../services/project.service';
@@ -13,12 +12,12 @@ import { Project } from '../../types/project.interface';
 @Component({
   standalone: true,
   selector: 'app-project-description',
-  templateUrl: './project-description.component.html',
-  styleUrls: ['./project-description.component.scss'],
+  templateUrl: './project-description.html',
+  styleUrls: ['./project-description.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, RouterModule],
 })
-export class ProjectDescriptionComponent {
+export class ProjectDescription {
   // inject dependencies
   private route = inject(ActivatedRoute);
   private projectService = inject(ProjectService);

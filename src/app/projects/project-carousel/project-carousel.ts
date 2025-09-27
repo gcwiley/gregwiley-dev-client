@@ -20,8 +20,8 @@ import { Project } from '../../types/project.interface';
 @Component({
   standalone: true,
   selector: 'app-project-carousel',
-  templateUrl: './project-carousel.component.html',
-  styleUrl: './project-carousel.component.scss',
+  templateUrl: './project-carousel.html',
+  styleUrl: './project-carousel.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
@@ -32,7 +32,7 @@ import { Project } from '../../types/project.interface';
     MatDividerModule,
   ],
 })
-export class ProjectCarouselComponent {
+export class ProjectCarousel {
   public projects = input<Project[]>([]);
 
   @ViewChild('projectCarouselWrapper', { read: ElementRef })
