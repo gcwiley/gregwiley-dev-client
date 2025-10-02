@@ -1,5 +1,6 @@
 export { AnnouncementBar } from './announcement-bar/announcement-bar';
 export { AuthStatus } from './auth-status/auth-status';
+export { Carousel } from './carousel/carousel';
 export { ConfirmDialog } from './confirm-dialog/confirm-dialog';
 export { Footer } from './footer/footer';
 export { Hero } from './hero/hero';

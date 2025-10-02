@@ -1,6 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AsyncPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 // rxjs
 import { Observable } from 'rxjs';
@@ -19,7 +23,7 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 // project components
-import { ProjectCarousel } from '../../projects';
+import { Carousel } from '../../components';
 
 @Component({
   standalone: true,
@@ -29,6 +33,7 @@ import { ProjectCarousel } from '../../projects';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RouterModule,
+    CommonModule,
     MatCardModule,
     MatButtonModule,
     MatDividerModule,
@@ -36,18 +41,15 @@ import { ProjectCarousel } from '../../projects';
     Navbar,
     Menu,
     Footer,
-    ProjectCarousel,
+    Carousel,
     Hero,
-    AsyncPipe,
   ],
 })
-export class HomePage implements OnInit {
+export class HomePage {
   // inject dependencies
   private projectService = inject(ProjectService);
 
-  public featuredProjects$!: Observable<Project[]>;
-
-  public ngOnInit(): void {
-    this.featuredProjects$ = this.projectService.getProjects();
-  }
+  // expose observable directly;
+  public readonly featuredProjects$: Observable<Project[]> =
+    this.projectService.getProjects();
 }

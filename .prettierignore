@@ -1,3 +1,33 @@
-# add files you wish to ignore here
+# build / output folders
 dist/
+build/
+out/
+.public/build/
+.storybook-static/
+
+# node / package manager caches
 node_modules/
+.cache/
+.vite/
+.parcel-cache/
+.turbo/
+
+# framework build folders
+.next/
+
+# coverage & reports
+coverage/
+
+# lock / pnpm / yarn artifacts (optional)
+.pnp.cjs
+.pnp.loader.mjs
+
+# generated / minified / source maps (no need to format)
+*.min.js
+*.bundle.js
+*.map
+
+# logs and temp
+*.log
+tmp/
+temp/

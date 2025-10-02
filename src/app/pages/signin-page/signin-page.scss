@@ -7,15 +7,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; // use min-height to avoid overflow issues on small screens
+  padding: 2rem 1rem;
 }
 
 .signin-form {
-  max-width: 90%;
-  width: 400px;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.85); // white with 85% opacity
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15); // optional for depth
+  max-width: 400px;
+  width: 100%;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.85); // white with 92% opacity
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12); // optional for depth
+  border-radius: 10px;
 }
 
 .full-width {
@@ -25,15 +27,28 @@
 
 .sign-in-button {
   width: 100%;
-}
-
-.spacer {
-  flex: 1 1 auto;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .title-text {
   text-align: center;
-  font: var(--mat-sys-label-large, 'Arial', sans-serif);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.title-text h1 {
+  font: var(--mat-sys-headline-small);
+  margin: 0;
+}
+
+.title-text p {
+  font: var(--mat-sys-body-medium);
+  margin: 0;
 }
 
 .forgot-password {
@@ -41,9 +56,12 @@
   color: var(--mat-sys-primary);
   text-align: center;
   margin-bottom: 1rem;
-  a {
-    text-decoration: none;
-  }
+}
+
+.forgot-password a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
 }
 
 // reduces padding on smaller screens for better mobile usability

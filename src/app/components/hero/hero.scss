@@ -1,41 +1,96 @@
 .hero-container {
-  background: var(--mat-sys-primary);
-  color: var(--mat-sys-on-primary);
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
   text-align: center;
+  font: var(--mat-sys-display-small);
+
+  // responsive height
+  min-height: 28vh;
+  height: clamp(260px, 40vh, 360px);
+
+  padding-top: 1.25rem;
   background-image: url(../../../assets/images/sign_in_graphic.jpg);
   background-size: cover;
-  background-position: bottom;
-  height: 300px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-color: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+
+  // ensure text sits above image
+  overflow: hidden;
 }
 
+// suble dark overlay to keep text readable over background images
+// If you prefer a lighter overlay, reduce alpha in .hero-overlay.
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.18));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* logo */
+.hero-image {
+  display: block;
+  margin-bottom: 0.5rem;
+  width: 72px;
+  height: 57px;
+}
+
+/* responsive, accessible typography */
 .title {
-  font: var(--mat-sys-headline-large);
+  margin: 0;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+  line-height: 1.05;
+  color: var(--mat-sys-on-primary);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 .subtitle {
-  font: var(--mat-sys-headline-small);
+  margin: 0.25rem 0 0.5rem;
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  color: rgba(255, 255, 255, 0.9);
 }
 
-// action container spacing
+/* CTA */
 .hero-actions {
   display: flex;
-  justify-content: center;
   gap: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
+a[mat-flat-button] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 96px;
+}
+
+/* smaller screens: reduce spacing and image size */
 @media (max-width: 600px) {
-  .hero-container {
-    height: auto;
-    padding: 1rem 0.5rem;
-  }
   .hero-image {
     width: 48px;
     height: 38px;
+  }
+  .hero-container {
+    padding: 1rem 0.5rem;
+  }
+  .title {
+    font-size: 1.4rem;
   }
 }

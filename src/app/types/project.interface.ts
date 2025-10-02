@@ -10,6 +10,7 @@ export interface Project {
   favoriteProject: boolean;
   gitUrl: string;
   description: string;
+  imageUrl: string;
   createdAt: string;
   updatedAt: string;
 }
