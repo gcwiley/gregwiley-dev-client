@@ -50,7 +50,7 @@ export class Carousel implements AfterViewInit, OnDestroy {
   private destroy$ = new Subject<void>();
 
   // autoplay configuration
-  private autoplayId: ReturnType<typeof setInterval> | null = null;
+  private autoplayId: number | null = null;
   private readonly autoplayIntervalMs = 5000;
   private isPaused = false;
 
