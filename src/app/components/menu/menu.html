@@ -1,11 +1,27 @@
-<nav class="menu-container" aria-label="Main navigation">
+<mat-toolbar
+  class="menu-container"
+  role="navigation"
+  aria-label="Main navigation">
   <div class="menu-content">
-    <button matIconButton routerLink="/">
-      <mat-icon aria-label="Home Page">home</mat-icon>
-    </button>
+    <!-- use anchor for primary navigation (semantic and accessible) -->
+    <a
+      mat-icon-button
+      routerLink="/"
+      aria-label="Home"
+      class="home-btn"
+      type="button">
+      <mat-icon aria-hidden="false">home</mat-icon>
+    </a>
 
-    <span class="flex-spacer"></span>
+    <span class="flex-spacer" aria-hidden="true"></span>
 
-    <button matButton="filled" routerLink="/create">Create</button>
+    <a
+      mat-flat-button
+      color="primary"
+      routerLink="/create"
+      routerLinkActive="active"
+      aria-label="Create Project">
+      Create
+    </a>
   </div>
-</nav>
+</mat-toolbar>

@@ -9,36 +9,69 @@
 .footer-content {
   max-width: constants.$max-width;
   margin: auto;
-  // flex properties
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 6rem;
+  padding: 1rem 1.25rem;
+  min-height: 4.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.footer-copyright {
+.footer-left,
+.footer-right {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
-.footer-copyright a {
+.footer-link {
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
-  margin-right: 0.5rem;
+  color: inherit;
 }
 
-.footer-copyright img,
-.footer-logos img {
-  width: 30px;
+.footer-link img,
+.footer-logo-link img {
   height: 30px;
-  vertical-align: middle; // helps align images with adjacent text
+  width: auto;
+  object-fit: contain;
+  vertical-align: middle;
 }
 
-.footer-logos {
-  display: flex;
-  align-items: center;
+.built-with {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-right: 0.25rem;
 }
 
-.footer-logos a {
-  margin-right: 0.5rem;
+.footer-logo-link {
+  margin: 0 0.5rem;
+  transition: transform 120ms ease, opacity 120ms ease;
+}
+
+.footer-logo-link:focus,
+.footer-link:focus {
+  outline: 3px solid rgba(255, 255, 255, 0.12);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.version {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
   margin-left: 0.5rem;
+}
+
+/* responsive */
+@media (max-width: 600px) {
+  .footer-content {
+    justify-content: center;
+    text-align: center;
+  }
+  .footer-right {
+    width: 100%;
+    justify-content: center;
+  }
 }

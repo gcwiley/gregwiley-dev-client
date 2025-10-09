@@ -1,17 +1,25 @@
-<footer class="footer" aria-label="Site Footer">
-   <div class="footer-content">
-      <div class="footer-copyright">
-         <a href="/" class="footer-link">
-            <img src="../../../assets/logos/cube-svgrepo-com.svg" alt="Cube Logo" />
-         </a>
-         <span>&copy; {{ year }} Gregory Wiley</span>
-      </div>
+<footer class="footer" aria-label="Site Footer" role="contentinfo">
+  <div class="footer-content">
+    <div class="footer-left">
+      <a routerLink="/" class="footer-link" aria-label="Home">
+        <img
+          src="../../../assets/logos/cube-svgrepo-com.svg"
+          alt="Gregory Wiley logo" />
+      </a>
+      <span class="footer-copy">&copy; {{ year }} Gregory Wiley</span>
+    </div>
 
-      <div class="footer-logos">
-         <span>Built with Angular</span>
-         <a href="https://angular.io/" target="_blank" rel="noopener">
-            <img src="../../../assets/logos/angular-logo.svg" alt="Angular Logo" />
-         </a>
-      </div>
-   </div>
+    <div class="footer-right">
+      <span class="built-with">Built with</span>
+      <a
+        href="https://angular.io"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Angular website"
+        class="footer-logo-link">
+        <img src="../../../assets/logos/angular-logo.svg" alt="Angular Logo" />
+      </a>
+      <span class="version" aria-hidden="true">v{{ version }}</span>
+    </div>
+  </div>
 </footer>

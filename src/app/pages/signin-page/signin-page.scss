@@ -64,6 +64,67 @@
   font-weight: 600;
 }
 
+.oauth-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  // thin grey divider between sign in and google button
+  border-top: 1px solid #e0e0e0;
+  padding-top: 12px;
+  margin-top: 16px; // give divider breathing room
+}
+
+.google-btn {
+  margin-top: .5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+  background: #fff;
+  color: #202124;
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: none;
+  text-transform: none;
+}
+
+// icon container: force block rendering so baseline issues disappear
+.google-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  line-height: 0; // prevents baseline gap
+  margin-right: 10px;
+}
+
+.google-icon svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+// label
+.google-label {
+  font-weight: 600;
+  display: inline-block;
+}
+
+.signin-footer {
+  font: var(--mat-sys-label-small);
+  margin-top: 12px;
+  text-align: center;
+  width: 100%;
+}
+
+.signin-footer small {
+  color: rgba(0,0,0,0.6);
+  font-size: 0.85rem;
+  display: inline-block;
+  margin-top: 6px;
+}
+
 // reduces padding on smaller screens for better mobile usability
 @media (max-width: 500px) {
   .signin-form {

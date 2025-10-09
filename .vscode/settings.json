@@ -1,3 +1,5 @@
 {
-  "explorer.compactFolders": false
+  "explorer.compactFolders": false,
+  "editor.minimap.enabled": false,
+  "workbench.preferredDarkColorTheme": "Default Dark Modern"
 }
