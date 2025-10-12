@@ -1,28 +1,41 @@
-<nav class="navbar-container" role="navigation" aria-label="Main Navigation">
+<mat-toolbar
+  class="navbar-container"
+  role="navigation"
+  aria-label="Main Navigation">
   <div class="navbar-content">
-    <!-- app logo -->
-    <a routerLink="/" mat-icon-button aria-label="Learning Angular Material">
+    <!-- app logo (use anchor for navigation and provide an accessible label) -->
+    <a
+      routerLink="/"
+      class="logo-link"
+      title="Home - gregwiley.dev"
+      aria-label="Home">
       <app-logo></app-logo>
     </a>
 
     <!-- app title -->
     <span class="title">gregwiley.dev</span>
 
-    <span class="flex-spacer"></span>
+    <span class="flex-spacer" aria-hidden="true"></span>
 
-    <button mat-icon-button [matMenuTriggerFor]="adminMenu" aria-label="Admin Menu">
-      <mat-icon>account_circle</mat-icon>
+    <!-- admin/menu trigger -->
+    <button
+      mat-icon-button
+      class="admin-btn"
+      aria-label="Open account menu"
+      [matMenuTriggerFor]="adminMenu"
+      type="button">
+      <mat-icon aria-hidden="false">account_circle</mat-icon>
     </button>
 
-    <mat-menu #adminMenu="matMenu">
-      <button mat-menu-item routerLink="/admin">
-        <mat-icon> dashboard </mat-icon>
+    <mat-menu #adminMenu="matMenu" xPosition="before" yPosition="below">
+      <button mat-menu-item routerLink="/admin" type="button">
+        <mat-icon>dashboard</mat-icon>
         <span>Admin Dashboard</span>
       </button>
-      <button mat-menu-item (click)="onClickSignOut()">
-        <mat-icon> logout </mat-icon>
+      <button mat-menu-item (click)="onClickSignOut()" type="button">
+        <mat-icon>logout</mat-icon>
         <span>Sign Out</span>
       </button>
     </mat-menu>
   </div>
-</nav>
+</mat-toolbar>

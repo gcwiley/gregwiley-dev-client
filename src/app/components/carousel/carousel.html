@@ -6,30 +6,49 @@
     aria-roledescription="carousel"
     tabindex="0"
     (mouseenter)="pauseAutoplay()"
-    (mouseleave)="resumeAutoplay()"
-  >
+    (mouseleave)="resumeAutoplay()">
     <div class="project-carousel-items" role="list">
       <ng-container *ngFor="let project of projects(); trackBy: trackById">
-        <div class="project-carousel-item" role="listitem" tabindex="-1" aria-roledescription="slide">
+        <div
+          class="project-carousel-item"
+          role="listitem"
+          tabindex="-1"
+          aria-roledescription="slide">
           <mat-card class="project-card" appearance="outlined">
             <div class="project-media" *ngIf="project.imageUrl">
-              <img [src]="project.imageUrl" title="project.title" [alt]="project.title" />
+              <img
+                [src]="project.imageUrl"
+                title="project.title"
+                [alt]="project.title" />
             </div>
             <mat-card-content class="project-content">
               <h3 class="project-title">{{ project.title }}</h3>
-              <p class="project-subtitle" *ngIf="project.category">{{ project.category }}</p>
+              @if (project.category) {
+              <p class="project-subtitle">{{ project.category }}</p>
+              }
+
               <p class="project-description">{{ project.description }}</p>
               <div class="project-tags">
                 <!-- <span *ngFor="let t of project.tags" class="tag">{{ t }}</span> -->
               </div>
             </mat-card-content>
             <mat-card-actions class="project-actions">
-              <button matButton [routerLink]="['/projects', project._id]" aria-label="Open {{ project.title }}">
+              <button
+                matButton
+                [routerLink]="['/projects', project._id]"
+                aria-label="Open {{ project.title }}">
                 OPEN
               </button>
-              <a *ngIf="project.gitUrl" class="github-link" [href]="project.gitUrl" target="_blank" rel="noopener noreferrer" aria-label="Open repository for {{ project.title }}">
+              @if (project.gitUrl) {
+              <a
+                class="github-link"
+                [href]="project.gitUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open repository for {{ project.title }}">
                 <mat-icon>launch</mat-icon>
               </a>
+              }
             </mat-card-actions>
           </mat-card>
         </div>
@@ -43,8 +62,7 @@
     (click)="previousSlide()"
     [disabled]="!canPrev"
     title="Previous Slide"
-    aria-label="Previous Slide"
-  >
+    aria-label="Previous Slide">
     <mat-icon aria-hidden="true">chevron_left</mat-icon>
   </button>
 
@@ -54,8 +72,7 @@
     (click)="nextSlide()"
     [disabled]="!canNext"
     title="Next Slide"
-    aria-label="Next Slide"
-  >
+    aria-label="Next Slide">
     <mat-icon aria-hidden="true">chevron_right</mat-icon>
   </button>
 
@@ -70,7 +87,6 @@
       (click)="goTo(i)"
       [attr.aria-current]="i === activeIndex ? 'true' : null"
       aria-label="Go to slide {{ i + 1 }}"
-      [attr.tabindex]="i === activeIndex ? 0 : -1"
-    ></button>
+      [attr.tabindex]="i === activeIndex ? 0 : -1"></button>
   </div>
 </div>

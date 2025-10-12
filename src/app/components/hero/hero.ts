@@ -13,6 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
    imports: [RouterModule, MatButtonModule],
 })
 export class Hero {
-   title = 'Gregory Wiley';
+   title = 'Greg Wiley';
    subtitle = 'Full Stack Web Developer';
 }

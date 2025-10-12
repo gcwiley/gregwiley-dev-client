@@ -1,7 +1,21 @@
-<main class="error-page-container" aria-label="Error Page">
-  <mat-card class="error-page-content">
-    <h1>Error</h1>
-    <p>This website is feeling a little under the weather right now but will be back soon.</p>
-    <a matButton href="www.google.com">Google</a>
+<main class="error-page-container" role="main" aria-label="Error page">
+  <mat-card class="error-card" role="alert" aria-live="polite">
+    <div class="error-illustration" aria-hidden="true">
+      <!-- subtle SVG illustration -->
+      <svg width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <rect x="4" y="12" width="112" height="56" rx="8" fill="#F5F7FB"/>
+        <path d="M30 36h60" stroke="#E0E0E0" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="50" cy="40" r="10" fill="#E8F0FE"/>
+        <path d="M46 42l4-6 4 6" stroke="#4285F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <h1 class="error-title">Something went wrong</h1>
+    <p class="error-desc">Sorry — we couldn't load this page. Try refreshing or go back to the homepage.</p>
+
+    <mat-card-actions class="error-actions">
+      <button mat-flat-button (click)="goHome()" aria-label="Go to homepage">Home</button>
+      <button mat-stroked-button (click)="goBack()" aria-label="Go back">Retry / Back</button>
+    </mat-card-actions>
   </mat-card>
 </main>

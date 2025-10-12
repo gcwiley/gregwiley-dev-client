@@ -8,4 +8,3 @@ export { Logo } from './logo/logo';
 export { Menu } from './menu/menu';
 export { Navbar } from './navbar/navbar';
 export { SearchBar } from './search-bar/search-bar';
-export { SkillList } from './skill-list/skill-list';

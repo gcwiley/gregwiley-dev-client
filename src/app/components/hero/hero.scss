@@ -54,7 +54,7 @@
 /* responsive, accessible typography */
 .title {
   margin: 0;
-  font-weight: 600;
+  font-weight: 100;
   font-size: clamp(1.5rem, 4.5vw, 2.5rem);
   line-height: 1.05;
   color: var(--mat-sys-on-primary);
@@ -64,6 +64,7 @@
 .subtitle {
   margin: 0.25rem 0 0.5rem;
   font-size: clamp(1rem, 2.2vw, 1.125rem);
+  font-weight: 200;
   color: rgba(255, 255, 255, 0.9);
 }
 

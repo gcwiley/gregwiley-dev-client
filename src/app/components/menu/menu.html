@@ -3,25 +3,76 @@
   role="navigation"
   aria-label="Main navigation">
   <div class="menu-content">
-    <!-- use anchor for primary navigation (semantic and accessible) -->
-    <a
-      mat-icon-button
-      routerLink="/"
-      aria-label="Home"
-      class="home-btn"
-      type="button">
-      <mat-icon aria-hidden="false">home</mat-icon>
+    <!-- logo / home -->
+    <a routerLink="/" class="logo-link" aria-label="Home" title="Home">
+      <img src="../../../assets/logos/cube-svgrepo-com.svg" alt="Site logo" />
     </a>
+
+    <!-- desktop nav (hidden on small screens) -->
+    <nav class="nav-links" aria-label="Primary">
+      <a
+        *ngFor="let link of navLinks"
+        mat-button
+        routerLink="{{ link.path }}"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ link.label }}</a
+      >
+    </nav>
 
     <span class="flex-spacer" aria-hidden="true"></span>
 
-    <a
-      mat-flat-button
-      color="primary"
-      routerLink="/create"
-      routerLinkActive="active"
-      aria-label="Create Project">
-      Create
-    </a>
+    <!-- actions -->
+    <div class="actions">
+      <a
+        mat-flat-button
+        color="primary"
+        routerLink="/create"
+        (click)="closeMobileMenu()"
+        aria-label="Create project"
+        >Create</a
+      >
+      <a
+        mat-button
+        routerLink="/signin"
+        (click)="closeMobileMenu()"
+        aria-label="Sign in"
+        >Sign in</a
+      >
+    </div>
+
+    <!-- mobile toggle visible on small screens -->
+    <button
+      type="button"
+      class="mobile-toggle"
+      aria-label="Toggle navigation"
+      [attr.aria-expanded]="isMobileOpen ? 'true' : 'false'"
+      (click)="toggleMobileMenu()">
+      <mat-icon>{{ isMobileOpen ? 'close' : 'menu' }}</mat-icon>
+    </button>
   </div>
+
+  <!-- mobile menu (stacked) -->
+  @if (isMobileOpen) {
+  <div
+    class="mobile-menu"
+    role="menu"
+    [attr.aria-hidden]="!isMobileOpen ? 'true' : 'false'">
+    <a
+      *ngFor="let link of navLinks"
+      mat-list-item
+      routerLink="{{ link.path }}"
+      routerLinkActive="active"
+      (click)="closeMobileMenu()"
+      role="menuitem"
+      >{{ link.label }}</a
+    >
+    <div class="mobile-actions">
+      <a mat-button routerLink="/signin" (click)="closeMobileMenu()">Sign in</a>
+      <a mat-flat-button routerLink="/create" (click)="closeMobileMenu()"
+        >Create</a
+      >
+    </div>
+  </div>
+  }
 </mat-toolbar>
