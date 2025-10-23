@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 // shared components
 import {
   Navbar,
-  Menu,
   Footer,
 } from '../../../components';
 
@@ -21,7 +20,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     Navbar,
-    Menu,
     Footer,
     ProjectDetails,
     ProjectDescription,

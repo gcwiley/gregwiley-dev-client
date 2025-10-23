@@ -1,8 +1,16 @@
-<form [formGroup]="projectForm" novalidate (ngSubmit)="onSaveProject()" aria-label="Project Form">
+<form
+  [formGroup]="projectForm"
+  novalidate
+  (ngSubmit)="onSaveProject()"
+  aria-label="Project Form">
   <mat-card class="project-form" appearance="outlined">
     <mat-card-header>
-      <mat-card-title>{{ mode === 'create' ? 'New Project' : 'Edit Project' }}</mat-card-title>
+      <mat-card-title
+        >{{ mode === 'create' ? 'New Project' : 'Edit Project'
+        }}</mat-card-title
+      >
     </mat-card-header>
+
     <mat-card-content>
       <!-- title -->
       <mat-form-field class="full-width" appearance="outline">
@@ -13,44 +21,58 @@
           formControlName="title"
           title="Project Title"
           aria-describedby="title-error" />
-        @if (this.projectForm.controls['title'].hasError('required')) {
-        <mat-error id="title-error" aria-live="polite">Please provide a project title.</mat-error>
+        @if (projectForm.controls.title.hasError('required') &&
+        (projectForm.controls.title.touched || submitted)) {
+        <mat-error id="title-error" aria-live="polite">
+          Please provide a project title.
+        </mat-error>
         }
       </mat-form-field>
+
       <div class="row">
         <div class="col">
           <!-- project status -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Project Status</mat-label>
-            <mat-select formControlName="status" aria-describedby="status-error">
-              @for (status of statuses; track status) {
-              <mat-option [value]="status.value">
+            <mat-select
+              formControlName="status"
+              aria-describedby="status-error">
+              <mat-option
+                *ngFor="let status of statuses"
+                [value]="status.value">
                 {{ status.viewValue }}
               </mat-option>
-              }
             </mat-select>
-            @if (this.projectForm.controls['status'].hasError('required')) {
-            <mat-error id="status-error" aria-live="polite"
-              >Please select a project status.</mat-error
-            >
+            @if (projectForm.controls.status.hasError('required') &&
+            (projectForm.controls.status.touched || submitted)) {
+            <mat-error id="status-error" aria-live="polite">
+              Please select a project status.
+            </mat-error>
             }
           </mat-form-field>
         </div>
+
         <div class="col">
           <!-- project category -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Category</mat-label>
             <mat-select formControlName="category">
-              @for (category of categories; track category) {
-              <mat-option [value]="category.value">{{ category.viewValue }}</mat-option>
-              }
+              <mat-option
+                *ngFor="let category of categories"
+                [value]="category.value"
+                >{{ category.viewValue }}</mat-option
+              >
             </mat-select>
-            @if (this.projectForm.controls['category'].hasError('required')) {
-            <mat-error aria-live="polite">Please select a project category.</mat-error>
-            }
+            
+            <mat-error
+              *ngIf="projectForm.controls.category.hasError('required') && (projectForm.controls.category.touched || submitted)"
+              aria-live="polite">
+              Please select a project category.
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
+
       <div class="row">
         <div class="col">
           <!-- startDate -->
@@ -62,30 +84,39 @@
               formControlName="startDate"
               title="Start Date"
               aria-describedby="startDate-error" />
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            @if (this.projectForm.controls['startDate'].hasError('required')) {
-            <mat-error id="startDate-error" aria-live="polite"
-              >Please provide a project start date.</mat-error
-            >
-            }
+            <mat-error
+              *ngIf="projectForm.controls.startDate.hasError('required') && (projectForm.controls.startDate.touched || submitted)"
+              id="startDate-error"
+              aria-live="polite">
+              Please provide a project start date.
+            </mat-error>
           </mat-form-field>
         </div>
+
         <div class="col">
           <!-- programming language -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Programming Language</mat-label>
             <mat-select formControlName="programmingLanguage">
-              @for (language of languages; track language) {
-              <mat-option [value]="language.value">{{ language.viewValue }}</mat-option>
-              }
+              <mat-option
+                *ngFor="let language of languages"
+                [value]="language.value"
+                >{{ language.viewValue }}</mat-option
+              >
             </mat-select>
-            @if (this.projectForm.controls['programmingLanguage'].hasError('required')) {
-            <mat-error aria-live="polite">Please select a programming language.</mat-error>
-            }
+            <mat-error
+              *ngIf="projectForm.controls.programmingLanguage.hasError('required') && (projectForm.controls.programmingLanguage.touched || submitted)"
+              aria-live="polite">
+              Please select a programming language.
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
+
       <div class="row">
         <div class="col">
           <!-- github url -->
@@ -97,18 +128,22 @@
               formControlName="gitUrl"
               title="GitHub Url"
               aria-describedby="github-url-error" />
-            @if (this.projectForm.controls['gitUrl'].hasError('required')) {
-            <mat-error id="github-url-error" aria-live="polite"
-              >Please enter a GitHub URL.</mat-error
-            >
-            } @if (this.projectForm.controls['gitUrl'].hasError('pattern')) {
-            <mat-error id="github-url-error" aria-live="polite">
+            <mat-error
+              *ngIf="projectForm.controls.gitUrl.hasError('required') && (projectForm.controls.gitUrl.touched || submitted)"
+              id="github-url-error"
+              aria-live="polite">
+              Please enter a GitHub URL.
+            </mat-error>
+            <mat-error
+              *ngIf="projectForm.controls.gitUrl.hasError('pattern') && (projectForm.controls.gitUrl.touched || submitted)"
+              id="github-url-pattern-error"
+              aria-live="polite">
               Please enter a valid URL (must start with http:// or https://).
             </mat-error>
-            }
           </mat-form-field>
         </div>
       </div>
+
       <div class="row">
         <div class="col">
           <!-- description -->
@@ -120,22 +155,32 @@
               formControlName="description"
               title="Description"
               aria-describedby="description-error"></textarea>
-            @if (this.projectForm.controls['description'].hasError('required')) {
-            <mat-error id="description-error" aria-live="polite"
-              >Please provide a project description.</mat-error
-            >
-            }
+            <mat-error
+              *ngIf="projectForm.controls.description.hasError('required') && (projectForm.controls.description.touched || submitted)"
+              id="description-error"
+              aria-live="polite">
+              Please provide a project description.
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
     </mat-card-content>
+
     <mat-card-actions class="card-actions">
-      @if (this.mode === 'create') {
-      <button matButton="filled" type="submit" aria-label="Create Project" [disabled]="!projectForm.valid">Create</button>
-      } @else {
-      <button matButton="filled" type="submit" aria-label="Update Project" [disabled]="!projectForm.valid">Update</button>
-      }
-      <button matButton="outlined" type="button" (click)="onCancel()" aria-label="Cancel">
+      <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        aria-label="{{ mode === 'create' ? 'Create Project' : 'Update Project' }}"
+        [disabled]="projectForm.invalid || isSaving">
+        {{ mode === 'create' ? 'Create' : 'Update' }}
+      </button>
+      <button
+        mat-stroked-button
+        type="button"
+        (click)="onCancel()"
+        aria-label="Cancel"
+        [disabled]="isSaving">
         Cancel
       </button>
     </mat-card-actions>

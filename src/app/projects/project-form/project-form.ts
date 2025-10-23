@@ -1,10 +1,16 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 // rxjs
 import { of } from 'rxjs';
 import { first, switchMap } from 'rxjs';
+import { finalize } from 'rxjs';
 
 // angular material
 import { MatCardModule } from '@angular/material/card';
@@ -54,6 +60,8 @@ export class ProjectForm implements OnInit {
   public mode: 'create' | 'edit' = 'create';
   private id!: string | null;
   private readonly snackBarDuration = 5000;
+  public isSaving = false;
+  public submitted = false;
 
   statuses: ProjectStatus[] = PROJECT_STATUS;
   categories: ProjectCategory[] = PROJECT_CATEGORIES;
@@ -72,8 +80,8 @@ export class ProjectForm implements OnInit {
     status: ['', Validators.required],
     category: ['', Validators.required],
     programmingLanguage: ['', Validators.required],
-    startDate: ['', Validators.required],
-    gitUrl: ['', Validators.required],
+    startDate: [null as Date | null, Validators.required], // Date object expected by mat-datepicker
+    gitUrl: ['', Validators.required, Validators.pattern(/^https?:\/\/.+/)],
     description: ['', Validators.required],
   });
 
@@ -94,10 +102,15 @@ export class ProjectForm implements OnInit {
       )
       .subscribe((project) => {
         if (project) {
-          // use patchValue for satety, and map the data correctly
+          // set Date object for datepicker
           this.projectForm.patchValue({
-            ...project,
-            startDate: project.startDate ? new Date(project.startDate).toISOString() : '',
+            title: project.title ?? '',
+            status: project.status ?? '',
+            category: project.category ?? '',
+            programmingLanguage: project.programmingLanguage ?? '',
+            startDate: project.startDate ? new Date(project.startDate) : null,
+            gitUrl: project.gitUrl ?? '',
+            description: project.description ?? '',
           });
         }
       });
@@ -105,19 +118,30 @@ export class ProjectForm implements OnInit {
 
   // saves a new project
   public onSaveProject(): void {
+    this.submitted = true;
     if (!this.projectForm.valid) {
+      // mark all controls touches to show errors
+      Object.values(this.projectForm.controls).forEach((c) =>
+        c.markAsTouched()
+      );
       return;
     }
 
     const formValue = this.projectForm.value as ProjectInput;
+    this.isSaving = true;
 
     if (this.mode === 'create') {
       this.projectService
         .addProject(formValue)
-        .pipe(first())
+        .pipe(
+          first(),
+          finalize(() => (this.isSaving = false))
+        )
         .subscribe({
           next: () => {
-            this.snackBar.open('Project added', 'Close', { duration: this.snackBarDuration });
+            this.snackBar.open('Project added', 'Close', {
+              duration: this.snackBarDuration,
+            });
             this.router.navigateByUrl('/');
           },
           error: (error) => {
@@ -130,7 +154,10 @@ export class ProjectForm implements OnInit {
     } else {
       this.projectService
         .updateProjectById(this.id!, formValue)
-        .pipe(first())
+        .pipe(
+          first(),
+          finalize(() => (this.isSaving = false))
+        )
         .subscribe({
           next: () => {
             this.snackBar.open('Project updated successfully', 'Close', {
@@ -150,7 +177,8 @@ export class ProjectForm implements OnInit {
 
   // navigates away from the form without saving
   public onCancel(): void {
-    const destination = this.mode === 'edit' ? `/projects/${this.id}` : '/projects';
+    const destination =
+      this.mode === 'edit' ? `/projects/${this.id}` : '/projects';
     this.router.navigateByUrl(destination);
   }
 }

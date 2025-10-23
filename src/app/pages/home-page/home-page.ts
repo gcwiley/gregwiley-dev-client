@@ -16,14 +16,14 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 
 // shared components
-import { Navbar, Menu, Footer, Hero } from '../../components';
+import { Navbar, Footer, Hero } from '../../components';
 
 // project service and interface
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 // project components
-import { Carousel } from '../../components';
+import { ProjectCarousel } from '../../projects';
 
 @Component({
   standalone: true,
@@ -39,9 +39,8 @@ import { Carousel } from '../../components';
     MatDividerModule,
     MatIconModule,
     Navbar,
-    Menu,
     Footer,
-    Carousel,
+    ProjectCarousel,
     Hero,
   ],
 })

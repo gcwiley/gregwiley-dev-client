@@ -1,6 +1,7 @@
 .project-form {
-  margin: 2rem;
+  margin: 2rem auto;
   padding: 1rem;
+  max-width: 980px;
 }
 
 .full-width {
@@ -16,7 +17,7 @@
 
 .col {
   flex: 1;
-  margin-right: 20px;
+  margin-right: 0;
 }
 
 .card-actions button {
@@ -29,7 +30,6 @@
     flex-direction: column;
   }
   .col {
-    margin-right: 0;
     margin-bottom: 1rem;
   }
 }

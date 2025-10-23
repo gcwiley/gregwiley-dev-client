@@ -3,7 +3,6 @@
 </header>
 
 <app-hero></app-hero>
-<app-menu></app-menu>
 
 <main
   class="home-page-container"
@@ -11,8 +10,8 @@
   aria-label="Homepage Main Content">
   <h1 class="title">Featured Projects</h1>
   <p class="welcome-text">
-    Welcome to my website. I’ve worked on tons of little projects over the years
-    but these are the ones that I’m most proud of. Many of them are open-source,
+    Welcome to my website. I`ve worked on tons of little projects over the years
+    but these are the ones that I`m most proud of. Many of them are open-source,
     so if you see something that piques your interest, check out the code and
     contribute if you have ideas for how it can be improved.
   </p>
@@ -20,10 +19,10 @@
   <mat-divider></mat-divider>
 
   <div class="actions">
-    <a matButton routerLink="/projects" aria-label="View all projects">All Projects</a>
+    <a matButton routerLink="/projects" aria-label="View all projects">View all projects</a>
   </div>
   
-  <app-carousel [projects]="(featuredProjects$ | async) ?? []" aria-label="Featured projects carousel"></app-carousel>
+  <app-project-carousel [projects]="(featuredProjects$ | async) ?? []" aria-label="Featured projects carousel"></app-project-carousel>
 </main>
 
 <app-footer></app-footer>
