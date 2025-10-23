@@ -16,7 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 
 // shared components
-import { Navbar, Footer, Hero } from '../../components';
+import { Navbar, Footer, Hero, SearchBar } from '../../components';
 
 // project service and interface
 import { ProjectService } from '../../services/project.service';
@@ -42,6 +42,7 @@ import { ProjectCarousel } from '../../projects';
     Footer,
     ProjectCarousel,
     Hero,
+    SearchBar,
   ],
 })
 export class HomePage {

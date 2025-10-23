@@ -20,7 +20,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 // rxjs
@@ -45,6 +45,7 @@ import { Project } from '../../types/project.interface';
       MatTooltipModule,
       MatProgressSpinnerModule,
       MatPaginatorModule,
+      MatSortModule,
       RouterModule,
    ],
 })

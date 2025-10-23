@@ -1,1 +1,27 @@
+<form
+  class="search-form"
+  role="search"
+  aria-label="Search projects"
+  (submit)="$event.preventDefault()">
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-icon matPrefix aria-hidden="true">search</mat-icon>
 
+    <input
+      matInput
+      type="search"
+      [formControl]="searchControl"
+      placeholder="Search projects"
+      aria-label="Search projects"
+      (keydown.enter)="onEnter($any($event))" />
+
+    <button
+      mat-icon-button
+      matSuffix
+      *ngIf="searchControl.value"
+      aria-label="Clear search"
+      type="button"
+      (click)="onClear()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</form>

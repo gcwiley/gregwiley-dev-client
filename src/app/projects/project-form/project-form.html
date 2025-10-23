@@ -63,12 +63,12 @@
                 >{{ category.viewValue }}</mat-option
               >
             </mat-select>
-            
-            <mat-error
-              *ngIf="projectForm.controls.category.hasError('required') && (projectForm.controls.category.touched || submitted)"
-              aria-live="polite">
+            @if (projectForm.controls.category.hasError('required') &&
+            (projectForm.controls.category.touched || submitted)) {
+            <mat-error aria-live="polite">
               Please select a project category.
             </mat-error>
+            }
           </mat-form-field>
         </div>
       </div>
@@ -88,6 +88,7 @@
               matSuffix
               [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
+
             <mat-error
               *ngIf="projectForm.controls.startDate.hasError('required') && (projectForm.controls.startDate.touched || submitted)"
               id="startDate-error"
@@ -169,7 +170,6 @@
     <mat-card-actions class="card-actions">
       <button
         mat-flat-button
-        color="primary"
         type="submit"
         aria-label="{{ mode === 'create' ? 'Create Project' : 'Update Project' }}"
         [disabled]="projectForm.invalid || isSaving">

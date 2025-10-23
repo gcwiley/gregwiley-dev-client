@@ -9,7 +9,7 @@
       </mat-card-header>
 
       <mat-card-content>
-        <p>{{ project.description }}</p>
+        <p>{{ project.programmingLanguage }}</p>
       </mat-card-content>
 
       <span class="flex-spacer"></span>
@@ -22,7 +22,7 @@
   }
 </mat-grid-list>
 
-<!-- Handle loading/empty states -->
+<!-- handle loading/empty states -->
 @if ((projects | async) === null) {
 <div class="spinner-container">
   <mat-spinner></mat-spinner>

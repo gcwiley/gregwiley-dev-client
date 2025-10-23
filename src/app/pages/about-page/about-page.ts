@@ -4,7 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
    Navbar,
    Footer,
-   Menu,
 } from '../../components/';
 
 @Component({
@@ -16,7 +15,6 @@ import {
    imports: [
       Navbar,
       Footer,
-      Menu,
    ],
 })
 export class AboutPage {}
