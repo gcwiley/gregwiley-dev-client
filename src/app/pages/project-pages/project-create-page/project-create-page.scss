@@ -1,19 +1,74 @@
 @use '../../../../styles/helpers/constants';
 
 .project-create-page-container {
-   max-width: constants.$max-width;
-   margin: auto;
-   min-height: 100vh;
-   display: flex;
-   flex-direction: row;
+  max-width: constants.$max-width;
+  margin: auto;
+  padding: 2rem 1.5rem;
+  min-height: 100vh;
+
+  // use CSS grid for a robust, reponsive layout
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px; // main content takes remaining space
+  gap: 2.5rem;
+  align-items: start;
 }
 
 .main-content {
-   flex-basis: constants.$main-content-flex-basis;
-   max-width: constants.$main-content-max-width;
+  width: 100%;
 }
 
 .side-content {
-   flex-basis: constants.$side-content-flex-basis;
-   max-width: constants.$side-content-max-width;
+  width: 100%;
+  // made the aside sticky on larger screens
+  position: sticky;
+  top: 88px; // adjust based on your navbar height
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--mat-sys-primary);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.page-title {
+  font: var(--mat-sys-title-medium);
+  font-size: 1.8rem;
+  font-weight: 200;
+  margin: 0;
+}
+
+.page-subtitle {
+  font: var(--mat-sys-body-medium);
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 1rem;
+}
+
+.side-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+// Responsive stacking for smaller screens
+@media (max-width: 960px) {
+  .project-create-page-container {
+    grid-template-columns: 1fr; // Single column layout
+  }
+
+  .side-content {
+    position: static; // Un-stick the aside
+    margin-top: 3rem;
+  }
 }

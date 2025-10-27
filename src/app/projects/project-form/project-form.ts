@@ -139,14 +139,14 @@ export class ProjectForm implements OnInit {
         )
         .subscribe({
           next: () => {
-            this.snackBar.open('Project added', 'Close', {
+            this.snackBar.open('Project added.', 'Close', {
               duration: this.snackBarDuration,
             });
             this.router.navigateByUrl('/');
           },
           error: (error) => {
             console.error(error);
-            this.snackBar.open('Error adding project', 'Close', {
+            this.snackBar.open('Error adding project.', 'Close', {
               duration: this.snackBarDuration,
             });
           },

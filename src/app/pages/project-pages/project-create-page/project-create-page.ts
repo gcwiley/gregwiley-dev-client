@@ -1,16 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+// angular material
+import { MatIconModule } from '@angular/material/icon';
 
 // shared components
-import {
-  Navbar,
-  Footer,
-} from '../../../components';
+import { Navbar, Footer } from '../../../components';
 
 // project components
-import {
-  ProjectForm,
-  RecentProjects,
-} from '../../../projects';
+import { ProjectForm, RecentProjects } from '../../../projects';
 
 @Component({
   standalone: true,
@@ -23,6 +21,8 @@ import {
     Footer,
     ProjectForm,
     RecentProjects,
+    RouterModule,
+    MatIconModule,
   ],
 })
 export class ProjectCreatePage {}

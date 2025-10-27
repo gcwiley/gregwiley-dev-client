@@ -2,12 +2,30 @@
   <app-navbar></app-navbar>
 </header>
 
-<main class="project-create-page-container" aria-label="Create Project Page" role="main">
+<main
+  class="project-create-page-container"
+  aria-label="Create Project Page"
+  role>
   <article class="main-content">
+    <div class="page-header">
+      <a
+        routerLink="/projects"
+        class="back-link"
+        aria-label="Back to all projects">
+        <mat-icon>arrow_back</mat-icon>
+        <span>All Projects</span>
+      </a>
+      <h1 class="page-title">New Project</h1>
+      <p class="page-subtitle">Fill out the details below to add a new project to your portfolio.</p>
+    </div>
     <app-project-form></app-project-form>
   </article>
 
-  <aside class="side-content">
+  <aside
+    class="side-content"
+    role="complementary"
+    aria-labelledby="recent-projects-heading">
+    <h2 id="recent-projects-heading" class="side-title">Recent Projects</h2>
     <app-recent-projects></app-recent-projects>
   </aside>
 </main>
