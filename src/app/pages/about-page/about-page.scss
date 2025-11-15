@@ -1,19 +1,109 @@
 @use '../../../styles/helpers/constants';
 
 .about-page-container {
-   max-width: constants.$max-width;
-   margin: auto;
-   min-height: 100vh;
-   display: flex;
-   flex-direction: row;
+  max-width: constants.$max-width;
+  margin: auto;
+  padding: 2rem 1.5rem;
+  min-height: 100vh;
+
+  // Use CSS Grid for a robust, responsive layout
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px; // Main content takes remaining space
+  gap: 2.5rem;
+  align-items: start;
 }
 
 .main-content {
-   flex-basis: constants.$main-content-flex-basis;
-   max-width: constants.$main-content-max-width;
+  width: 100%;
 }
 
-.side-content {
-   flex-basis: constants.$side-content-flex-basis;
-   max-width: constants.$side-content-max-width;
+.side-content .sticky-content {
+  position: sticky;
+  top: 88px; // Adjust based on your navbar height
+  padding: 1.5rem;
+  background: rgba(245, 247, 251, 0.6);
+  border-radius: 12px;
+}
+
+// Header with profile picture
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: var(--mat-sys-primary);
+  margin: 0.25rem 0 0 0;
+  font-weight: 500;
+}
+
+// General prose styling for readability
+.prose {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.8);
+
+  p {
+    margin-bottom: 1.5em;
+  }
+}
+
+.side-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.fact-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  mat-icon {
+    color: var(--mat-sys-primary);
+  }
+}
+
+// Responsive stacking for smaller screens
+@media (max-width: 960px) {
+  .about-page-container {
+    grid-template-columns: 1fr; // Single column layout
+  }
+
+  .side-content .sticky-content {
+    position: static; // Un-stick the aside
+  }
+}
+
+@media (max-width: 600px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
 }

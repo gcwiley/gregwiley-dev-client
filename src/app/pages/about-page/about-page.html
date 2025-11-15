@@ -4,28 +4,56 @@
 
 <main class="about-page-container" aria-label="About Me Page">
   <article class="main-content">
-    <section>
-      <h1>About Me</h1>
+    <div class="page-header">
+      <img
+        src="assets/images/profile-placeholder.webp"
+        alt="A portrait of Gregory Wiley"
+        class="profile-picture" />
+      <div class="header-text">
+        <h1 class="page-title">About Me</h1>
+        <p class="page-subtitle">Back-End Developer & Node.js Specialist</p>
+      </div>
+    </div>
+
+    <section class="prose">
       <p>
-        I am an expert back-end developer with a deep specialization in Node.js and the Express framework. I am proficient in building robust, scalable, and secure APIs. My expertise includes asynchronous programming, middleware, routing, error handling, and peformance optimization in a Node.js environment. I am also familar with common project structures like MVC and best practices for securing Express applications.
+        I am an expert back-end developer with a deep specialization in Node.js
+        and the Express framework. I am proficient in building robust, scalable,
+        and secure APIs.
+      </p>
+      <p>
+        My expertise includes asynchronous programming, middleware, routing,
+        error handling, and performance optimization in a Node.js environment. I
+        am also familiar with common project structures like MVC and best
+        practices for securing Express applications.
       </p>
     </section>
   </article>
 
   <aside class="side-content" aria-labelledby="more-about-me-heading">
-    <h2 id="more-about-me-heading">More About Me</h2>
-    <section>
-      <p>
-        Quisque euismod, justo nec facilisis cursus, enim erat dictum enim, nec dictum massa enim
-        nec dui. Pellentesque euismod, nisi eu consectetur cursus, nisl erat dictum urna, nec dictum
-        massa enim nec dui.
-      </p>
-      <ul>
-        <li>Hobby: Photography</li>
-        <li>Favorite Food: Sushi</li>
-        <li>Dream Destination: Iceland</li>
-      </ul>
-    </section>
+    <div class="sticky-content">
+      <h2 id="more-about-me-heading" class="side-title">More About Me</h2>
+      <section class="prose">
+        <p>
+          When I'm not coding, I enjoy exploring the world through my camera
+          lens. Here are a few quick facts:
+        </p>
+        <ul class="fact-list">
+          <li>
+            <mat-icon>photo_camera</mat-icon>
+            <span>Hobby: Photography</span>
+          </li>
+          <li>
+            <mat-icon>ramen_dining</mat-icon>
+            <span>Favorite Food: Sushi</span>
+          </li>
+          <li>
+            <mat-icon>flight</mat-icon>
+            <span>Dream Destination: Iceland</span>
+          </li>
+        </ul>
+      </section>
+    </div>
   </aside>
 </main>
 

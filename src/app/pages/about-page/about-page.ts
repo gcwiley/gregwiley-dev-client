@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+// angular material
+import { MatIconModule } from '@angular/material/icon';
+
 // shared components
 import {
    Navbar,
@@ -15,6 +18,7 @@ import {
    imports: [
       Navbar,
       Footer,
+      MatIconModule,
    ],
 })
 export class AboutPage {}

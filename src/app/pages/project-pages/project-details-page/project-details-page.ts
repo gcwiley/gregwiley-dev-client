@@ -1,4 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+// angular material
+import { MatIconModule } from '@angular/material/icon';
 
 // shared components
 import {
@@ -23,6 +27,8 @@ import {
     Footer,
     ProjectDetails,
     ProjectDescription,
-  ],
+    RouterModule,
+    MatIconModule,
+],
 })
 export class ProjectDetailsPage {}

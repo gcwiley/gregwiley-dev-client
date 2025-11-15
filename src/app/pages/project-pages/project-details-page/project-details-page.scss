@@ -3,17 +3,58 @@
 .project-details-page-container {
   max-width: constants.$max-width;
   margin: auto;
-  display: flex;
-  flex-direction: row;
+  padding: 2rem 1.5rem;
   min-height: 100vh;
 }
 
-.main-content {
-  flex-basis: constants.$main-content-flex-basis;
-  max-width: constants.$main-content-max-width;
+.page-header {
+  margin-bottom: 1.5rem;
 }
 
-.side-content {
-  flex-basis: constants.$side-content-flex-basis;
-  max-width: constants.$side-content-max-width;
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--mat-sys-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+// use CSS Grid for a robust, responsive layout
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px; // main content takes remaining space
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.main-content {
+  width: 100%;
+}
+
+.side-content .sticky-wrapper {
+  // make the aside sticky on larger screens
+  position: sticky;
+  top: 88px; // adjust based on your navbar height
+}
+
+// responsive stacking for smaller screens
+@media (max-width: 960px) {
+  .content-grid {
+    grid-template-columns: 1fr; // single column layout
+  }
+
+  .side-content .sticky-wrapper {
+    position: static; // un-stick the aside
+  }
+
+  .main-content {
+    // ensure the description comes before the details on mobile
+    order: 1;
+  }
+
+  .side-content {
+    order: 2;
+  }
 }

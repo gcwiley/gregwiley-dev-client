@@ -30,11 +30,11 @@
             <mat-select
               formControlName="status"
               aria-describedby="status-error">
-              <mat-option
-                *ngFor="let status of statuses"
-                [value]="status.value">
+              @for (status of statuses; track status.value) {
+              <mat-option [value]="status.value">
                 {{ status.viewValue }}
               </mat-option>
+              }
             </mat-select>
             @if (projectForm.controls.status.hasError('required') &&
             (projectForm.controls.status.touched || submitted)) {
@@ -50,11 +50,11 @@
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Category</mat-label>
             <mat-select formControlName="category">
-              <mat-option
-                *ngFor="let category of categories"
-                [value]="category.value"
+              @for (category of categories; track category.value) {
+              <mat-option [value]="category.value"
                 >{{ category.viewValue }}</mat-option
               >
+              }
             </mat-select>
             @if (projectForm.controls.category.hasError('required') &&
             (projectForm.controls.category.touched || submitted)) {
@@ -96,11 +96,11 @@
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Programming Language</mat-label>
             <mat-select formControlName="programmingLanguage">
-              <mat-option
-                *ngFor="let language of languages"
-                [value]="language.value"
+              @for (language of languages; track language.value) {
+              <mat-option [value]="language.value"
                 >{{ language.viewValue }}</mat-option
               >
+              }
             </mat-select>
             <mat-error
               *ngIf="projectForm.controls.programmingLanguage.hasError('required') && (projectForm.controls.programmingLanguage.touched || submitted)"

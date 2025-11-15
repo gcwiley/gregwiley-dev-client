@@ -1,7 +1,8 @@
 .project-form {
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 1rem 1.5rem 1.5rem 1.5rem; // slightly more padding at the bottom
   max-width: 980px;
+  --form-spacing: 1.25rem; // use a CSS variable for consistent spacing
 }
 
 .full-width {
@@ -12,16 +13,19 @@
 .row {
   display: flex;
   flex-direction: row;
-  gap: 20px; // use gap for spacing between columns
+  gap: var(--form-spacing); // use the variable for gap
 }
 
 .col {
   flex: 1;
-  margin-right: 0;
 }
 
-.card-actions button {
-  margin: 0.5rem;
+.card-actions {
+  display: flex;
+  justify-content: flex-end; // align buttons to the right
+  gap: 0.75rem; // add gap directly to the container
+  margin-top: 1rem;
+  padding: 0 0.5rem;
 }
 
 // responsive design for small screens
@@ -29,7 +33,7 @@
   .row {
     flex-direction: column;
   }
-  .col {
-    margin-bottom: 1rem;
+  .card-actions {
+    justify-content: center; // center button on small screens
   }
 }

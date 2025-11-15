@@ -4,13 +4,13 @@ import {
   OnInit,
   inject,
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 // rxjs
 import { of } from 'rxjs';
-import { first, switchMap } from 'rxjs';
-import { finalize } from 'rxjs';
+import { first, switchMap, finalize } from 'rxjs';
 
 // angular material
 import { MatCardModule } from '@angular/material/card';
@@ -46,6 +46,7 @@ import {
   styleUrls: ['./project-form.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    CommonModule,
     ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
@@ -81,7 +82,7 @@ export class ProjectForm implements OnInit {
     category: ['', Validators.required],
     programmingLanguage: ['', Validators.required],
     startDate: [null as Date | null, Validators.required], // Date object expected by mat-datepicker
-    gitUrl: ['', Validators.required, Validators.pattern(/^https?:\/\/.+/)],
+    gitUrl: ['', [Validators.required, Validators.pattern(/^https?:\/\/.+/)]],
     description: ['', Validators.required],
   });
 
