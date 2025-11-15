@@ -1,21 +1,15 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #sidenav
-    mode="side"
-    [(opened)]="opened"
-    (opened)="events.push('open!')"
-    (closed)="events.push('close')"
-    class="sidenav">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="sidenav">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list role="navigation">
-      <mat-list-item>
+      <a mat-list-item routerLink="/">
         <mat-icon matListItemIcon>home</mat-icon>
-        <a mat-list-item routerLink="/">Home</a>
-      </mat-list-item>
-      <mat-list-item>
+        <span>Home</span>
+      </a>
+      <a mat-list-item routerLink="/create">
         <mat-icon matListItemIcon>add</mat-icon>
-        <a mat-list-item routerLink="/create">Create Project</a>
-      </mat-list-item>
+        <span>Create Project</span>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -24,7 +18,7 @@
         mat-icon-button
         (click)="sidenav.toggle()"
         aria-label="Toggle sidenav"
-        matToolip="Toggle Sidenav">
+        matTooltip="Toggle Sidenav">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
 

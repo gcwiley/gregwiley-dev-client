@@ -106,10 +106,11 @@
               </svg>
             </span>
             <span class="google-label">
-              <ng-container *ngIf="!googleLoading"
-                >Sign in with Google</ng-container
-              >
-              <ng-container *ngIf="googleLoading">Signing in…</ng-container>
+              @if (!googleLoading) {
+                <span>Sign in with Google</span>
+              } @else {
+                <span>Signin in...</span>
+              }
             </span>
           </button>
         </div>
