@@ -1,23 +1,41 @@
 .project-card {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  right: 1rem;
-  bottom: 1rem;
-  padding: 0.5rem;
+  // make the card a flex container to control its children
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box; // ensure padding is included in the size
+
+  // add a smooth transition for the hover effect
+  // transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
 }
 
-// sets up space
+.project-card:hover {
+  // "lift" the card on hover for a nice interactive feel
+  // transform: translate(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+// this ulity correctly pushes the actions to the bottom of the card
 .flex-spacer {
   flex: 1 1 auto;
 }
 
 mat-card-title {
   color: var(--mat-sys-primary);
+  font-size: 1.1rem; // slightly larger for better hierarchy
 }
 
 mat-card-content p {
   font: var(--mat-sys-body-medium);
+  color: rgba(0, 0, 0, 0.7); // muted color for better readability
+  margin: 0.5rem 0;
+}
+
+mat-card-actions {
+  // remove default padding to align button to the edge
+  padding: 0 !important;
 }
 
 // during loading of projects
@@ -25,16 +43,31 @@ mat-card-content p {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 60vh; // adjust as needed
+  min-height: 60vh;
   width: 100%;
 }
 
 // when no projects are found
 .empty-message {
   display: flex;
+  flex-direction: column; // stack icon and text
   justify-content: center;
   align-items: center;
   min-height: 40vh; // adjust as needed
   width: 100%;
   text-align: center;
+  gap: 1rem; // space between icon and text
+
+  p {
+    font-size: 1.1rem;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 0;
+  }
+
+  mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    color: rgba(0, 0, 0, 0.3);
+  }
 }

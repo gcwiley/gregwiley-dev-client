@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 // angular material
 import { MatDividerModule } from '@angular/material/divider';
@@ -8,6 +9,10 @@ import { Navbar, Footer } from '../../../components';
 
 // project components
 import { ProjectGrid } from '../../../projects';
+
+// import project service and interface
+import { ProjectService } from '../../../services/project.service';
+// import { Project } from '../../../types/project.interface';
 
 @Component({
   standalone: true,
@@ -22,4 +27,8 @@ import { ProjectGrid } from '../../../projects';
     ProjectGrid,
   ],
 })
-export class ProjectGridPage {}
+export class ProjectGridPage {
+  // inject services
+  private projectService = inject(ProjectService);
+  private router = inject(Router);
+}

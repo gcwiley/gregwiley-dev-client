@@ -1,18 +1,28 @@
 .project-grid-page-container {
-  height: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; // consistent spacing between header and grid
   min-height: 100vh;
   max-width: 1340px;
-  margin: auto;
+  margin: 0 auto; // correct centering
+  padding: 2rem 1.5rem; // consistent padding for all screen sizes
+  box-sizing: border-box;
 }
 
-.project-grid-page-container h2 {
-  margin: 0;
-  padding-top: 2rem;
-  padding-bottom: 1.5rem;
-  padding-left: 1rem;
+.page-header {
+  text-align: center;
 }
 
 .title {
-  font: var(--mat-sys-headline-small);
+  font: var(--mat-sys-headline-medium); // slightly larger for a page title
   color: var(--mat-sys-primary);
+  margin: 0;
+}
+
+.subtitle {
+  font: var(--mat-sys-title-medium);
+  margin: 0.5rem 0 0 0;
+  max-width: 60ch; // improve readability by limiting line length
+  margin-left: auto;
+  margin-right: auto;
 }

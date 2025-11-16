@@ -1,4 +1,4 @@
-<mat-grid-list [cols]="cols | async" [rowHeight]="rowHeight" [gutterSize]="gutterSize">
+<mat-grid-list [cols]="cols | async" [rowHeight]="rowHeight" gutterSize="1rem">
   <!-- Use async pipe for projects and add trackBy -->
   @for (project of projects | async; track trackByProjectId($index, project)) {
   <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
@@ -29,6 +29,7 @@
 </div>
 } @if ((projects | async)?.length === 0) {
 <div class="empty-message">
+  <mat-icon>sentiment_dissatisfied</mat-icon>
   <p>No Projects found.</p>
 </div>
 }

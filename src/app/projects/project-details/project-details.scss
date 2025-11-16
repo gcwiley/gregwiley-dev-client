@@ -1,8 +1,54 @@
-.project-details {
-  background: var(--mat-sys-primary-container);
-  color: var(--mat-sys-on-primary-container);
-  font: var(--mat-sys-body-large);
-  margin: 2rem;
+:host {
+  display: block;
+  // the component should not have its own external margins
+  // the parent container is responsible for spacing
+}
+
+.project-details-card {
+  // use a standard surface color with a border for a modern card look
+  background: var(--mat-sys-surface-container-high);
+  border: 1px solid var(--mat-sys-outline-varient);
+  border-radius: 12px; // a slight softer radius
+  overflow: hidden; // ensures content respects the border-radius
   padding: 1rem;
-  border-radius: 1rem;
+}
+
+// target the list items for consistent styling
+.project-details-card .mat-mdc-list-item {
+  // style the primary text line (the title, e.g., "Status")
+  .mat-mdc-list-item-title {
+    font-weight: 400; // make the title bolder
+    color: var(--mat-sys-on-surface);
+  }
+
+  // style the secondary text line (the value, e.g., "Completed")
+  .mat-mdc-list-item-line {
+    color: var(--mat-sys-on-surface-variant); // use a muted color for the value
+  }
+
+  // style the link specifically
+  a {
+    color: var(--mat-sys-primary);
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// style the subheader for better visual separation
+.project-details-card .mat-mdc-subheader {
+  font-weight: 600;
+  padding-top: 0.5rem;
+}
+
+// center the loading spinner
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-height: 200px; // give it some space while loading
 }
