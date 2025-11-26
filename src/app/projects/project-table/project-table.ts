@@ -31,7 +31,6 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
-   standalone: true,
    selector: 'app-project-table',
    templateUrl: './project-table.html',
    styleUrls: ['./project-table.scss'],

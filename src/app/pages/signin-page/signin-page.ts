@@ -39,7 +39,6 @@ const ERROR_MESSAGES = {
 };
 
 @Component({
-  standalone: true,
   selector: 'app-signin',
   templateUrl: './signin-page.html',
   styleUrls: ['./signin-page.scss'],

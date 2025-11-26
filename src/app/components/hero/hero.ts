@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-   standalone: true,
    selector: 'app-hero',
    templateUrl: './hero.html',
    styleUrls: ['./hero.scss'],

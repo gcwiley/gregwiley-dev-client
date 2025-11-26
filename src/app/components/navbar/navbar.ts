@@ -20,7 +20,6 @@ import { Logo } from '../logo/logo';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  standalone: true,
   selector: 'app-navbar',
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss'],

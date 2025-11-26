@@ -7,7 +7,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
-  standalone: true,
   selector: 'app-menu',
   templateUrl: './menu.html',
   styleUrls: ['./menu.scss'],

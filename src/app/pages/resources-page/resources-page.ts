@@ -4,7 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Navbar, Footer } from '../../components';
 
 @Component({
-  standalone: true,
   selector: 'app-resources-page',
   templateUrl: './resources-page.html',
   styleUrls: ['./resources-page.scss'],

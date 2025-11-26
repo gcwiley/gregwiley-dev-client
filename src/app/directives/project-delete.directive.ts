@@ -16,7 +16,6 @@ import {
 } from '../services/custom-confirm-dialog.service';
 
 @Directive({
-  standalone: true,
   selector: '[appProjectDelete]',
 })
 export class ProjectDeleteDirective {

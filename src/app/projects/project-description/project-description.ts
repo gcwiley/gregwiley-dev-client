@@ -10,7 +10,6 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
-  standalone: true,
   selector: 'app-project-description',
   templateUrl: './project-description.html',
   styleUrls: ['./project-description.scss'],

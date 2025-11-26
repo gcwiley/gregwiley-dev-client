@@ -7,7 +7,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  standalone: true,
   selector: 'app-error-page',
   templateUrl: './error-page.html',
   styleUrls: ['./error-page.scss'],
@@ -24,5 +23,4 @@ export class ErrorPage {
   public goBack(): void {
     history.back();
   }
-
 }

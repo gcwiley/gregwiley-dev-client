@@ -19,7 +19,6 @@ import { Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs';
 
 @Component({
-  standalone: true,
   selector: 'app-search-bar',
   templateUrl: './search-bar.html',
   styleUrl: './search-bar.scss',

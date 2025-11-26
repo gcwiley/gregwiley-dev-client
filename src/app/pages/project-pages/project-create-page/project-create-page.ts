@@ -11,7 +11,6 @@ import { Navbar, Footer } from '../../../components';
 import { ProjectForm, RecentProjects } from '../../../projects';
 
 @Component({
-  standalone: true,
   selector: 'app-project-create-page',
   templateUrl: './project-create-page.html',
   styleUrls: ['./project-create-page.scss'],

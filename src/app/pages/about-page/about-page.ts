@@ -10,7 +10,6 @@ import {
 } from '../../components/';
 
 @Component({
-   standalone: true,
    selector: 'app-about-page',
    templateUrl: './about-page.html',
    styleUrls: ['./about-page.scss'],

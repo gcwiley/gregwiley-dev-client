@@ -15,7 +15,6 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { ProjectTable } from '../../projects';
 
 @Component({
-   standalone: true,
    selector: 'app-admin-page',
    templateUrl: './admin-page.html',
    styleUrls: ['./admin-page.scss'],

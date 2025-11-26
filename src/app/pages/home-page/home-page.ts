@@ -26,7 +26,6 @@ import { Project } from '../../types/project.interface';
 import { ProjectCarousel } from '../../projects';
 
 @Component({
-  standalone: true,
   selector: 'app-home-page',
   templateUrl: './home-page.html',
   styleUrls: ['./home-page.scss'],

@@ -14,7 +14,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
-  standalone: true,
   selector: 'app-auth-status',
   templateUrl: './auth-status.html',
   styleUrl: './auth-status.scss',

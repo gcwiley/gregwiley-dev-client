@@ -27,7 +27,6 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
 import { Project } from '../../types/project.interface';
 
 @Component({
-  standalone: true,
   selector: 'app-project-carousel',
   templateUrl: './project-carousel.html',
   styleUrl: './project-carousel.scss',

@@ -17,7 +17,6 @@ import {
 } from '../../../projects';
 
 @Component({
-  standalone: true,
   selector: 'app-project-details-page',
   templateUrl: './project-details-page.html',
   styleUrls: ['./project-details-page.scss'],

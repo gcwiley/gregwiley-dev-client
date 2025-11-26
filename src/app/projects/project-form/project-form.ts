@@ -40,7 +40,6 @@ import {
 } from '../../../assets/data/project-data';
 
 @Component({
-  standalone: true,
   selector: 'app-project-form',
   templateUrl: './project-form.html',
   styleUrls: ['./project-form.scss'],

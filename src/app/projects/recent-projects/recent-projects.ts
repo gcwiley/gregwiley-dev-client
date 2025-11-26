@@ -17,7 +17,6 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
-  standalone: true,
   selector: 'app-recent-projects',
   templateUrl: './recent-projects.html',
   styleUrls: ['./recent-projects.scss'],

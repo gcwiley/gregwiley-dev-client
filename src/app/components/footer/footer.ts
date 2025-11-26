@@ -3,7 +3,6 @@ import { VERSION } from '@angular/material/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  standalone: true,
   selector: 'app-footer',
   templateUrl: './footer.html',
   styleUrls: ['./footer.scss'],

@@ -1,5 +1,10 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse,
+  HttpParams,
+} from '@angular/common/http';
 import { catchError, Observable, of, throwError, map } from 'rxjs';
 
 // project interfaces
@@ -19,17 +24,19 @@ export class ProjectService {
   public getProjects(): Observable<Project[]> {
     return this.http.get<{ data: Project[] }>(this.projectsUrl).pipe(
       map((res) => res.data), // extract the array
-      catchError(this.handleError)
+      catchError((error) => this.handleError(error)) // safer syntax
     );
   }
 
   // GET: a individual project by ID - GET PROJECT BY ID
   public getProjectById(id: string): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
-    return this.http.get<{ success: boolean; message?: string; data: Project }>(url).pipe(
-      map((res) => res.data), // unwrap the backend wrapper
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<{ success: boolean; message?: string; data: Project }>(url)
+      .pipe(
+        map((res) => res.data), // unwrap the backend wrapper
+        catchError((error) => this.handleError(error)) // safe syntax
+      );
   }
 
   // GET: projects whose name contains search term - SEARCH PROJECTS
@@ -40,17 +47,19 @@ export class ProjectService {
     }
 
     const params = new HttpParams().set('query', term);
-    return this.http.get<{ data: Project[] }>(this.projectsUrl, { params }).pipe(
-      map((res) => res.data),
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<{ data: Project[] }>(this.projectsUrl, { params })
+      .pipe(
+        map((res) => res.data),
+        catchError(this.handleError)
+      );
   }
 
   // GET: project the count from database - PROJECT COUNT
   public getProjectCount(): Observable<number> {
     return this.http.get<{ data: number }>('/api/projects/count').pipe(
       map((res) => res.data), // extract the array
-      catchError(this.handleError)
+      catchError((error) => this.handleError(error))
     );
   }
 
@@ -84,25 +93,37 @@ export class ProjectService {
   // DELETE: a project by ID from the server - DELETE PROJECT BY ID
   public deleteProjectById(id: string): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
-    return this.http.delete<Project>(url, { headers: headers }).pipe(catchError(this.handleError));
+    return this.http
+      .delete<Project>(url, { headers: headers })
+      .pipe(catchError(this.handleError));
   }
 
   // PATCH: update the project in the database - UPDATE PROJECT BY ID
-  public updateProjectById(id: string, body: Partial<Project>): Observable<Project> {
+  public updateProjectById(
+    id: string,
+    body: Partial<Project>
+  ): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
-    return this.http.patch<{ data: Project }>(url, body, { headers: headers }).pipe(
-      map((res) => res.data),
-      catchError(this.handleError)
-    );
+    return this.http
+      .patch<{ data: Project }>(url, body, { headers: headers })
+      .pipe(
+        map((res) => res.data),
+        catchError(this.handleError)
+      );
   }
 
   // PATCH: set a project as a favorite or not - FAVORITE PROJECT
-  public setProjectFavorite(id: string, favorite: boolean): Observable<Project> {
+  public setProjectFavorite(
+    id: string,
+    favorite: boolean
+  ): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
-    return this.http.patch<{ data: Project }>(url, { favorite }, { headers }).pipe(
-      map((res) => res.data),
-      catchError(this.handleError)
-    );
+    return this.http
+      .patch<{ data: Project }>(url, { favorite }, { headers })
+      .pipe(
+        map((res) => res.data),
+        catchError(this.handleError)
+      );
   }
 
   // enhanced error handler that centralized error handling - HANDLE ERROR
@@ -113,9 +134,9 @@ export class ProjectService {
       errorMessage = `A client-side error occurred: ${error.error.message}`;
     } else {
       // backend error
-      errorMessage = `Backend returned code ${error.status}, body was ${JSON.stringify(
-        error.error
-      )}`;
+      errorMessage = `Backend returned code ${
+        error.status
+      }, body was ${JSON.stringify(error.error)}`;
     }
     console.error('There was an error:', errorMessage);
     return throwError(() => new Error(errorMessage));

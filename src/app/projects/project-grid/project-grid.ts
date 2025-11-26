@@ -19,7 +19,7 @@ import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
 @Component({
-  standalone: true,
+
   selector: 'app-project-grid',
   templateUrl: './project-grid.html',
   styleUrls: ['./project-grid.scss'],
