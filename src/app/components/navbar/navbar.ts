@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule, Router } from '@angular/router';
 
 // rxjs
@@ -25,15 +25,14 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./navbar.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
     RouterModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
     MatDividerModule,
-    Logo,
-  ],
+    Logo
+],
 })
 export class Navbar {
   // inject dependencies

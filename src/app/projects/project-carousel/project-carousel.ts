@@ -9,8 +9,9 @@ import {
   ViewChild,
   ElementRef,
   inject,
+  NgZone,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 
 // angular material
@@ -32,7 +33,6 @@ import { Project } from '../../types/project.interface';
   styleUrl: './project-carousel.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
     RouterModule,
     MatCardModule,
     MatButtonModule,
@@ -47,6 +47,8 @@ export class ProjectCarousel implements AfterViewInit, OnDestroy {
   projectCarouselWrapper?: ElementRef<HTMLDivElement>;
 
   private destroy$ = new Subject<void>();
+  private cdr = inject(ChangeDetectorRef);
+  private ngZone = inject(NgZone);
 
   // autoplay configuration
   private autoplayId: ReturnType<typeof setInterval> | null = null;
@@ -58,27 +60,27 @@ export class ProjectCarousel implements AfterViewInit, OnDestroy {
   public canPrev = false;
   public canNext = false;
 
-  private cdr = inject(ChangeDetectorRef)
-
   public ngAfterViewInit(): void {
-    const el = this.projectCarouselWrapper?.nativeElement;
-    if (!el) return;
+    const element = this.projectCarouselWrapper?.nativeElement;
+    if (!element) return;
 
-    // update nav state on scroll (debounced)
-    fromEvent(el, 'scroll')
-      .pipe(debounceTime(60), takeUntil(this.destroy$))
-      .subscribe(() => {
-        this.updateNavState();
-      });
+    // PERFORMANCE: run scroll/resize listeners outside Angular to prevent
+    // triggering global change detection on every event
+    this.ngZone.runOutsideAngular(() => {
+      fromEvent(element, 'scroll')
+        .pipe(debounceTime(60), takeUntil(this.destroy$))
+        .subscribe(() => {
+          // re-enter zone to update UI state
+          this.ngZone.run(() => this.updateNavState());
+        });
 
-    // update on resize
-    fromEvent(window, 'resize')
-      .pipe(debounceTime(120), takeUntil(this.destroy$))
-      .subscribe(() => {
-        this.updateNavState();
-      });
+      fromEvent(window, 'resize')
+        .pipe(debounceTime(120), takeUntil(this.destroy$))
+        .subscribe(() => {
+          this.ngZone.run(() => this.updateNavState());
+        });
+    });
 
-    // initial state & start autoplay
     this.updateNavState();
     this.startAutoplay();
   }
@@ -93,7 +95,9 @@ export class ProjectCarousel implements AfterViewInit, OnDestroy {
     const el = this.projectCarouselWrapper?.nativeElement;
     if (!el) return;
     // scroll to next item (find next item's left)
-    const children = Array.from(el.querySelectorAll('.project-carousel-item')) as HTMLElement[];
+    const children = Array.from(
+      el.querySelectorAll('.project-carousel-item')
+    ) as HTMLElement[];
     if (children.length === 0) return;
     const targetIndex = Math.min(this.activeIndex + 1, children.length - 1);
     this.scrollToItem(children[targetIndex]);
@@ -102,7 +106,9 @@ export class ProjectCarousel implements AfterViewInit, OnDestroy {
   public previousSlide(): void {
     const el = this.projectCarouselWrapper?.nativeElement;
     if (!el) return;
-    const children = Array.from(el.querySelectorAll('.project-carousel-item')) as HTMLElement[];
+    const children = Array.from(
+      el.querySelectorAll('.project-carousel-item')
+    ) as HTMLElement[];
     if (children.length === 0) return;
     const targetIndex = Math.max(this.activeIndex - 1, 0);
     this.scrollToItem(children[targetIndex]);
@@ -111,7 +117,9 @@ export class ProjectCarousel implements AfterViewInit, OnDestroy {
   public goTo(index: number): void {
     const el = this.projectCarouselWrapper?.nativeElement;
     if (!el) return;
-    const children = Array.from(el.querySelectorAll('.project-carousel-item')) as HTMLElement[];
+    const children = Array.from(
+      el.querySelectorAll('.project-carousel-item')
+    ) as HTMLElement[];
     const safeIndex = Math.max(0, Math.min(index, children.length - 1));
     this.scrollToItem(children[safeIndex]);
   }
@@ -120,7 +128,10 @@ export class ProjectCarousel implements AfterViewInit, OnDestroy {
     if (!item) return;
     const el = this.projectCarouselWrapper?.nativeElement;
     if (!el) return;
-    const left = Math.max(0, item.offsetLeft - (el.clientWidth - item.clientWidth) / 2);
+    const left = Math.max(
+      0,
+      item.offsetLeft - (el.clientWidth - item.clientWidth) / 2
+    );
     el.scrollTo({ left, behavior: 'smooth' });
     // update after animation
     setTimeout(() => this.updateNavState(), 320);
@@ -139,7 +150,9 @@ export class ProjectCarousel implements AfterViewInit, OnDestroy {
     this.canNext = scrollLeft + clientWidth < scrollWidth - 1;
 
     // compute active index by nearest center
-    const children = Array.from(el.querySelectorAll('.project-carousel-item')) as HTMLElement[];
+    const children = Array.from(
+      el.querySelectorAll('.project-carousel-item')
+    ) as HTMLElement[];
     if (children.length === 0) {
       this.activeIndex = 0;
       this.cdr.markForCheck();

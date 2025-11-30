@@ -12,7 +12,7 @@ import {
   ReactiveFormsModule,
   AbstractControl,
 } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 // router
 import { Router, RouterModule } from '@angular/router';
 
@@ -44,7 +44,6 @@ const ERROR_MESSAGES = {
   styleUrls: ['./signin-page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
@@ -53,8 +52,8 @@ const ERROR_MESSAGES = {
     MatButtonModule,
     MatIconModule,
     FormsModule,
-    RouterModule,
-  ],
+    RouterModule
+],
 })
 export class SigninPage implements OnInit {
   public signinForm!: FormGroup;

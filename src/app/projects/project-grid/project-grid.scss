@@ -7,17 +7,16 @@
   padding: 1rem;
   box-sizing: border-box; // ensure padding is included in the size
 
-  // add a smooth transition for the hover effect
-  // transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+  // enable transition
+  transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
 }
 
 .project-card:hover {
-  // "lift" the card on hover for a nice interactive feel
-  // transform: translate(-4px);
+  transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-// this ulity correctly pushes the actions to the bottom of the card
+// this utility correctly pushes the actions to the bottom of the card
 .flex-spacer {
   flex: 1 1 auto;
 }

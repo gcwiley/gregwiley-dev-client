@@ -14,14 +14,15 @@
       aria-label="Search projects"
       (keydown.enter)="onEnter($any($event))" />
 
-    <button
-      mat-icon-button
-      matSuffix
-      *ngIf="searchControl.value"
-      aria-label="Clear search"
-      type="button"
-      (click)="onClear()">
-      <mat-icon>close</mat-icon>
-    </button>
+    @if (searchControl.value) {
+      <button
+        mat-icon-button
+        matSuffix
+        aria-label="Clear search"
+        type="button"
+        (click)="onClear()">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
   </mat-form-field>
 </form>

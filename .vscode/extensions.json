@@ -2,6 +2,7 @@
   "recommendations": [
     "angular.ng-template",
     "esbenp.prettier-vscode",
-    "GitHub.copilot"
+    "GitHub.copilot",
+    "streetsidesoftware.code-spell-checker"
   ],
 }

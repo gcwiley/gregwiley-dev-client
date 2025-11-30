@@ -1,6 +1,10 @@
-<mat-grid-list [cols]="cols | async" [rowHeight]="rowHeight" gutterSize="1rem">
-  <!-- Use async pipe for projects and add trackBy -->
-  @for (project of projects | async; track trackByProjectId($index, project)) {
+@if (projects | async; as projectList) { @if (projectList.length > 0) {
+<!-- Grid View -->
+<mat-grid-list
+  [cols]="cols | async"
+  [rowHeight]="rowHeight"
+  [gutterSize]="gutterSize">
+  @for (project of projectList; track trackByProjectId($index, project)) {
   <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
     <mat-card appearance="outlined" class="project-card">
       <mat-card-header>
@@ -15,21 +19,23 @@
       <span class="flex-spacer"></span>
 
       <mat-card-actions>
-        <button matButton [routerLink]="['/projects', project._id]">OPEN</button>
+        <button matButton [routerLink]="['/projects', project._id]">
+          OPEN
+        </button>
       </mat-card-actions>
     </mat-card>
   </mat-grid-tile>
   }
 </mat-grid-list>
-
-<!-- handle loading/empty states -->
-@if ((projects | async) === null) {
-<div class="spinner-container">
-  <mat-spinner></mat-spinner>
-</div>
-} @if ((projects | async)?.length === 0) {
+} @else {
+<!-- Empty State (Array is empty) -->
 <div class="empty-message">
   <mat-icon>sentiment_dissatisfied</mat-icon>
   <p>No Projects found.</p>
+</div>
+} } @else {
+<!-- Loading State (Observable is null) -->
+<div class="spinner-container">
+  <mat-spinner diameter="50"></mat-spinner>
 </div>
 }

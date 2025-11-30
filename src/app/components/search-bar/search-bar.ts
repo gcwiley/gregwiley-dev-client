@@ -5,7 +5,7 @@ import {
   Output,
   OnDestroy,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 
 // angular material
@@ -24,13 +24,12 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs';
   styleUrl: './search-bar.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule,
-  ],
+    MatButtonModule
+],
 })
 export class SearchBar implements OnDestroy {
   @Output() public searchTerm = new EventEmitter<string>();

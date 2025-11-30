@@ -4,6 +4,7 @@ import { Observable, catchError, from, throwError, map } from 'rxjs';
 // firebase auth
 import {
   Auth,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
@@ -31,6 +32,16 @@ export class AuthService {
     map((user) => !!user)
   );
 
+  // create new user - CREATE NEW USER
+  public signUpWithEmailAndPassword(
+    email: string,
+    password: string
+  ): Observable<UserCredential> {
+    return from(
+      createUserWithEmailAndPassword(this.auth, email, password)
+    ).pipe(catchError((error) => this.handleError(error)));
+  }
+
   // asynchronously signs in using an email and password - SIGN IN
   public signInWithEmailAndPassword(
     email: string,
@@ -51,7 +62,7 @@ export class AuthService {
   // signs out the current user. - SIGN OUT CURRENT USER
   public signOutUser(): Observable<void> {
     return from(signOut(this.auth)).pipe(
-      catchError((error) => this.handleError(error)) // safer syntax
+      catchError((error) => this.handleError(error))
     );
   }
 
@@ -62,7 +73,7 @@ export class AuthService {
     );
   }
 
-  // allow authenicated users to change their password - CHANGE USER PASSWORD
+  // allow authenticated users to change their password - CHANGE USER PASSWORD
   public changePassword(newPassword: string): Observable<void> {
     // get the current user
     const currentUser = this.auth.currentUser;
@@ -79,7 +90,6 @@ export class AuthService {
   }
 
   // delete the current user's account - DELETE USER ACCOUNT
-  // for GDPR compliance and user control, users should be able to delete thier account
   public deleteAccount(): Observable<void> {
     // get current user
     const user = this.auth.currentUser;
@@ -92,9 +102,41 @@ export class AuthService {
   }
 
   // private method that centralizes error handling - HANDLE ERROR
-  private handleError(error: Error): Observable<never> {
-    console.error('There was an error:', error);
-    // throws the error again, so the subscriber can catch it and handle it.
-    return throwError(() => error);
+  private handleError(error: unknown): Observable<never> {
+    let errorMessage = 'An unknown error occurred';
+
+    // Check for Firebase specific error codes
+    if (error && typeof error === 'object' && 'code' in error) {
+      const firebaseError = error as { code: string; message: string };
+      switch (firebaseError.code) {
+        case 'auth/email-already-in-use':
+          errorMessage = 'This email is already in use.';
+          break;
+        case 'auth/user-not-found':
+          errorMessage = 'No account found with this email.';
+          break;
+        case 'auth/wrong-password':
+          errorMessage = 'Incorrect password.';
+          break;
+        case 'auth/invalid-email':
+          errorMessage = 'Please enter a valid email address.';
+          break;
+        case 'auth/requires-recent-login':
+          errorMessage =
+            'Please log out and log back in to perform this action.';
+          break;
+        case 'auth/popup-closed-by-user':
+          errorMessage = 'Sign in cancelled.';
+          break;
+        default:
+          errorMessage = firebaseError.message;
+      }
+    } else if (error instanceof Error) {
+      errorMessage = error.message || errorMessage;
+    }
+
+    console.error('Auth Error:', errorMessage);
+    // Return a new Error object with the friendly message
+    return throwError(() => new Error(errorMessage));
   }
 }

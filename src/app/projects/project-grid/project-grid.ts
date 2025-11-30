@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { CommonModule, AsyncPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Breakpoints, BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
 
 // rxjs
 import { Observable, Subject, of } from 'rxjs';
-import { catchError, map, takeUntil } from 'rxjs/operators';
+import { catchError, map, startWith, takeUntil } from 'rxjs/operators';
 
 // angular material
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -32,7 +32,6 @@ import { Project } from '../../types/project.interface';
     MatIconModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    AsyncPipe,
   ],
 })
 export class ProjectGrid implements OnInit, OnDestroy {
@@ -40,14 +39,13 @@ export class ProjectGrid implements OnInit, OnDestroy {
   private projectService = inject(ProjectService);
   private breakpointObserver = inject(BreakpointObserver);
 
-  // observables for AsyncPipe
-  public projects!: Observable<Project[]>;
-  // observable for columns based on breakpoints
+  // allow null for loading state
+  public projects!: Observable<Project[] | null>;
   public cols!: Observable<number>;
 
   // static grid properties
   rowHeight = '1:1';
-  gutterSize = '0px';
+  gutterSize = '1rem';
   colspan = 1;
   rowspan = 1;
 
@@ -56,8 +54,10 @@ export class ProjectGrid implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.projects = this.projectService.getProjects().pipe(
+      // start with null to trigger the loading spinner immediately
+      startWith(null),
       catchError(() => {
-        // optionally, set the error flag or return an empty array
+        // return empty array on error so the page doesn't break 
         return of([])
       })
     );

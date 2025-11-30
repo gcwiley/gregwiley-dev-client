@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule, Router } from '@angular/router';
 
 // angular material
@@ -11,7 +11,7 @@ import { MatCardModule } from '@angular/material/card';
   templateUrl: './error-page.html',
   styleUrls: ['./error-page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterModule, MatButtonModule, MatCardModule],
+  imports: [RouterModule, MatButtonModule, MatCardModule],
 })
 export class ErrorPage {
   private router = inject(Router);

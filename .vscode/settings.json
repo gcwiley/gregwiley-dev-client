@@ -1,9 +1,9 @@
 {
-  // turns compact folders off
+  // turns compact folders off in explorer
   "explorer.compactFolders": false,
   // turns the minimap off
   "editor.minimap.enabled": false,
-  // specifies the color theme when system color mode is dark
+  // set default dark theme
   "workbench.preferredDarkColorTheme": "Default Dark Modern",
   // set prettier as the default formatter for all languages
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -13,6 +13,6 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
   },
-  // controls the font size
-  "editor.fontSize": 14
+  // set the font size
+  "editor.fontSize": 16
 }

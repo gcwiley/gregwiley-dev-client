@@ -24,7 +24,7 @@ export class ProjectService {
   public getProjects(): Observable<Project[]> {
     return this.http.get<{ data: Project[] }>(this.projectsUrl).pipe(
       map((res) => res.data), // extract the array
-      catchError((error) => this.handleError(error)) // safer syntax
+      catchError((error) => this.handleError(error))
     );
   }
 
@@ -35,7 +35,7 @@ export class ProjectService {
       .get<{ success: boolean; message?: string; data: Project }>(url)
       .pipe(
         map((res) => res.data), // unwrap the backend wrapper
-        catchError((error) => this.handleError(error)) // safe syntax
+        catchError((error) => this.handleError(error))
       );
   }
 
@@ -51,7 +51,7 @@ export class ProjectService {
       .get<{ data: Project[] }>(this.projectsUrl, { params })
       .pipe(
         map((res) => res.data),
-        catchError(this.handleError)
+        catchError((error) => this.handleError(error))
       );
   }
 
@@ -66,16 +66,16 @@ export class ProjectService {
   // GET: recently created projects added to database - RECENTLY CREATED
   public getRecentlyCreatedProjects(): Observable<Project[]> {
     return this.http.get<{ data: Project[] }>('/api/projects/recent').pipe(
-      map((res) => res.data), // extract the array
-      catchError(this.handleError)
+      map((res) => res.data),
+      catchError((error) => this.handleError(error))
     );
   }
 
   // GET: featured projects for carousel - FEATURED PROJECTS
   public getFeaturedProjects(): Observable<Project[]> {
     return this.http.get<{ data: Project[] }>('/api/projects/favorites').pipe(
-      map((res) => res.data), // extract the array.
-      catchError(this.handleError)
+      map((res) => res.data),
+      catchError((error) => this.handleError(error))
     );
   }
 
@@ -87,7 +87,7 @@ export class ProjectService {
       .post<Project>(this.projectsUrl, newProject, {
         headers: headers,
       })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError((error) => this.handleError(error)));
   }
 
   // DELETE: a project by ID from the server - DELETE PROJECT BY ID
@@ -95,7 +95,7 @@ export class ProjectService {
     const url = `${this.projectsUrl}/${id}`;
     return this.http
       .delete<Project>(url, { headers: headers })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError((error) => this.handleError(error)));
   }
 
   // PATCH: update the project in the database - UPDATE PROJECT BY ID
@@ -108,7 +108,7 @@ export class ProjectService {
       .patch<{ data: Project }>(url, body, { headers: headers })
       .pipe(
         map((res) => res.data),
-        catchError(this.handleError)
+        catchError((error) => this.handleError(error))
       );
   }
 
@@ -122,7 +122,7 @@ export class ProjectService {
       .patch<{ data: Project }>(url, { favorite }, { headers })
       .pipe(
         map((res) => res.data),
-        catchError(this.handleError)
+        catchError((error) => this.handleError(error))
       );
   }
 
