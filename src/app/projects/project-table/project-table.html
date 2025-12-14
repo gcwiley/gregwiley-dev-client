@@ -40,13 +40,17 @@
   <!-- language column -->
   <ng-container matColumnDef="language">
     <th mat-header-cell *matHeaderCellDef>Programming Language</th>
-    <td mat-cell *matCellDef="let project">{{ project.programmingLanguage }}</td>
+    <td mat-cell *matCellDef="let project">
+      {{ project.programmingLanguage }}
+    </td>
   </ng-container>
 
   <!-- start date -->
   <ng-container matColumnDef="startDate">
     <th mat-header-cell *matHeaderCellDef>Start Date</th>
-    <td mat-cell *matCellDef="let project">{{ project.startDate | date : 'short' }}</td>
+    <td mat-cell *matCellDef="let project">
+      {{ project.startDate | date : 'short' }}
+    </td>
   </ng-container>
 
   <!-- open project icon button -->
@@ -69,7 +73,7 @@
     <td mat-cell *matCellDef="let project">
       <a
         mat-icon-button
-        [routerLink]="['/project', project._id]"
+        [routerLink]="['/projects', project._id, 'edit']"
         matTooltip="Edit project"
         aria-label="Edit project">
         <mat-icon>edit</mat-icon>
@@ -78,7 +82,10 @@
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let row; columns: columnsToDisplay" (click)="selection.toggle(row)"></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: columnsToDisplay"
+    (click)="selection.toggle(row)"></tr>
 </table>
 
 @if (isLoadingResults) {

@@ -1,23 +1,45 @@
+// animation for the card entrance
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .signin-page-container {
-  background: var(--mat-sys-primary-container);
-  background-image: url(../../../assets/images/sign_in_graphic.jpg);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
+    url('../../../assets/images/sign_in_graphic.jpg');
   background-size: cover;
   background-position: center;
-  color: var(--mat-sys-primary);
+  background-attachment: fixed; // parallax-like effect
+
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; // use min-height to avoid overflow issues on small screens
-  padding: 2rem 1rem;
+  min-height: 100vh;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .signin-form {
-  max-width: 400px;
   width: 100%;
-  padding: 1.25rem;
-  background: rgba(255, 255, 255, 0.92); // white with 92% opacity
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12); // optional for depth
-  border-radius: 10px;
+  max-width: 420px;
+  padding: 2rem 1.5rem;
+
+  // glassmorphism effect
+  background: var(--mat-sys-surface-container-low);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+  // Animation
+  animation: slideUpFade 0.6s ease-out forwards;
 }
 
 .full-width {
@@ -75,7 +97,7 @@
 }
 
 .google-btn {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -118,16 +140,15 @@
 }
 
 .signin-footer small {
-  color: rgba(0,0,0,0.6);
+  color: rgba(0, 0, 0, 0.6);
   font-size: 0.85rem;
   display: inline-block;
   margin-top: 6px;
 }
 
-// reduces padding on smaller screens for better mobile usability
+// mobile adjustments
 @media (max-width: 500px) {
   .signin-form {
-    padding: 1rem;
-    width: 100%;
+    padding: 1.5rem 1rem;
   }
 }

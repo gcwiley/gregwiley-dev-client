@@ -1,8 +1,8 @@
-export { AboutPageComponent } from './about-page/about-page.component';
-export { ErrorPageComponent } from './error-page/error-page.component';
-export { AdminPageComponent } from './admin-page/admin-page.component';
-export { HomePageComponent } from './home-page/home-page.component';
-export { NotFoundPageComponent } from './not-found-page/not-found-page.component';
-export { ProjectCreatePageComponent, ProjectDetailsPageComponent, ProjectGridPageComponent } from '../pages/project-pages';
-export { ResourcesPageComponent } from './resources-page/resources-page.component';
-export { SigninPageComponent } from './signin-page/signin-page.component';
+export { AboutPage } from './about-page/about-page';
+export { ErrorPage } from './error-page/error-page';
+export { AdminPage } from './admin-page/admin-page';
+export { HomePage } from './home-page/home-page';
+export { NotFoundPage } from './not-found-page/not-found-page';
+export { ProjectFormPage, ProjectDetailsPage, ProjectGridPage } from '../pages/project-pages';
+export { ResourcesPage } from './resources-page/resources-page';
+export { SigninPage } from './signin-page/signin-page';

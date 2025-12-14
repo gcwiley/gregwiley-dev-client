@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
+  // home page
   {
     path: '',
     pathMatch: 'full',
@@ -9,61 +10,6 @@ export const routes: Routes = [
     canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/home-page/home-page').then((m) => m.HomePage),
-  },
-  // admin page
-  {
-    path: 'admin',
-    title: 'Admin Dashboard',
-    canActivate: [authGuard],
-    loadComponent: () =>
-      import('./pages/admin-page/admin-page').then((m) => m.AdminPage),
-  },
-  // projects page
-  {
-    path: 'projects',
-    title: 'Projects',
-    canActivate: [authGuard],
-    loadComponent: () =>
-      import('./pages/project-pages/project-grid-page/project-grid-page').then(
-        (m) => m.ProjectGridPage
-      ),
-  },
-  // individual project page
-  {
-    path: 'projects/:id',
-    // title: 'Project Details',
-    canActivate: [authGuard],
-    loadComponent: () =>
-      import('./pages/project-pages/project-details-page/project-details-page').then(
-        (m) => m.ProjectDetailsPage
-      ),
-  },
-  // create project page
-  {
-    path: 'create',
-    title: 'Create Project',
-    canActivate: [authGuard],
-    loadComponent: () =>
-      import('./pages/project-pages/project-create-page/project-create-page').then(
-        (m) => m.ProjectCreatePage
-      ),
-  },
-  // edit project page
-  {
-    path: 'project/:id',
-    title: 'Edit Project',
-    canActivate: [authGuard],
-    loadComponent: () =>
-      import('./pages/project-pages/project-create-page/project-create-page').then(
-        (m) => m.ProjectCreatePage
-      ),
-  },
-  // sign in page
-  {
-    path: 'signin',
-    title: 'Sign In',
-    loadComponent: () =>
-      import('./pages/signin-page/signin-page').then((m) => m.SigninPage),
   },
   // about page
   {
@@ -83,14 +29,73 @@ export const routes: Routes = [
         (m) => m.ResourcesPage
       ),
   },
-  // error page
+  // --- AUTHENTICATION ---
+  // sign in page
+  {
+    path: 'signin',
+    title: 'Sign In',
+    loadComponent: () =>
+      import('./pages/signin-page/signin-page').then((m) => m.SigninPage),
+  },
+  // --- PROTECTED ADMIN ROUTES ---
+  // admin page
+  {
+    path: 'admin',
+    title: 'Admin Dashboard',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/admin-page/admin-page').then((m) => m.AdminPage),
+  },
+  // create page
+  {
+    path: 'create',
+    title: 'Create Project',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/project-pages/project-form-page/project-form-page').then(
+        (m) => m.ProjectFormPage
+      ),
+  },
+  // --- PROJECT ROUTES ---
+  {
+    path: 'projects',
+    children: [
+      {
+        path: '',
+        title: 'Projects',
+        canActivate: [authGuard],
+        loadComponent: () =>
+          import(
+            './pages/project-pages/project-grid-page/project-grid-page'
+          ).then((m) => m.ProjectGridPage),
+      },
+      {
+        path: ':id',
+        title: 'Project Details', // Consider a resolver for dynamic titles later
+        canActivate: [authGuard],
+        loadComponent: () =>
+          import(
+            './pages/project-pages/project-details-page/project-details-page'
+          ).then((m) => m.ProjectDetailsPage),
+      },
+      {
+        path: ':id/edit',
+        title: 'Edit Project',
+        canActivate: [authGuard], // Only editing needs protection
+        loadComponent: () =>
+          import(
+            './pages/project-pages/project-form-page/project-form-page'
+          ).then((m) => m.ProjectFormPage),
+      },
+    ],
+  },
+  // --- ERROR HANDLING ---
   {
     path: 'error',
-    title: 'Error Page',
+    title: 'Error',
     loadComponent: () =>
       import('./pages/error-page/error-page').then((m) => m.ErrorPage),
   },
-  // page not found
   {
     path: '404',
     title: 'Page Not Found',
@@ -99,9 +104,13 @@ export const routes: Routes = [
         (m) => m.NotFoundPage
       ),
   },
-  // redirect to page not found - wildcard route should be last!
+  // wildcard route
   {
     path: '**',
-    redirectTo: '/404',
+    title: 'Page Not Found',
+    loadComponent: () =>
+      import('./pages/not-found-page/not-found-page').then(
+        (m) => m.NotFoundPage
+      ),
   },
 ];

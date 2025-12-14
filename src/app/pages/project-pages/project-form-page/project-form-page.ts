@@ -11,9 +11,9 @@ import { Navbar, Footer } from '../../../components';
 import { ProjectForm, RecentProjects } from '../../../projects';
 
 @Component({
-  selector: 'app-project-create-page',
-  templateUrl: './project-create-page.html',
-  styleUrls: ['./project-create-page.scss'],
+  selector: 'app-project-form-page',
+  templateUrl: './project-form-page.html',
+  styleUrls: ['./project-form-page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     Navbar,
@@ -24,4 +24,4 @@ import { ProjectForm, RecentProjects } from '../../../projects';
     MatIconModule,
   ],
 })
-export class ProjectCreatePage {}
+export class ProjectFormPage {}

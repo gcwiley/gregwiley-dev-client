@@ -1,12 +1,12 @@
 @use '../../../../styles/helpers/constants';
 
-.project-create-page-container {
+.project-form-page-container {
   max-width: constants.$max-width;
   margin: auto;
   padding: 2rem 1.5rem;
   min-height: 100vh;
 
-  // use CSS grid for a robust, reponsive layout
+  // use CSS grid for a robust, responsive layout
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px; // main content takes remaining space
   gap: 2.5rem;

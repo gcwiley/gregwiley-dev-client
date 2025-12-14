@@ -3,6 +3,7 @@
     "angular.ng-template",
     "esbenp.prettier-vscode",
     "GitHub.copilot",
-    "streetsidesoftware.code-spell-checker"
-  ],
+    "streetsidesoftware.code-spell-checker",
+    "DavidAnson.vscode-markdownlint"
+  ]
 }

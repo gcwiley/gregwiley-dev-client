@@ -63,18 +63,21 @@
           <a routerLink="/forgot-password">Forgot Password?</a>
         </div>
 
-        <!-- sign in form actions -->
-        <mat-card-actions>
-          <button
-            matButton="filled"
-            class="sign-in-button"
-            type="submit"
-            [disabled]="signinForm.invalid || isLoading">
-            Sign In
-          </button>
-        </mat-card-actions>
+        <!-- sign in button -->
+        <button
+          matButton="filled"
+          class="sign-in-button"
+          type="submit"
+          [disabled]="signinForm.invalid || isLoading">
+          Sign In
+        </button>
 
-        <!-- sign in with Google -->
+        <!-- divider -->
+         <div class="divider">
+          <span>OR</span>
+         </div>
+
+        <!-- Google Sign In -->
         <div class="oauth-actions">
           <button
             matButton="outlined"
@@ -107,16 +110,19 @@
             </span>
             <span class="google-label">
               @if (!googleLoading) {
-                <span>Sign in with Google</span>
+              <span>Sign in with Google</span>
               } @else {
-                <span>Signin in...</span>
+              <span>Signin in...</span>
               }
             </span>
           </button>
         </div>
       </form>
     </mat-card-content>
-    <mat-card-footer class="signin-footer" role="contentinfo" aria-label="Copyright">
+    <mat-card-footer
+      class="signin-footer"
+      role="contentinfo"
+      aria-label="Copyright">
       <small>&copy; {{ year }} Gregory Wiley. All rights reserved.</small>
     </mat-card-footer>
   </mat-card>
