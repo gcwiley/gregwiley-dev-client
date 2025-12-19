@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
+import { canDeactivateGuard } from './guards/can-deactivate.guard.js';
+import { projectTitleResolver } from './resolvers/project-title.resolver.js';
 
 export const routes: Routes = [
   // home page
@@ -51,6 +53,7 @@ export const routes: Routes = [
     path: 'create',
     title: 'Create Project',
     canActivate: [authGuard],
+    canDeactivate: [canDeactivateGuard], // added safety check
     loadComponent: () =>
       import('./pages/project-pages/project-form-page/project-form-page').then(
         (m) => m.ProjectFormPage
@@ -71,7 +74,7 @@ export const routes: Routes = [
       },
       {
         path: ':id',
-        title: 'Project Details', // Consider a resolver for dynamic titles later
+        title: projectTitleResolver, // dynamic title
         canActivate: [authGuard],
         loadComponent: () =>
           import(
@@ -82,6 +85,7 @@ export const routes: Routes = [
         path: ':id/edit',
         title: 'Edit Project',
         canActivate: [authGuard], // Only editing needs protection
+        canDeactivate: [canDeactivateGuard], // added safety check
         loadComponent: () =>
           import(
             './pages/project-pages/project-form-page/project-form-page'
@@ -114,3 +118,4 @@ export const routes: Routes = [
       ),
   },
 ];
+  
