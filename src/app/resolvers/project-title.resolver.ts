@@ -1,6 +1,6 @@
 import { ResolveFn } from '@angular/router';
 import { inject } from '@angular/core';
-import { map, of } from 'rxjs';
+import { map, of, catchError } from 'rxjs';
 
 // import project service
 import { ProjectService } from '../services/project.service.js';
@@ -13,10 +13,10 @@ export const projectTitleResolver: ResolveFn<string> = (route) => {
     return of('Project Details');
   }
 
-  // Assumes getProject returns an observable with a 'title' property
+  // assumes getProject returns an observable with a 'title' property
   return projectService.getProjectById(id).pipe(
     map(project => project ? `${project.title} | Portfolio` : 'Project Details'),
-    // Fallback in case of error
-    // catchError(() => of('Project Details')) 
+    // fallback in case of error
+    catchError(() => of('Project Details')) 
   );
 };

@@ -52,8 +52,8 @@ import {
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
-],
+    MatNativeDateModule,
+  ],
 })
 export class ProjectForm implements OnInit {
   public mode: 'create' | 'edit' = 'create';
@@ -97,7 +97,7 @@ export class ProjectForm implements OnInit {
             this.mode = 'create';
             return of(undefined);
           }
-        })
+        }),
       )
       .subscribe((project) => {
         if (project) {
@@ -121,7 +121,7 @@ export class ProjectForm implements OnInit {
     if (!this.projectForm.valid) {
       // mark all controls touches to show errors
       Object.values(this.projectForm.controls).forEach((c) =>
-        c.markAsTouched()
+        c.markAsTouched(),
       );
       return;
     }
@@ -134,7 +134,7 @@ export class ProjectForm implements OnInit {
         .addProject(formValue)
         .pipe(
           first(),
-          finalize(() => (this.isSaving = false))
+          finalize(() => (this.isSaving = false)),
         )
         .subscribe({
           next: () => {
@@ -155,7 +155,7 @@ export class ProjectForm implements OnInit {
         .updateProjectById(this.id!, formValue)
         .pipe(
           first(),
-          finalize(() => (this.isSaving = false))
+          finalize(() => (this.isSaving = false)),
         )
         .subscribe({
           next: () => {
