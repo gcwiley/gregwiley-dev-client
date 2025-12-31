@@ -9,48 +9,47 @@
     (mouseleave)="resumeAutoplay()">
     <div class="project-carousel-items" role="list">
       @for (project of projects(); track trackById($index, project)) {
-        <div
-          class="project-carousel-item"
-          role="listitem"
-          tabindex="-1"
-          aria-roledescription="slide">
-          <mat-card class="project-card" appearance="outlined">
-            @if (project.imageUrl) {
-              <div class="project-media">
-                <img
-                  [src]="project.imageUrl"
-                  [title]="project.title"
-                  alt="{{ project.title }}" />
-              </div>
+      <div
+        class="project-carousel-item"
+        role="listitem"
+        tabindex="-1"
+        aria-roledescription="slide">
+        <mat-card class="project-card" appearance="outlined">
+          @if (project.imageUrl) {
+          <div class="project-media">
+            <img
+              [src]="project.imageUrl"
+              [title]="project.title"
+              alt="{{ project.title }}" />
+          </div>
+          }
+          <mat-card-content class="project-content">
+            <h3 class="project-title">{{ project.title }}</h3>
+            @if (project.category) {
+            <p class="project-subtitle">{{ project.category }}</p>
             }
-            <mat-card-content class="project-content">
-              <h3 class="project-title">{{ project.title }}</h3>
-              @if (project.category) {
-                <p class="project-subtitle">{{ project.category }}</p>
-              }
-              <p class="project-description">{{ project.description }}</p>
-              <div class="project-tags">
-            </mat-card-content>
-            <mat-card-actions class="project-actions">
-              <button
-                matButton
-                [routerLink]="['/projects', project._id]"
-                aria-label="Open {{ project.title }}">
-                OPEN
-              </button>
-              @if (project.gitUrl) {
-                <a
-                  class="github-link"
-                  [href]="project.gitUrl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open repository for {{ project.title }}">
-                  <mat-icon>launch</mat-icon>
-                </a>
-              }
-            </mat-card-actions>
-          </mat-card>
-        </div>
+            <p class="project-description">{{ project.description }}</p>
+          </mat-card-content>
+          <mat-card-actions class="project-actions">
+            <button
+              matButton
+              [routerLink]="['/projects', project._id]"
+              aria-label="Open {{ project.title }}">
+              OPEN
+            </button>
+            @if (project.gitUrl) {
+            <a
+              class="github-link"
+              [href]="project.gitUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open repository for {{ project.title }}">
+              <mat-icon>launch</mat-icon>
+            </a>
+            }
+          </mat-card-actions>
+        </mat-card>
+      </div>
       }
     </div>
   </div>
@@ -77,15 +76,15 @@
 
   <div class="carousel-indicators" role="tablist" aria-label="Project slides">
     @for (p of projects(); track p; let i = $index) {
-      <button
-        class="indicator"
-        role="tab"
-        [attr.aria-selected]="i === activeIndex ? 'true' : 'false'"
-        [attr.aria-controls]="'slide-' + i"
-        [class.active]="i === activeIndex"
-        (click)="goTo(i)"
-        [attr.aria-current]="i === activeIndex ? 'true' : null"
-        aria-label="Go to slide {{ i + 1 }}"
+    <button
+      class="indicator"
+      role="tab"
+      [attr.aria-selected]="i === activeIndex ? 'true' : 'false'"
+      [attr.aria-controls]="'slide-' + i"
+      [class.active]="i === activeIndex"
+      (click)="goTo(i)"
+      [attr.aria-current]="i === activeIndex ? 'true' : null"
+      aria-label="Go to slide {{ i + 1 }}"
       [attr.tabindex]="i === activeIndex ? 0 : -1"></button>
     }
   </div>

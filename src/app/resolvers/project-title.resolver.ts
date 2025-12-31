@@ -13,7 +13,7 @@ export const projectTitleResolver: ResolveFn<string> = (route) => {
     return of('Project Details');
   }
 
-  // assumes getProject returns an observable with a 'title' property
+  // assumes getProjectById returns an observable with a 'title' property
   return projectService.getProjectById(id).pipe(
     map(project => project ? `${project.title} | Portfolio` : 'Project Details'),
     // fallback in case of error

@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import {
   HttpClient,
-  HttpHeaders,
   HttpErrorResponse,
   HttpParams,
 } from '@angular/common/http';
@@ -9,9 +8,6 @@ import { catchError, Observable, of, throwError, map } from 'rxjs';
 
 // project interfaces
 import { Project, ProjectInput } from '../types/project.interface';
-
-// set up headers
-const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
 @Injectable({ providedIn: 'root' })
 export class ProjectService {
@@ -23,7 +19,7 @@ export class ProjectService {
   // GET: all projects from the server - GET ALL PROJECTS
   public getProjects(): Observable<Project[]> {
     return this.http.get<{ data: Project[] }>(this.projectsUrl).pipe(
-      map((res) => res.data), // extract the array
+      map((res) => res.data), 
       catchError((error) => this.handleError(error))
     );
   }
@@ -58,7 +54,7 @@ export class ProjectService {
   // GET: project the count from database - PROJECT COUNT
   public getProjectCount(): Observable<number> {
     return this.http.get<{ data: number }>('/api/projects/count').pipe(
-      map((res) => res.data), // extract the array
+      map((res) => res.data),
       catchError((error) => this.handleError(error))
     );
   }
@@ -81,12 +77,10 @@ export class ProjectService {
 
   // SAVE METHODS //
 
-  // POST: add a new Project to the server
+  // POST: add a new Project
   public addProject(newProject: ProjectInput): Observable<Project> {
     return this.http
-      .post<Project>(this.projectsUrl, newProject, {
-        headers: headers,
-      })
+      .post<Project>(this.projectsUrl, newProject)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
@@ -94,18 +88,18 @@ export class ProjectService {
   public deleteProjectById(id: string): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
     return this.http
-      .delete<Project>(url, { headers: headers })
+      .delete<Project>(url)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
-  // PATCH: update the project in the database - UPDATE PROJECT BY ID
+  // PATCH: update project - UPDATE PROJECT BY ID
   public updateProjectById(
     id: string,
     body: Partial<Project>
   ): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
     return this.http
-      .patch<{ data: Project }>(url, body, { headers: headers })
+      .patch<{ data: Project }>(url, body)
       .pipe(
         map((res) => res.data),
         catchError((error) => this.handleError(error))
@@ -119,7 +113,7 @@ export class ProjectService {
   ): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
     return this.http
-      .patch<{ data: Project }>(url, { favorite }, { headers })
+      .patch<{ data: Project }>(url, { favorite })
       .pipe(
         map((res) => res.data),
         catchError((error) => this.handleError(error))

@@ -22,7 +22,7 @@
   overflow: hidden;
 }
 
-// suble dark overlay to keep text readable over background images
+// subtle dark overlay to keep text readable over background images
 // If you prefer a lighter overlay, reduce alpha in .hero-overlay.
 .hero-overlay {
   position: absolute;
@@ -41,14 +41,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+
 }
 
 /* logo */
 .hero-image {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   width: 72px;
   height: 57px;
+  // ensure logo is white to match text frame
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 
 /* responsive, accessible typography */
