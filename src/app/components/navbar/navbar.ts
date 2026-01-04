@@ -19,6 +19,9 @@ import { Logo } from '../logo/logo';
 // auth service
 import { AuthService } from '../../services/auth.service';
 
+// theme service
+import { ThemeService } from '../../services/theme.service';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.html',
@@ -39,6 +42,7 @@ export class Navbar {
   private authService = inject(AuthService);
   private router = inject(Router);
   private snackBar = inject(MatSnackBar);
+  private themeService = inject(ThemeService);
 
   // expose authenticated status for template use
   public isAuthenticated: Observable<boolean> = this.authService.isAuthenticated$;
@@ -60,5 +64,9 @@ export class Navbar {
         this.snackBar.open('Error signing out. Please try again.', 'Close', { duration: 5000 }); // error feedback
       },
     });
+  }
+
+  public toggleTheme(): void {
+    this.themeService.toggleTheme();
   }
 }

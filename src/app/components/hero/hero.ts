@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 // angular material
@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
    imports: [RouterModule, MatButtonModule],
 })
 export class Hero {
-   title = 'Greg Wiley';
-   subtitle = 'Full Stack Web Developer';
+   // make these inputs so the component is reusable
+   public title = input<string>('Greg Wiley');
+   public subtitle = input<string>('Full Stack Web Developer')
 }

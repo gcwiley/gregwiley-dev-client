@@ -10,7 +10,7 @@ export interface Project {
   programmingLanguage: string;
   keywords: string[]; // array of tag strings
   startDate: ISODateString | null;
-  favoriteProject: boolean;
+  isFavorite: boolean;
   gitUrl?: string; // optional field
   description?: string; // optional field
   imageUrl?: string; // optional field

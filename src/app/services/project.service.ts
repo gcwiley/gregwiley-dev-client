@@ -9,33 +9,38 @@ import { catchError, Observable, of, throwError, map } from 'rxjs';
 // project interfaces
 import { Project, ProjectInput } from '../types/project.interface';
 
+// define a standard wrapper for your backend response
+export interface ApiResponse<T> {
+  success?: boolean;
+  message?: string;
+  data: T;
+}
+
 @Injectable({ providedIn: 'root' })
 export class ProjectService {
-  private projectsUrl = '/api/projects'; // URL to web api
+  // ideally, move this to environment.apiUrl
+  private readonly API_URL = '/api/projects';
 
-  // inject "HttpClient" into the project service
   private http = inject(HttpClient);
 
-  // GET: all projects from the server - GET ALL PROJECTS
+  // GET: - GET ALL PROJECTS
   public getProjects(): Observable<Project[]> {
-    return this.http.get<{ data: Project[] }>(this.projectsUrl).pipe(
-      map((res) => res.data), 
-      catchError((error) => this.handleError(error))
+    return this.http.get<ApiResponse<Project[]>>(this.API_URL).pipe(
+      map((res) => res.data),
+      catchError(this.handleError),
     );
   }
 
-  // GET: a individual project by ID - GET PROJECT BY ID
+  // GET: - GET PROJECT BY ID
   public getProjectById(id: string): Observable<Project> {
-    const url = `${this.projectsUrl}/${id}`;
-    return this.http
-      .get<{ success: boolean; message?: string; data: Project }>(url)
-      .pipe(
-        map((res) => res.data), // unwrap the backend wrapper
-        catchError((error) => this.handleError(error))
-      );
+    const url = `${this.API_URL}/${id}`;
+    return this.http.get<ApiResponse<Project>>(url).pipe(
+      map((res) => res.data),
+      catchError(this.handleError),
+    );
   }
 
-  // GET: projects whose name contains search term - SEARCH PROJECTS
+  // GET: - SEARCH PROJECTS
   public searchProjects(term: string): Observable<Project[]> {
     if (!term.trim()) {
       // if no search term, return an empty project array
@@ -43,84 +48,82 @@ export class ProjectService {
     }
 
     const params = new HttpParams().set('query', term);
+    return this.http.get<ApiResponse<Project[]>>(this.API_URL, { params }).pipe(
+      map((res) => res.data),
+      catchError(this.handleError),
+    );
+  }
+
+  // GET: - PROJECT COUNT
+  public getProjectCount(): Observable<number> {
+    return this.http.get<ApiResponse<number>>(`${this.API_URL}/count`).pipe(
+      map((res) => res.data),
+      catchError(this.handleError),
+    );
+  }
+
+  // GET: - RECENTLY CREATED PROJECTS
+  public getRecentlyCreatedProjects(): Observable<Project[]> {
+    return this.http.get<ApiResponse<Project[]>>(`${this.API_URL}/recent`).pipe(
+      map((res) => res.data),
+      catchError(this.handleError),
+    );
+  }
+
+  // GET: - FEATURED PROJECTS
+  public getFeaturedProjects(): Observable<Project[]> {
     return this.http
-      .get<{ data: Project[] }>(this.projectsUrl, { params })
+      .get<ApiResponse<Project[]>>(`${this.API_URL}/favorites`)
       .pipe(
         map((res) => res.data),
-        catchError((error) => this.handleError(error))
+        catchError(this.handleError),
       );
-  }
-
-  // GET: project the count from database - PROJECT COUNT
-  public getProjectCount(): Observable<number> {
-    return this.http.get<{ data: number }>('/api/projects/count').pipe(
-      map((res) => res.data),
-      catchError((error) => this.handleError(error))
-    );
-  }
-
-  // GET: recently created projects added to database - RECENTLY CREATED
-  public getRecentlyCreatedProjects(): Observable<Project[]> {
-    return this.http.get<{ data: Project[] }>('/api/projects/recent').pipe(
-      map((res) => res.data),
-      catchError((error) => this.handleError(error))
-    );
-  }
-
-  // GET: featured projects for carousel - FEATURED PROJECTS
-  public getFeaturedProjects(): Observable<Project[]> {
-    return this.http.get<{ data: Project[] }>('/api/projects/favorites').pipe(
-      map((res) => res.data),
-      catchError((error) => this.handleError(error))
-    );
   }
 
   // SAVE METHODS //
 
-  // POST: add a new Project
+  // POST: - NEW PROJECT
   public addProject(newProject: ProjectInput): Observable<Project> {
-    return this.http
-      .post<Project>(this.projectsUrl, newProject)
-      .pipe(catchError((error) => this.handleError(error)));
+    return this.http.post<ApiResponse<Project>>(this.API_URL, newProject).pipe(
+      map((res) => res.data),
+      catchError(this.handleError),
+    );
   }
 
-  // DELETE: a project by ID from the server - DELETE PROJECT BY ID
+  // DELETE: - DELETE PROJECT BY ID
   public deleteProjectById(id: string): Observable<Project> {
-    const url = `${this.projectsUrl}/${id}`;
-    return this.http
-      .delete<Project>(url)
-      .pipe(catchError((error) => this.handleError(error)));
+    const url = `${this.API_URL}/${id}`;
+    return this.http.delete<ApiResponse<Project>>(url).pipe(
+      map((res) => res.data),
+      catchError(this.handleError),
+    );
   }
 
-  // PATCH: update project - UPDATE PROJECT BY ID
+  // PATCH: - UPDATE PROJECT BY ID
   public updateProjectById(
     id: string,
-    body: Partial<Project>
+    body: Partial<Project>,
   ): Observable<Project> {
-    const url = `${this.projectsUrl}/${id}`;
-    return this.http
-      .patch<{ data: Project }>(url, body)
-      .pipe(
-        map((res) => res.data),
-        catchError((error) => this.handleError(error))
-      );
+    const url = `${this.API_URL}/${id}`;
+    return this.http.patch<ApiResponse<Project>>(url, body).pipe(
+      map((res) => res.data),
+      catchError(this.handleError),
+    );
   }
 
-  // PATCH: set a project as a favorite or not - FAVORITE PROJECT
+  // PATCH: - FAVORITE PROJECT
   public setProjectFavorite(
     id: string,
-    favorite: boolean
+    favorite: boolean,
   ): Observable<Project> {
-    const url = `${this.projectsUrl}/${id}`;
-    return this.http
-      .patch<{ data: Project }>(url, { favorite })
-      .pipe(
-        map((res) => res.data),
-        catchError((error) => this.handleError(error))
-      );
+    const url = `${this.API_URL}/${id}`;
+    return this.http.patch<ApiResponse<Project>>(url, { favorite }).pipe(
+      map((res) => res.data),
+      catchError(this.handleError),
+    );
   }
 
-  // enhanced error handler that centralized error handling - HANDLE ERROR
+  // - HANDLE ERROR
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An unknown error occurred!';
     if (error.error instanceof ErrorEvent) {

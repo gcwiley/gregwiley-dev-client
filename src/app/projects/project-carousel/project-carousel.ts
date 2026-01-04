@@ -92,11 +92,11 @@ export class ProjectCarousel implements AfterViewInit, OnDestroy {
   }
 
   public nextSlide(): void {
-    const el = this.projectCarouselWrapper?.nativeElement;
-    if (!el) return;
+    const element = this.projectCarouselWrapper?.nativeElement;
+    if (!element) return;
     // scroll to next item (find next item's left)
     const children = Array.from(
-      el.querySelectorAll('.project-carousel-item')
+      element.querySelectorAll('.project-carousel-item')
     ) as HTMLElement[];
     if (children.length === 0) return;
     const targetIndex = Math.min(this.activeIndex + 1, children.length - 1);
@@ -104,10 +104,10 @@ export class ProjectCarousel implements AfterViewInit, OnDestroy {
   }
 
   public previousSlide(): void {
-    const el = this.projectCarouselWrapper?.nativeElement;
-    if (!el) return;
+    const element = this.projectCarouselWrapper?.nativeElement;
+    if (!element) return;
     const children = Array.from(
-      el.querySelectorAll('.project-carousel-item')
+      element.querySelectorAll('.project-carousel-item')
     ) as HTMLElement[];
     if (children.length === 0) return;
     const targetIndex = Math.max(this.activeIndex - 1, 0);
@@ -115,10 +115,10 @@ export class ProjectCarousel implements AfterViewInit, OnDestroy {
   }
 
   public goTo(index: number): void {
-    const el = this.projectCarouselWrapper?.nativeElement;
-    if (!el) return;
+    const element = this.projectCarouselWrapper?.nativeElement;
+    if (!element) return;
     const children = Array.from(
-      el.querySelectorAll('.project-carousel-item')
+      element.querySelectorAll('.project-carousel-item')
     ) as HTMLElement[];
     const safeIndex = Math.max(0, Math.min(index, children.length - 1));
     this.scrollToItem(children[safeIndex]);
@@ -138,20 +138,20 @@ export class ProjectCarousel implements AfterViewInit, OnDestroy {
   }
 
   private updateNavState(): void {
-    const el = this.projectCarouselWrapper?.nativeElement;
-    if (!el) {
+    const element = this.projectCarouselWrapper?.nativeElement;
+    if (!element) {
       this.canPrev = this.canNext = false;
       this.activeIndex = 0;
       this.cdr.markForCheck();
       return;
     }
-    const { scrollLeft, clientWidth, scrollWidth } = el;
+    const { scrollLeft, clientWidth, scrollWidth } = element;
     this.canPrev = scrollLeft > 1;
     this.canNext = scrollLeft + clientWidth < scrollWidth - 1;
 
     // compute active index by nearest center
     const children = Array.from(
-      el.querySelectorAll('.project-carousel-item')
+      element.querySelectorAll('.project-carousel-item')
     ) as HTMLElement[];
     if (children.length === 0) {
       this.activeIndex = 0;

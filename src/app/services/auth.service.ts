@@ -32,7 +32,7 @@ export class AuthService {
     map((user) => !!user)
   );
 
-  // create new user - CREATE NEW USER
+  // CREATE NEW USER
   public signUpWithEmailAndPassword(
     email: string,
     password: string
@@ -42,7 +42,7 @@ export class AuthService {
     ).pipe(catchError((error) => this.handleError(error)));
   }
 
-  // asynchronously signs in using an email and password - SIGN IN
+  // SIGN IN USER
   public signInWithEmailAndPassword(
     email: string,
     password: string
@@ -52,21 +52,21 @@ export class AuthService {
     );
   }
 
-  // authenticates a firebase client using a popup-based OAuth authentication flow - SIGN IN WITH GOOGLE
+  // SIGN IN WITH GOOGLE
   public signInWithGoogle(): Observable<UserCredential> {
     return from(signInWithPopup(this.auth, new GoogleAuthProvider())).pipe(
       catchError((error) => this.handleError(error))
     );
   }
 
-  // signs out the current user. - SIGN OUT CURRENT USER
+  // SIGN OUT CURRENT USER
   public signOutUser(): Observable<void> {
     return from(signOut(this.auth)).pipe(
       catchError((error) => this.handleError(error))
     );
   }
 
-  // send a password reset email to a user - RESET USER PASSWORD
+  // RESET USER PASSWORD
   public sendPasswordResetEmail(email: string): Observable<void> {
     return from(sendPasswordResetEmail(this.auth, email)).pipe(
       catchError((error) => this.handleError(error))
@@ -89,7 +89,7 @@ export class AuthService {
     }
   }
 
-  // delete the current user's account - DELETE USER ACCOUNT
+  // DELETE USER ACCOUNT
   public deleteAccount(): Observable<void> {
     // get current user
     const user = this.auth.currentUser;

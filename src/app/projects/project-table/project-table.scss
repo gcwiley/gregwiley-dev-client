@@ -1,22 +1,100 @@
+// container for scrolling and elevation
+.table-container {
+  position: relative;
+  min-height: 200px;
+  max-height: 80vh; // prevent table from growing infinitely
+  overflow: auto; // enable scrolling
+  border-radius: 4px; // soften edges
+}
+
+// table layout
+table {
+  width: 100%;
+  min-width: 800px; // force scroll on small screens
+}
+
+// column specifics (prevent jumping content)
+.mat-column-select {
+  width: 48px;
+  padding-right: 8px;
+}
+
 // controls the style of the columns
 .mat-column-title {
   font-weight: 500;
+  font-size: 1rem;
+  min-width: 150px;
 }
 
-// loading overlay
+.mat-column-openProject,
+.mat-column-editProject,
+.mat-column-deleteProject {
+  width: 48px; // keep action buttons tight
+  text-align: center;
+}
+
+// Row Interactivity
+tr.mat-mdc-row {
+  transition: background-color 0.2s ease;
+  cursor: pointer; // Indicate the row is clickable (for selection)
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04); // Subtle hover effect
+  }
+
+  // Fix for Dark Mode hover if you have a dark theme class on body
+  :host-context(.dark-theme) &:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+}
+
+// 5. Status Chips
+.status-chip {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  // Default/Unknown
+  background-color: #e0e0e0;
+  color: #333;
+
+  &.active,
+  &.inprogress {
+    background-color: #e3f2fd; // Light Blue
+    color: #1565c0;
+  }
+
+  &.completed,
+  &.finished {
+    background-color: #e8f5e9; // Light Green
+    color: #2e7d32;
+  }
+
+  &.archived,
+  &.paused {
+    background-color: #fff3e0; // Light Orange
+    color: #ef6c00;
+  }
+}
+
+// Loading Shade
 .project-table-loading-shade {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8); // Light mode background
+  z-index: 100; // Ensure it sits on top of sticky headers
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.7);
-  z-index: 10;
-}
 
-// empty state
-.project-table-empty {
-  text-align: center;
-  padding: 1rem;
-  color: rgba(0, 0, 0, 0.6);
+  // Dark mode support
+  :host-context(.dark-theme) & {
+    background: rgba(0, 0, 0, 0.6);
+  }
 }
