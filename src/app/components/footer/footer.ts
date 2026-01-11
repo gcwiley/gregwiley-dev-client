@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { VERSION } from '@angular/material/core';
+import { ChangeDetectionStrategy, Component, VERSION} from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -10,6 +9,6 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule],
 })
 export class Footer {
-  version = VERSION.full;
-  year = new Date().getFullYear();
+  public readonly version = VERSION.full;
+  public readonly year = new Date().getFullYear();
 }

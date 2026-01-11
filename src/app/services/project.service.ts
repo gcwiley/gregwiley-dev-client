@@ -11,8 +11,8 @@ import { Project, ProjectInput } from '../types/project.interface';
 
 // define a standard wrapper for your backend response
 export interface ApiResponse<T> {
-  success?: boolean;
-  message?: string;
+  success: boolean;
+  message: string;
   data: T;
 }
 
@@ -27,7 +27,7 @@ export class ProjectService {
   public getProjects(): Observable<Project[]> {
     return this.http.get<ApiResponse<Project[]>>(this.API_URL).pipe(
       map((res) => res.data),
-      catchError(this.handleError),
+      catchError((error) => this.handleError(error)),
     );
   }
 
@@ -36,7 +36,7 @@ export class ProjectService {
     const url = `${this.API_URL}/${id}`;
     return this.http.get<ApiResponse<Project>>(url).pipe(
       map((res) => res.data),
-      catchError(this.handleError),
+      catchError((error) => this.handleError(error)),
     );
   }
 
@@ -50,7 +50,7 @@ export class ProjectService {
     const params = new HttpParams().set('query', term);
     return this.http.get<ApiResponse<Project[]>>(this.API_URL, { params }).pipe(
       map((res) => res.data),
-      catchError(this.handleError),
+      catchError((error) => this.handleError(error)),
     );
   }
 
@@ -58,7 +58,7 @@ export class ProjectService {
   public getProjectCount(): Observable<number> {
     return this.http.get<ApiResponse<number>>(`${this.API_URL}/count`).pipe(
       map((res) => res.data),
-      catchError(this.handleError),
+      catchError((error) => this.handleError(error)),
     );
   }
 
@@ -66,7 +66,7 @@ export class ProjectService {
   public getRecentlyCreatedProjects(): Observable<Project[]> {
     return this.http.get<ApiResponse<Project[]>>(`${this.API_URL}/recent`).pipe(
       map((res) => res.data),
-      catchError(this.handleError),
+      catchError((error) => this.handleError(error)),
     );
   }
 
@@ -76,7 +76,7 @@ export class ProjectService {
       .get<ApiResponse<Project[]>>(`${this.API_URL}/favorites`)
       .pipe(
         map((res) => res.data),
-        catchError(this.handleError),
+        catchError((error) => this.handleError(error)),
       );
   }
 
@@ -86,7 +86,7 @@ export class ProjectService {
   public addProject(newProject: ProjectInput): Observable<Project> {
     return this.http.post<ApiResponse<Project>>(this.API_URL, newProject).pipe(
       map((res) => res.data),
-      catchError(this.handleError),
+      catchError((error) => this.handleError(error)),
     );
   }
 
@@ -95,7 +95,7 @@ export class ProjectService {
     const url = `${this.API_URL}/${id}`;
     return this.http.delete<ApiResponse<Project>>(url).pipe(
       map((res) => res.data),
-      catchError(this.handleError),
+      catchError((error) => this.handleError(error)),
     );
   }
 
@@ -107,7 +107,7 @@ export class ProjectService {
     const url = `${this.API_URL}/${id}`;
     return this.http.patch<ApiResponse<Project>>(url, body).pipe(
       map((res) => res.data),
-      catchError(this.handleError),
+      catchError((error) => this.handleError(error)),
     );
   }
 
@@ -119,7 +119,7 @@ export class ProjectService {
     const url = `${this.API_URL}/${id}`;
     return this.http.patch<ApiResponse<Project>>(url, { favorite }).pipe(
       map((res) => res.data),
-      catchError(this.handleError),
+      catchError((error) => this.handleError(error)),
     );
   }
 

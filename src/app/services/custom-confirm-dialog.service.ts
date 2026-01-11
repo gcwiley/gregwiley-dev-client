@@ -10,7 +10,7 @@ import { ConfirmDialog, ConfirmDialogData } from '../components';
 export enum CustomConfirmDialog {
   Delete = 'delete',
   UnsavedChanges = 'unsaved',
-  ConfirmAction = 'confirm'
+  ConfirmAction = 'confirm',
 }
 
 @Injectable({
@@ -19,22 +19,27 @@ export enum CustomConfirmDialog {
 export class CustomConfirmDialogService {
   private dialog = inject(MatDialog);
 
-  public openCustomConfirmDialog(type: CustomConfirmDialog): Observable<boolean> {
+  public openCustomConfirmDialog(
+    type: CustomConfirmDialog,
+  ): Observable<boolean> {
     const config = this.getDialogConfig(type);
 
-    return this.dialog.open(ConfirmDialog, {
-      width: '400px',
-      disableClose: true, // user must click a button to close
-      data: config,
-    }).afterClosed()
+    return this.dialog
+      .open(ConfirmDialog, {
+        width: '400px',
+        disableClose: true, // user must click a button to close
+        data: config,
+      })
+      .afterClosed();
   }
 
-  public getDialogConfig(type: CustomConfirmDialog): ConfirmDialogData {
+  private getDialogConfig(type: CustomConfirmDialog): ConfirmDialogData {
     switch (type) {
       case CustomConfirmDialog.Delete:
         return {
           title: 'Confirm Deletion',
-          message: 'Are you sure you want to delete this item? This action cannot be undone.',
+          message:
+            'Are you sure you want to delete this item? This action cannot be undone.',
           confirmText: 'Delete',
           cancelText: 'Cancel',
           color: 'warn', // red button for dangerous actions
@@ -47,7 +52,7 @@ export class CustomConfirmDialogService {
           confirmText: 'Leave',
           cancelText: 'Stay',
           color: 'accent',
-        }
+        };
 
       case CustomConfirmDialog.ConfirmAction:
       default:
@@ -57,7 +62,7 @@ export class CustomConfirmDialogService {
           confirmText: 'Yes',
           cancelText: 'No',
           color: 'primary',
-        }
+        };
     }
   }
 }

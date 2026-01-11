@@ -15,7 +15,7 @@
     url('../../../assets/images/sign_in_graphic.jpg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; // parallax-like effect
+  background-attachment: fixed;
 
   display: flex;
   justify-content: center;
@@ -30,10 +30,11 @@
   max-width: 420px;
   padding: 2rem 1.5rem;
 
-  // glassmorphism effect
+  // Glassmorphism effect
   background: var(--mat-sys-surface-container-low);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
+  
   border: 1px solid var(--mat-sys-outline-variant);
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);

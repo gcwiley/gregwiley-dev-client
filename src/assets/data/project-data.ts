@@ -1,8 +1,8 @@
 // import the project interfaces
-import { ProjectStatus, ProjectCategory, ProjectLanguage } from '../../app/types/project.interface';
+import { SelectOption } from '../../app/types/project.interface';
 
 // define the data values for project status
-export const PROJECT_STATUS: ProjectStatus[] = [
+export const PROJECT_STATUS: SelectOption[] = [
   { value: 'not-started', viewValue: 'Not Started' },
   { value: 'in-development', viewValue: 'In Development' },
   { value: 'completed', viewValue: 'Completed' },
@@ -10,14 +10,14 @@ export const PROJECT_STATUS: ProjectStatus[] = [
 ];
 
 // define the data values for project language
-export const PROJECT_LANGUAGE: ProjectLanguage[] = [
+export const PROJECT_LANGUAGE: SelectOption[] = [
   { value: 'JavaScript', viewValue: 'JavaScript' },
   { value: 'Python', viewValue: 'Python' },
   { value: 'Dart', viewValue: 'Dart' },
 ];
 
 // define the data values for project category
-export const PROJECT_CATEGORIES: ProjectCategory[] = [
+export const PROJECT_CATEGORIES: SelectOption[] = [
   { value: 'tutorial', viewValue: 'Web Tutorial' },
   { value: 'personal-project', viewValue: 'Personal Project' },
   { value: 'arc-gis-project', viewValue: 'ArcGIS Project' },

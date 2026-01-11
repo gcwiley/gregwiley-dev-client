@@ -57,7 +57,7 @@ export class ThemeService {
       this.renderer.addClass(this.document.body, this.LIGHT_THEME_CLASS);
       this.renderer.removeClass(this.document.body, this.DARK_THEME_CLASS);
       overlayClassList.add(this.LIGHT_THEME_CLASS);
-      overlayClassList.remove(this.LIGHT_THEME_CLASS);
+      overlayClassList.remove(this.DARK_THEME_CLASS);
     }
   }
 }

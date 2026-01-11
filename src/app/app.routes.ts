@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
-import { canDeactivateGuard } from './guards/can-deactivate.guard.js';
-import { projectTitleResolver } from './resolvers/project-title.resolver.js';
+import { canDeactivateGuard } from './guards/can-deactivate.guard';
+import { projectTitleResolver } from './resolvers/project-title.resolver';
 
 export const routes: Routes = [
   // home page
@@ -9,7 +9,6 @@ export const routes: Routes = [
     path: '',
     pathMatch: 'full',
     title: 'Home',
-    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/home-page/home-page').then((m) => m.HomePage),
   },
@@ -17,7 +16,6 @@ export const routes: Routes = [
   {
     path: 'about',
     title: 'About',
-    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/about-page/about-page').then((m) => m.AboutPage),
   },
@@ -25,7 +23,6 @@ export const routes: Routes = [
   {
     path: 'resources',
     title: 'Resources',
-    canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/resources-page/resources-page').then(
         (m) => m.ResourcesPage
@@ -48,34 +45,32 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/admin-page/admin-page').then((m) => m.AdminPage),
   },
-  // create page
-  {
-    path: 'create',
-    title: 'Create Project',
-    canActivate: [authGuard],
-    canDeactivate: [canDeactivateGuard], // added safety check
-    loadComponent: () =>
-      import('./pages/project-pages/project-form-page/project-form-page').then(
-        (m) => m.ProjectFormPage
-      ),
-  },
   // --- PROJECT ROUTES ---
   {
     path: 'projects',
+    canActivate: [authGuard], // secures all child routes
     children: [
+      // project grid page
       {
         path: '',
         title: 'Projects',
-        canActivate: [authGuard],
         loadComponent: () =>
           import(
             './pages/project-pages/project-grid-page/project-grid-page'
           ).then((m) => m.ProjectGridPage),
       },
+      // project create page (must be before :id)
+      {
+        path: 'create',
+        title: 'Create Project',
+        canDeactivate: [canDeactivateGuard],
+        loadComponent: () => import('./pages/project-pages/project-form-page/project-form-page').then(
+          (m) => m.ProjectFormPage
+        )
+      },
       {
         path: ':id',
         title: projectTitleResolver, // dynamic title
-        canActivate: [authGuard],
         loadComponent: () =>
           import(
             './pages/project-pages/project-details-page/project-details-page'
@@ -84,8 +79,7 @@ export const routes: Routes = [
       {
         path: ':id/edit',
         title: 'Edit Project',
-        canActivate: [authGuard], // Only editing needs protection
-        canDeactivate: [canDeactivateGuard], // added safety check
+        canDeactivate: [canDeactivateGuard],
         loadComponent: () =>
           import(
             './pages/project-pages/project-form-page/project-form-page'

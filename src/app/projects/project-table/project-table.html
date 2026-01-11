@@ -4,6 +4,8 @@
   <div class="project-table-loading-shade">
     <mat-spinner></mat-spinner>
   </div>
+  } @else if (dataSource.data.length === 0) {
+    <div class="empty-state">No projects found.</div>
   }
 
   <table mat-table [dataSource]="dataSource" aria-label="Project Table">

@@ -33,6 +33,7 @@ import { Project } from '../../types/project.interface';
 import { ProjectDeleteDirective } from '../../directives/project-delete.directive';
 
 @Component({
+  standalone: true,
   selector: 'app-project-table',
   templateUrl: './project-table.html',
   styleUrls: ['./project-table.scss'],
@@ -107,10 +108,12 @@ export class ProjectTable implements AfterViewInit, OnDestroy {
         next: (projects) => {
           this.dataSource.data = projects;
           this.isLoadingResults = false;
+          this.cdr.markForCheck()
         },
         error: (error) => {
           console.error('Error fetching projects:', error);
-          this.isLoadingResults = false; // stop the spinner
+          this.isLoadingResults = false;
+          this.cdr.markForCheck();
           this.snackBar.open('Error fetching projects:', 'Close', {
             duration: 5000,
           });

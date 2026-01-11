@@ -1,7 +1,14 @@
-import { Directive, EventEmitter, HostListener, Output, input, inject } from '@angular/core';
-
-// rxjs
-import { filter, first, switchMap, catchError, throwError } from 'rxjs';
+import {
+  Directive,
+  HostListener,
+  output,
+  input,
+  inject,
+  DestroyRef,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { filter, switchMap, catchError, finalize, EMPTY } from 'rxjs';
 
 // angular material
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -9,7 +16,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // project service
 import { ProjectService } from '../services/project.service';
 
-// custom dialog service
 import {
   CustomConfirmDialog,
   CustomConfirmDialogService,
@@ -20,36 +26,42 @@ import {
 })
 export class ProjectDeleteDirective {
   public id = input.required<string>({ alias: 'appProjectDelete' });
-  private readonly snackBarDuration = 5000;
 
-  @Output() public deleted = new EventEmitter<string>();
+  public deleted = output<string>();
 
-  //initialize the directive dependencies
   private projectService = inject(ProjectService);
   private confirm = inject(CustomConfirmDialogService);
   private snackBar = inject(MatSnackBar);
+  private destroyRef = inject(DestroyRef);
+
+  private isDeleting = signal(false); // signal state
+  private readonly snackBarDuration = 5000;
 
   @HostListener('click')
   public onClick(): void {
-    // opens a custom confirmation dialog of type Delete
+    if (this.isDeleting()) return; // read signal
+    this.isDeleting.set(true); // set signal
+
     this.confirm
       .openCustomConfirmDialog(CustomConfirmDialog.Delete)
       .pipe(
-        first(),
+        takeUntilDestroyed(this.destroyRef),
         filter((confirmed) => !!confirmed),
         switchMap(() => this.projectService.deleteProjectById(this.id())),
         catchError((error) => {
-          console.error('Error deleting project:', error); // log the error
-          this.snackBar.open('Unable to delete project.', 'Close', { duration: this.snackBarDuration }); // show error snackbar
-          return throwError(() => new Error('Project deletion failed.')); // re-throw a new error
-        })
+          console.error('Error deleting project:', error);
+          this.snackBar.open('Unable to delete project.', 'Close', {
+            duration: this.snackBarDuration,
+          });
+          return EMPTY;
+        }),
+        finalize(() => this.isDeleting.set(false)), // reset signal
       )
-      .subscribe({
-        next: () => {
-          this.deleted.emit(this.id());
-          // opens a success snackbar
-          this.snackBar.open('Project successfully deleted.', 'Close', { duration: this.snackBarDuration});
-        },
+      .subscribe(() => {
+        this.deleted.emit(this.id());
+        this.snackBar.open('Project successfully deleted.', 'Close', {
+          duration: this.snackBarDuration,
+        });
       });
   }
 }

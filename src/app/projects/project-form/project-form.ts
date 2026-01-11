@@ -27,9 +27,7 @@ import { ProjectService } from '../../services/project.service';
 
 import {
   ProjectInput,
-  ProjectStatus,
-  ProjectCategory,
-  ProjectLanguage,
+  SelectOption,
 } from '../../types/project.interface';
 
 // project data values
@@ -62,9 +60,9 @@ export class ProjectForm implements OnInit {
   public isSaving = false;
   public submitted = false;
 
-  statuses: ProjectStatus[] = PROJECT_STATUS;
-  categories: ProjectCategory[] = PROJECT_CATEGORIES;
-  languages: ProjectLanguage[] = PROJECT_LANGUAGE;
+  readonly statuses: SelectOption[] = PROJECT_STATUS;
+  readonly categories: SelectOption[] = PROJECT_CATEGORIES;
+  readonly languages: SelectOption[] = PROJECT_LANGUAGE;
 
   // inject dependencies
   private formBuilder = inject(FormBuilder);

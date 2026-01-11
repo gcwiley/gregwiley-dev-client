@@ -50,6 +50,12 @@
 .footer-logo-link {
   margin: 0 0.5rem;
   transition: transform 120ms ease, opacity 120ms ease;
+
+  // add hover effect
+  &:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
 }
 
 .footer-logo-link:focus,
