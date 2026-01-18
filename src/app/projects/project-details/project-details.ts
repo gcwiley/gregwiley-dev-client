@@ -23,8 +23,8 @@ import { Project } from '../../types/project.interface';
 })
 export class ProjectDetails {
   // inject dependencies
-  private route = inject(ActivatedRoute);
-  private projectService = inject(ProjectService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly projectService = inject(ProjectService);
 
   public project$: Observable<Project | undefined> = this.route.paramMap.pipe(
     map((pm) => pm.get('id')),

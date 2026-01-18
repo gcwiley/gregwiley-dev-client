@@ -1,7 +1,22 @@
-<div class="announcement-bar" aria-label="Announcement Bar" role="status" aria-live="polite">
-   <p>
-     <strong>PRE RELEASE: </strong>This web application is still under development and may contain
-     bugs, errors, or inconsistencies. Your patience is appreciated.
-   </p>
- </div>
- 
+@if (!dismissed()) {
+<div
+  class="announcement-bar"
+  role="status"
+  aria-live="polite"
+  aria-label="Announcement">
+  <mat-icon class="announcement-icon" aria-hidden="true">info</mat-icon>
+  <p class="announcment-text">
+    <strong>Pre-Release:</strong>
+    This web application is still under development and may contain bugs or
+    inconsistencies.
+  </p>
+  <button
+    mat-icon-button
+    class="dismiss-btn"
+    (click)="dismiss()"
+    aria-label="Dismiss announcement"
+    type="button">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+}

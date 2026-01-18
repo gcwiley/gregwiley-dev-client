@@ -15,7 +15,7 @@
           title="Project Title"
           aria-describedby="title-error" />
         @if (projectForm.controls.title.hasError('required') &&
-          (projectForm.controls.title.touched || submitted)) {
+          (projectForm.controls.title.touched || submitted())) {
           <mat-error id="title-error" aria-live="polite">
             Please provide a project title.
           </mat-error>
@@ -37,7 +37,7 @@
               }
             </mat-select>
             @if (projectForm.controls.status.hasError('required') &&
-              (projectForm.controls.status.touched || submitted)) {
+              (projectForm.controls.status.touched || submitted())) {
               <mat-error id="status-error" aria-live="polite">
                 Please select a project status.
               </mat-error>
@@ -57,7 +57,7 @@
                 }
               </mat-select>
               @if (projectForm.controls.category.hasError('required') &&
-                (projectForm.controls.category.touched || submitted)) {
+                (projectForm.controls.category.touched || submitted())) {
                 <mat-error aria-live="polite">
                   Please select a project category.
                 </mat-error>
@@ -82,7 +82,7 @@
               [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
 
-              @if (projectForm.controls.startDate.hasError('required') && (projectForm.controls.startDate.touched || submitted)) {
+              @if (projectForm.controls.startDate.hasError('required') && (projectForm.controls.startDate.touched || submitted())) {
                 <mat-error
                   id="startDate-error"
                   aria-live="polite">
@@ -103,7 +103,7 @@
                     >
                   }
                 </mat-select>
-                @if (projectForm.controls.programmingLanguage.hasError('required') && (projectForm.controls.programmingLanguage.touched || submitted)) {
+                @if (projectForm.controls.programmingLanguage.hasError('required') && (projectForm.controls.programmingLanguage.touched || submitted())) {
                   <mat-error
                     aria-live="polite">
                     Please select a programming language.
@@ -124,14 +124,14 @@
                   formControlName="gitUrl"
                   title="GitHub Url"
                   aria-describedby="github-url-error" />
-                @if (projectForm.controls.gitUrl.hasError('required') && (projectForm.controls.gitUrl.touched || submitted)) {
+                @if (projectForm.controls.gitUrl.hasError('required') && (projectForm.controls.gitUrl.touched || submitted())) {
                   <mat-error
                     id="github-url-error"
                     aria-live="polite">
                     Please enter a GitHub URL.
                   </mat-error>
                 }
-                @if (projectForm.controls.gitUrl.hasError('pattern') && (projectForm.controls.gitUrl.touched || submitted)) {
+                @if (projectForm.controls.gitUrl.hasError('pattern') && (projectForm.controls.gitUrl.touched || submitted())) {
                   <mat-error
                     id="github-url-pattern-error"
                     aria-live="polite">
@@ -153,7 +153,7 @@
                   formControlName="description"
                   title="Description"
                 aria-describedby="description-error"></textarea>
-                @if (projectForm.controls.description.hasError('required') && (projectForm.controls.description.touched || submitted)) {
+                @if (projectForm.controls.description.hasError('required') && (projectForm.controls.description.touched || submitted())) {
                   <mat-error
                     id="description-error"
                     aria-live="polite">
@@ -169,9 +169,9 @@
           <button
             mat-flat-button
             type="submit"
-            aria-label="{{ mode === 'create' ? 'Create Project' : 'Update Project' }}"
+            aria-label="{{ mode() === 'create' ? 'Create Project' : 'Update Project' }}"
             [disabled]="projectForm.invalid || isSaving">
-            {{ mode === 'create' ? 'Create' : 'Update' }}
+            {{ mode() === 'create' ? 'Create' : 'Update' }}
           </button>
           <button
             mat-stroked-button

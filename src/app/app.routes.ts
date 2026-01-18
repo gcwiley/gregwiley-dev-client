@@ -25,7 +25,7 @@ export const routes: Routes = [
     title: 'Resources',
     loadComponent: () =>
       import('./pages/resources-page/resources-page').then(
-        (m) => m.ResourcesPage
+        (m) => m.ResourcesPage,
       ),
   },
   // --- AUTHENTICATION ---
@@ -37,53 +37,60 @@ export const routes: Routes = [
       import('./pages/signin-page/signin-page').then((m) => m.SigninPage),
   },
   // --- PROTECTED ADMIN ROUTES ---
-  // admin page
   {
     path: 'admin',
-    title: 'Admin Dashboard',
     canActivate: [authGuard],
-    loadComponent: () =>
-      import('./pages/admin-page/admin-page').then((m) => m.AdminPage),
+    children: [
+      // admin dashboard - should be empty for /admin
+      {
+        path: '',
+        title: 'Admin Dashboard',
+        loadComponent: () =>
+          import('./pages/admin-page/admin-page').then((m) => m.AdminPage),
+      },
+      // create project: /admin/projects/create
+      {
+        path: 'projects/create',
+        title: 'Create Project',
+        canDeactivate: [canDeactivateGuard],
+        loadComponent: () =>
+          import('./pages/project-pages/project-form-page/project-form-page').then(
+            (m) => m.ProjectFormPage,
+          ),
+      },
+      // edit project: /admin/projects/:id/edit
+      {
+        path: 'projects/:id/edit',
+        title: 'Edit Project',
+        canDeactivate: [canDeactivateGuard],
+        loadComponent: () =>
+          import('./pages/project-pages/project-form-page/project-form-page').then(
+            (m) => m.ProjectFormPage,
+          ),
+      },
+    ],
   },
   // --- PROJECT ROUTES ---
   {
     path: 'projects',
-    canActivate: [authGuard], // secures all child routes
     children: [
       // project grid page
       {
         path: '',
         title: 'Projects',
         loadComponent: () =>
-          import(
-            './pages/project-pages/project-grid-page/project-grid-page'
-          ).then((m) => m.ProjectGridPage),
+          import('./pages/project-pages/project-grid-page/project-grid-page').then(
+            (m) => m.ProjectGridPage,
+          ),
       },
-      // project create page (must be before :id)
-      {
-        path: 'create',
-        title: 'Create Project',
-        canDeactivate: [canDeactivateGuard],
-        loadComponent: () => import('./pages/project-pages/project-form-page/project-form-page').then(
-          (m) => m.ProjectFormPage
-        )
-      },
+
       {
         path: ':id',
         title: projectTitleResolver, // dynamic title
         loadComponent: () =>
-          import(
-            './pages/project-pages/project-details-page/project-details-page'
-          ).then((m) => m.ProjectDetailsPage),
-      },
-      {
-        path: ':id/edit',
-        title: 'Edit Project',
-        canDeactivate: [canDeactivateGuard],
-        loadComponent: () =>
-          import(
-            './pages/project-pages/project-form-page/project-form-page'
-          ).then((m) => m.ProjectFormPage),
+          import('./pages/project-pages/project-details-page/project-details-page').then(
+            (m) => m.ProjectDetailsPage,
+          ),
       },
     ],
   },
@@ -94,12 +101,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/error-page/error-page').then((m) => m.ErrorPage),
   },
+  // 404 NOT FOUND PAGE
   {
     path: '404',
     title: 'Page Not Found',
     loadComponent: () =>
       import('./pages/not-found-page/not-found-page').then(
-        (m) => m.NotFoundPage
+        (m) => m.NotFoundPage,
       ),
   },
   // wildcard route
@@ -108,8 +116,7 @@ export const routes: Routes = [
     title: 'Page Not Found',
     loadComponent: () =>
       import('./pages/not-found-page/not-found-page').then(
-        (m) => m.NotFoundPage
+        (m) => m.NotFoundPage,
       ),
   },
 ];
-  

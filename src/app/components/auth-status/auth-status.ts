@@ -22,8 +22,8 @@ import { MatChipsModule } from '@angular/material/chips';
 })
 export class AuthStatus {
   // inject dependencies
-  private authService = inject(AuthService);
-  private router = inject(Router);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
   // expose the isAuthenicated observable from their service
   public isUserLoggedIn$: Observable<boolean> = this.authService.isAuthenticated$;

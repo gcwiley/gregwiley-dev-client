@@ -24,6 +24,6 @@ import { ProjectService } from '../../../services/project.service';
 })
 export class ProjectGridPage {
   // inject dependencies
-  private projectService = inject(ProjectService);
-  private router = inject(Router);
+  private readonly projectService = inject(ProjectService);
+  private readonly router = inject(Router);
 }

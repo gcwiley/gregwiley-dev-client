@@ -21,5 +21,5 @@ export interface ConfirmDialogData {
 })
 export class ConfirmDialog {
    // inject dependencies
-   public data = inject<ConfirmDialogData>(MAT_DIALOG_DATA);
+   public readonly data = inject<ConfirmDialogData>(MAT_DIALOG_DATA);
 }

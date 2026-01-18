@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, VERSION} from '@angular/core';
+import { ChangeDetectionStrategy, Component, VERSION } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-
+import { AsyncPipe } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 
 // rxjs
@@ -13,9 +13,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 
-// shared components
-import { Logo } from '../logo/logo';
-
 // auth service
 import { AuthService } from '../../services/auth.service';
 
@@ -28,24 +25,24 @@ import { ThemeService } from '../../services/theme.service';
   styleUrls: ['./navbar.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    AsyncPipe,
     RouterModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
     MatDividerModule,
-    Logo
 ],
 })
 export class Navbar {
   // inject dependencies
-  private authService = inject(AuthService);
-  private router = inject(Router);
-  private snackBar = inject(MatSnackBar);
-  private themeService = inject(ThemeService);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+  private readonly snackBar = inject(MatSnackBar);
+  private readonly themeService = inject(ThemeService);
 
   // expose authenticated status for template use
-  public isAuthenticated: Observable<boolean> = this.authService.isAuthenticated$;
+  public readonly isAuthenticated$: Observable<boolean> = this.authService.isAuthenticated$;
 
   // expose user email for template use
   public userEmail$: Observable<string | null> = this.authService.user$.pipe(

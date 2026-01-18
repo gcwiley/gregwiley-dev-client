@@ -3,21 +3,13 @@
   role="navigation"
   aria-label="Main Navigation">
   <div class="navbar-content">
-    <!-- app logo (use anchor for navigation and provide an accessible label) -->
-    <!-- <a
-      routerLink="/"
-      class="logo-link"
-      title="Home - gregwiley.dev"
-      aria-label="Home">
-      <app-logo></app-logo>
-    </a> -->
-
     <!-- app title -->
     <span class="title">gregwiley.dev</span>
 
     <span class="flex-spacer" aria-hidden="true"></span>
 
-    <!-- admin/menu trigger -->
+    <!-- show admin menu only when authenticated -->
+    @if (isAuthenticated$ | async) {
     <button
       mat-icon-button
       class="admin-btn"
@@ -28,21 +20,28 @@
     </button>
 
     <mat-menu #adminMenu="matMenu" xPosition="before" yPosition="below">
-      <!-- dashboard button -->
-      <button mat-menu-item routerLink="/admin" type="button">
+      <button
+        mat-menu-item
+        routerLink="/admin"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        type="button">
         <mat-icon>dashboard</mat-icon>
         <span>Admin Dashboard</span>
       </button>
-      <!-- create project button -->
-      <button mat-menu-item routerLink="/create" type="button">
+      <button mat-menu-item routerLink="/admin/projects/create" type="button">
         <mat-icon>add</mat-icon>
         <span>Create Project</span>
       </button>
-      <!-- sign out button -->
       <button mat-menu-item (click)="onClickSignOut()" type="button">
         <mat-icon>logout</mat-icon>
         <span>Sign Out</span>
       </button>
     </mat-menu>
+    } @else {
+    <a mat-icon-button routerLink="/signin" aria-label="Sign in">
+      <mat-icon>login</mat-icon>
+    </a>
+    }
   </div>
 </mat-toolbar>

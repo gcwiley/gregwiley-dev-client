@@ -17,7 +17,7 @@ export enum CustomConfirmDialog {
   providedIn: 'root',
 })
 export class CustomConfirmDialogService {
-  private dialog = inject(MatDialog);
+  private readonly dialog = inject(MatDialog);
 
   public openCustomConfirmDialog(
     type: CustomConfirmDialog,

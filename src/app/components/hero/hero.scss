@@ -4,26 +4,22 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  font: var(--mat-sys-display-small);
 
   // responsive height
   min-height: 28vh;
   height: clamp(260px, 40vh, 360px);
 
   padding-top: 1.25rem;
-  background-image: url(../../../assets/images/sign_in_graphic.jpg);
+  background-image: url(/assets/images/sign_in_graphic.jpg);
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
   background-color: var(--mat-sys-primary);
   color: var(--mat-sys-on-primary);
 
-  // ensure text sits above image
   overflow: hidden;
 }
 
-// subtle dark overlay to keep text readable over background images
-// If you prefer a lighter overlay, reduce alpha in .hero-overlay.
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -41,8 +37,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
-
 }
 
 /* logo */

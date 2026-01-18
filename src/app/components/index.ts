@@ -6,4 +6,3 @@ export { Hero } from './hero/hero';
 export { Logo } from './logo/logo';
 export { Menu } from './menu/menu';
 export { Navbar } from './navbar/navbar';
-export { SearchBar } from './search-bar/search-bar';

@@ -3,6 +3,7 @@ import {
   Component,
   OnInit,
   inject,
+  signal,
 } from '@angular/core';
 
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -25,10 +26,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // project service and interfaces
 import { ProjectService } from '../../services/project.service';
 
-import {
-  ProjectInput,
-  SelectOption,
-} from '../../types/project.interface';
+import { ProjectInput, SelectOption } from '../../types/project.interface';
 
 // project data values
 import {
@@ -54,22 +52,23 @@ import {
   ],
 })
 export class ProjectForm implements OnInit {
-  public mode: 'create' | 'edit' = 'create';
-  private id!: string | null;
+  public mode = signal<'create' | 'edit'>('create');
+  public isSaving = signal(false); // convert to signal
+  public submitted = signal(false);
+
+  private id: string | null = null;
   private readonly snackBarDuration = 5000;
-  public isSaving = false;
-  public submitted = false;
 
   readonly statuses: SelectOption[] = PROJECT_STATUS;
   readonly categories: SelectOption[] = PROJECT_CATEGORIES;
   readonly languages: SelectOption[] = PROJECT_LANGUAGE;
 
   // inject dependencies
-  private formBuilder = inject(FormBuilder);
-  private router = inject(Router);
-  private route = inject(ActivatedRoute);
-  private projectService = inject(ProjectService);
-  private snackBar = inject(MatSnackBar);
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
+  private readonly projectService = inject(ProjectService);
+  private readonly snackBar = inject(MatSnackBar);
 
   // create the project form
   projectForm = this.formBuilder.group({
@@ -77,7 +76,7 @@ export class ProjectForm implements OnInit {
     status: ['', Validators.required],
     category: ['', Validators.required],
     programmingLanguage: ['', Validators.required],
-    startDate: [null as Date | null, Validators.required], // Date object expected by mat-datepicker
+    startDate: [null as Date | null, Validators.required],
     gitUrl: ['', [Validators.required, Validators.pattern(/^https?:\/\/.+/)]],
     description: ['', Validators.required],
   });
@@ -88,11 +87,11 @@ export class ProjectForm implements OnInit {
         first(),
         switchMap((paramMap: ParamMap) => {
           if (paramMap.has('id')) {
-            this.mode = 'edit';
+            this.mode.set('edit'); // use .set() for signals
             this.id = paramMap.get('id');
             return this.projectService.getProjectById(this.id!);
           } else {
-            this.mode = 'create';
+            this.mode.set('create'); // use .set() for signals
             return of(undefined);
           }
         }),
@@ -115,7 +114,7 @@ export class ProjectForm implements OnInit {
 
   // saves a new project
   public onSaveProject(): void {
-    this.submitted = true;
+    this.submitted.set(true)
     if (!this.projectForm.valid) {
       // mark all controls touches to show errors
       Object.values(this.projectForm.controls).forEach((c) =>
@@ -125,14 +124,14 @@ export class ProjectForm implements OnInit {
     }
 
     const formValue = this.projectForm.value as ProjectInput;
-    this.isSaving = true;
+    this.isSaving.set(true);
 
-    if (this.mode === 'create') {
+    if (this.mode() === 'create') {
       this.projectService
         .addProject(formValue)
         .pipe(
           first(),
-          finalize(() => (this.isSaving = false)),
+          finalize(() => this.isSaving.set(false)),
         )
         .subscribe({
           next: () => {
@@ -153,7 +152,7 @@ export class ProjectForm implements OnInit {
         .updateProjectById(this.id!, formValue)
         .pipe(
           first(),
-          finalize(() => (this.isSaving = false)),
+          finalize(() => this.isSaving.set(false)),
         )
         .subscribe({
           next: () => {
@@ -174,8 +173,7 @@ export class ProjectForm implements OnInit {
 
   // navigates away from the form without saving
   public onCancel(): void {
-    const destination =
-      this.mode === 'edit' ? `/projects/${this.id}` : '/projects';
+    const destination = this.mode() ? `/projects/${this.id}` : '/projects';
     this.router.navigateByUrl(destination);
   }
 }

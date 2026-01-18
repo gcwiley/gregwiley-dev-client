@@ -45,7 +45,7 @@ import { ProjectCarousel } from '../../projects';
 })
 export class HomePage {
   // inject dependencies
-  private projectService = inject(ProjectService);
+  private readonly projectService = inject(ProjectService);
 
   // expose observable directly;
   public readonly featuredProjects$: Observable<Project[]> =

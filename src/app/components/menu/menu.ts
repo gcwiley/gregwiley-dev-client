@@ -13,21 +13,4 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterModule, MatButtonModule, MatIconModule, MatToolbarModule],
 })
-export class Menu {
-  // simple nav model so links are easy to change
-  public navLinks = [
-    { label: 'Home', path: '/' },
-    { label: 'Projects', path: '/projects' },
-    { label: 'About', path: '/about' },
-  ];
-
-  public isMobileOpen = false;
-
-  public toggleMobileMenu(): void {
-    this.isMobileOpen = !this.isMobileOpen;
-  }
-
-  public closeMobileMenu(): void {
-    this.isMobileOpen = false;
-  }
-}
+export class Menu {}

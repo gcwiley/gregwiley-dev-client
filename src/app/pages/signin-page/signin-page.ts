@@ -3,17 +3,15 @@ import {
   Component,
   OnInit,
   inject,
+  signal,
 } from '@angular/core';
 import {
   FormBuilder,
-  FormsModule,
   FormGroup,
   Validators,
   ReactiveFormsModule,
   AbstractControl,
 } from '@angular/forms';
-
-// router
 import { Router, RouterModule } from '@angular/router';
 
 // rxjs
@@ -31,12 +29,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // auth service
 import { AuthService } from '../../services/auth.service';
 
-// define constants for error messages
 const ERROR_MESSAGES = {
   INVALID_CREDENTIALS: 'Invalid email or password.',
   NETWORK_ERROR: 'A network error occurred. Please try again later.',
   UNKNOWN_ERROR: 'An unexpected error occurred.',
-};
+} as const;
 
 @Component({
   selector: 'app-signin',
@@ -45,123 +42,133 @@ const ERROR_MESSAGES = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ReactiveFormsModule,
+    RouterModule,
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
     MatCheckboxModule,
     MatButtonModule,
     MatIconModule,
-    FormsModule,
-    RouterModule
-],
+  ],
 })
 export class SigninPage implements OnInit {
-  public signinForm!: FormGroup;
-  public isLoading = false;
-  public errorMessage: string | null = null;
-  public showPassword = false; // for toggle password on/off
-  public googleLoading = false; // Google OAuth loading flag
+  // use signals for reactive state
+  public readonly isLoading = signal(false);
+  public readonly showPassword = signal(false);
+  public readonly googleLoading = signal(false);
+  public readonly errorMessage = signal<string | null>(null);
   public readonly year = new Date().getFullYear();
 
+  public signinForm!: FormGroup;
+
   // inject dependencies
-  private formBuilder = inject(FormBuilder);
-  private authService = inject(AuthService);
-  private router = inject(Router);
-  private snackBar = inject(MatSnackBar);
-
-  // Google Sign-In handler
-  public onSignInWithGoogle(): void {
-    if (this.googleLoading) return;
-    this.googleLoading = true;
-
-    this.authService
-      .signInWithGoogle()
-      .pipe(
-        catchError((error) => {
-          console.error('Google sign-in error', error);
-          this.googleLoading = false;
-          this.snackBar.open(
-            'Google sign-in failed. Please try again.',
-            'Close',
-            { duration: 4000 }
-          );
-          return of(null);
-        })
-      )
-      .subscribe({
-        next: (credential) => {
-          this.googleLoading = false;
-          if (credential) {
-            this.router.navigateByUrl('/');
-          }
-        },
-        error: () => {
-          this.googleLoading = false;
-        },
-      });
-  }
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+  private readonly snackBar = inject(MatSnackBar);
 
   public ngOnInit(): void {
     this.initializeForm();
   }
 
-  // create the signin form with email and password fields
   private initializeForm(): void {
     this.signinForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]], // Example: Minimum password length
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   public toggleShowPassword(): void {
-    this.showPassword = !this.showPassword;
+    this.showPassword.update((show) => !show);
   }
 
-  // sign in with email and password, if successfull, navigate authenicated user to the home page
   public onSubmitSignIn(): void {
-    this.errorMessage = null;
+    this.errorMessage.set(null);
+
     if (this.signinForm.invalid) {
+      this.signinForm.markAllAsTouched();
       return;
     }
 
-    this.isLoading = true;
+    this.isLoading.set(true);
     const { email, password } = this.signinForm.value;
 
     this.authService
       .signInWithEmailAndPassword(email, password)
       .pipe(
         catchError((error) => {
-          let message = ERROR_MESSAGES.UNKNOWN_ERROR;
-          if (
-            error.code === 'auth/user-not-found' ||
-            error.code === 'auth/wrong-password'
-          ) {
-            message = ERROR_MESSAGES.INVALID_CREDENTIALS;
-          } else if (error.code === 'auth/network-request-failed') {
-            message = ERROR_MESSAGES.NETWORK_ERROR;
-          }
-          this.errorMessage = message;
-          return of(null); // Return an observable of null to continue the stream
-        })
+          const message = this.getErrorMessage(error.code);
+          this.errorMessage.set(message);
+          return of(null);
+        }),
       )
       .subscribe({
         next: (user) => {
-          this.isLoading = false;
+          this.isLoading.set(false);
           if (user) {
             this.router.navigateByUrl('/');
-          } else {
-            this.snackBar.open(this.errorMessage!, 'Close');
+          } else if (this.errorMessage()) {
+            this.snackBar.open(this.errorMessage()!, 'Close', {
+              duration: 5000,
+            });
           }
         },
         error: () => {
-          this.isLoading = false;
-          this.snackBar.open(ERROR_MESSAGES.UNKNOWN_ERROR, 'Close');
+          this.isLoading.set(false);
+          this.snackBar.open(ERROR_MESSAGES.UNKNOWN_ERROR, 'Close', {
+            duration: 5000,
+          });
         },
       });
   }
 
-  // Getter for easy access to form controls in the template
-  get formControls(): Record<string, AbstractControl> {
+  public onSignInWithGoogle(): void {
+    if (this.googleLoading()) return;
+
+    this.googleLoading.set(true);
+
+    this.authService
+      .signInWithGoogle()
+      .pipe(
+        catchError((error) => {
+          console.error('Google sign-in error', error);
+          this.snackBar.open(
+            'Google sign-in failed. Please try again.',
+            'Close',
+            {
+              duration: 4000,
+            },
+          );
+          return of(null);
+        }),
+      )
+      .subscribe({
+        next: (credential) => {
+          this.googleLoading.set(false);
+          if (credential) {
+            this.router.navigateByUrl('/');
+          }
+        },
+        error: () => {
+          this.googleLoading.set(false);
+        },
+      });
+  }
+
+  private getErrorMessage(errorCode: string): string {
+    switch (errorCode) {
+      case 'auth/user-not-found':
+      case 'auth/wrong-password':
+      case 'auth/invalid-credential':
+        return ERROR_MESSAGES.INVALID_CREDENTIALS;
+      case 'auth/network-request-failed':
+        return ERROR_MESSAGES.NETWORK_ERROR;
+      default:
+        return ERROR_MESSAGES.UNKNOWN_ERROR;
+    }
+  }
+
+  public get formControls(): Record<string, AbstractControl> {
     return this.signinForm.controls;
   }
 }

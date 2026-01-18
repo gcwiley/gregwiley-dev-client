@@ -6,22 +6,18 @@ import {
 } from '@angular/common/http';
 import { catchError, Observable, of, throwError, map } from 'rxjs';
 
+// environment
+import { environment } from '../../environments/environment';
+
 // project interfaces
 import { Project, ProjectInput } from '../types/project.interface';
-
-// define a standard wrapper for your backend response
-export interface ApiResponse<T> {
-  success: boolean;
-  message: string;
-  data: T;
-}
+import { ApiResponse } from '../types/api-response.interface';
 
 @Injectable({ providedIn: 'root' })
 export class ProjectService {
-  // ideally, move this to environment.apiUrl
-  private readonly API_URL = '/api/projects';
+  private readonly API_URL = `${environment.apiUrl}/projects`;
 
-  private http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
   // GET: - GET ALL PROJECTS
   public getProjects(): Observable<Project[]> {
@@ -54,7 +50,7 @@ export class ProjectService {
     );
   }
 
-  // GET: - PROJECT COUNT
+  // GET: - GET PROJECT COUNT
   public getProjectCount(): Observable<number> {
     return this.http.get<ApiResponse<number>>(`${this.API_URL}/count`).pipe(
       map((res) => res.data),

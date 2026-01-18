@@ -6,14 +6,6 @@
   height: 100%;
   padding: 1rem;
   box-sizing: border-box; // ensure padding is included in the size
-
-  // enable transition
-  transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 // this utility correctly pushes the actions to the bottom of the card
