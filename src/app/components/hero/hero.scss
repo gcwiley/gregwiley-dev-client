@@ -43,9 +43,8 @@
 .hero-image {
   display: block;
   margin-bottom: 1rem;
-  width: 72px;
-  height: 57px;
-  // ensure logo is white to match text frame
+  width: 64px;
+  height: 64px;
   filter: brightness(0) invert(1);
   opacity: 0.9;
 }
@@ -85,7 +84,7 @@ a[mat-flat-button] {
 @media (max-width: 600px) {
   .hero-image {
     width: 48px;
-    height: 38px;
+    height: 48px;
   }
   .hero-container {
     padding: 1rem 0.5rem;

@@ -5,7 +5,6 @@ import {
   inject,
   signal,
 } from '@angular/core';
-
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
@@ -25,7 +24,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 // project service and interfaces
 import { ProjectService } from '../../services/project.service';
-
 import { ProjectInput, SelectOption } from '../../types/project.interface';
 
 // project data values
@@ -53,7 +51,7 @@ import {
 })
 export class ProjectForm implements OnInit {
   public mode = signal<'create' | 'edit'>('create');
-  public isSaving = signal(false); // convert to signal
+  public isSaving = signal(false); 
   public submitted = signal(false);
 
   private id: string | null = null;
@@ -173,7 +171,7 @@ export class ProjectForm implements OnInit {
 
   // navigates away from the form without saving
   public onCancel(): void {
-    const destination = this.mode() ? `/projects/${this.id}` : '/projects';
+    const destination = this.mode() === 'edit' ? `/projects/${this.id}` : '/projects';
     this.router.navigateByUrl(destination);
   }
 }

@@ -1,3 +1,7 @@
+:host {
+  display: block; // Ensures proper block-level behavior
+}
+
 .announcement-bar {
   background: var(--mat-sys-error-container);
   color: var(--mat-sys-on-error-container);
@@ -9,9 +13,26 @@
   padding-block: 0.5rem;
   padding-inline: 1rem;
   text-align: center;
-
-  // Slide-in animation
   animation: slideDown 0.3s ease-out;
+
+  // Mobile: Add relative positioning here instead of duplicating selector
+  @media (max-width: 480px) {
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-block: 0.625rem;
+    padding-inline: 0.75rem 2.5rem; // Shorthand for inline padding
+    gap: 0.25rem 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+    padding-inline: 0.75rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 }
 
 @keyframes slideDown {
@@ -31,6 +52,10 @@
   width: 1.25rem;
   height: 1.25rem;
   opacity: 0.9;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 }
 
 .announcement-text {
@@ -42,20 +67,34 @@
     text-transform: uppercase;
     letter-spacing: 0.03em;
   }
+
+  @media (max-width: 768px) {
+    font-size: 0.8125rem;
+  }
+
+  @media (max-width: 480px) {
+    flex: 1 1 100%;
+    order: 1;
+    font-size: 0.75rem;
+  }
 }
 
 .dismiss-btn {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
+  width: 2rem; // Use rem for consistency
+  height: 2rem;
+  min-width: 2rem;
   color: inherit;
   opacity: 0.8;
   transition: opacity 0.2s ease;
 
   &:hover {
     opacity: 1;
-    background: rgba(0, 0, 0, 0.08);
+    background: color-mix(
+      in srgb,
+      currentColor 8%,
+      transparent
+    ); // Modern alternative to rgba
   }
 
   &:focus-visible {
@@ -68,60 +107,15 @@
     width: 1.125rem;
     height: 1.125rem;
   }
-}
 
-// Tablet
-@media (max-width: 768px) {
-  .announcement-bar {
-    gap: 0.5rem;
-    padding-inline: 0.75rem;
-  }
-
-  .announcement-text {
-    font-size: 0.8125rem;
-  }
-}
-
-// Mobile
-@media (max-width: 480px) {
-  .announcement-bar {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-block: 0.625rem;
-    gap: 0.25rem 0.5rem;
-  }
-
-  .announcement-icon {
-    display: none;
-  }
-
-  .announcement-text {
-    flex: 1 1 100%;
-    order: 1;
-    font-size: 0.75rem;
-  }
-
-  .dismiss-btn {
+  @media (max-width: 480px) {
     position: absolute;
     right: 0.5rem;
     top: 50%;
     transform: translateY(-50%);
   }
 
-  // Add relative positioning to container
-  .announcement-bar {
-    position: relative;
-    padding-inline-end: 2.5rem;
-  }
-}
-
-// Reduced motion
-@media (prefers-reduced-motion: reduce) {
-  .announcement-bar {
-    animation: none;
-  }
-
-  .dismiss-btn {
+  @media (prefers-reduced-motion: reduce) {
     transition: none;
   }
 }

@@ -6,21 +6,25 @@
     aria-roledescription="carousel"
     tabindex="0"
     (mouseenter)="pauseAutoplay()"
-    (mouseleave)="resumeAutoplay()">
+    (mouseleave)="resumeAutoplay()"
+    (focus)="pauseAutoplay()"
+    (blur)="resumeAutoplay()">
     <div class="project-carousel-items" role="list">
-      @for (project of projects(); track trackById($index, project)) {
-      <div
+      @for (project of projects(); track project._id) {
+      <article
         class="project-carousel-item"
         role="listitem"
-        tabindex="-1"
+        [id]="'slide-' + $index"
+        [attr.aria-label]="'Slide ' + ($index + 1) + ' of ' + projects().length + ': ' + project.title"
         aria-roledescription="slide">
         <mat-card class="project-card" appearance="outlined">
           @if (project.imageUrl) {
           <div class="project-media">
             <img
               [src]="project.imageUrl"
+              [alt]="project.title + ' project screenshot'"
               [title]="project.title"
-              alt="{{ project.title }}" />
+              loading="lazy" />
           </div>
           }
           <mat-card-content class="project-content">
@@ -31,36 +35,37 @@
             <p class="project-description">{{ project.description }}</p>
           </mat-card-content>
           <mat-card-actions class="project-actions">
-            <button
-              matButton
+            <a
+              mat-button
               [routerLink]="['/projects', project._id]"
-              aria-label="Open {{ project.title }}">
+              aria-label="View details for {{ project.title }}">
               OPEN
-            </button>
+            </a>
             @if (project.gitUrl) {
             <a
+              mat-icon-button
               class="github-link"
               [href]="project.gitUrl"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Open repository for {{ project.title }}">
+              aria-label="Open GitHub repository for {{ project.title }}">
               <mat-icon>launch</mat-icon>
             </a>
             }
           </mat-card-actions>
         </mat-card>
-      </div>
+      </article>
       }
     </div>
   </div>
 
+  @if (hasMultipleProjects()) {
   <button
     mat-icon-button
     class="carousel-nav-button prev"
     (click)="previousSlide()"
     [disabled]="!canPrev"
-    title="Previous Slide"
-    aria-label="Previous Slide">
+    aria-label="Previous slide">
     <mat-icon aria-hidden="true">chevron_left</mat-icon>
   </button>
 
@@ -69,23 +74,23 @@
     class="carousel-nav-button next"
     (click)="nextSlide()"
     [disabled]="!canNext"
-    title="Next Slide"
-    aria-label="Next Slide">
+    aria-label="Next slide">
     <mat-icon aria-hidden="true">chevron_right</mat-icon>
   </button>
 
   <div class="carousel-indicators" role="tablist" aria-label="Project slides">
-    @for (p of projects(); track p; let i = $index) {
+    @for (p of projects(); track p._id; let i = $index) {
     <button
       class="indicator"
       role="tab"
-      [attr.aria-selected]="i === activeIndex ? 'true' : 'false'"
+      [attr.aria-selected]="i === activeIndex"
       [attr.aria-controls]="'slide-' + i"
       [class.active]="i === activeIndex"
       (click)="goTo(i)"
-      [attr.aria-current]="i === activeIndex ? 'true' : null"
       aria-label="Go to slide {{ i + 1 }}"
-      [attr.tabindex]="i === activeIndex ? 0 : -1"></button>
+      [attr.tabindex]="i === activeIndex ? 0 : -1">
+    </button>
     }
   </div>
+  }
 </div>

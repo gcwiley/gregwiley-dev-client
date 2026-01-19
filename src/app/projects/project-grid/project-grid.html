@@ -1,7 +1,7 @@
-@if (projects | async; as projectList) { @if (projectList.length > 0) {
+@if (projects$ | async; as projectList) { @if (projectList.length > 0) {
 <!-- Grid View -->
 <mat-grid-list
-  [cols]="cols | async"
+  [cols]="cols$ | async"
   [rowHeight]="rowHeight"
   [gutterSize]="gutterSize">
   @for (project of projectList; track trackByProjectId($index, project)) {
