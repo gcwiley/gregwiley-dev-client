@@ -44,7 +44,7 @@ import { Project } from '../../types/project.interface';
 export class ProjectCarousel implements AfterViewInit, OnDestroy {
   public readonly projects = input<Project[]>([]);
 
-  // Computed signal for cleaner template access
+  // computed signal for cleaner template access
   protected readonly hasMultipleProjects = computed(
     () => this.projects().length > 1
   );
@@ -137,7 +137,7 @@ export class ProjectCarousel implements AfterViewInit, OnDestroy {
     return item._id;
   }
 
-  // Extract repeated DOM query into helper method
+  // extract repeated DOM query into helper method
   private getCarouselItems(): HTMLElement[] {
     const element = this.projectCarouselWrapper?.nativeElement;
     if (!element) return [];

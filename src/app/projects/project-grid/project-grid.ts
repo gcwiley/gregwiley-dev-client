@@ -66,7 +66,7 @@ export class ProjectGrid implements OnInit, OnDestroy {
       // start with null to trigger the loading spinner immediately
       startWith(null),
       catchError(() => {
-        // return empty array on error so the page doesn't break
+        // return empty array on error so the page does not break
         return of([]);
       }),
     );
@@ -105,8 +105,8 @@ export class ProjectGrid implements OnInit, OnDestroy {
     this.destroy.complete();
   }
 
-  // Optional: If you need to track items for *ngFor performance
+  // optional: If you need to track items for *ngFor performance
   public trackByProjectId(index: number, project: Project): string {
-    return project._id; // Assuming your Project interface has an 'id' property
+    return project._id; // Assuming your Project interface has an '_id' property
   }
 }

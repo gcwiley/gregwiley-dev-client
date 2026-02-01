@@ -15,5 +15,5 @@ import { MatButtonModule } from '@angular/material/button';
 export class Hero {
    // make these inputs so the component is reusable
    public readonly title = input<string>('Greg Wiley');
-   public subtitle = input<string>('Full Stack Web Developer')
+   public readonly subtitle = input<string>('Full Stack Web Developer')
 }

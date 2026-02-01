@@ -9,12 +9,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // enable format on save
   "editor.formatOnSave": true,
-  // automatically organize imports on save (removes unused, sorts, them)
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit"
-  },
   // set the font size
   "editor.fontSize": 16,
-  // set the window zoom level
-  "window.zoomLevel": 2
+  // sets the theme to material icon theme
+  "workbench.iconTheme": "material-icon-theme"
 }

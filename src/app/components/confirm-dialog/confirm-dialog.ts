@@ -17,7 +17,7 @@ export interface ConfirmDialogData {
    templateUrl: './confirm-dialog.html',
    styleUrl: './confirm-dialog.scss',
    changeDetection: ChangeDetectionStrategy.OnPush,
-   imports: [MatDialogModule, MatButtonModule, MatDialogModule],
+   imports: [MatDialogModule, MatButtonModule ],
 })
 export class ConfirmDialog {
    // inject dependencies

@@ -10,6 +10,4 @@ import { AnnouncementBar } from './components';
   styleUrl: './app.scss',
   imports: [RouterOutlet, AnnouncementBar],
 })
-export class App {
-  title = 'gregwiley.dev';
-}
+export class App {}

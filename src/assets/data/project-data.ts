@@ -1,4 +1,4 @@
-// import the project interfaces
+// import the selectOption interface
 import { SelectOption } from '../../app/types/project.interface';
 
 // define the data values for project status

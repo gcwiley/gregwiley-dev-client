@@ -27,7 +27,7 @@ export class CustomConfirmDialogService {
     return this.dialog
       .open(ConfirmDialog, {
         width: '400px',
-        disableClose: true, // user must click a button to close
+        disableClose: true,
         data: config,
       })
       .afterClosed();
@@ -42,7 +42,7 @@ export class CustomConfirmDialogService {
             'Are you sure you want to delete this item? This action cannot be undone.',
           confirmText: 'Delete',
           cancelText: 'Cancel',
-          color: 'warn', // red button for dangerous actions
+          color: 'warn',
         };
 
       case CustomConfirmDialog.UnsavedChanges:

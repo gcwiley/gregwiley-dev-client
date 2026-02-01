@@ -9,8 +9,7 @@ import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 // rxjs
-import { of } from 'rxjs';
-import { first, switchMap, finalize } from 'rxjs';
+import { of, first, switchMap, finalize } from 'rxjs';
 
 // angular material
 import { MatCardModule } from '@angular/material/card';
@@ -68,7 +67,7 @@ export class ProjectForm implements OnInit {
   private readonly projectService = inject(ProjectService);
   private readonly snackBar = inject(MatSnackBar);
 
-  // create the project form
+  // create project form
   projectForm = this.formBuilder.group({
     title: ['', Validators.required],
     status: ['', Validators.required],
