@@ -4,14 +4,17 @@ import {
   HttpErrorResponse,
   HttpParams,
 } from '@angular/common/http';
-import { catchError, Observable, of, throwError, map } from 'rxjs';
+import { catchError, Observable, of, throwError, map, retry } from 'rxjs';
 
 // environment
 import { environment } from '../../environments/environment';
 
 // project interfaces
 import { Project, ProjectInput } from '../types/project.interface';
-import { ApiResponse } from '../types/api-response.interface';
+import {
+  ApiResponse,
+  PaginatedResponse,
+} from '../types/api-response.interface';
 
 @Injectable({ providedIn: 'root' })
 export class ProjectService {
@@ -22,9 +25,31 @@ export class ProjectService {
   // GET: - GET ALL PROJECTS
   public getProjects(): Observable<Project[]> {
     return this.http.get<ApiResponse<Project[]>>(this.API_URL).pipe(
+      retry({ count: 1, delay: 1000 }), // retry
       map((res) => res.data),
       catchError((error) => this.handleError(error)),
     );
+  }
+
+  // GET: - GET PROJECTS WITH PAGINATION
+  public getProjectsPaginated(
+    page = 1,
+    limit = 10,
+    sort = 'createdAt',
+    order: 'asc' | 'desc' = 'desc',
+  ): Observable<PaginatedResponse<Project>> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('limit', limit.toString())
+      .set('sort', sort)
+      .set('order', order);
+
+    return this.http
+      .get<PaginatedResponse<Project>>(this.API_URL, { params })
+      .pipe(
+        retry({ count: 1, delay: 1000 }),
+        catchError((error) => this.handleError(error)),
+      );
   }
 
   // GET: - GET PROJECT BY ID
@@ -119,19 +144,14 @@ export class ProjectService {
     );
   }
 
-  // - HANDLE ERROR
+  // HANDLE ERROR
   private handleError(error: HttpErrorResponse): Observable<never> {
-    let errorMessage = 'An unknown error occurred!';
-    if (error.error instanceof ErrorEvent) {
-      // client-side/network error
-      errorMessage = `A client-side error occurred: ${error.error.message}`;
-    } else {
-      // backend error
-      errorMessage = `Backend returned code ${
-        error.status
-      }, body was ${JSON.stringify(error.error)}`;
-    }
+    const errorMessage =
+      error.status === 0
+        ? `A network error occurred: ${error.message}`
+        : `Backend returned code ${error.status}, body was ${JSON.stringify(error.error)}`;
+
     console.error('There was an error:', errorMessage);
-    return throwError(() => new Error(errorMessage));
+    return throwError(() => error);
   }
 }

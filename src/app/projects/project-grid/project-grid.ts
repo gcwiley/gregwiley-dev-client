@@ -2,10 +2,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
-  OnDestroy,
   OnInit,
+  signal,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { DestroyRef } from '@angular/core';
 import {
   Breakpoints,
   BreakpointObserver,
@@ -14,8 +16,8 @@ import {
 import { RouterModule } from '@angular/router';
 
 // rxjs
-import { Observable, Subject, of } from 'rxjs';
-import { catchError, map, startWith, takeUntil } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map, startWith } from 'rxjs/operators';
 
 // angular material
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -34,7 +36,7 @@ import { Project } from '../../types/project.interface';
   styleUrls: ['./project-grid.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
+    AsyncPipe,
     RouterModule,
     MatGridListModule,
     MatCardModule,
@@ -43,14 +45,15 @@ import { Project } from '../../types/project.interface';
     MatProgressSpinnerModule,
   ],
 })
-export class ProjectGrid implements OnInit, OnDestroy {
-  // inject dependencies
+export class ProjectGrid implements OnInit {
   private readonly projectService = inject(ProjectService);
   private readonly breakpointObserver = inject(BreakpointObserver);
+  private readonly destroyRef = inject(DestroyRef);
 
   // observable streams
   public projects$!: Observable<Project[] | null>;
   public cols$!: Observable<number>;
+  public hasError = signal(false);
 
   // static grid properties (readonly since they don't change)
   public readonly rowHeight = '1:1';
@@ -58,15 +61,12 @@ export class ProjectGrid implements OnInit, OnDestroy {
   public readonly colspan = 1;
   public readonly rowspan = 1;
 
-  // lifecycle management
-  private destroy = new Subject<void>();
-
   public ngOnInit(): void {
     this.projects$ = this.projectService.getProjects().pipe(
-      // start with null to trigger the loading spinner immediately
+      takeUntilDestroyed(this.destroyRef),
       startWith(null),
       catchError(() => {
-        // return empty array on error so the page does not break
+        this.hasError.set(true);
         return of([]);
       }),
     );
@@ -81,7 +81,7 @@ export class ProjectGrid implements OnInit, OnDestroy {
         Breakpoints.XLarge,
       ])
       .pipe(
-        takeUntil(this.destroy),
+        takeUntilDestroyed(this.destroyRef),
         map((state: BreakpointState) => {
           // map breakpoint state to number of columns
           if (state.breakpoints[Breakpoints.XSmall]) {
@@ -99,14 +99,7 @@ export class ProjectGrid implements OnInit, OnDestroy {
       );
   }
 
-  public ngOnDestroy(): void {
-    // signal component destruction
-    this.destroy.next();
-    this.destroy.complete();
-  }
-
-  // optional: If you need to track items for *ngFor performance
-  public trackByProjectId(index: number, project: Project): string {
+  public trackByProjectId(_index: number, project: Project): string {
     return project._id; // Assuming your Project interface has an '_id' property
   }
 }

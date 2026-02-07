@@ -33,22 +33,27 @@
 
 .col {
   flex: 1;
-  min-width: 0; // prevents flex items from overflowing
+  min-width: 0;
 }
 
 .card-actions {
   display: flex;
   justify-content: flex-end;
   gap: 0.75rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   padding: 0;
 
   button {
-    min-width: 100px; // consistent button widths
+    min-width: 120px;
+    transition: opacity 0.2s ease;
+
+    &:disabled {
+      opacity: 0.6;
+    }
   }
 
   @media (max-width: 600px) {
-    flex-direction: column-reverse; // primary action at bottom on mobile
+    flex-direction: column;
 
     button {
       width: 100%;

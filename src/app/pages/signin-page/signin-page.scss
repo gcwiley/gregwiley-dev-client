@@ -88,13 +88,11 @@
 }
 
 .oauth-actions {
-  margin-top: 12px;
+  margin-top: 16px;
   display: flex;
   justify-content: center;
-  // thin grey divider between sign in and google button
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--mat-sys-outline-variant);
   padding-top: 12px;
-  margin-top: 16px; // give divider breathing room
 }
 
 .google-btn {
@@ -104,9 +102,9 @@
   gap: 12px;
   width: 100%;
   justify-content: center;
-  background: #fff;
-  color: #202124;
-  border-color: rgba(0, 0, 0, 0.12);
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  border-color: var(--mat-sys-outline-variant);
   box-shadow: none;
   text-transform: none;
 }

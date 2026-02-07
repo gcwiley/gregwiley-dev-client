@@ -29,6 +29,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // auth service
 import { AuthService } from '../../services/auth.service';
 
+// constants
+import { SNACK_BAR_DURATION } from '../../constants/ui.constants';
+
 const ERROR_MESSAGES = {
   INVALID_CREDENTIALS: 'Invalid email or password.',
   NETWORK_ERROR: 'A network error occurred. Please try again later.',
@@ -109,14 +112,14 @@ export class SigninPage implements OnInit {
             this.router.navigateByUrl('/');
           } else if (this.errorMessage()) {
             this.snackBar.open(this.errorMessage()!, 'Close', {
-              duration: 5000,
+              duration: SNACK_BAR_DURATION,
             });
           }
         },
         error: () => {
           this.isLoading.set(false);
           this.snackBar.open(ERROR_MESSAGES.UNKNOWN_ERROR, 'Close', {
-            duration: 5000,
+            duration: SNACK_BAR_DURATION,
           });
         },
       });
@@ -136,7 +139,7 @@ export class SigninPage implements OnInit {
             'Google sign-in failed. Please try again.',
             'Close',
             {
-              duration: 4000,
+              duration: SNACK_BAR_DURATION,
             },
           );
           return of(null);

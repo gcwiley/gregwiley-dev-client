@@ -8,6 +8,14 @@
 
     <span class="flex-spacer" aria-hidden="true"></span>
 
+    <!-- theme toggle -->
+    <button
+      mat-icon-button
+      (click)="toggleTheme()"
+      [attr.aria-label]="(isDark$ | async) ? 'Switch to light mode' : 'Switch to dark mode'">
+      <mat-icon>{{ (isDark$ | async) ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+
     <!-- show admin menu only when authenticated -->
     @if (isAuthenticated$ | async) {
     <button

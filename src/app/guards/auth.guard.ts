@@ -1,5 +1,11 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router, UrlTree } from '@angular/router';
+import {
+  CanActivateFn,
+  Router,
+  UrlTree,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+} from '@angular/router';
 
 // rxjs
 import { Observable } from 'rxjs';
@@ -8,7 +14,10 @@ import { map, take } from 'rxjs/operators';
 // firebase auth
 import { Auth, authState } from '@angular/fire/auth';
 
-export const authGuard: CanActivateFn = (): Observable<boolean | UrlTree> => {
+export const authGuard: CanActivateFn = (
+  _route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot,
+): Observable<boolean | UrlTree> => {
   const auth = inject(Auth);
   const router = inject(Router);
 
@@ -17,7 +26,7 @@ export const authGuard: CanActivateFn = (): Observable<boolean | UrlTree> => {
     map((user) => {
       if (user) return true;
       return router.createUrlTree(['/signin'], {
-        queryParams: { returnUrl: router.routerState.snapshot.url },
+        queryParams: { returnUrl: state.url },
       });
     }),
   );

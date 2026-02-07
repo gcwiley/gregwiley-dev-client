@@ -32,6 +32,9 @@ import {
   PROJECT_CATEGORIES,
 } from '../../../assets/data/project-data';
 
+// snackbar
+import { SNACK_BAR_DURATION } from '../../constants/ui.constants';
+
 @Component({
   selector: 'app-project-form',
   templateUrl: './project-form.html',
@@ -50,11 +53,10 @@ import {
 })
 export class ProjectForm implements OnInit {
   public mode = signal<'create' | 'edit'>('create');
-  public isSaving = signal(false); 
+  public isSaving = signal(false);
   public submitted = signal(false);
 
   private id: string | null = null;
-  private readonly snackBarDuration = 5000;
 
   readonly statuses: SelectOption[] = PROJECT_STATUS;
   readonly categories: SelectOption[] = PROJECT_CATEGORIES;
@@ -84,34 +86,41 @@ export class ProjectForm implements OnInit {
         first(),
         switchMap((paramMap: ParamMap) => {
           if (paramMap.has('id')) {
-            this.mode.set('edit'); // use .set() for signals
+            this.mode.set('edit');
             this.id = paramMap.get('id');
             return this.projectService.getProjectById(this.id!);
           } else {
-            this.mode.set('create'); // use .set() for signals
+            this.mode.set('create');
             return of(undefined);
           }
         }),
       )
-      .subscribe((project) => {
-        if (project) {
-          // set Date object for datepicker
-          this.projectForm.patchValue({
-            title: project.title ?? '',
-            status: project.status ?? '',
-            category: project.category ?? '',
-            programmingLanguage: project.programmingLanguage ?? '',
-            startDate: project.startDate ? new Date(project.startDate) : null,
-            gitUrl: project.gitUrl ?? '',
-            description: project.description ?? '',
+      .subscribe({
+        next: (project) => {
+          if (project) {
+            this.projectForm.patchValue({
+              title: project.title ?? '',
+              status: project.status ?? '',
+              category: project.category ?? '',
+              programmingLanguage: project.programmingLanguage ?? '',
+              startDate: project.startDate ? new Date(project.startDate) : null,
+              gitUrl: project.gitUrl ?? '',
+              description: project.description ?? '',
+            });
+          }
+        },
+        error: (error) => {
+          console.error('Failed to load project', error);
+          this.snackBar.open('Error loading project.', 'Close', {
+            duration: SNACK_BAR_DURATION,
           });
-        }
+        },
       });
   }
 
   // saves a new project
   public onSaveProject(): void {
-    this.submitted.set(true)
+    this.submitted.set(true);
     if (!this.projectForm.valid) {
       // mark all controls touches to show errors
       Object.values(this.projectForm.controls).forEach((c) =>
@@ -133,14 +142,14 @@ export class ProjectForm implements OnInit {
         .subscribe({
           next: () => {
             this.snackBar.open('Project added.', 'Close', {
-              duration: this.snackBarDuration,
+              duration: SNACK_BAR_DURATION,
             });
             this.router.navigateByUrl('/');
           },
           error: (error) => {
             console.error(error);
             this.snackBar.open('Error adding project.', 'Close', {
-              duration: this.snackBarDuration,
+              duration: SNACK_BAR_DURATION,
             });
           },
         });
@@ -154,14 +163,14 @@ export class ProjectForm implements OnInit {
         .subscribe({
           next: () => {
             this.snackBar.open('Project updated successfully', 'Close', {
-              duration: this.snackBarDuration,
+              duration: SNACK_BAR_DURATION,
             });
             this.router.navigate(['/projects', this.id]);
           },
           error: (error) => {
             console.error(error);
             this.snackBar.open('Error updating project', 'Close', {
-              duration: this.snackBarDuration,
+              duration: SNACK_BAR_DURATION,
             });
           },
         });
@@ -170,7 +179,8 @@ export class ProjectForm implements OnInit {
 
   // navigates away from the form without saving
   public onCancel(): void {
-    const destination = this.mode() === 'edit' ? `/projects/${this.id}` : '/projects';
+    const destination =
+      this.mode() === 'edit' ? `/projects/${this.id}` : '/projects';
     this.router.navigateByUrl(destination);
   }
 }

@@ -15,10 +15,10 @@
           title="Project Title"
           aria-describedby="title-error" />
         @if (projectForm.controls.title.hasError('required') &&
-          (projectForm.controls.title.touched || submitted())) {
-          <mat-error id="title-error" aria-live="polite">
-            Please provide a project title.
-          </mat-error>
+        (projectForm.controls.title.touched || submitted())) {
+        <mat-error id="title-error" aria-live="polite">
+          Please provide a project title.
+        </mat-error>
         }
       </mat-form-field>
 
@@ -31,16 +31,16 @@
               formControlName="status"
               aria-describedby="status-error">
               @for (status of statuses; track status.value) {
-                <mat-option [value]="status.value">
-                  {{ status.viewValue }}
-                </mat-option>
+              <mat-option [value]="status.value">
+                {{ status.viewValue }}
+              </mat-option>
               }
             </mat-select>
             @if (projectForm.controls.status.hasError('required') &&
-              (projectForm.controls.status.touched || submitted())) {
-              <mat-error id="status-error" aria-live="polite">
-                Please select a project status.
-              </mat-error>
+            (projectForm.controls.status.touched || submitted())) {
+            <mat-error id="status-error" aria-live="polite">
+              Please select a project status.
+            </mat-error>
             }
           </mat-form-field>
         </div>
@@ -49,138 +49,134 @@
           <!-- project category -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Category</mat-label>
-            <mat-select formControlName="category">
+            <mat-select formControlName="category" aria-describedby="category-error">
               @for (category of categories; track category.value) {
-                <mat-option [value]="category.value"
-                  >{{ category.viewValue }}</mat-option
-                  >
-                }
-              </mat-select>
-              @if (projectForm.controls.category.hasError('required') &&
-                (projectForm.controls.category.touched || submitted())) {
-                <mat-error aria-live="polite">
-                  Please select a project category.
-                </mat-error>
+              <mat-option [value]="category.value"
+                >{{ category.viewValue }}</mat-option
+              >
               }
-            </mat-form-field>
-          </div>
+            </mat-select>
+            @if (projectForm.controls.category.hasError('required') &&
+            (projectForm.controls.category.touched || submitted())) {
+            <mat-error id="category-error" aria-live="polite">
+              Please select a project category.
+            </mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <!-- startDate -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="startDate"
+              title="Start Date"
+              aria-describedby="startDate-error" />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+
+            @if (projectForm.controls.startDate.hasError('required') &&
+            (projectForm.controls.startDate.touched || submitted())) {
+            <mat-error id="startDate-error" aria-live="polite">
+              Please provide a project start date.
+            </mat-error>
+            }
+          </mat-form-field>
         </div>
 
-        <div class="row">
-          <div class="col">
-            <!-- startDate -->
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Start Date</mat-label>
-              <input
-                matInput
-                [matDatepicker]="picker"
-                formControlName="startDate"
-                title="Start Date"
-                aria-describedby="startDate-error" />
-              <mat-datepicker-toggle
-                matSuffix
-              [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-
-              @if (projectForm.controls.startDate.hasError('required') && (projectForm.controls.startDate.touched || submitted())) {
-                <mat-error
-                  id="startDate-error"
-                  aria-live="polite">
-                  Please provide a project start date.
-                </mat-error>
+        <div class="col">
+          <!-- programming language -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Programming Language</mat-label>
+            <mat-select formControlName="programmingLanguage" aria-describedby="programmingLanguage-error">
+              @for (language of languages; track language.value) {
+              <mat-option [value]="language.value"
+                >{{ language.viewValue }}</mat-option
+              >
               }
-            </mat-form-field>
-          </div>
+            </mat-select>
+            @if (projectForm.controls.programmingLanguage.hasError('required')
+            && (projectForm.controls.programmingLanguage.touched ||
+            submitted())) {
+            <mat-error aria-live="polite">
+              Please select a programming language.
+            </mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
 
-          <div class="col">
-            <!-- programming language -->
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-label>Programming Language</mat-label>
-              <mat-select formControlName="programmingLanguage">
-                @for (language of languages; track language.value) {
-                  <mat-option [value]="language.value"
-                    >{{ language.viewValue }}</mat-option
-                    >
-                  }
-                </mat-select>
-                @if (projectForm.controls.programmingLanguage.hasError('required') && (projectForm.controls.programmingLanguage.touched || submitted())) {
-                  <mat-error
-                    aria-live="polite">
-                    Please select a programming language.
-                  </mat-error>
-                }
-              </mat-form-field>
-            </div>
-          </div>
+      <div class="row">
+        <div class="col">
+          <!-- github url -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>GitHub URL</mat-label>
+            <input
+              matInput
+              type="url"
+              formControlName="gitUrl"
+              title="GitHub Url"
+              aria-describedby="github-url-error" />
+            @if (projectForm.controls.gitUrl.hasError('required') &&
+            (projectForm.controls.gitUrl.touched || submitted())) {
+            <mat-error id="github-url-error" aria-live="polite">
+              Please enter a GitHub URL.
+            </mat-error>
+            } @if (projectForm.controls.gitUrl.hasError('pattern') &&
+            (projectForm.controls.gitUrl.touched || submitted())) {
+            <mat-error id="github-url-pattern-error" aria-live="polite">
+              Please enter a valid URL (must start with http:// or https://).
+            </mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
 
-          <div class="row">
-            <div class="col">
-              <!-- github url -->
-              <mat-form-field class="full-width" appearance="outline">
-                <mat-label>GitHub URL</mat-label>
-                <input
-                  matInput
-                  type="url"
-                  formControlName="gitUrl"
-                  title="GitHub Url"
-                  aria-describedby="github-url-error" />
-                @if (projectForm.controls.gitUrl.hasError('required') && (projectForm.controls.gitUrl.touched || submitted())) {
-                  <mat-error
-                    id="github-url-error"
-                    aria-live="polite">
-                    Please enter a GitHub URL.
-                  </mat-error>
-                }
-                @if (projectForm.controls.gitUrl.hasError('pattern') && (projectForm.controls.gitUrl.touched || submitted())) {
-                  <mat-error
-                    id="github-url-pattern-error"
-                    aria-live="polite">
-                    Please enter a valid URL (must start with http:// or https://).
-                  </mat-error>
-                }
-              </mat-form-field>
-            </div>
-          </div>
+      <div class="row">
+        <div class="col">
+          <!-- description -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea
+              matInput
+              rows="6"
+              formControlName="description"
+              title="Description"
+              aria-describedby="description-error"></textarea>
+            @if (projectForm.controls.description.hasError('required') &&
+            (projectForm.controls.description.touched || submitted())) {
+            <mat-error id="description-error" aria-live="polite">
+              Please provide a project description.
+            </mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
 
-          <div class="row">
-            <div class="col">
-              <!-- description -->
-              <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Description</mat-label>
-                <textarea
-                  matInput
-                  rows="6"
-                  formControlName="description"
-                  title="Description"
-                aria-describedby="description-error"></textarea>
-                @if (projectForm.controls.description.hasError('required') && (projectForm.controls.description.touched || submitted())) {
-                  <mat-error
-                    id="description-error"
-                    aria-live="polite">
-                    Please provide a project description.
-                  </mat-error>
-                }
-              </mat-form-field>
-            </div>
-          </div>
-        </mat-card-content>
-
-        <mat-card-actions class="card-actions">
-          <button
-            mat-flat-button
-            type="submit"
-            aria-label="{{ mode() === 'create' ? 'Create Project' : 'Update Project' }}"
-            [disabled]="projectForm.invalid || isSaving">
-            {{ mode() === 'create' ? 'Create' : 'Update' }}
-          </button>
-          <button
-            mat-stroked-button
-            type="button"
-            (click)="onCancel()"
-            aria-label="Cancel"
-            [disabled]="isSaving">
-            Cancel
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </form>
+    <mat-card-actions class="card-actions">
+      <button
+        mat-flat-button
+        type="submit"
+        aria-label="{{ mode() === 'create' ? 'Create Project' : 'Update Project' }}"
+        [disabled]="projectForm.invalid || isSaving()">
+        {{ mode() === 'create' ? 'Create' : 'Update' }}
+      </button>
+      <button
+        mat-stroked-button
+        type="button"
+        (click)="onCancel()"
+        aria-label="Cancel"
+        [disabled]="isSaving()">
+        Cancel
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

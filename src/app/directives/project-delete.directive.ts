@@ -21,6 +21,9 @@ import {
   CustomConfirmDialogService,
 } from '../services/custom-confirm-dialog.service';
 
+// snackbar duration
+import { SNACK_BAR_DURATION } from '../constants/ui.constants';
+
 @Directive({
   selector: '[appProjectDelete]',
 })
@@ -34,12 +37,11 @@ export class ProjectDeleteDirective {
   private readonly snackBar = inject(MatSnackBar);
   private readonly destroyRef = inject(DestroyRef);
 
-  private isDeleting = signal(false); 
-  private readonly snackBarDuration = 5000;
+  private isDeleting = signal(false);
 
   @HostListener('click')
   public onClick(): void {
-    if (this.isDeleting()) return; 
+    if (this.isDeleting()) return;
     this.isDeleting.set(true);
 
     this.confirm
@@ -51,17 +53,22 @@ export class ProjectDeleteDirective {
         catchError((error) => {
           console.error('Error deleting project:', error);
           this.snackBar.open('Unable to delete project.', 'Close', {
-            duration: this.snackBarDuration,
+            duration: SNACK_BAR_DURATION,
           });
           return EMPTY;
         }),
         finalize(() => this.isDeleting.set(false)),
       )
-      .subscribe(() => {
-        this.deleted.emit(this.id());
-        this.snackBar.open('Project successfully deleted.', 'Close', {
-          duration: this.snackBarDuration,
-        });
+      .subscribe({
+        next: () => {
+          this.deleted.emit(this.id());
+          this.snackBar.open('Project successfully deleted.', 'Close', {
+            duration: SNACK_BAR_DURATION,
+          });
+        },
+        error: (error) => {
+          console.error('Unexpected error during delete:', error);
+        },
       });
   }
 }

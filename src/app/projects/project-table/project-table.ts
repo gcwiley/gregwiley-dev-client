@@ -3,12 +3,13 @@ import {
   Component,
   ViewChild,
   ChangeDetectionStrategy,
-  OnDestroy,
   inject,
   ChangeDetectorRef,
+  DestroyRef,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 // angular cdk
 import { SelectionModel } from '@angular/cdk/collections';
@@ -24,13 +25,13 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-// rxjs
-import { Subject, takeUntil } from 'rxjs';
-
 // project service, interface, and directive
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 import { ProjectDeleteDirective } from '../../directives/project-delete.directive';
+
+// snackbar duration
+import { SNACK_BAR_DURATION } from '../../constants/ui.constants';
 
 @Component({
   standalone: true,
@@ -39,7 +40,7 @@ import { ProjectDeleteDirective } from '../../directives/project-delete.directiv
   styleUrls: ['./project-table.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
+    DatePipe,
     MatTableModule,
     MatCheckboxModule,
     MatIconModule,
@@ -52,7 +53,7 @@ import { ProjectDeleteDirective } from '../../directives/project-delete.directiv
     ProjectDeleteDirective,
   ],
 })
-export class ProjectTable implements AfterViewInit, OnDestroy {
+export class ProjectTable implements AfterViewInit {
   selection = new SelectionModel<Project>(true, []);
 
   // setup pagination for project table
@@ -79,13 +80,11 @@ export class ProjectTable implements AfterViewInit, OnDestroy {
     'deleteProject',
   ];
 
-  // subject to manage component destruction
-  private destroy$ = new Subject<void>();
-
   // inject dependencies
-  private projectService = inject(ProjectService);
-  private snackBar = inject(MatSnackBar);
-  private cdr = inject(ChangeDetectorRef);
+  private readonly projectService = inject(ProjectService);
+  private readonly snackBar = inject(MatSnackBar);
+  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly destroyRef = inject(DestroyRef);
 
   public ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
@@ -93,17 +92,12 @@ export class ProjectTable implements AfterViewInit, OnDestroy {
     this.getProjects();
   }
 
-  public ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
   // get all projects from project service
   public getProjects(): void {
     this.isLoadingResults = true;
     this.projectService
       .getProjects()
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (projects) => {
           this.dataSource.data = projects;
@@ -114,8 +108,8 @@ export class ProjectTable implements AfterViewInit, OnDestroy {
           console.error('Error fetching projects:', error);
           this.isLoadingResults = false;
           this.cdr.markForCheck();
-          this.snackBar.open('Error fetching projects:', 'Close', {
-            duration: 5000,
+          this.snackBar.open('Error fetching projects.', 'Close', {
+            duration: SNACK_BAR_DURATION
           });
         },
       });

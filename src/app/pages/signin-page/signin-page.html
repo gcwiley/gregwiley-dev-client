@@ -68,7 +68,7 @@
           matButton="filled"
           class="sign-in-button"
           type="submit"
-          [disabled]="signinForm.invalid || isLoading">
+          [disabled]="signinForm.invalid || isLoading()">
           Sign In
         </button>
 
@@ -84,7 +84,7 @@
             class="google-btn"
             type="button"
             (click)="onSignInWithGoogle()"
-            [disabled]="googleLoading"
+            [disabled]="googleLoading()"
             aria-label="Sign in with Google">
             <span class="google-icon" aria-hidden="true">
               <!-- simple Google 'G' SVG -->
