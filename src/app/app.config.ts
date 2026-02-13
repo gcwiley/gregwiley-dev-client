@@ -6,11 +6,13 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 
-// Configures Angular's HttpClient service to be available for injection.
+// configures Angular's HttpClient service to be available for injection.
 import { provideHttpClient } from '@angular/common/http';
 
 // env variables
 import { environment } from '../environments/environment';
+
+// routes
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {

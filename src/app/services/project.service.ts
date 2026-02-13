@@ -19,13 +19,14 @@ import {
 @Injectable({ providedIn: 'root' })
 export class ProjectService {
   private readonly API_URL = `${environment.apiUrl}/projects`;
-
   private readonly http = inject(HttpClient);
+
+  private readonly DEFAULT_RETRY = { count: 1, delay: 1000 };
 
   // GET: - GET ALL PROJECTS
   public getProjects(): Observable<Project[]> {
     return this.http.get<ApiResponse<Project[]>>(this.API_URL).pipe(
-      retry({ count: 1, delay: 1000 }), // retry
+      retry(this.DEFAULT_RETRY),
       map((res) => res.data),
       catchError((error) => this.handleError(error)),
     );
@@ -47,7 +48,7 @@ export class ProjectService {
     return this.http
       .get<PaginatedResponse<Project>>(this.API_URL, { params })
       .pipe(
-        retry({ count: 1, delay: 1000 }),
+        retry(this.DEFAULT_RETRY),
         catchError((error) => this.handleError(error)),
       );
   }
