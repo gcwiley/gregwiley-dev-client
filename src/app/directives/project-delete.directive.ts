@@ -22,7 +22,7 @@ import {
 } from '../services/custom-confirm-dialog.service';
 
 // snackbar duration
-import { SNACK_BAR_DURATION } from '../constants/ui.constants';
+import { SNACK_BAR_DURATION_MS } from '../constants/ui.constants';
 
 @Directive({
   selector: '[appProjectDelete]',
@@ -53,7 +53,7 @@ export class ProjectDeleteDirective {
         catchError((error) => {
           console.error('Error deleting project:', error);
           this.snackBar.open('Unable to delete project.', 'Close', {
-            duration: SNACK_BAR_DURATION,
+            duration: SNACK_BAR_DURATION_MS,
           });
           return EMPTY;
         }),
@@ -63,7 +63,7 @@ export class ProjectDeleteDirective {
         next: () => {
           this.deleted.emit(this.id());
           this.snackBar.open('Project successfully deleted.', 'Close', {
-            duration: SNACK_BAR_DURATION,
+            duration: SNACK_BAR_DURATION_MS,
           });
         },
         error: (error) => {

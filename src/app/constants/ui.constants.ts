@@ -1,7 +1,7 @@
 // Snackbar / Toast
-export const SNACK_BAR_DURATION = 5000;
-export const SNACK_BAR_DURATION_SHORT = 2000;
-export const SNACK_BAR_DURATION_LONG = 8000;
+export const SNACK_BAR_DURATION_MS = 5000;
+export const SNACK_BAR_DURATION_SHORT_MS = 2000;
+export const SNACK_BAR_DURATION_LONG_MS = 8000;
 export const SNACK_BAR_POSITION = { horizontal: 'end', vertical: 'top' } as const;
 
 // Pagination

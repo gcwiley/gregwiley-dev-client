@@ -33,7 +33,7 @@ import {
 } from '../../../assets/data/project-data';
 
 // snackbar
-import { SNACK_BAR_DURATION } from '../../constants/ui.constants';
+import { SNACK_BAR_DURATION_MS } from '../../constants/ui.constants';
 
 @Component({
   selector: 'app-project-form',
@@ -112,7 +112,7 @@ export class ProjectForm implements OnInit {
         error: (error) => {
           console.error('Failed to load project', error);
           this.snackBar.open('Error loading project.', 'Close', {
-            duration: SNACK_BAR_DURATION,
+            duration: SNACK_BAR_DURATION_MS,
           });
         },
       });
@@ -142,14 +142,14 @@ export class ProjectForm implements OnInit {
         .subscribe({
           next: () => {
             this.snackBar.open('Project added.', 'Close', {
-              duration: SNACK_BAR_DURATION,
+              duration: SNACK_BAR_DURATION_MS,
             });
             this.router.navigateByUrl('/');
           },
           error: (error) => {
             console.error(error);
             this.snackBar.open('Error adding project.', 'Close', {
-              duration: SNACK_BAR_DURATION,
+              duration: SNACK_BAR_DURATION_MS,
             });
           },
         });
@@ -163,14 +163,14 @@ export class ProjectForm implements OnInit {
         .subscribe({
           next: () => {
             this.snackBar.open('Project updated successfully', 'Close', {
-              duration: SNACK_BAR_DURATION,
+              duration: SNACK_BAR_DURATION_MS,
             });
             this.router.navigate(['/projects', this.id]);
           },
           error: (error) => {
             console.error(error);
             this.snackBar.open('Error updating project', 'Close', {
-              duration: SNACK_BAR_DURATION,
+              duration: SNACK_BAR_DURATION_MS,
             });
           },
         });
