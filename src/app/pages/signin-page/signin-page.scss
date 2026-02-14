@@ -11,7 +11,8 @@
 }
 
 .signin-page-container {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
     url('../../../assets/images/sign_in_graphic.jpg');
   background-size: cover;
   background-position: center;
@@ -34,13 +35,26 @@
   background: var(--mat-sys-surface-container-low);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  
+
   border: 1px solid var(--mat-sys-outline-variant);
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 
   // Animation
   animation: slideUpFade 0.6s ease-out forwards;
+
+  // force input text color to match theme
+  input.mat-mdc-input-element {
+    color: var(--mat-sys-on-surface);
+  }
+
+  // Override browser autofill styles
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--mat-sys-on-surface);
+    transition: background-color 5000s ease-in-out 0s;
+  }
 }
 
 .full-width {
@@ -91,8 +105,7 @@
   margin-top: 16px;
   display: flex;
   justify-content: center;
-  border-top: 1px solid var(--mat-sys-outline-variant);
-  padding-top: 12px;
+  padding-top: 0;
 }
 
 .google-btn {
@@ -139,7 +152,9 @@
 }
 
 .signin-footer small {
-  color: rgba(0, 0, 0, 0.6);
+  color: var(
+    --mat-sys-on-surface-variant
+  ); // use theme token instead of hardcoded rgba
   font-size: 0.85rem;
   display: inline-block;
   margin-top: 6px;

@@ -31,7 +31,7 @@ import { Project } from '../../types/project.interface';
 import { ProjectDeleteDirective } from '../../directives/project-delete.directive';
 
 // snackbar duration
-import { SNACK_BAR_DURATION } from '../../constants/ui.constants';
+import { SNACK_BAR_DURATION_MS } from '../../constants/ui.constants';
 
 @Component({
   standalone: true,
@@ -102,25 +102,23 @@ export class ProjectTable implements AfterViewInit {
         next: (projects) => {
           this.dataSource.data = projects;
           this.isLoadingResults = false;
-          this.cdr.markForCheck()
+          this.cdr.markForCheck();
         },
         error: (error) => {
           console.error('Error fetching projects:', error);
           this.isLoadingResults = false;
           this.cdr.markForCheck();
           this.snackBar.open('Error fetching projects.', 'Close', {
-            duration: SNACK_BAR_DURATION
+            duration: SNACK_BAR_DURATION_MS,
           });
         },
       });
   }
 
   public onProjectDeleted(deletedId: string): void {
-    // create a NEW array reference so OnPush detects the change
-    const updatedData = (this.dataSource.data = this.dataSource.data.filter(
+    this.dataSource.data = this.dataSource.data.filter(
       (p) => p._id !== deletedId,
-    ));
-    this.dataSource.data = updatedData;
+    );
 
     // clear selection if the deleted item was selected
     const deletedItem = this.selection.selected.find(
@@ -154,10 +152,14 @@ export class ProjectTable implements AfterViewInit {
       // label for the header checkbox
       return `${this.isAllSelected() ? 'Deselect' : 'Select'} all projects`;
     }
-    // label for a rew checkbox
+    // label for a row checkbox
     // using row.title assumes 'title' is a unique and descriptive property
     return `${this.selection.isSelected(row) ? 'Deselect' : 'Select'} project ${
       row.title
     }`;
+  }
+
+  public trackByProjectId(_index: number, project: Project): string {
+    return project._id;
   }
 }

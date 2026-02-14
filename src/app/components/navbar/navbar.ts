@@ -17,7 +17,7 @@ import { AuthService } from '../../services/auth.service';
 import { ThemeService } from '../../services/theme.service';
 
 // constants
-import { SNACK_BAR_DURATION } from '../../constants/ui.constants';
+import { SNACK_BAR_DURATION_MS } from '../../constants/ui.constants';
 
 @Component({
   selector: 'app-navbar',
@@ -55,14 +55,14 @@ export class Navbar {
     this.authService.signOutUser().subscribe({
       next: () => {
         this.snackBar.open('You have successfully signed out.', 'Close', {
-          duration: SNACK_BAR_DURATION,
+          duration: SNACK_BAR_DURATION_MS,
         });
         this.router.navigateByUrl('/signin');
       },
       error: (error) => {
         console.error('Error signing out:', error);
         this.snackBar.open('Error signing out. Please try again.', 'Close', {
-          duration: SNACK_BAR_DURATION,
+          duration: SNACK_BAR_DURATION_MS,
         });
       },
     });

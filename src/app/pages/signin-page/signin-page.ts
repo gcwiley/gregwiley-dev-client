@@ -30,7 +30,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth.service';
 
 // constants
-import { SNACK_BAR_DURATION } from '../../constants/ui.constants';
+import { SNACK_BAR_DURATION_MS } from '../../constants/ui.constants';
 
 const ERROR_MESSAGES = {
   INVALID_CREDENTIALS: 'Invalid email or password.',
@@ -55,7 +55,6 @@ const ERROR_MESSAGES = {
   ],
 })
 export class SigninPage implements OnInit {
-  // use signals for reactive state
   public readonly isLoading = signal(false);
   public readonly showPassword = signal(false);
   public readonly googleLoading = signal(false);
@@ -112,14 +111,14 @@ export class SigninPage implements OnInit {
             this.router.navigateByUrl('/');
           } else if (this.errorMessage()) {
             this.snackBar.open(this.errorMessage()!, 'Close', {
-              duration: SNACK_BAR_DURATION,
+              duration: SNACK_BAR_DURATION_MS,
             });
           }
         },
         error: () => {
           this.isLoading.set(false);
           this.snackBar.open(ERROR_MESSAGES.UNKNOWN_ERROR, 'Close', {
-            duration: SNACK_BAR_DURATION,
+            duration: SNACK_BAR_DURATION_MS,
           });
         },
       });
@@ -139,7 +138,7 @@ export class SigninPage implements OnInit {
             'Google sign-in failed. Please try again.',
             'Close',
             {
-              duration: SNACK_BAR_DURATION,
+              duration: SNACK_BAR_DURATION_MS,
             },
           );
           return of(null);

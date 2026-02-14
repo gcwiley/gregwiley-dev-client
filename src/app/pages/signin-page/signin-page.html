@@ -6,7 +6,8 @@
     </div>
     <mat-card-content>
       <form [formGroup]="signinForm" (ngSubmit)="onSubmitSignIn()">
-        <!-- email -->
+
+        <!-- email field -->
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Email</mat-label>
           <input
@@ -14,20 +15,17 @@
             type="email"
             formControlName="email"
             title="name@example.com"
-            autocomplete="username"
-            aria-describedby="email-errors" />
+            autocomplete="username" />
           @if (formControls['email'].hasError('required')) {
-          <mat-error id="email-required" aria-live="polite"
+          <mat-error aria-live="polite"
             >Please enter your email address.</mat-error
           >
           } @if (formControls['email'].hasError('email')) {
-          <mat-error id="email-invalid" aria-live="polite"
-            >Invalid email format.</mat-error
-          >
+          <mat-error aria-live="polite">Invalid email format.</mat-error>
           }
         </mat-form-field>
 
-        <!-- password -->
+        <!-- password field -->
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Password</mat-label>
           <input
@@ -35,8 +33,7 @@
             [type]="showPassword() ? 'text' : 'password'"
             formControlName="password"
             title="Password"
-            autocomplete="current-password"
-            aria-describedby="password-errors" />
+            autocomplete="current-password" />
           <button
             mat-icon-button
             matSuffix
@@ -48,11 +45,9 @@
             </mat-icon>
           </button>
           @if (formControls['password'].hasError('required')) {
-          <mat-error id="password-required" aria-live="polite"
-            >Please enter your password.</mat-error
-          >
+          <mat-error aria-live="polite">Please enter your password.</mat-error>
           } @if (formControls['password'].hasError('minlength')) {
-          <mat-error id="password-invalid" aria-live="polite"
+          <mat-error aria-live="polite"
             >Your password must be at least 6 characters.</mat-error
           >
           }
@@ -71,11 +66,6 @@
           [disabled]="signinForm.invalid || isLoading()">
           Sign In
         </button>
-
-        <!-- divider -->
-        <div class="divider">
-          <span>OR</span>
-        </div>
 
         <!-- Google Sign In -->
         <div class="oauth-actions">
