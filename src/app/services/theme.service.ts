@@ -18,7 +18,7 @@ export class ThemeService {
 
   // reactive state management
   private isDarkSubject = new BehaviorSubject<boolean>(false);
-  public isDark$ = this.isDarkSubject.asObservable(); // expose as observable
+  public isDark$ = this.isDarkSubject.asObservable();
 
   constructor() {
     // initialize renderer

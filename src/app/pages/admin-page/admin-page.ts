@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 // angular material
@@ -8,7 +8,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltip } from '@angular/material/tooltip';
 
 // project components
@@ -17,7 +16,7 @@ import { ProjectTable } from '../../projects';
 @Component({
    selector: 'app-admin-page',
    templateUrl: './admin-page.html',
-   styleUrls: ['./admin-page.scss'],
+   styleUrl: './admin-page.scss',
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
     MatSidenavModule,
@@ -26,13 +25,11 @@ import { ProjectTable } from '../../projects';
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
-    MatTabsModule,
     MatTooltip,
     ProjectTable,
     RouterModule
 ],
 })
 export class AdminPage {
-   events: string[] = [];
-   opened!: boolean;
+   readonly opened = signal(false);
 }

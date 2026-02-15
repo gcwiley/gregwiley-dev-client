@@ -15,9 +15,11 @@
   "workbench.iconTheme": "material-icon-theme",
   "cSpell.words": [
     "gregwiley",
+    "inprogress",
     "libpeerconnection",
     "rowspan",
     "runtimeconfig",
+    "svgrepo",
     "testem",
     "vite"
   ]

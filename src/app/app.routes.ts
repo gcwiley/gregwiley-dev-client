@@ -104,16 +104,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/error-page/error-page').then((m) => m.ErrorPage),
   },
-  // 404 NOT FOUND PAGE
-  {
-    path: '404',
-    title: 'Page Not Found',
-    loadComponent: () =>
-      import('./pages/not-found-page/not-found-page').then(
-        (m) => m.NotFoundPage,
-      ),
-  },
-  // wildcard route
+  // wildcard route - 404 not found page
   {
     path: '**',
     title: 'Page Not Found',

@@ -4,12 +4,14 @@ import {
   ViewChild,
   ChangeDetectionStrategy,
   inject,
-  ChangeDetectorRef,
   DestroyRef,
+  signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
 import { DatePipe } from '@angular/common';
+
+import { forkJoin } from 'rxjs';
 
 // angular cdk
 import { SelectionModel } from '@angular/cdk/collections';
@@ -24,6 +26,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 // project service, interface, and directive
 import { ProjectService } from '../../services/project.service';
@@ -37,7 +41,7 @@ import { SNACK_BAR_DURATION_MS } from '../../constants/ui.constants';
   standalone: true,
   selector: 'app-project-table',
   templateUrl: './project-table.html',
-  styleUrls: ['./project-table.scss'],
+  styleUrl: './project-table.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     DatePipe,
@@ -49,25 +53,20 @@ import { SNACK_BAR_DURATION_MS } from '../../constants/ui.constants';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatSortModule,
+    MatInputModule,
+    MatFormFieldModule,
     RouterModule,
     ProjectDeleteDirective,
   ],
 })
 export class ProjectTable implements AfterViewInit {
-  selection = new SelectionModel<Project>(true, []);
+  readonly selection = new SelectionModel<Project>(true, []);
+  readonly isLoadingResults = signal(true);
+  readonly dataSource = new MatTableDataSource<Project>();
 
-  // setup pagination for project table
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  // setup sort in table
   @ViewChild(MatSort) sort!: MatSort;
 
-  // set the loading spinner to true
-  isLoadingResults = true;
-
-  // set up the data source
-  dataSource = new MatTableDataSource<Project>();
-
-  // columns to display
   readonly columnsToDisplay = [
     'select',
     'title',
@@ -83,7 +82,6 @@ export class ProjectTable implements AfterViewInit {
   // inject dependencies
   private readonly projectService = inject(ProjectService);
   private readonly snackBar = inject(MatSnackBar);
-  private readonly cdr = inject(ChangeDetectorRef);
   private readonly destroyRef = inject(DestroyRef);
 
   public ngAfterViewInit(): void {
@@ -94,20 +92,18 @@ export class ProjectTable implements AfterViewInit {
 
   // get all projects from project service
   public getProjects(): void {
-    this.isLoadingResults = true;
+    this.isLoadingResults.set(true);
     this.projectService
       .getProjects()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (projects) => {
           this.dataSource.data = projects;
-          this.isLoadingResults = false;
-          this.cdr.markForCheck();
+          this.isLoadingResults.set(false);
         },
         error: (error) => {
           console.error('Error fetching projects:', error);
-          this.isLoadingResults = false;
-          this.cdr.markForCheck();
+          this.isLoadingResults.set(false);
           this.snackBar.open('Error fetching projects.', 'Close', {
             duration: SNACK_BAR_DURATION_MS,
           });
@@ -120,7 +116,6 @@ export class ProjectTable implements AfterViewInit {
       (p) => p._id !== deletedId,
     );
 
-    // clear selection if the deleted item was selected
     const deletedItem = this.selection.selected.find(
       (p) => p._id === deletedId,
     );
@@ -130,14 +125,14 @@ export class ProjectTable implements AfterViewInit {
   }
 
   // whether the number of selected projects matches the total number of rows
-  public isAllSelected() {
+  public isAllSelected(): boolean {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
 
   // select all rows if they are not all selected; otherwise clear selection
-  public toggleAllRows() {
+  public toggleAllRows(): void {
     if (this.isAllSelected()) {
       this.selection.clear();
       return;
@@ -161,5 +156,49 @@ export class ProjectTable implements AfterViewInit {
 
   public trackByProjectId(_index: number, project: Project): string {
     return project._id;
+  }
+
+  public applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  public deleteSelected(): void {
+    const selected = this.selection.selected;
+    if (!selected.length) return;
+
+    const count = selected.length;
+    const confirmed = confirm(
+      `Delete ${count} project(s)? This cannot be undone.`,
+    );
+    if (!confirmed) return;
+
+    forkJoin(selected.map((p) => this.projectService.deleteProjectById(p._id)))
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          const deletedIds = new Set(selected.map((p) => p._id));
+          this.dataSource.data = this.dataSource.data.filter(
+            (p) => !deletedIds.has(p._id),
+          );
+          this.selection.clear();
+          this.snackBar.open(`${count} project(s) deleted.`, 'Close', {
+            duration: SNACK_BAR_DURATION_MS,
+          });
+        },
+        error: () => {
+          this.snackBar.open('Failed to delete some projects.', 'Close', {
+            duration: SNACK_BAR_DURATION_MS,
+          });
+        },
+      });
+  }
+
+  public statusClass(status: string): string {
+    return `status-chip ${status.toLowerCase().replace(/\s+/g, '')}`;
   }
 }

@@ -51,6 +51,7 @@
 
 /* responsive, accessible typography */
 .title {
+  font: var(--mat-sys-display-small);
   margin: 0;
   font-weight: 100;
   font-size: clamp(1.5rem, 4.5vw, 2.5rem);
@@ -60,6 +61,7 @@
 }
 
 .subtitle {
+  font: var(--mat-sys-headline-small);
   margin: 0.25rem 0 0.5rem;
   font-size: clamp(1rem, 2.2vw, 1.125rem);
   font-weight: 200;

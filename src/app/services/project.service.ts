@@ -57,6 +57,7 @@ export class ProjectService {
   public getProjectById(id: string): Observable<Project> {
     const url = `${this.API_URL}/${id}`;
     return this.http.get<ApiResponse<Project>>(url).pipe(
+      retry(this.DEFAULT_RETRY),
       map((res) => res.data),
       catchError((error) => this.handleError(error)),
     );
@@ -71,6 +72,7 @@ export class ProjectService {
 
     const params = new HttpParams().set('query', term);
     return this.http.get<ApiResponse<Project[]>>(this.API_URL, { params }).pipe(
+      retry(this.DEFAULT_RETRY),
       map((res) => res.data),
       catchError((error) => this.handleError(error)),
     );
@@ -79,6 +81,7 @@ export class ProjectService {
   // GET: - GET PROJECT COUNT
   public getProjectCount(): Observable<number> {
     return this.http.get<ApiResponse<number>>(`${this.API_URL}/count`).pipe(
+      retry(this.DEFAULT_RETRY),
       map((res) => res.data),
       catchError((error) => this.handleError(error)),
     );
@@ -87,6 +90,7 @@ export class ProjectService {
   // GET: - RECENTLY CREATED PROJECTS
   public getRecentlyCreatedProjects(): Observable<Project[]> {
     return this.http.get<ApiResponse<Project[]>>(`${this.API_URL}/recent`).pipe(
+      retry(this.DEFAULT_RETRY),
       map((res) => res.data),
       catchError((error) => this.handleError(error)),
     );
@@ -97,6 +101,7 @@ export class ProjectService {
     return this.http
       .get<ApiResponse<Project[]>>(`${this.API_URL}/favorites`)
       .pipe(
+        retry(this.DEFAULT_RETRY),
         map((res) => res.data),
         catchError((error) => this.handleError(error)),
       );
@@ -147,12 +152,11 @@ export class ProjectService {
 
   // HANDLE ERROR
   private handleError(error: HttpErrorResponse): Observable<never> {
-    const errorMessage =
-      error.status === 0
-        ? `A network error occurred: ${error.message}`
-        : `Backend returned code ${error.status}, body was ${JSON.stringify(error.error)}`;
-
-    console.error('There was an error:', errorMessage);
+    if (error.status === 0) {
+      console.error('Network error:', error.message);
+    } else {
+      console.error(`Backend error ${error.status}:`, error.error);
+    }
     return throwError(() => error);
   }
 }

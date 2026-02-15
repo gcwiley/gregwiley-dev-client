@@ -6,14 +6,14 @@ import { NgOptimizedImage } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-   selector: 'app-hero',
-   templateUrl: './hero.html',
-   styleUrls: ['./hero.scss'],
-   changeDetection: ChangeDetectionStrategy.OnPush,
-   imports: [RouterModule, MatButtonModule, NgOptimizedImage],
+  selector: 'app-hero',
+  templateUrl: './hero.html',
+  styleUrls: ['./hero.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterModule, MatButtonModule, NgOptimizedImage],
 })
 export class Hero {
-   // make these inputs so the component is reusable
-   public readonly title = input<string>('Greg Wiley');
-   public readonly subtitle = input<string>('Full Stack Web Developer')
+  // make these inputs so the component is reusable
+  public readonly title = input<string>('Greg Wiley');
+  public readonly subtitle = input<string>('Full Stack Web Developer');
 }

@@ -1,14 +1,47 @@
-<div class="table-container mat-elevation-z8">
-  <!-- table loading shade -->
-  @if (isLoadingResults) {
-  <div class="project-table-loading-shade">
-    <mat-spinner></mat-spinner>
-  </div>
+<!-- toolbar -->
+<div class="table-toolbar">
+  <mat-form-field appearance="outline" class="table-filter">
+    <mat-label>Filter projects</mat-label>
+    <input
+      matInput
+      (input)="applyFilter($event)"
+      placeholder="Search by title, status..."
+      aria-label="Filter projects" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  @if (selection.hasValue()) {
+    <div class="selection-actions">
+      <span class="selection-count">
+        {{ selection.selected.length }} selected
+      </span>
+      <button
+        mat-icon-button
+        color="warn"
+        (click)="deleteSelected()"
+        matTooltip="Delete selected"
+        aria-label="Delete selected projects">
+        <mat-icon>delete_sweep</mat-icon>
+      </button>
+    </div>
+  }
+</div>
+
+<div class="table-container">
+  @if (isLoadingResults()) {
+    <div class="project-table-loading-shade">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
   } @else if (dataSource.data.length === 0) {
-    <div class="empty-state">No projects found.</div>
+    <div class="empty-state">
+      <mat-icon style="font-size: 48px; width: 48px; height: 48px; opacity: 0.4">
+        folder_open
+      </mat-icon>
+      <span>No projects found</span>
+    </div>
   }
 
-  <table mat-table [dataSource]="dataSource" aria-label="Project Table">
+  <table mat-table [dataSource]="dataSource" matSort aria-label="Project Table">
     <!-- checkbox column -->
     <ng-container matColumnDef="select">
       <th mat-header-cell *matHeaderCellDef>
@@ -39,7 +72,7 @@
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
       <td mat-cell *matCellDef="let project">
-        <span class="status-chip" [class]="project.status.toLowerCase()">
+        <span class="status-chip" [class]="statusClass(project.status)">
           {{ project.status }}
         </span>
       </td>
@@ -47,13 +80,13 @@
 
     <!-- category column -->
     <ng-container matColumnDef="category">
-      <th mat-header-cell *matHeaderCellDef>Project Category</th>
+      <th mat-header-cell *matHeaderCellDef>Category</th>
       <td mat-cell *matCellDef="let project">{{ project.category }}</td>
     </ng-container>
 
     <!-- language column -->
     <ng-container matColumnDef="language">
-      <th mat-header-cell *matHeaderCellDef>Programming Language</th>
+      <th mat-header-cell *matHeaderCellDef>Language</th>
       <td mat-cell *matCellDef="let project">
         {{ project.programmingLanguage }}
       </td>
@@ -63,27 +96,27 @@
     <ng-container matColumnDef="startDate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Start Date</th>
       <td mat-cell *matCellDef="let project">
-        {{ project.startDate | date : 'short' }}
+        {{ project.startDate | date: 'mediumDate' }}
       </td>
     </ng-container>
 
-    <!-- open project icon button -->
+    <!-- open project -->
     <ng-container matColumnDef="openProject">
-      <th mat-header-cell *matHeaderCellDef>Open Project</th>
+      <th mat-header-cell *matHeaderCellDef aria-label="Open"></th>
       <td mat-cell *matCellDef="let project">
         <a
           mat-icon-button
           [routerLink]="['/projects', project._id]"
-          matTooltip="Open project page"
-          aria-label="Open project page">
+          matTooltip="Open project"
+          aria-label="Open project">
           <mat-icon>open_in_new</mat-icon>
         </a>
       </td>
     </ng-container>
 
-    <!-- edit project icon button -->
+    <!-- edit project -->
     <ng-container matColumnDef="editProject">
-      <th mat-header-cell *matHeaderCellDef>Edit</th>
+      <th mat-header-cell *matHeaderCellDef aria-label="Edit"></th>
       <td mat-cell *matCellDef="let project">
         <a
           mat-icon-button
@@ -95,27 +128,27 @@
       </td>
     </ng-container>
 
-    <!-- delete project icon button -->
+    <!-- delete project -->
     <ng-container matColumnDef="deleteProject">
-      <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <th mat-header-cell *matHeaderCellDef aria-label="Delete"></th>
       <td mat-cell *matCellDef="let project">
         <button
           mat-icon-button
           color="warn"
           [appProjectDelete]="project._id"
           (deleted)="onProjectDeleted($event)"
-          matTooltip="Delete Project"
-          aria-label="Delete Project">
+          matTooltip="Delete project"
+          aria-label="Delete project">
           <mat-icon>delete</mat-icon>
         </button>
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
     <tr
       mat-row
-      *matRowDef="let row; columns: columnsToDisplay; trackBy: trackByProjectId"
-      (click)="selection.toggle(row)"></tr>
+      *matRowDef="let row; columns: columnsToDisplay; trackBy: trackByProjectId">
+    </tr>
   </table>
 </div>
 
