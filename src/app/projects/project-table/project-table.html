@@ -11,34 +11,32 @@
   </mat-form-field>
 
   @if (selection.hasValue()) {
-    <div class="selection-actions">
-      <span class="selection-count">
-        {{ selection.selected.length }} selected
-      </span>
-      <button
-        mat-icon-button
-        color="warn"
-        (click)="deleteSelected()"
-        matTooltip="Delete selected"
-        aria-label="Delete selected projects">
-        <mat-icon>delete_sweep</mat-icon>
-      </button>
-    </div>
+  <div class="selection-actions">
+    <span class="selection-count">
+      {{ selection.selected.length }} selected
+    </span>
+    <button
+      mat-icon-button
+      color="warn"
+      (click)="deleteSelected()"
+      matTooltip="Delete selected"
+      aria-label="Delete selected projects">
+      <mat-icon>delete_sweep</mat-icon>
+    </button>
+  </div>
   }
 </div>
 
 <div class="table-container">
   @if (isLoadingResults()) {
-    <div class="project-table-loading-shade">
-      <mat-spinner diameter="40"></mat-spinner>
-    </div>
+  <div class="project-table-loading-shade">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
   } @else if (dataSource.data.length === 0) {
-    <div class="empty-state">
-      <mat-icon style="font-size: 48px; width: 48px; height: 48px; opacity: 0.4">
-        folder_open
-      </mat-icon>
-      <span>No projects found</span>
-    </div>
+  <div class="empty-state">
+    <mat-icon class="empty-icon"> folder_open </mat-icon>
+    <span>No projects found</span>
+  </div>
   }
 
   <table mat-table [dataSource]="dataSource" matSort aria-label="Project Table">
@@ -100,55 +98,40 @@
       </td>
     </ng-container>
 
-    <!-- open project -->
-    <ng-container matColumnDef="openProject">
-      <th mat-header-cell *matHeaderCellDef aria-label="Open"></th>
-      <td mat-cell *matCellDef="let project">
-        <a
-          mat-icon-button
-          [routerLink]="['/projects', project._id]"
-          matTooltip="Open project"
-          aria-label="Open project">
-          <mat-icon>open_in_new</mat-icon>
-        </a>
-      </td>
-    </ng-container>
-
-    <!-- edit project -->
-    <ng-container matColumnDef="editProject">
-      <th mat-header-cell *matHeaderCellDef aria-label="Edit"></th>
-      <td mat-cell *matCellDef="let project">
-        <a
-          mat-icon-button
-          [routerLink]="['/projects', project._id, 'edit']"
-          matTooltip="Edit project"
-          aria-label="Edit project">
-          <mat-icon>edit</mat-icon>
-        </a>
-      </td>
-    </ng-container>
-
-    <!-- delete project -->
-    <ng-container matColumnDef="deleteProject">
-      <th mat-header-cell *matHeaderCellDef aria-label="Delete"></th>
+    <!-- actions column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef aria-label="Actions"></th>
       <td mat-cell *matCellDef="let project">
         <button
           mat-icon-button
-          color="warn"
-          [appProjectDelete]="project._id"
-          (deleted)="onProjectDeleted($event)"
-          matTooltip="Delete project"
-          aria-label="Delete project">
-          <mat-icon>delete</mat-icon>
+          [matMenuTriggerFor]="menu"
+          aria-label="Project actions">
+          <mat-icon>more_vert</mat-icon>
         </button>
+        <mat-menu #menu="matMenu">
+          <a mat-menu-item [routerLink]="['/projects', project._id]">
+            <mat-icon>open_in_new</mat-icon>
+            <span>Open</span>
+          </a>
+          <a mat-menu-item [routerLink]="['/admin/projects', project._id, 'edit']">
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </a>
+          <button
+            mat-menu-item
+            [appProjectDelete]="project._id"
+            (deleted)="onProjectDeleted($event)">
+            <mat-icon color="warn">delete</mat-icon>
+            <span class="delete-text">Delete</span>
+          </button>
+        </mat-menu>
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
     <tr
       mat-row
-      *matRowDef="let row; columns: columnsToDisplay; trackBy: trackByProjectId">
-    </tr>
+      *matRowDef="let row; columns: columnsToDisplay; trackBy: trackByProjectId"></tr>
   </table>
 </div>
 

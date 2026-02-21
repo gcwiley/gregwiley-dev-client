@@ -3,6 +3,5 @@ export { AuthStatus } from './auth-status/auth-status';
 export { ConfirmDialog, ConfirmDialogData } from './confirm-dialog/confirm-dialog';
 export { Footer } from './footer/footer';
 export { Hero } from './hero/hero';
-export { Logo } from './logo/logo';
 export { Menu } from './menu/menu';
 export { Navbar } from './navbar/navbar';

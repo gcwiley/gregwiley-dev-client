@@ -1,4 +1,4 @@
-// Toolbar
+// toolbar
 .table-toolbar {
   display: flex;
   align-items: center;
@@ -34,7 +34,7 @@
   white-space: nowrap;
 }
 
-// Container
+// container
 .table-container {
   position: relative;
   min-height: 200px;
@@ -43,9 +43,26 @@
   border: 1px solid var(--mat-sys-outline-variant, rgba(0, 0, 0, 0.12));
   border-radius: 8px;
   background: var(--mat-sys-surface, #fff);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); // subtle elevation
+
+  // modern scrollbar
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--mat-sys-outline-variant, #ccc);
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--mat-sys-outline, #999);
+  }
 }
 
-// Table
+// table
 table {
   width: 100%;
   min-width: 860px;
@@ -58,6 +75,7 @@ th.mat-mdc-header-cell {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--mat-sys-on-surface-variant, rgba(0, 0, 0, 0.6));
+  background-color: var(--mat-sys-surface, #fff);
   border-bottom: 2px solid var(--mat-sys-outline-variant, rgba(0, 0, 0, 0.12));
   padding-top: 14px;
   padding-bottom: 14px;
@@ -83,14 +101,16 @@ td.mat-mdc-cell {
   min-width: 160px;
 }
 
-.mat-column-openProject,
-.mat-column-editProject,
-.mat-column-deleteProject {
+.mat-column-actions {
   width: 56px;
   text-align: center;
 }
 
-// Row interactivity
+.delete-text {
+  color: var(--mat-sys-error, #f44336);
+}
+
+// row interactivity
 tr.mat-mdc-row {
   transition: background-color 150ms ease;
 
@@ -103,10 +123,10 @@ tr.mat-mdc-row {
   }
 }
 
-// Status chips
+// status chips
 .status-chip {
   display: inline-block;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 100px;
   font-size: 0.6875rem;
   font-weight: 600;
@@ -119,36 +139,37 @@ tr.mat-mdc-row {
   background-color: var(--mat-sys-surface-container-highest, #e0e0e0);
   color: var(--mat-sys-on-surface, #333);
 
+  // Using Material 3 semantic containers for dark mode support
   &.active,
   &.inprogress {
-    background-color: #dbeafe;
-    color: #1e40af;
+    background-color: var(--mat-sys-primary-container, #dbeafe);
+    color: var(--mat-sys-on-primary-container, #1e40af);
   }
 
   &.completed,
   &.finished {
-    background-color: #dcfce7;
-    color: #166534;
+    background-color: var(--mat-sys-tertiary-container, #dcfce7);
+    color: var(--mat-sys-on-tertiary-container, #166534);
   }
 
   &.archived,
   &.paused {
-    background-color: #fef3c7;
-    color: #92400e;
+    background-color: var(--mat-sys-secondary-container, #fef3c7);
+    color: var(--mat-sys-on-secondary-container, #92400e);
   }
 
   &.cancelled,
   &.failed {
-    background-color: #fee2e2;
-    color: #991b1b;
+    background-color: var(--mat-sys-error-container, #fee2e2);
+    color: var(--mat-sys-on-error-container, #991b1b);
   }
 }
 
-// Loading shade
+// loading shade
 .project-table-loading-shade {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--mat-sys-surface, #fff); // dark mode s
   z-index: 100;
   display: flex;
   align-items: center;
@@ -167,6 +188,13 @@ tr.mat-mdc-row {
   padding: 4rem 1rem;
   font-size: 0.9375rem;
   color: var(--mat-sys-on-surface-variant, rgba(0, 0, 0, 0.5));
+
+  .empty-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+  }
 }
 
 // Paginator

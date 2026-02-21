@@ -4,7 +4,7 @@
   [cols]="cols$ | async"
   [rowHeight]="rowHeight"
   [gutterSize]="gutterSize">
-  @for (project of projectList; track trackByProjectId($index, project)) {
+  @for (project of projectList; track project._id) {
   <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
     <mat-card appearance="outlined" class="project-card">
       <mat-card-header>

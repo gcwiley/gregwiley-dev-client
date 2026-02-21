@@ -98,8 +98,4 @@ export class ProjectGrid implements OnInit {
         }),
       );
   }
-
-  public trackByProjectId(_index: number, project: Project): string {
-    return project._id; // Assuming your Project interface has an '_id' property
-  }
 }

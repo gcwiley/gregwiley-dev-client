@@ -28,6 +28,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatMenuModule } from '@angular/material/menu';
 
 // project service, interface, and directive
 import { ProjectService } from '../../services/project.service';
@@ -55,6 +56,7 @@ import { SNACK_BAR_DURATION_MS } from '../../constants/ui.constants';
     MatSortModule,
     MatInputModule,
     MatFormFieldModule,
+    MatMenuModule,
     RouterModule,
     ProjectDeleteDirective,
   ],
@@ -74,9 +76,7 @@ export class ProjectTable implements AfterViewInit {
     'category',
     'language',
     'startDate',
-    'openProject',
-    'editProject',
-    'deleteProject',
+    'actions',
   ];
 
   // inject dependencies

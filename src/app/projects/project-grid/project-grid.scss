@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   padding: 1rem;
-  box-sizing: border-box; // ensure padding is included in the size
+  box-sizing: border-box;
 }
 
 // this utility correctly pushes the actions to the bottom of the card
@@ -15,18 +15,17 @@
 
 mat-card-title {
   color: var(--mat-sys-primary);
-  font-size: 1.1rem; // slightly larger for better hierarchy
+  font-size: 1.1rem;
 }
 
 mat-card-content p {
   font: var(--mat-sys-body-medium);
-  color: rgba(0, 0, 0, 0.7); // muted color for better readability
+  color: var(--mat-sys-on-surface-variant), rgba(0, 0, 0, 0.7);
   margin: 0.5rem 0;
 }
 
-mat-card-actions {
-  // remove default padding to align button to the edge
-  padding: 0 !important;
+.project-car mat-card-actions {
+  padding: 0;
 }
 
 // during loading of projects
@@ -41,17 +40,17 @@ mat-card-actions {
 // when no projects are found
 .empty-message {
   display: flex;
-  flex-direction: column; // stack icon and text
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 40vh; // adjust as needed
+  min-height: 40vh;
   width: 100%;
   text-align: center;
-  gap: 1rem; // space between icon and text
+  gap: 1rem;
 
   p {
     font-size: 1.1rem;
-    color: rgba(0, 0, 0, 0.6);
+    color: var(--mat-sys-on-surface-variant) rgba(0, 0, 0, 0.6);
     margin: 0;
   }
 
@@ -59,6 +58,6 @@ mat-card-actions {
     font-size: 48px;
     width: 48px;
     height: 48px;
-    color: rgba(0, 0, 0, 0.3);
+    color: var(--mat-sys-outline, rgba(0, 0, 0, 0.3));
   }
 }

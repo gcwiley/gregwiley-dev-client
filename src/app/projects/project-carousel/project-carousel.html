@@ -22,9 +22,10 @@
           <div class="project-media">
             <img
               [src]="project.imageUrl"
-              [alt]="project.title + ' project screenshot'"
-              [title]="project.title"
-              loading="lazy" />
+              alt="project.title + ' project screenshot'"
+              [title]="project.title + ' project screenshot'"
+              loading="lazy"
+              role="img" />
           </div>
           }
           <mat-card-content class="project-content">
@@ -88,8 +89,7 @@
       [class.active]="i === activeIndex"
       (click)="goTo(i)"
       aria-label="Go to slide {{ i + 1 }}"
-      [attr.tabindex]="i === activeIndex ? 0 : -1">
-    </button>
+      [attr.tabindex]="i === activeIndex ? 0 : -1"></button>
     }
   </div>
   }

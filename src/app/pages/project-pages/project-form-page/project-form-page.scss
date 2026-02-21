@@ -29,6 +29,7 @@
 }
 
 .back-link {
+  font: var(--mat-sys-label-large);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -54,6 +55,7 @@
 }
 
 .side-title {
+  font: var(--mat-sys-label-large);
   font-size: 1.1rem;
   font-weight: 600;
   margin: 0 0 1rem 0;

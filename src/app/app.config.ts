@@ -1,5 +1,6 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 // firebase libraries
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -20,6 +21,6 @@ export const appConfig: ApplicationConfig = {
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideHttpClient(withFetch()),
+    provideAnimationsAsync(),
   ],
 };
- 
