@@ -6,11 +6,13 @@ import {
   inject,
   DestroyRef,
   signal,
+  OnInit,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
+// rxjs
 import { forkJoin } from 'rxjs';
 
 // angular cdk
@@ -39,7 +41,6 @@ import { ProjectDeleteDirective } from '../../directives/project-delete.directiv
 import { SNACK_BAR_DURATION_MS } from '../../constants/ui.constants';
 
 @Component({
-  standalone: true,
   selector: 'app-project-table',
   templateUrl: './project-table.html',
   styleUrl: './project-table.scss',
@@ -61,7 +62,7 @@ import { SNACK_BAR_DURATION_MS } from '../../constants/ui.constants';
     ProjectDeleteDirective,
   ],
 })
-export class ProjectTable implements AfterViewInit {
+export class ProjectTable implements OnInit, AfterViewInit {
   readonly selection = new SelectionModel<Project>(true, []);
   readonly isLoadingResults = signal(true);
   readonly dataSource = new MatTableDataSource<Project>();
@@ -84,10 +85,13 @@ export class ProjectTable implements AfterViewInit {
   private readonly snackBar = inject(MatSnackBar);
   private readonly destroyRef = inject(DestroyRef);
 
+  public ngOnInit(): void {
+    this.getProjects();
+  }
+
   public ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.getProjects();
   }
 
   // get all projects from project service

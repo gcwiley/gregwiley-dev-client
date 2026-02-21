@@ -11,11 +11,6 @@
 .table-filter {
   width: 100%;
   max-width: 320px;
-
-  // remove extra bottom space from mat-form-field
-  ::ng-deep .mat-mdc-form-field-subscript-wrapper {
-    display: none;
-  }
 }
 
 .selection-actions {
