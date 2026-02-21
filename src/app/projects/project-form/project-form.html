@@ -163,14 +163,14 @@
 
     <mat-card-actions class="card-actions">
       <button
-        mat-flat-button
+        matButton="filled"
         type="submit"
         aria-label="{{ mode() === 'create' ? 'Create Project' : 'Update Project' }}"
         [disabled]="projectForm.invalid || isSaving()">
         {{ mode() === 'create' ? 'Create' : 'Update' }}
       </button>
       <button
-        mat-stroked-button
+        matButton="outlined"
         type="button"
         (click)="onCancel()"
         aria-label="Cancel"
