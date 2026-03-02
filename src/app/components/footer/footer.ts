@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.html',
-  styleUrls: ['./footer.scss'],
+  styleUrl: './footer.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterModule],
 })

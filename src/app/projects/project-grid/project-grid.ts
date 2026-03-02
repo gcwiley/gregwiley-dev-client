@@ -33,7 +33,7 @@ import { Project } from '../../types/project.interface';
 @Component({
   selector: 'app-project-grid',
   templateUrl: './project-grid.html',
-  styleUrls: ['./project-grid.scss'],
+  styleUrl: './project-grid.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AsyncPipe,

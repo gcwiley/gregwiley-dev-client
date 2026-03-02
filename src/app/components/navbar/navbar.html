@@ -1,55 +1,56 @@
-<mat-toolbar
-  class="navbar-container"
-  role="navigation"
-  aria-label="Main Navigation">
-  <div class="navbar-content">
-    <!-- app title -->
-    <span class="title">gregwiley.dev</span>
+<nav role="navigation" aria-label="Main Navigation">
+  <mat-toolbar class="navbar-container">
+    <div class="navbar-content">
+      <!-- app title -->
+      <span class="title">gregwiley.dev</span>
 
-    <span class="flex-spacer" aria-hidden="true"></span>
+      <span class="flex-spacer" aria-hidden="true"></span>
 
-    <!-- theme toggle -->
-    <button
-      mat-icon-button
-      (click)="toggleTheme()"
-      [attr.aria-label]="(isDark$ | async) ? 'Switch to light mode' : 'Switch to dark mode'">
-      <mat-icon>{{ (isDark$ | async) ? 'light_mode' : 'dark_mode' }}</mat-icon>
-    </button>
-
-    <!-- show admin menu only when authenticated -->
-    @if (isAuthenticated$ | async) {
-    <button
-      mat-icon-button
-      class="admin-btn"
-      aria-label="Open account menu"
-      [matMenuTriggerFor]="adminMenu"
-      type="button">
-      <mat-icon aria-hidden="false">account_circle</mat-icon>
-    </button>
-
-    <mat-menu #adminMenu="matMenu" xPosition="before" yPosition="below">
+      <!-- theme toggle -->
       <button
-        mat-menu-item
-        routerLink="/admin"
-        routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{ exact: true }"
+        mat-icon-button
+        (click)="toggleTheme()"
+        [attr.aria-label]="(isDark$ | async) ? 'Switch to light mode' : 'Switch to dark mode'">
+        <mat-icon
+          >{{ (isDark$ | async) ? 'light_mode' : 'dark_mode' }}</mat-icon
+        >
+      </button>
+
+      <!-- show admin menu only when authenticated -->
+      @if (isAuthenticated$ | async) {
+      <button
+        mat-icon-button
+        class="admin-btn"
+        aria-label="Open account menu"
+        [matMenuTriggerFor]="adminMenu"
         type="button">
-        <mat-icon>dashboard</mat-icon>
-        <span>Admin Dashboard</span>
+        <mat-icon aria-hidden="false">account_circle</mat-icon>
       </button>
-      <button mat-menu-item routerLink="/admin/projects/create" type="button">
-        <mat-icon>add</mat-icon>
-        <span>Create Project</span>
-      </button>
-      <button mat-menu-item (click)="onClickSignOut()" type="button">
-        <mat-icon>logout</mat-icon>
-        <span>Sign Out</span>
-      </button>
-    </mat-menu>
-    } @else {
-    <a mat-icon-button routerLink="/signin" aria-label="Sign in">
-      <mat-icon>login</mat-icon>
-    </a>
-    }
-  </div>
-</mat-toolbar>
+
+      <mat-menu #adminMenu="matMenu" xPosition="before" yPosition="below">
+        <button
+          mat-menu-item
+          routerLink="/admin"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          type="button">
+          <mat-icon>dashboard</mat-icon>
+          <span>Admin Dashboard</span>
+        </button>
+        <button mat-menu-item routerLink="/admin/projects/create" type="button">
+          <mat-icon>add</mat-icon>
+          <span>Create Project</span>
+        </button>
+        <button mat-menu-item (click)="onClickSignOut()" type="button">
+          <mat-icon>logout</mat-icon>
+          <span>Sign Out</span>
+        </button>
+      </mat-menu>
+      } @else {
+      <a mat-icon-button routerLink="/signin" aria-label="Sign in">
+        <mat-icon>login</mat-icon>
+      </a>
+      }
+    </div>
+  </mat-toolbar>
+</nav>

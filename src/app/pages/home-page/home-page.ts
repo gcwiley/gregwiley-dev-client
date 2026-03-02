@@ -28,7 +28,7 @@ import { ProjectCarousel } from '../../projects';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.html',
-  styleUrls: ['./home-page.scss'],
+  styleUrl: './home-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RouterModule,

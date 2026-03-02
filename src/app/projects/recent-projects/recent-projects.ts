@@ -19,7 +19,7 @@ import { Project } from '../../types/project.interface';
 @Component({
   selector: 'app-recent-projects',
   templateUrl: './recent-projects.html',
-  styleUrls: ['./recent-projects.scss'],
+  styleUrl: './recent-projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,

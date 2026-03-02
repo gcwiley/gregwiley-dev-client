@@ -14,7 +14,7 @@ const STORAGE_KEY = 'announcement-dismissed';
 @Component({
   selector: 'app-announcement-bar',
   templateUrl: './announcement-bar.html',
-  styleUrls: ['./announcement-bar.scss'],
+  styleUrl: './announcement-bar.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatIconModule, MatButtonModule],
 })

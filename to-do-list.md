@@ -2,4 +2,6 @@
 
 1. Fix about page image
 
-2. QA/QC eslint file
+2. Fix title in navbar
+
+3. fix animation in app.config.ts

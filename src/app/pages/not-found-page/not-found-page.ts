@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-not-found-page',
   templateUrl: './not-found-page.html',
-  styleUrls: ['./not-found-page.scss'],
+  styleUrl: './not-found-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterModule, MatButtonModule],
 })

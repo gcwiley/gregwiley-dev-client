@@ -17,7 +17,7 @@ import { Project } from '../../types/project.interface';
 @Component({
   selector: 'app-project-details',
   templateUrl: './project-details.html',
-  styleUrls: ['./project-details.scss'],
+  styleUrl: './project-details.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, RouterModule, MatListModule, MatIconModule, MatProgressSpinnerModule],
 })

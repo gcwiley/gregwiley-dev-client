@@ -73,7 +73,7 @@ export class AuthService {
     );
   }
 
-  // allow authenticated users to change their password - CHANGE USER PASSWORD
+  // CHANGE USER PASSWORD
   public changePassword(newPassword: string): Observable<void> {
     // get the current user
     const currentUser = this.auth.currentUser;
@@ -101,7 +101,7 @@ export class AuthService {
     return throwError(() => new Error('No user logged in'));
   }
 
-  // private method that centralizes error handling - HANDLE ERROR
+  // HANDLE ERROR
   private handleError(error: unknown): Observable<never> {
     let errorMessage = 'An unknown error occurred';
 

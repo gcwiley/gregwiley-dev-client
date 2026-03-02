@@ -41,7 +41,7 @@ const ERROR_MESSAGES = {
 @Component({
   selector: 'app-signin',
   templateUrl: './signin-page.html',
-  styleUrls: ['./signin-page.scss'],
+  styleUrl: './signin-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ReactiveFormsModule,

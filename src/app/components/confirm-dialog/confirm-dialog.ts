@@ -20,6 +20,5 @@ export interface ConfirmDialogData {
    imports: [MatDialogModule, MatButtonModule ],
 })
 export class ConfirmDialog {
-   // inject dependencies
    public readonly data = inject<ConfirmDialogData>(MAT_DIALOG_DATA);
 }

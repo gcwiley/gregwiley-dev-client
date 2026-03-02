@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.html',
-  styleUrls: ['./hero.scss'],
+  styleUrl: './hero.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterModule, MatButtonModule],
 })

@@ -19,7 +19,7 @@ import {
 @Component({
   selector: 'app-project-details-page',
   templateUrl: './project-details-page.html',
-  styleUrls: ['./project-details-page.scss'],
+  styleUrl: './project-details-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     Navbar,

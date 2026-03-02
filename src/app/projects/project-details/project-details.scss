@@ -7,7 +7,7 @@
 .project-details-card {
   // use a standard surface color with a border for a modern card look
   background: var(--mat-sys-surface-container-high);
-  border: 1px solid var(--mat-sys-outline-varient);
+  border: 1px solid var(--mat-sys-outline-variant);
   border-radius: 12px; // a slight softer radius
   overflow: hidden; // ensures content respects the border-radius
   padding: 1rem;

@@ -12,7 +12,7 @@ import { Project } from '../../types/project.interface';
 @Component({
   selector: 'app-project-description',
   templateUrl: './project-description.html',
-  styleUrls: ['./project-description.scss'],
+  styleUrl: './project-description.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, RouterModule],
 })

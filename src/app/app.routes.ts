@@ -77,13 +77,13 @@ export const routes: Routes = [
   {
     path: 'projects',
     children: [
-      // project grid page
+      // project display page
       {
         path: '',
         title: 'Projects',
         loadComponent: () =>
-          import('./pages/project-pages/project-grid-page/project-grid-page').then(
-            (m) => m.ProjectGridPage,
+          import('./pages/project-pages/project-display-page/project-display-page').then(
+            (m) => m.ProjectDisplayPage,
           ),
       },
 

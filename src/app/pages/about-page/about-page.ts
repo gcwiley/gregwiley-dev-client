@@ -12,7 +12,7 @@ import {
 @Component({
    selector: 'app-about-page',
    templateUrl: './about-page.html',
-   styleUrls: ['./about-page.scss'],
+   styleUrl: './about-page.scss',
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
       Navbar,

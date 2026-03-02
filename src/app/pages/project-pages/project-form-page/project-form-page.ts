@@ -13,7 +13,7 @@ import { ProjectForm, RecentProjects } from '../../../projects';
 @Component({
   selector: 'app-project-form-page',
   templateUrl: './project-form-page.html',
-  styleUrls: ['./project-form-page.scss'],
+  styleUrl: './project-form-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     Navbar,

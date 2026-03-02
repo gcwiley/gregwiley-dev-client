@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDividerModule } from '@angular/material/divider';
 
 // services
 import { AuthService } from '../../services/auth.service';
@@ -22,7 +23,7 @@ import { SNACK_BAR_DURATION_MS } from '../../constants/ui.constants';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.html',
-  styleUrls: ['./navbar.scss'],
+  styleUrl: './navbar.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AsyncPipe,
@@ -31,6 +32,7 @@ import { SNACK_BAR_DURATION_MS } from '../../constants/ui.constants';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
+    MatDividerModule
   ],
 })
 export class Navbar {

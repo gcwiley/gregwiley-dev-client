@@ -38,7 +38,7 @@ import { SNACK_BAR_DURATION_MS } from '../../constants/ui.constants';
 @Component({
   selector: 'app-project-form',
   templateUrl: './project-form.html',
-  styleUrls: ['./project-form.scss'],
+  styleUrl: './project-form.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ReactiveFormsModule,
