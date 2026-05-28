@@ -6,7 +6,6 @@
     </div>
     <mat-card-content>
       <form [formGroup]="signinForm" (ngSubmit)="onSubmitSignIn()">
-
         <!-- email field -->
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Email</mat-label>
@@ -14,8 +13,8 @@
             matInput
             type="email"
             formControlName="email"
-            title="name@example.com"
-            autocomplete="username" />
+            autocomplete="username"
+            aria-label="Email" />
           @if (formControls['email'].hasError('required')) {
           <mat-error aria-live="polite"
             >Please enter your email address.</mat-error
@@ -32,8 +31,8 @@
             matInput
             [type]="showPassword() ? 'text' : 'password'"
             formControlName="password"
-            title="Password"
-            autocomplete="current-password" />
+            autocomplete="current-password"
+            aria-label="Password" />
           <button
             mat-icon-button
             matSuffix

@@ -12,7 +12,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "build:deploy": "bash scripts/build-move.sh"
   },
   "private": true,
   "dependencies": {

@@ -4,6 +4,7 @@
     "esbenp.prettier-vscode",
     "GitHub.copilot-chat",
     "streetsidesoftware.code-spell-checker",
-    "DavidAnson.vscode-markdownlint"
+    "DavidAnson.vscode-markdownlint",
+    "PKief.material-icon-theme"
   ]
 }
