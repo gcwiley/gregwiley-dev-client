@@ -20,20 +20,10 @@ import {
 export class ProjectService {
   private readonly API_URL = `${environment.apiUrl}/projects`;
   private readonly http = inject(HttpClient);
-
   private readonly DEFAULT_RETRY = { count: 1, delay: 1000 };
 
-  // GET: - GET ALL PROJECTS
-  public getProjects(): Observable<Project[]> {
-    return this.http.get<ApiResponse<Project[]>>(this.API_URL).pipe(
-      retry(this.DEFAULT_RETRY),
-      map((res) => res.data),
-      catchError((error) => this.handleError(error)),
-    );
-  }
-
-  // GET: - GET PROJECTS WITH PAGINATION
-  public getProjectsPaginated(
+  // GET: - GET PROJECTS (PAGINATION)
+  public getProjects(
     page = 1,
     limit = 10,
     sort = 'createdAt',

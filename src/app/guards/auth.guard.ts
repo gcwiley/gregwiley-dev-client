@@ -8,8 +8,8 @@ import {
 } from '@angular/router';
 
 // rxjs
-import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, take, timeout, catchError } from 'rxjs/operators';
 
 // firebase auth
 import { Auth, authState } from '@angular/fire/auth';
@@ -22,12 +22,17 @@ export const authGuard: CanActivateFn = (
   const router = inject(Router);
 
   return authState(auth).pipe(
+    timeout(5000),
     take(1),
     map((user) => {
       if (user) return true;
       return router.createUrlTree(['/signin'], {
         queryParams: { returnUrl: state.url },
       });
+    }),
+    catchError(() => {
+      // if firebase fails or times out, redirect to signin
+      return of(router.createUrlTree(['/signin']));
     }),
   );
 };

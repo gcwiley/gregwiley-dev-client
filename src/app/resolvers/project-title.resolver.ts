@@ -1,7 +1,10 @@
 import { ResolveFn } from '@angular/router';
 import { inject } from '@angular/core';
+
+// rxjs
 import { map, of, catchError } from 'rxjs';
 
+// project service
 import { ProjectService } from '../services/project.service';
 
 const DEFAULT_TITLE = 'Project Details | Portfolio';

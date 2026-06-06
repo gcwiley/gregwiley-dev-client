@@ -1,10 +1,16 @@
 {
   "recommendations": [
     "angular.ng-template",
-    "esbenp.prettier-vscode",
-    "GitHub.copilot-chat",
     "streetsidesoftware.code-spell-checker",
+    "ritwickdey.LiveServer",
     "DavidAnson.vscode-markdownlint",
-    "PKief.material-icon-theme"
+    "PKief.material-icon-theme",
+    "ms-edgedevtools.vscode-edge-devtools",
+    "mongodb.mongodb-vscode",
+    "esbenp.prettier-vscode",
+    "sibiraj-s.vscode-scss-formatter",
+    "redhat.vscode-xml",
+    "redhat.vscode-yaml",
+    "GitHub.copilot-chat"
   ]
 }

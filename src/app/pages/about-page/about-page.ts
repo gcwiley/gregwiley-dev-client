@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {
    Navbar,
    Footer,
-} from '../../components/';
+} from '../../components';
 
 @Component({
    selector: 'app-about-page',
