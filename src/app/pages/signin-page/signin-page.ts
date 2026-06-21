@@ -54,7 +54,7 @@ const ERROR_MESSAGES = {
     MatIconModule,
   ],
 })
-export class SigninPage implements OnInit {
+export class SignInPage implements OnInit {
   public readonly isLoading = signal(false);
   public readonly showPassword = signal(false);
   public readonly googleLoading = signal(false);

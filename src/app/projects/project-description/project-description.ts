@@ -28,7 +28,7 @@ export class ProjectDescription {
       this.projectService.getProjectById(id).pipe(
         catchError((error) => {
           console.error('Error fetching project:', error);
-          return of(undefined); // signal not found/error to template
+          return of(undefined);
         })
       )
     )

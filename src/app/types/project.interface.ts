@@ -14,8 +14,8 @@ export interface Project {
   gitUrl?: string; // optional field
   description?: string; // optional field
   imageUrl?: string; // optional field
-  createdAt: ISODateString;
-  updatedAt: ISODateString;
+  readonly createdAt: ISODateString;
+  readonly updatedAt: ISODateString;
 }
 
 // payload to create a project (client -> server)

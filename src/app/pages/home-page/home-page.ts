@@ -47,7 +47,7 @@ export class HomePage {
   // inject dependencies
   private readonly projectService = inject(ProjectService);
 
-  // expose observable directly;
+  // expose observable directly
   public readonly featuredProjects$: Observable<Project[]> =
     this.projectService.getProjects();
 }
