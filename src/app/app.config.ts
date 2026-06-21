@@ -11,7 +11,14 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 
 // configures Angular's HttpClient service to be available for injection.
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+} from '@angular/common/http';
+
+// auth interceptor
+import { authInterceptor } from './interceptors/auth.interceptor';
 
 // environment variables
 import { environment } from '../environments/environment';
@@ -29,6 +36,6 @@ export const appConfig: ApplicationConfig = {
     ),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideHttpClient(withFetch()),
+    provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
   ],
 };

@@ -10,7 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-// project service and interface
+// project service, interface
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
