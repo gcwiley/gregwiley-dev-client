@@ -4,29 +4,24 @@ import {
   inject,
   OnInit,
   signal,
+  DestroyRef,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DestroyRef } from '@angular/core';
-import {
-  Breakpoints,
-  BreakpointObserver,
-  BreakpointState,
-} from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
 
 // rxjs
-import { Observable, of } from 'rxjs';
-import { catchError, map, startWith } from 'rxjs/operators';
+import { Observable, of, BehaviorSubject} from 'rxjs';
+import { catchError, startWith, switchMap, map } from 'rxjs/operators';
 
 // angular material
-import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
-// project service and interface
+// project service, interface, pipes
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../types/project.interface';
 
@@ -38,64 +33,46 @@ import { Project } from '../../types/project.interface';
   imports: [
     AsyncPipe,
     RouterModule,
-    MatGridListModule,
     MatCardModule,
     MatIconModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
   ],
 })
 export class ProjectGrid implements OnInit {
-  private readonly projectService = inject(ProjectService);
-  private readonly breakpointObserver = inject(BreakpointObserver);
+   private readonly projectService = inject(ProjectService);
   private readonly destroyRef = inject(DestroyRef);
 
-  // observable streams
-  public projects$!: Observable<Project[] | null>;
-  public cols$!: Observable<number>;
-  public hasError = signal(false);
+  private readonly pageParams$ = new BehaviorSubject({ page: 1, pageSize: 6 });
 
-  // static grid properties (readonly since they don't change)
-  public readonly rowHeight = '1:1';
-  public readonly gutterSize = '1rem';
-  public readonly colspan = 1;
-  public readonly rowspan = 1;
+  public projects$!: Observable<Project[] | null>;
+  public hasError = signal(false);
+  public totalPosts = signal(0);
+  public pageSize = signal(6);
 
   public ngOnInit(): void {
-    this.projects$ = this.projectService.getProjects().pipe(
-      takeUntilDestroyed(this.destroyRef),
-      startWith(null),
-      catchError(() => {
-        this.hasError.set(true);
-        return of([]);
-      }),
+    this.projects$ = this.pageParams$.pipe(
+      switchMap(({ page, pageSize }) =>
+        this.projectService.getProjects(page, pageSize).pipe(
+          takeUntilDestroyed(this.destroyRef),
+          map((res) => {
+            this.totalPosts.set(res.total);
+            return res.data;
+          }),
+          startWith(null),
+          catchError(() => {
+            this.hasError.set(true);
+            return of([]);
+          }),
+        ),
+      ),
     );
+  }
 
-    this.cols$ = this.breakpointObserver
-      .observe([
-        // define breakpoints to observe
-        Breakpoints.XSmall,
-        Breakpoints.Small,
-        Breakpoints.Medium,
-        Breakpoints.Large,
-        Breakpoints.XLarge,
-      ])
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-        map((state: BreakpointState) => {
-          // map breakpoint state to number of columns
-          if (state.breakpoints[Breakpoints.XSmall]) {
-            return 1; // e.g. handset portrait
-          }
-          if (state.breakpoints[Breakpoints.Small]) {
-            return 2; // e.g. handset landscape / tablet portrait
-          }
-          if (state.breakpoints[Breakpoints.Medium]) {
-            return 3; // e.g. tablet landscape
-          }
-          // default for large/x-large or none of the above match
-          return 4;
-        }),
-      );
+  public onPageChange(event: PageEvent): void {
+    this.hasError.set(false);
+    this.pageSize.set(event.pageSize);
+    this.pageParams$.next({ page: event.pageIndex + 1, pageSize: event.pageSize });
   }
 }

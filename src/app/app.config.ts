@@ -6,24 +6,24 @@ import {
   withViewTransitions,
 } from '@angular/router';
 
-// firebase libraries
+// configures Firebase services to be available for injection
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+// configures AngularFire's Auth Service to be available for injection.
 import { provideAuth, getAuth } from '@angular/fire/auth';
 
 // configures Angular's HttpClient service to be available for injection.
 import {
   provideHttpClient,
-  withFetch,
   withInterceptors,
 } from '@angular/common/http';
 
 // auth interceptor
 import { authInterceptor } from './interceptors/auth.interceptor';
 
-// environment variables
+// environment variables 
 import { environment } from '../environments/environment';
 
-// routes
+// app routes
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -34,8 +34,11 @@ export const appConfig: ApplicationConfig = {
       withViewTransitions(),
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),
     ),
+    // Firebase configuration 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
+    // AngularFire Auth configuration
     provideAuth(() => getAuth()),
-    provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
+    // Angular HttpClient configuration with auth interceptor
+    provideHttpClient(withInterceptors([authInterceptor])),
   ],
 };

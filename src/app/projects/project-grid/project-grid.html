@@ -1,40 +1,33 @@
 @if (projects$ | async; as projectList) { @if (projectList.length > 0) {
-<!-- Grid View -->
-<mat-grid-list
-  [cols]="cols$ | async"
-  [rowHeight]="rowHeight"
-  [gutterSize]="gutterSize">
+<div class="project-grid-container">
   @for (project of projectList; track project._id) {
-  <mat-grid-tile [colspan]="colspan" [rowspan]="rowspan">
-    <mat-card appearance="outlined" class="project-card">
-      <mat-card-header>
-        <mat-card-title>{{ project.title }}</mat-card-title>
-        <mat-card-subtitle>{{ project.category }}</mat-card-subtitle>
-      </mat-card-header>
+  <mat-card appearance="outlined" class="project-card">
+    <mat-card-header>
+      <mat-card-title>{{ project.title }}</mat-card-title>
+      <mat-card-subtitle>{{ project.category }}</mat-card-subtitle>
+    </mat-card-header>
 
-      <mat-card-content>
-        <p>{{ project.programmingLanguage }}</p>
-      </mat-card-content>
+    <mat-card-content>
+      <p>{{ project.programmingLanguage }}</p>
+    </mat-card-content>
 
-      <span class="flex-spacer"></span>
+    <span class="flex-spacer"></span>
 
-      <mat-card-actions>
-        <button matButton [routerLink]="['/projects', project._id]">
-          OPEN
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </mat-grid-tile>
+    <mat-card-actions>
+      <button matButton [routerLink]="['/projects', project._id]">OPEN</button>
+    </mat-card-actions>
+  </mat-card>
   }
-</mat-grid-list>
+</div>
+
 } @else {
-<!-- Empty State (Array is empty) -->
+<!-- Empty State -->
 <div class="empty-message">
   <mat-icon>sentiment_dissatisfied</mat-icon>
-  <p>No Projects found.</p>
+  <p>No posts found.</p>
 </div>
 } } @else {
-<!-- Loading State (Observable is null) -->
+<!-- Loading State -->
 <div class="spinner-container">
   <mat-spinner diameter="50"></mat-spinner>
 </div>

@@ -69,7 +69,7 @@ export class ProjectForm implements OnInit {
   private readonly projectService = inject(ProjectService);
   private readonly snackBar = inject(MatSnackBar);
 
-  // create project form
+  // project form
   projectForm = this.formBuilder.group({
     title: ['', Validators.required],
     status: ['', Validators.required],

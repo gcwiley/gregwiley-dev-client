@@ -8,12 +8,12 @@ export interface Project {
   status: string;
   category: string;
   programmingLanguage: string;
-  keywords: string[]; // array of tag strings
+  keywords: string[]; // array of keyword strings
   startDate: ISODateString | null;
   isFavorite: boolean;
-  gitUrl?: string; // optional field
-  description?: string; // optional field
-  imageUrl?: string; // optional field
+  gitUrl?: string; 
+  description?: string;
+  imageUrl?: string; 
   readonly createdAt: ISODateString;
   readonly updatedAt: ISODateString;
 }

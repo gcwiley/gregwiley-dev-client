@@ -3,12 +3,13 @@
   <p>{{ data.message }}</p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button matButton [mat-dialog-close]="false">{{ data.cancelText }}</button>
+  <button matButton [mat-dialog-close]="false" cdkFocusInitial>
+    {{ data.cancelText }}
+  </button>
   <button
-    mat-raised-button
-    [color]="data.color"
-    [mat-dialog-close]="true"
-    cdkFocusInitial>
+    matButton
+    [class.warn-button]="data.isDestructive"
+    [mat-dialog-close]="true">
     {{ data.confirmText }}
   </button>
 </mat-dialog-actions>

@@ -21,23 +21,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/about-page/about-page').then((m) => m.AboutPage),
   },
-  // resources page
-  {
-    path: 'resources',
-    title: 'Resources',
-    canActivate: [authGuard],
-    loadComponent: () =>
-      import('./pages/resources-page/resources-page').then(
-        (m) => m.ResourcesPage,
-      ),
-  },
   // --- AUTHENTICATION ---
   // sign in page
   {
     path: 'signin',
     title: 'Sign In',
     loadComponent: () =>
-      import('./pages/signin-page/signin-page').then((m) => m.SigninPage),
+      import('./pages/signin-page/signin-page').then((m) => m.SignInPage),
   },
   // --- PROTECTED ADMIN ROUTES ---
   {

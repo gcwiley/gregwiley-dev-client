@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 
 // rxjs
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 // angular material
 import { MatCardModule } from '@angular/material/card';
@@ -49,5 +50,5 @@ export class HomePage {
 
   // expose observable directly
   public readonly featuredProjects$: Observable<Project[]> =
-    this.projectService.getProjects();
+    this.projectService.getProjects().pipe(map((res) => res.data));
 }

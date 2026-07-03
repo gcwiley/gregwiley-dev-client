@@ -101,8 +101,8 @@ export class ProjectTable implements OnInit, AfterViewInit {
       .getProjects()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: (projects) => {
-          this.dataSource.data = projects;
+        next: (response) => {
+          this.dataSource.data = response.data;
           this.isLoadingResults.set(false);
         },
         error: (error) => {

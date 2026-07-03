@@ -1,5 +1,4 @@
 export { AnnouncementBar } from './announcement-bar/announcement-bar';
-export { AuthStatus } from './auth-status/auth-status';
 export { ConfirmDialog, type ConfirmDialogData } from './confirm-dialog/confirm-dialog';
 export { Footer } from './footer/footer';
 export { Hero } from './hero/hero';

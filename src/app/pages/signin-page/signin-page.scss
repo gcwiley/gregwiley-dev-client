@@ -42,31 +42,6 @@
 
   // Animation
   animation: slideUpFade 0.6s ease-out forwards;
-
-  // force input text color to match theme
-  input.mat-mdc-input-element {
-    color: var(--mat-sys-on-surface);
-  }
-
-  // Override browser autofill styles
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus {
-    -webkit-text-fill-color: var(--mat-sys-on-surface);
-    transition: background-color 5000s ease-in-out 0s;
-  }
-}
-
-.full-width {
-  width: 100%;
-  margin: 0.4rem 0;
-}
-
-.sign-in-button {
-  width: 100%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .title-text {
@@ -75,7 +50,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .title-text h1 {
@@ -88,33 +63,17 @@
   margin: 0;
 }
 
-.forgot-password {
-  font: var(--mat-sys-label-large);
-  color: var(--mat-sys-primary);
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.forgot-password a {
-  text-decoration: none;
-  color: inherit;
-  font-weight: 600;
-}
-
-.oauth-actions {
-  margin-top: 16px;
+.card-content {
   display: flex;
   justify-content: center;
-  padding-top: 0;
 }
 
-.google-btn {
-  margin-top: 0.5rem;
+.google-sign-in-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   width: 100%;
-  justify-content: center;
   background: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   border-color: var(--mat-sys-outline-variant);
@@ -122,26 +81,10 @@
   text-transform: none;
 }
 
-// icon container: force block rendering so baseline issues disappear
-.google-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  line-height: 0; // prevents baseline gap
-}
-
-.google-icon svg {
-  display: block;
+.google-logo {
   width: 18px;
   height: 18px;
-}
-
-// label
-.google-label {
-  font-weight: 600;
-  display: inline-block;
+  display: block;
 }
 
 .signin-footer {
@@ -152,9 +95,7 @@
 }
 
 .signin-footer small {
-  color: var(
-    --mat-sys-on-surface-variant
-  ); // use theme token instead of hardcoded rgba
+  color: var(--mat-sys-on-surface-variant);
   font-size: 0.85rem;
   display: inline-block;
   margin-top: 6px;
@@ -166,3 +107,4 @@
     padding: 1.5rem 1rem;
   }
 }
+
