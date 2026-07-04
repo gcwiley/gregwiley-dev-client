@@ -4,9 +4,19 @@ import {
   HttpErrorResponse,
   HttpParams,
 } from '@angular/common/http';
-import { catchError, Observable, of, throwError, map, retry } from 'rxjs';
 
-// environment
+// rxjs
+import {
+  catchError,
+  Observable,
+  of,
+  throwError,
+  map,
+  retry,
+  timer,
+} from 'rxjs';
+
+// environment variables
 import { environment } from '../../environments/environment';
 
 // project interfaces
@@ -20,9 +30,19 @@ import {
 export class ProjectService {
   private readonly API_URL = `${environment.apiUrl}/projects`;
   private readonly http = inject(HttpClient);
-  private readonly DEFAULT_RETRY = { count: 1, delay: 1000 };
 
-  // GET: - GET PROJECTS (PAGINATION)
+// DEFAULT RETRY COUNT
+  private readonly smartRetry = {
+    count: 1,
+    delay: (error: HttpErrorResponse) => {
+      if (error.status === 0 || error.status >= 500) {
+        return timer(1000);
+      }
+      return throwError(() => error);
+    },
+  };
+
+  // GET: - GET ALL PROJECTS WITH PAGINATION
   public getProjects(
     page = 1,
     limit = 10,
@@ -38,7 +58,7 @@ export class ProjectService {
     return this.http
       .get<PaginatedResponse<Project>>(this.API_URL, { params })
       .pipe(
-        retry(this.DEFAULT_RETRY),
+        retry(this.smartRetry),
         catchError((error) => this.handleError(error)),
       );
   }
@@ -47,7 +67,7 @@ export class ProjectService {
   public getProjectById(id: string): Observable<Project> {
     const url = `${this.API_URL}/${id}`;
     return this.http.get<ApiResponse<Project>>(url).pipe(
-      retry(this.DEFAULT_RETRY),
+      retry(this.smartRetry),
       map((res) => res.data),
       catchError((error) => this.handleError(error)),
     );
@@ -62,7 +82,7 @@ export class ProjectService {
 
     const params = new HttpParams().set('query', term);
     return this.http.get<ApiResponse<Project[]>>(this.API_URL, { params }).pipe(
-      retry(this.DEFAULT_RETRY),
+      retry(this.smartRetry),
       map((res) => res.data),
       catchError((error) => this.handleError(error)),
     );
@@ -71,7 +91,7 @@ export class ProjectService {
   // GET: - GET PROJECT COUNT
   public getProjectCount(): Observable<number> {
     return this.http.get<ApiResponse<number>>(`${this.API_URL}/count`).pipe(
-      retry(this.DEFAULT_RETRY),
+      retry(this.smartRetry),
       map((res) => res.data),
       catchError((error) => this.handleError(error)),
     );
@@ -80,7 +100,7 @@ export class ProjectService {
   // GET: - RECENTLY CREATED PROJECTS
   public getRecentlyCreatedProjects(): Observable<Project[]> {
     return this.http.get<ApiResponse<Project[]>>(`${this.API_URL}/recent`).pipe(
-      retry(this.DEFAULT_RETRY),
+      retry(this.smartRetry),
       map((res) => res.data),
       catchError((error) => this.handleError(error)),
     );
@@ -91,7 +111,7 @@ export class ProjectService {
     return this.http
       .get<ApiResponse<Project[]>>(`${this.API_URL}/favorites`)
       .pipe(
-        retry(this.DEFAULT_RETRY),
+        retry(this.smartRetry),
         map((res) => res.data),
         catchError((error) => this.handleError(error)),
       );
