@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, from, throwError, map } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+
+// rxjs
+import { Observable, catchError, from, throwError, map } from 'rxjs';
 
 // firebase auth
 import {
@@ -11,16 +12,22 @@ import {
   UserCredential,
   user,
   User,
+  
+  idToken
 } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  // inject the auth object
   private readonly auth = inject(Auth);
 
   // observable for the current user state (emits User object or null)
   public readonly user$: Observable<User | null> = user(this.auth);
+
+  // observable for the current user's ID token (emits User object or null)
+  public readonly idToken$: Observable<string | null> = idToken(this.auth);
 
   // observable for the authentication status (emits true if logged in, false otherwise)
   public readonly isAuthenticated$: Observable<boolean> = this.user$.pipe(

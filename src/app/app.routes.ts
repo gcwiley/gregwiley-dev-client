@@ -87,13 +87,6 @@ export const routes: Routes = [
       },
     ],
   },
-  // --- ERROR HANDLING ---
-  {
-    path: 'error',
-    title: 'Error',
-    loadComponent: () =>
-      import('./pages/error-page/error-page').then((m) => m.ErrorPage),
-  },
   // wildcard route - 404 not found page
   {
     path: '**',

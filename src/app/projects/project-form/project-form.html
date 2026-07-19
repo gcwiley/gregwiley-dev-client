@@ -6,12 +6,12 @@
   [formGroup]="projectForm"
   novalidate
   (ngSubmit)="onSaveProject()"
-  aria-label="Project Form">
+  class="project-form-container">
   <mat-card class="project-form-card" appearance="outlined">
     <mat-card-content>
       <div class="form-grid">
         <!-- title -->
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field appearance="outline">
           <mat-label>Project Title</mat-label>
           <input
             matInput
@@ -28,7 +28,7 @@
         </mat-form-field>
 
         <!-- project status -->
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field appearance="outline">
           <mat-label>Project Status</mat-label>
           <mat-select formControlName="status" aria-describedby="status-error">
             @for (status of statuses; track status.value) {
@@ -46,7 +46,7 @@
         </mat-form-field>
 
         <!-- project category -->
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field appearance="outline">
           <mat-label>Category</mat-label>
           <mat-select
             formControlName="category"
@@ -66,7 +66,7 @@
         </mat-form-field>
 
         <!-- startDate -->
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field appearance="outline">
           <mat-label>Start Date</mat-label>
           <input
             matInput
@@ -88,7 +88,7 @@
         </mat-form-field>
 
         <!-- programming language -->
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field appearance="outline">
           <mat-label>Programming Language</mat-label>
           <mat-select
             formControlName="programmingLanguage"
@@ -108,7 +108,7 @@
         </mat-form-field>
 
         <!-- github url -->
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field appearance="outline">
           <mat-label>GitHub URL</mat-label>
           <input
             matInput
@@ -130,7 +130,7 @@
         </mat-form-field>
 
         <!-- description -->
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>
           <textarea
             matInput
