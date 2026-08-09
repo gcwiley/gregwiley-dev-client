@@ -4,4 +4,5 @@ export { ProjectDetails } from './project-details/project-details';
 export { ProjectForm } from './project-form/project-form';
 export { ProjectGrid } from './project-grid/project-grid';
 export { ProjectTable } from './project-table/project-table';
+export { ProjectTags } from './project-tags/project-tags';
 export { RecentProjects } from './recent-projects/recent-projects';

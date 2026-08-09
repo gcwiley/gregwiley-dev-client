@@ -26,16 +26,13 @@ import { SNACK_BAR_DURATION_MS } from '../../constants/ui.constants';
   templateUrl: './signin-page.html',
   styleUrl: './signin-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-  ],
+  imports: [MatCardModule, MatButtonModule, MatIconModule],
 })
 export class SignInPage {
   public readonly googleLoading = signal(false);
   public readonly year = new Date().getFullYear();
 
+  // inject dependencies
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
   private readonly snackBar = inject(MatSnackBar);

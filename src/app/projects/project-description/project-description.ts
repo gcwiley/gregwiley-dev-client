@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 // rxjs
 import { of, Observable, map, filter, switchMap, catchError } from 'rxjs';
@@ -14,7 +14,7 @@ import { Project } from '../../types/project.interface';
   templateUrl: './project-description.html',
   styleUrl: './project-description.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterModule],
+  imports: [AsyncPipe, RouterModule],
 })
 export class ProjectDescription {
   // inject dependencies

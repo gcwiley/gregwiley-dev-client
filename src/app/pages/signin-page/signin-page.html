@@ -1,8 +1,8 @@
 <main class="signin-page-container" aria-label="Sign In Page">
   <mat-card class="signin-form" appearance="raised">
     <div class="title-text">
-      <h1>Welcome</h1>
-      <p>Sign in to access the admin panel.</p>
+      <h1>Welcome to gregwiley.dev</h1>
+      <p>Please sign in to access the admin panel.</p>
     </div>
     <mat-card-content class="card-content">
       <button
@@ -11,12 +11,7 @@
         type="button"
         [disabled]="googleLoading()"
         (click)="onSignInWithGoogle()">
-        @if (googleLoading()) {
-          Signing in...
-        } @else {
-          <img src="/logos/google-logo.svg" alt="Google logo" class="google-logo" />
-          Sign in with Google
-        }
+        @if (googleLoading()) { Signing in... } @else { Sign in with Google }
       </button>
     </mat-card-content>
     <mat-card-footer

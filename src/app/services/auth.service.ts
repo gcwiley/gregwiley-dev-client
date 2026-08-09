@@ -12,7 +12,6 @@ import {
   UserCredential,
   user,
   User,
-  
   idToken
 } from '@angular/fire/auth';
 

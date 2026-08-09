@@ -1,0 +1,9 @@
+@if (tags.length > 0) {
+<mat-chip-set aria-label="Project tags">
+  @for (tag of tags; track tag) {
+  <mat-chip>
+    <mat-icon matChipAvatar>tag</mat-icon>
+  </mat-chip>
+  }
+</mat-chip-set>
+}
