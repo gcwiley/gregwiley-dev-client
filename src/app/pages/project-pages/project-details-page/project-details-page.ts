@@ -14,6 +14,7 @@ import {
 import {
   ProjectDetails,
   ProjectDescription,
+  ProjectTags,
 } from '../../../projects';
 
 @Component({
@@ -26,6 +27,7 @@ import {
     Footer,
     ProjectDetails,
     ProjectDescription,
+    ProjectTags,
     RouterModule,
     MatIconModule,
 ],

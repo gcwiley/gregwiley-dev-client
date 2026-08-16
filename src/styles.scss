@@ -1,10 +1,9 @@
 @use '@angular/material' as mat;
 
-// sets up the modern angular material theming system
-
+// fix this - use style.scss on bookshelf app as a guide.
 html {
   color-scheme: light dark;
-  @include mat.theme( // this line is key!
+  @include mat.theme( 
     (
       color: (
         primary: mat.$azure-palette,

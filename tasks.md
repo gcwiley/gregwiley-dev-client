@@ -4,4 +4,4 @@
 
 * auth service sign out
 
-* project tags
+* add project tags to project details page
