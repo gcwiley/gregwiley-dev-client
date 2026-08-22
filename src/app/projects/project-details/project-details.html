@@ -1,4 +1,5 @@
-@if (project$ | async; as project) {
+<!-- fix this! add mat card -->
+@if (project(); as project) {
 <mat-list class="project-details-card" role="list" aria-label="Project Details">
   <span mat-subheader>Project Details</span>
   <!-- status -->
@@ -32,8 +33,4 @@
     >
   </mat-list-item>
 </mat-list>
-} @else {
-<div class="spinner-container" aria-live="polite">
-  <mat-spinner diameter="36"></mat-spinner>
-</div>
-}
+} 

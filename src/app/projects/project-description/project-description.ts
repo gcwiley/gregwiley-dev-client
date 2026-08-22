@@ -1,12 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { AsyncPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-// rxjs
-import { of, Observable, map, filter, switchMap, catchError } from 'rxjs';
-
-// project service and interface
-import { ProjectService } from '../../services/project.service';
+// project interface
 import { Project } from '../../types/project.interface';
 
 @Component({
@@ -14,23 +8,8 @@ import { Project } from '../../types/project.interface';
   templateUrl: './project-description.html',
   styleUrl: './project-description.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AsyncPipe, RouterModule],
+  imports: [],
 })
 export class ProjectDescription {
-  // inject dependencies
-  private readonly route = inject(ActivatedRoute);
-  private readonly projectService = inject(ProjectService);
-
-  public project$: Observable<Project | undefined> = this.route.paramMap.pipe(
-    map((pm) => pm.get('id')),
-    filter((id): id is string => !!id),
-    switchMap((id) =>
-      this.projectService.getProjectById(id).pipe(
-        catchError((error) => {
-          console.error('Error fetching project:', error);
-          return of(undefined);
-        })
-      )
-    )
-  );
+  public readonly project = input.required<Project>();
 }

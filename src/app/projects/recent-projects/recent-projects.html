@@ -1,10 +1,6 @@
 <mat-list class="recent-projects" aria-label="Recent Projects">
-  @if (isLoading) {
   <mat-list-item>
-    <mat-spinner diameter="24"></mat-spinner>
-  </mat-list-item>
-  } @if (recentProjects$ | async; as projects) {
-  <!-- use the @for loop to iterate over this array -->
+  @if (recentProjects$ | async; as projects) {
   @for (project of projects; track project._id) {
   <mat-list-item lines="2">
     <span matListItemTitle>{{ project.title }}</span>
@@ -18,3 +14,7 @@
   </mat-list-item>
   }
 </mat-list>
+
+<mat-card>
+  
+</mat-card>

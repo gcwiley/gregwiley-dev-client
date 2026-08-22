@@ -1,14 +1,11 @@
 :host {
   display: block;
-  // the component should not have its own external margins
-  // the parent container is responsible for spacing
 }
 
 .project-details-card {
-  // use a standard surface color with a border for a modern card look
   background: var(--mat-sys-surface-container-high);
   border: 1px solid var(--mat-sys-outline-variant);
-  border-radius: 12px; // a slight softer radius
+  border-radius: 12px;
   overflow: hidden; // ensures content respects the border-radius
   padding: 1rem;
 }

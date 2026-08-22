@@ -1,21 +1,12 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  inject,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-// rxjs
-import { Observable, catchError, of } from 'rxjs';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 // angular material
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-// project service and interface
-import { ProjectService } from '../../services/project.service';
+// project interface
 import { Project } from '../../types/project.interface';
 
 @Component({
@@ -31,23 +22,5 @@ import { Project } from '../../types/project.interface';
   ],
 })
 export class RecentProjects implements OnInit {
-  public recentProjects$!: Observable<Project[]>;
-  public isLoading = true;
-
-  // inject dependencies
-  private projectService = inject(ProjectService);
-
-  public ngOnInit(): void {
-    // get the observable stream of recently added projects
-    this.recentProjects$ = this.projectService
-      .getRecentlyCreatedProjects()
-      .pipe(
-        catchError((error) => {
-          console.error('Error getting recent projects.', error);
-          this.isLoading = false;
-          return of([]);
-        })
-      );
-    this.recentProjects$.subscribe(() => (this.isLoading = false));
-  }
+  
 }
