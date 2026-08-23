@@ -4,7 +4,8 @@ import { DatePipe } from '@angular/common';
 // angular material
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 // project interface
 import { Project } from '../../types/project.interface';
@@ -15,12 +16,13 @@ import { Project } from '../../types/project.interface';
   styleUrl: './recent-projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
+    DatePipe,
     MatListModule,
     MatIconModule,
-    MatProgressSpinnerModule,
+    MatCardModule,
+    MatDividerModule,
   ],
 })
-export class RecentProjects implements OnInit {
-  
+export class RecentProjects {
+  public readonly recentProjects = input.required<Project[]>();
 }

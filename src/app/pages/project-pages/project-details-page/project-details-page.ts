@@ -1,7 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 
-// angular material
+// rxjs
+import { of, Observable, map, filter, switchMap, catchError } from 'rxjs';
+
+// angular material - fix this!
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 // shared components

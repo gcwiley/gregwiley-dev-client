@@ -1,20 +1,22 @@
-<mat-list class="recent-projects" aria-label="Recent Projects">
-  <mat-list-item>
-  @if (recentProjects$ | async; as projects) {
-  @for (project of projects; track project._id) {
-  <mat-list-item lines="2">
-    <span matListItemTitle>{{ project.title }}</span>
-    <span matListItemLine
-      >Added: {{ project.createdAt | date : 'mediumDate' }}</span
-    >
-  </mat-list-item>
-  } } @else {
-  <mat-list-item lines="1">
-    <span matListItemTitle>No Recent Projects</span>
-  </mat-list-item>
-  }
-</mat-list>
-
 <mat-card>
-  
+  <mat-card-header>
+    <mat-card-title>Recent Projects</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list class="recent-projects" aria-label="Recent Projects">
+      @if (recentProjects(); as projects) { @for (project of projects; track
+      project._id) {
+      <mat-list-item lines="2">
+        <span matListItemTitle>{{ project.title }}</span>
+        <span matListItemLine
+          >Added: {{ project.createdAt | date : 'mediumDate' }}</span
+        >
+      </mat-list-item>
+      } } @else {
+      <mat-list-item lines="1">
+        <span matListItemTitle>No Recent Projects</span>
+      </mat-list-item>
+      }
+    </mat-list>
+  </mat-card-content>
 </mat-card>
