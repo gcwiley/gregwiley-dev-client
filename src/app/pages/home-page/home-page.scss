@@ -1,7 +1,7 @@
-@use '../../../styles/helpers/constants';
+@use 'variables';
 
 .home-page-container {
-  max-width: constants.$max-width;
+  max-width: variables.$max-width;
   min-height: 100vh;
   margin: auto;
   padding: 2rem 1rem;

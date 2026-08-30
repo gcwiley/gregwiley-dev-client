@@ -1,4 +1,4 @@
-@use '../../../styles/helpers/constants';
+@use 'variables';
 
 .footer {
   background: var(--mat-sys-primary);
@@ -8,7 +8,7 @@
 }
 
 .footer-content {
-  max-width: constants.$max-width;
+  max-width: variables.$max-width;
   margin: auto;
   display: flex;
   justify-content: space-between;

@@ -1,4 +1,4 @@
-@use '../../../styles/helpers/constants';
+@use 'variables';
 
 .navbar-container {
   background: var(--mat-sys-primary);
@@ -8,7 +8,7 @@
 }
 
 .navbar-content {
-  max-width: constants.$max-width;
+  max-width: variables.$max-width;
   margin: auto;
   padding: 0.6rem 1rem;
   display: flex;

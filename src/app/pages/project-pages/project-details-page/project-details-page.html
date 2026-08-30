@@ -3,25 +3,28 @@
 </header>
 
 <main class="project-details-page-container" aria-label="Project Details Page">
-  <div class="page-header">
-    <a
-      routerLink="/projects"
-      class="back-link"
-      aria-label="Back to all projects">
+  @if (project$ | async; as project) {
+  <article class="main-content">
+    <button
+      mat-icon-button
+      class="back-button"
+      (click)="goBack()"
+      aria-label="Back to Projects">
       <mat-icon>arrow_back</mat-icon>
-      <span>All Projects</span>
-    </a>
-  </div>
+    </button>
+    <app-project-description [project]="project"></app-project-description>
+  </article>
 
-  <div class="content-grid">
-    <article class="main-content">
-      <app-project-description></app-project-description>
-    </article>
-
-    <aside class="side-content">
-      <app-project-details></app-project-details>
-    </aside>
+  <aside class="side-content">
+    <app-project-details [project]="project"></app-project-details>
+    <mat-divider></mat-divider>
+    <app-project-tags></app-project-tags>
+  </aside>
+  } @else {
+  <div class="loading-spinner-container">
+    <mat-spinner diameter="48"></mat-spinner>
   </div>
+  }
 </main>
 
 <app-footer></app-footer>

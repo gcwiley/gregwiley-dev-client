@@ -1,1 +1,10 @@
-<p>project-count works!</p>
+<span
+  class="project-count-chip"
+  [matTooltip]="count() + ' ' + label() + ' in portfolio'"
+  aria-label="Total projects in portfolio">
+  <mat-icon class="count-icon" aria-hidden="true"
+    >collections_bookmark</mat-icon
+  >
+  <span class="count-number">{{ count() }}</span>
+  <span class="count-label">{{ label() }}</span>
+</span>
