@@ -1,10 +1,49 @@
-@use '../../../styles/helpers/constants';
+:host {
+  display: block;
+}
 
-.recent-projects {
-  background: var(--mat-sys-primary-container);
-  color: var(--mat-sys-on-primary-container);
-  font: var(--mat-sys-body-medium);
-  margin-top: 2rem;
-  padding: 1rem;
-  border-radius: 1rem;
+.recent-projects-card {
+  height: 100%;
+
+  // controls the card header title size
+  mat-card-title {
+    font-size: 1.1rem; // default is ~1.25rem - 1.5rem
+  }
+}
+
+.recent-projects-list {
+  padding-top: 0;
+
+  a[mat-list-item] {
+    transition: background-color 0.2s ease;
+    border-radius: 8px;
+
+    &:hover {
+      background-color: var(--mat-sys-surface-container-high);
+    }
+  }
+}
+
+// controls the project title
+[matListItemTitle] {
+  font-size: 0.9rem; // ~14px (default is ~16px)
+  font-weight: 400;
+  color: var(--mat-sys-primary);
+}
+
+// controls the subtitle/date text
+[matListItemLine] {
+  font-size: 0.75rem; // ~12px (default is ~14px)
+}
+
+// (optional) scale down the icon to match the smaller text
+mat-icon[matListItemIcon] {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.empty-state {
+  color: var(--mat-sys-on-surface-variant);
+  font-style: italic;
 }

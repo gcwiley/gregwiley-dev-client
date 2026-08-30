@@ -1,4 +1,5 @@
 export { ProjectCarousel } from './project-carousel/project-carousel';
+export { ProjectCount } from './project-count/project-count';
 export { ProjectDescription } from './project-description/project-description';
 export { ProjectDetails } from './project-details/project-details';
 export { ProjectForm } from './project-form/project-form';

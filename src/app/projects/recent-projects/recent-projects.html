@@ -1,22 +1,27 @@
-<mat-card>
+<mat-card class="recent-projects card" appearance="outlined">
   <mat-card-header>
     <mat-card-title>Recent Projects</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <mat-list class="recent-projects" aria-label="Recent Projects">
-      @if (recentProjects(); as projects) { @for (project of projects; track
-      project._id) {
-      <mat-list-item lines="2">
-        <span matListItemTitle>{{ project.title }}</span>
-        <span matListItemLine
-          >Added: {{ project.createdAt | date : 'mediumDate' }}</span
+    <mat-nav-list class="recent-projects-list" aria-label="Recent Projects">
+      @for (project of recentProjects(); track project._id; let last = $last) {
+      <a mat-list-item [routerLink]="['/projects', project._id]" lines="2">
+        <mat-icon matListItemIcon>menu_book</mat-icon>
+        <span matListItemTitle> {{ project.title }}</span>
+        <span matListItemLine>
+          Added: {{ project.createdAt | date : 'mediumDate' }}</span
+        >
+      </a>
+      @if (!last) {
+      <mat-divider></mat-divider>
+      } } @empty {
+      <mat-list-item lines="1">
+        <span matListItemTitle class="empty-state"
+          >No recent projects found</span
         >
       </mat-list-item>
-      } } @else {
-      <mat-list-item lines="1">
-        <span matListItemTitle>No Recent Projects</span>
-      </mat-list-item>
       }
-    </mat-list>
+    </mat-nav-list>
   </mat-card-content>
 </mat-card>
+

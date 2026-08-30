@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 
-// rxjs
+// rxjs fix this!
 import { of, Observable, map, filter, switchMap, catchError } from 'rxjs';
 
 // angular material - fix this!

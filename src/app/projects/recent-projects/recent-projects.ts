@@ -9,6 +9,7 @@ import { MatDividerModule } from '@angular/material/divider';
 
 // project interface
 import { Project } from '../../types/project.interface';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-recent-projects',
@@ -21,7 +22,8 @@ import { Project } from '../../types/project.interface';
     MatIconModule,
     MatCardModule,
     MatDividerModule,
-  ],
+    RouterLink
+],
 })
 export class RecentProjects {
   public readonly recentProjects = input.required<Project[]>();
