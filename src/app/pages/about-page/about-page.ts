@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-// angular material
+// material components
 import { MatIconModule } from '@angular/material/icon';
 
 // shared components

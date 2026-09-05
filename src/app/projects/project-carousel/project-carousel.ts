@@ -15,7 +15,7 @@ import {
 
 import { RouterModule } from '@angular/router';
 
-// angular material
+// material components
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';

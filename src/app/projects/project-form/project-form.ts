@@ -80,6 +80,7 @@ export class ProjectForm implements OnInit {
     description: ['', Validators.required],
   });
 
+  // lifecycle hook for initializing the component
   public ngOnInit(): void {
     this.route.paramMap
       .pipe(

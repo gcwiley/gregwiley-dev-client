@@ -5,7 +5,7 @@ import { AsyncPipe } from '@angular/common';
 // rxjs
 import { of, Observable, map, filter, switchMap, catchError } from 'rxjs';
 
-// angular material
+// material components
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -48,6 +48,7 @@ export class ProjectDetailsPage {
   private readonly route = inject(ActivatedRoute);
   private readonly projectService = inject(ProjectService);
 
+  // comment
   public readonly project$: Observable<Project | undefined> =
     this.route.paramMap.pipe(
       map((pm) => pm.get('id')),
@@ -62,6 +63,7 @@ export class ProjectDetailsPage {
       ),
     );
 
+  // comment
   public goBack(): void {
     this.router.navigate(['/projects']);
   }
